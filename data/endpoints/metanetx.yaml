@@ -1,0 +1,27 @@
+id: metanetx
+name: MetaNetX
+namespace: ''
+description: Biochemical compounds and reactions reconciled across metabolic model namespaces
+group: ''
+keywords:
+- biolink:MolecularActivity
+- biolink:SmallMolecule
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: https://rdf.metanetx.org/sparql
+dump_available: true
+dump_url: https://rdf.metanetx.org/
+size: unknown
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: true
+map_rdf: ''
+map_view: ''
+availability: unknown

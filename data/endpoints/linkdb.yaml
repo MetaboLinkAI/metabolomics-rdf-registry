@@ -1,0 +1,29 @@
+id: linkdb
+name: LinkDB
+namespace: ''
+description: 'Cross-references between all KEGG entries and external databases
+
+
+  Dump notes: Pas de dump, graph trop gros, l''extraction depuis le endpoint pose problème'
+group: ''
+keywords:
+- biolink:SmallMolecule
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: http://www.genome.jp/sparql/linkdb
+dump_available: false
+dump_url: ''
+size: XL
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: false
+map_rdf: ''
+map_view: ''
+availability: unknown

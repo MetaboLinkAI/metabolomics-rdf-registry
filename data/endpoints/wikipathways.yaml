@@ -1,0 +1,26 @@
+id: wikipathways
+name: WikiPathways
+namespace: ''
+description: 'Biological pathways: community-curated, multi-species'
+group: ''
+keywords:
+- biolink:Pathway
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: https://sparql.wikipathways.org/sparql
+dump_available: true
+dump_url: http://data.wikipathways.org/current/rdf/
+size: unknown
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: true
+map_rdf: ''
+map_view: ''
+availability: unknown

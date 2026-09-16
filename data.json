@@ -1,0 +1,852 @@
+[
+  {
+    "id": "aop-wiki-sparql-endpoint",
+    "name": "AOP-Wiki SPARQL endpoint",
+    "namespace": "",
+    "description": "Adverse outcome pathways: molecular initiating events, key events, chemical stressors, KERs",
+    "group": "",
+    "keywords": [
+      "biolink:Pathway",
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://aopwiki.rdf.bigcat-bioinformatics.org/sparql",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "https://kghub-261474.pages-forge.inrae.fr/aop_wiki/quotient.ttl",
+    "map_view": "https://kghub-261474.pages-forge.inrae.fr/aop_wiki/quotient.html",
+    "availability": "unknown"
+  },
+  {
+    "id": "biogateway",
+    "name": "BioGateway",
+    "namespace": "",
+    "description": "UniProt, GO, and other life science RDF sources: unified triplestore",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://2407.biogateway.eu/sparql/",
+    "dump_available": true,
+    "dump_url": "https://zenodo.org/records/20747001",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "brenda",
+    "name": "BRENDA",
+    "namespace": "",
+    "description": "Enzyme function, kinetics, inhibitors, substrates, occurrence across organisms",
+    "group": "",
+    "keywords": [
+      "biolink:MolecularActivity"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://sparql.dsmz.de/api/brenda",
+    "dump_available": true,
+    "dump_url": "https://rdfportal.org/pub/ntriples/brenda/latest/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "chebi",
+    "name": "ChEBI",
+    "namespace": "",
+    "description": "Small biologically relevant chemical compounds: curated structures, ontology, roles",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://idsm.elixir-czech.cz/sparql/endpoint/chebi",
+    "dump_available": true,
+    "dump_url": "https://www.ebi.ac.uk/chebi/downloads",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "chembl",
+    "name": "chembl",
+    "namespace": "",
+    "description": "ChEMBL bioactive molecules, targets, and bioassays: Maastricht mirror",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://chemblmirror.rdf.bigcat-bioinformatics.org/sparql",
+    "dump_available": true,
+    "dump_url": "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/latest/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "enpkg",
+    "name": "ENPKG",
+    "namespace": "",
+    "description": "Natural Product",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://enpkg.commons-lab.org/graphdb/sparql",
+    "dump_available": true,
+    "dump_url": "https://enpkg.commons-lab.org/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "forum-knowledge-graph-database",
+    "name": "FORUM Knowledge graph Database",
+    "namespace": "",
+    "description": "Chemicals linked to diseases, pathways, and PubMed MeSH annotations: metabolomics focus",
+    "group": "",
+    "keywords": [
+      "biolink:Pathway",
+      "biolink:Disease",
+      "biolink:SmallMolecule",
+      "biolink:Publication"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://forum.semantic-metabolomics.fr/sparql/",
+    "dump_available": true,
+    "dump_url": "https://github.com/eMetaboHUB/Forum-DiseasesChem",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "idsm-chemwebrdf",
+    "name": "IDSM ChemWebRDF",
+    "namespace": "",
+    "description": "PubChem, ChEMBL, ChEBI small molecules: unified with substructure/similarity search",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://idsm.elixir-czech.cz/sparql/endpoint/idsm",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "linkdb",
+    "name": "LinkDB",
+    "namespace": "",
+    "description": "Cross-references between all KEGG entries and external databases\n\nDump notes: Pas de dump, graph trop gros, l'extraction depuis le endpoint pose probl\u00e8me",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "http://www.genome.jp/sparql/linkdb",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "lipid-maps",
+    "name": "LIPID MAPS\u00ae",
+    "namespace": "",
+    "description": "Lipid structures, classification, and metabolism: lipidomics standard reference",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://lipidmaps.org/sparql",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "metanetx",
+    "name": "MetaNetX",
+    "namespace": "",
+    "description": "Biochemical compounds and reactions reconciled across metabolic model namespaces",
+    "group": "",
+    "keywords": [
+      "biolink:MolecularActivity",
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdf.metanetx.org/sparql",
+    "dump_available": true,
+    "dump_url": "https://rdf.metanetx.org/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "plant-metabolic-pathways-wiki",
+    "name": "Plant Metabolic Pathways Wiki",
+    "namespace": "",
+    "description": "Plant metabolic pathways: curated enzymes, reactions, and compounds",
+    "group": "",
+    "keywords": [
+      "biolink:MolecularActivity",
+      "biolink:Pathway",
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://plantmetwiki.bioinformatics.nl/sparql",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-compound",
+    "name": "RDF Portal PubChem - compound",
+    "namespace": "",
+    "description": "linkage between compound and chemicaldescriptor resources, and the linkagebetween interrelated compounds",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-concept",
+    "name": "RDF Portal PubChem - concept",
+    "namespace": "",
+    "description": "semantic links related to the biomedical concepts used to annotate the PubChemRDF resource",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "S",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-cooccurrence",
+    "name": "RDF Portal PubChem - cooccurrence",
+    "namespace": "",
+    "description": "cooccurrence relations of named entities, including chemical, disease and gene/potein derivedfrom biomedical literature by using text mining approaches and cross links to PubChemRDF internal subdomains.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:Gene",
+      "biolink:Disease",
+      "biolink:SmallMolecule",
+      "biolink:Publication"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-descriptor",
+    "name": "RDF Portal PubChem - descriptor",
+    "namespace": "",
+    "description": "semantic links for a given descriptor entity including its type, value, and unit",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-disease",
+    "name": "RDF Portal PubChem - disease",
+    "namespace": "",
+    "description": "semantic links for a given disease entity including its type, preferred label, and cross-references to other resources.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:Disease"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "M",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-inchikey",
+    "name": "RDF Portal PubChem - inchikey",
+    "namespace": "",
+    "description": "linkage between the IUPAC standardInChIKey with PubChem Compound CIDs",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-pathway",
+    "name": "RDF Portal PubChem - pathway",
+    "namespace": "",
+    "description": "semantic links for a given pathway entity including its type, title, source, and cross-references to other resources.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:Pathway"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "L",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-reference",
+    "name": "RDF Portal PubChem - reference",
+    "namespace": "",
+    "description": "general information of literature and crosslinks to other resources.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:Publication"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-substance",
+    "name": "RDF Portal PubChem - substance",
+    "namespace": "",
+    "description": "linkage between substance and chemicaldescriptor resources, the linkage betweensubstance and standardized compoundresources, and linkage between substanceand measure group resources, as well aslinkage between substance and data sourceresources",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-synonym",
+    "name": "RDF Portal PubChem - synonym",
+    "namespace": "",
+    "description": "linkage between the chemical substancenames and PubChem Compound CID andPubChem Substance SID records.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "XL",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem-taxonomy",
+    "name": "RDF Portal PubChem - taxonomy",
+    "namespace": "",
+    "description": "semantic links for a given taxonomy entity including its type, preferred label, and cross-references to other resources.",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:OrganismTaxon"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "L",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-pubchem",
+    "name": "RDF Portal PubChem",
+    "namespace": "",
+    "description": "PubChem chemical compounds: NBDC-hosted mirror",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/pubchem/sparql",
+    "dump_available": true,
+    "dump_url": "ftp://ftp.ncbi.nlm.nih.gov/pubchem",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "rdf-portal-sib",
+    "name": "RDF Portal SIB",
+    "namespace": "",
+    "description": "SIB Swiss Institute resources: NBDC-hosted aggregated RDF\n\nAdditional dump locations: https://ftp.expasy.org/databases/rhea/old_releases/140.tar.bz2, https://www.bgee.org/ftp/15/rdf_easybgee.zip, https://omabrowser.org/All.Jul2024/oma-rdf-turtle.tgz",
+    "group": "RDF Portal",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://rdfportal.org/sib/sparql",
+    "dump_available": true,
+    "dump_url": "s3://aws-open-data-uniprot-rdf/2026-01/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "reactome-export-biopax-sbml",
+    "name": "Reactome (Export BioPax/SBML)",
+    "namespace": "",
+    "description": "Metabolism\n\nAdditional dump locations: https://reactome.org/download/current/biopax.zip",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": false,
+    "endpoint_url": "",
+    "dump_available": true,
+    "dump_url": "https://reactome.org/download-data",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": false,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "swisslipids",
+    "name": "SwissLipids",
+    "namespace": "",
+    "description": "Lipid structures, metabolism, and biological relationships\n\nDump notes: Extraction depuis le endpoint car pas de dump :'(",
+    "group": "",
+    "keywords": [
+      "biolink:SmallMolecule"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://beta.sparql.swisslipids.org/",
+    "dump_available": false,
+    "dump_url": "",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  },
+  {
+    "id": "wikipathways",
+    "name": "WikiPathways",
+    "namespace": "",
+    "description": "Biological pathways: community-curated, multi-species",
+    "group": "",
+    "keywords": [
+      "biolink:Pathway"
+    ],
+    "taxonomic_scope": [
+      "NCBITaxon:1"
+    ],
+    "endpoint_available": true,
+    "endpoint_url": "https://sparql.wikipathways.org/sparql",
+    "dump_available": true,
+    "dump_url": "http://data.wikipathways.org/current/rdf/",
+    "size": "unknown",
+    "sparql_version": "unknown",
+    "supports_federation": false,
+    "example_query": "",
+    "contact": "",
+    "license": "unspecified",
+    "citation_doi": "",
+    "date_submitted": "2026-08-04",
+    "date_last_update": "2026-08-04",
+    "charted": true,
+    "map_rdf": "",
+    "map_view": "",
+    "availability": "unknown"
+  }
+]

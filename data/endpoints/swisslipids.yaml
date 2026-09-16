@@ -1,0 +1,29 @@
+id: swisslipids
+name: SwissLipids
+namespace: ''
+description: 'Lipid structures, metabolism, and biological relationships
+
+
+  Dump notes: Extraction depuis le endpoint car pas de dump :''('
+group: ''
+keywords:
+- biolink:SmallMolecule
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: https://beta.sparql.swisslipids.org/
+dump_available: false
+dump_url: ''
+size: unknown
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: true
+map_rdf: ''
+map_view: ''
+availability: unknown

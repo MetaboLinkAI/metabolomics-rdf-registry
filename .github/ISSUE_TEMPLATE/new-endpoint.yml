@@ -1,0 +1,153 @@
+name: Suggest a new RDF resource
+
+description: Propose a metabolomics-relevant RDF dataset or SPARQL endpoint for review and possible cartography.
+title: "[Resource request]: "
+labels: ["new-endpoint", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose an RDF resource for the consortium registry and possible inclusion in the cartographic system.
+
+        **Submitting this issue does not start the quotient workflow automatically.** Maintainers first review relevance, access, licensing/usage constraints, and technical feasibility. Approved cartography jobs are scheduled separately on the consortium's private compute infrastructure.
+
+        Do not include credentials, tokens, or private access URLs in this issue.
+
+  - type: input
+    id: name
+    attributes:
+      label: "Name"
+      description: Name of the resource or dataset.
+      placeholder: "e.g. WikiPathways"
+    validations:
+      required: true
+
+  - type: input
+    id: namespace
+    attributes:
+      label: "RDF namespace"
+      description: Primary RDF namespace or vocabulary URI, if known.
+      placeholder: "e.g. http://vocabularies.wikipathways.org/wp#"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: What does this resource cover, and why is it relevant to metabolomics?
+    validations:
+      required: true
+
+  - type: input
+    id: group
+    attributes:
+      label: Group or collection
+      description: Dataset family or platform this resource belongs to, if any.
+      placeholder: "e.g. RDF Portal, FORVM, EBI RDF Platform"
+
+  - type: input
+    id: keywords
+    attributes:
+      label: "Biolink categories"
+      description: |
+        Comma-separated topic terms from the Biolink Model vocabulary
+        (https://biolink.github.io/biolink-model/). Use the closest matching
+        biolink: class/category for each topic covered.
+      placeholder: "biolink:SmallMolecule, biolink:Pathway, biolink:Publication"
+    validations:
+      required: true
+
+  - type: input
+    id: taxonomic_scope
+    attributes:
+      label: "Taxonomic scope"
+      description: |
+        Comma-separated NCBI Taxonomy IDs (https://www.ncbi.nlm.nih.gov/taxonomy)
+        for the organism(s) covered. Use NCBITaxon:1 for pan-species or
+        non-organism-specific resources.
+      placeholder: "NCBITaxon:9606, NCBITaxon:4932"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: endpoint_available
+    attributes:
+      label: "SPARQL endpoint available?"
+      description: Is there a live SPARQL/RDF query endpoint for this resource?
+      options:
+        - "yes"
+        - "no"
+    validations:
+      required: true
+
+  - type: input
+    id: endpoint_url
+    attributes:
+      label: SPARQL endpoint URL
+      description: Provide this when you answered "yes" above.
+      placeholder: "https://..."
+
+  - type: dropdown
+    id: dump_available
+    attributes:
+      label: "RDF dump/export available?"
+      description: Is there a downloadable RDF dump or RDF export for this resource?
+      options:
+        - "yes"
+        - "no"
+    validations:
+      required: true
+
+  - type: input
+    id: dump_url
+    attributes:
+      label: RDF dump/export URL
+      description: Provide this when you answered "yes" above.
+      placeholder: "https://..."
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Approximate size
+      description: "Order of magnitude by triple count: XS <10K; S 10K-100K; M 100K-1M; L 1M-100M; XL >100M."
+      options:
+        - "XS"
+        - "S"
+        - "M"
+        - "L"
+        - "XL"
+        - "unknown"
+      default: 5
+
+  - type: textarea
+    id: example_query
+    attributes:
+      label: Example SPARQL query
+      description: A short query known to work against the endpoint, if applicable.
+
+  - type: input
+    id: contact
+    attributes:
+      label: Upstream contact
+      description: Email or handle of a maintainer/contact for the resource itself.
+
+  - type: input
+    id: license
+    attributes:
+      label: "Dataset license or usage terms"
+      description: Use "unspecified" if the terms are not known; maintainers may request clarification before processing.
+      placeholder: "CC-BY 4.0, CC0, unspecified..."
+    validations:
+      required: true
+
+  - type: input
+    id: citation_doi
+    attributes:
+      label: Citation DOI
+      description: DOI of the paper/resource to cite, in bare form without https://doi.org/.
+      placeholder: "10.1093/nar/gkab1104"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Access or processing notes
+      description: Mention unusual scale, authentication requirements, non-standard RDF packaging, or other information useful for maintainers. Do not include secrets.

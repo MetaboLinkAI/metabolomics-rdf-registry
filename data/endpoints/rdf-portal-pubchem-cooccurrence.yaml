@@ -1,0 +1,30 @@
+id: rdf-portal-pubchem-cooccurrence
+name: RDF Portal PubChem - cooccurrence
+namespace: ''
+description: cooccurrence relations of named entities, including chemical, disease and gene/potein derivedfrom
+  biomedical literature by using text mining approaches and cross links to PubChemRDF internal subdomains.
+group: RDF Portal
+keywords:
+- biolink:Gene
+- biolink:Disease
+- biolink:SmallMolecule
+- biolink:Publication
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: https://rdfportal.org/pubchem/sparql
+dump_available: true
+dump_url: ftp://ftp.ncbi.nlm.nih.gov/pubchem
+size: XL
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: true
+map_rdf: ''
+map_view: ''
+availability: unknown

@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Metabolomics RDF Resource",
+  "description": "Metadata describing one RDF dataset or SPARQL endpoint relevant to metabolomics and its cartography status.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "description",
+    "endpoint_available",
+    "dump_available",
+    "keywords",
+    "taxonomic_scope",
+    "license"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the resource/dataset."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Primary RDF namespace or vocabulary URI, if known."
+    },
+    "description": {
+      "type": "string",
+      "description": "What the resource covers and why it's relevant to metabolomics."
+    },
+    "group": {
+      "type": "string",
+      "description": "Name of the collection the dataset belongs to, if applicable, e.g. 'RDF Portal', 'FORVM', 'EBI RDF Platform'."
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Topic terms from the Biolink Model vocabulary (https://biolink.github.io/biolink-model/), e.g. 'biolink:SmallMolecule', 'biolink:Pathway', 'biolink:Publication'. Use the closest matching Biolink class/category for each topic covered."
+    },
+    "taxonomic_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Organism(s) covered, as NCBI Taxonomy IDs (https://www.ncbi.nlm.nih.gov/taxonomy), e.g. 'NCBITaxon:9606' (human), 'NCBITaxon:4932' (yeast). Use 'NCBITaxon:1' for root/pan-species/not organism-specific."
+    },
+    "endpoint_available": {
+      "type": "boolean",
+      "description": "Whether a live SPARQL/RDF query endpoint exists for this resource."
+    },
+    "endpoint_url": {
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "uri"
+        },
+        {
+          "const": ""
+        }
+      ],
+      "description": "The SPARQL/RDF query endpoint URL. Required when endpoint_available is true."
+    },
+    "dump_available": {
+      "type": "boolean",
+      "description": "Whether a downloadable RDF dump/export exists for this resource."
+    },
+    "dump_url": {
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "uri"
+        },
+        {
+          "const": ""
+        }
+      ],
+      "description": "URL to download an RDF dump/export. Required when dump_available is true."
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "unknown"
+      ],
+      "default": "unknown",
+      "description": "Order-of-magnitude size by triple count, not a precise figure. XS: <10K, S: 10K-100K, M: 100K-1M, L: 1M-100M, XL: >100M. See README for details."
+    },
+    "sparql_version": {
+      "type": "string",
+      "enum": [
+        "1.0",
+        "1.1",
+        "unknown"
+      ],
+      "default": "unknown",
+      "description": "SPARQL protocol version supported"
+    },
+    "supports_federation": {
+      "type": "boolean",
+      "description": "Whether the endpoint is known to tolerate being queried via SPARQL SERVICE from other endpoints (federated queries)."
+    },
+    "example_query": {
+      "type": "string",
+      "description": "A short SPARQL query known to work against this endpoint."
+    },
+    "contact": {
+      "type": "string",
+      "description": "Email or handle of a maintainer/contact for the resource itself (not the person submitting this entry)."
+    },
+    "license": {
+      "type": "string",
+      "description": "License or usage terms for the data, e.g. 'CC0', 'CC-BY 4.0', 'unspecified'."
+    },
+    "citation_doi": {
+      "type": "string",
+      "pattern": "^$|^10\\.\\d{4,9}/\\S+$",
+      "description": "DOI of the paper or resource to cite when using this dataset, in bare form (e.g. '10.1093/nar/gkab1104'), without a URL prefix."
+    },
+    "date_submitted": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this entry was first added."
+    },
+    "date_last_update": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this entry's metadata was last updated."
+    },
+    "charted": {
+      "type": "boolean",
+      "description": "Whether the resource has been processed by the private cartography workflow and included in the federation map.",
+      "default": false
+    },
+    "map_rdf": {
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "uri"
+        },
+        {
+          "const": ""
+        }
+      ],
+      "description": "URL to download the dataset's quotient in RDF, when published."
+    },
+    "map_view": {
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "uri"
+        },
+        {
+          "const": ""
+        }
+      ],
+      "description": "URL to visualize the dataset's quotient map, when published."
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "active",
+        "unstable",
+        "deprecated",
+        "unknown"
+      ],
+      "default": "unknown",
+      "description": "Operational status maintained by the consortium. Not set by the requester and not automatically probed by repository CI."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "endpoint_available": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "endpoint_url": {
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "dump_available": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "dump_url": {
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "properties": {
+            "endpoint_available": {
+              "const": true
+            }
+          }
+        },
+        {
+          "properties": {
+            "dump_available": {
+              "const": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

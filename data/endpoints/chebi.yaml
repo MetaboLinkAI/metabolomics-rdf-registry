@@ -1,0 +1,26 @@
+id: chebi
+name: ChEBI
+namespace: ''
+description: 'Small biologically relevant chemical compounds: curated structures, ontology, roles'
+group: ''
+keywords:
+- biolink:SmallMolecule
+taxonomic_scope:
+- NCBITaxon:1
+endpoint_available: true
+endpoint_url: https://idsm.elixir-czech.cz/sparql/endpoint/chebi
+dump_available: true
+dump_url: https://www.ebi.ac.uk/chebi/downloads
+size: unknown
+sparql_version: unknown
+supports_federation: false
+example_query: ''
+contact: ''
+license: unspecified
+citation_doi: ''
+date_submitted: '2026-08-04'
+date_last_update: '2026-08-04'
+charted: true
+map_rdf: ''
+map_view: ''
+availability: unknown
