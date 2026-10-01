@@ -1,0 +1,561 @@
+<http://id.nlm.nih.gov/mesh/D055351>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://forvm.semantics.metabohub.fr/asso/77be4ef59d225c682e9fcad39a2e550cfe19d46fee6bd51b670492e9626d6f9b>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/14458508>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_vocabulary/20260224>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/7f61b461c1067313e277f7b28e67d626fcf51b48085380d40936803223f84517> , <https://metabolinkai.net/quotient/exampleStatement/e9bb12f47573da62d9fa1ae8a06781379927598277d86c3ea8fb48528f08d8b0> , <https://metabolinkai.net/quotient/exampleStatement/9642f0d4ca50fad71afb4bc8f5bd94092d89c4eec6600e8106708b3483d117bd> , <https://metabolinkai.net/quotient/exampleStatement/0430e19d6ac3763921813b57caf1cecc5738378914309ae83bf0d371fb2c068a>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Ontology>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#cooccurrences>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/642140104ee01b825ae2dc68ddb298be7c2045de63b514e066e335957b383272>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "10.454538880293821"^^<http://www.w3.org/2001/XMLSchema#double>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#oddsRatio>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/ccf38e6197c04bde0db2fa48b574817c5a3ce2636aee815f53fb5b4adeb86ceb> .
+
+<https://forvm.semantics.metabohub.fr/asso/437a37878c9bfdf8639e6d589124c78ad917df8fa184ee664dd6fbfc3ce3d4bd>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4498138"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://semanticscience.org/resource/SIO_000132>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/YegO79_MRpE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#domain>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+] .
+
+<https://forvm.semantics.metabohub.fr/asso/a0895b7ad36c17a06522606323b9626fb5386cee12e27f67091fc09b58485a5c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "247602828"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/spar/cito/discusses>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_mesh_mesh/20260603>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/d573e5a89bc4469fa69e0128bfe858dc76dcbb3cd83837ae1704d01379a55568>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "13139"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://id.nlm.nih.gov/mesh/D013046>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://forvm.semantics.metabohub.fr/asso/dd9209b4bdd79abebe749bbdf106612338d0544ca9f82530e636568dfda3fc10>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<http://id.nlm.nih.gov/mesh/D018583>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://id.nlm.nih.gov/mesh/D017469>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://forvm.semantics.metabohub.fr/stat#qValueFilteringThreshold>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/creator>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/22509327>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<https://metabolinkai.net/quotient/exampleStatement/d573e5a89bc4469fa69e0128bfe858dc76dcbb3cd83837ae1704d01379a55568>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                351;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/NCIT_C150827>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://id.nlm.nih.gov/mesh/D010037> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+] .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<https://forvm.semantics.metabohub.fr/asso/9ad77d99cc624d15f98474843507dfada6b4b7bc8a626fa0d80d89687a0ec3ff>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+] .
+
+<http://semanticscience.org/resource/SIO_000897>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/YegO79_MRpE> .
+
+<http://id.nlm.nih.gov/mesh/D018315>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<http://www.w3.org/2001/XMLSchema#positiveInteger>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Iv1DKVQNA8U> .
+
+<https://metabolinkai.net/quotient/exampleStatement/e9bb12f47573da62d9fa1ae8a06781379927598277d86c3ea8fb48528f08d8b0>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Forvm Vocabulary"@en;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/title>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/22824978>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5eb7d20b91da01ff42c6c2aba58d4bfc3771a57cacc94fb7bf983f3229572cad>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                6.142317158453551E-64;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#qValue>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/8423d101633e1b2846509251fd1096ee646dc58ffe5d34339dfc4b6eb69a0e79> .
+
+<https://forvm.semantics.metabohub.fr/asso/93ae26388a37c23004a04e4e9000345d3a2c06fca4f65432c858ac3f3e9a1486>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/33321093>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+] .
+
+<http://id.nlm.nih.gov/mesh/D020556>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/13208734>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/24387250>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<https://forvm.semantics.metabohub.fr/asso/2355cdae1731084d245cd2f1b6c2e4d0960d163da7a59e80fef65433bf36a6c0>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/title>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/5b89c58e87184475cfa09d70075f1a712fe5ca3b4f604535790f6f7a343b8456>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                9;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#weakness>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/add78fd2d7c2133e29c4a86a6e7b90c5eaf0028be316ff75df03e0b2e4e70737> .
+
+<https://metabolinkai.net/quotient/quotientClass/Iv1DKVQNA8U>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_vocabulary/20260224>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://id.nlm.nih.gov/mesh/D000079263>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://metabolinkai.net/quotient/exampleStatement/8a8cd358290b3b8b7d916dd7da96778faf4bcdf38b04253a7a22f4dd02e5a52b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                12352;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#cooccurrences>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/0ddd1aef6f03099c33e55266e13653832197a5f27f158d81da2652cffeabe0d7> .
+
+<http://id.nlm.nih.gov/mesh/D003881>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://metabolinkai.net/quotient/quotientClass/YegO79_MRpE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_vocabulary/20260224> , <https://forvm.semantics.metabohub.fr/forum_mesh_mesh/20260603>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/c7c5cd574dc443ca90fa0c6cf7ea3aecea3892be658925789b9e7be1b4648d59>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                2.073990210306965E-65;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#fisherPValue>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/8423d101633e1b2846509251fd1096ee646dc58ffe5d34339dfc4b6eb69a0e79> .
+
+<https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_mesh_mesh/20260603>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/5b89c58e87184475cfa09d70075f1a712fe5ca3b4f604535790f6f7a343b8456> , <https://metabolinkai.net/quotient/exampleStatement/8a8cd358290b3b8b7d916dd7da96778faf4bcdf38b04253a7a22f4dd02e5a52b> , <https://metabolinkai.net/quotient/exampleStatement/642140104ee01b825ae2dc68ddb298be7c2045de63b514e066e335957b383272> , <https://metabolinkai.net/quotient/exampleStatement/c7c5cd574dc443ca90fa0c6cf7ea3aecea3892be658925789b9e7be1b4648d59> , <https://metabolinkai.net/quotient/exampleStatement/d21c627ca102adca28ffcbf225ba733ea1fc30dde323783a3c28ae5dc8da936a> , <https://metabolinkai.net/quotient/exampleStatement/5eb7d20b91da01ff42c6c2aba58d4bfc3771a57cacc94fb7bf983f3229572cad>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://semanticscience.org/resource/SIO_000897>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/0430e19d6ac3763921813b57caf1cecc5738378914309ae83bf0d371fb2c068a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "0.1.0";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2002/07/owl#versionInfo>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#versionInfo>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+] .
+
+<https://forvm.semantics.metabohub.fr/stat#>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg> .
+
+<https://metabolinkai.net/quotient/quotientClass/a89dV44RabA>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_mesh_mesh/20260603>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "10336347"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/23534484>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Iv1DKVQNA8U>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#range>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://forvm.semantics.metabohub.fr/forum_vocabulary/20260224>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/f102ff80c6a3aabaf1b7954386b0f145965228147cead8ada8754905ff917f58> , <https://metabolinkai.net/quotient/exampleStatement/8c9360e1082c3a5ee9dadb6a3cfcc29621de9a4efdc5430acee926fb9e79846d>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#FunctionalProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "3860184"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#related>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#oddsRatio>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1590857"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#weakness>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "24858"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/NCIT_C150827>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/CEYK5_914nw>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/9642f0d4ca50fad71afb4bc8f5bd94092d89c4eec6600e8106708b3483d117bd>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Vocabulary used to express relations between Forvm entities in a lighter way (memory wise)."@en;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#qValue>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+<https://forvm.semantics.metabohub.fr/asso/734cd3fe012a01fd1794625f946d94b88cb946ffaa361412597362c1060994a7>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<https://metabolinkai.net/quotient/exampleStatement/f102ff80c6a3aabaf1b7954386b0f145965228147cead8ada8754905ff917f58>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Q-value filtering threshold"@en;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#qValueFilteringThreshold> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#fisherPValue>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ezkAw57TOZg>
+] .
+
+<http://id.nlm.nih.gov/mesh/D007905>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<http://www.w3.org/2001/XMLSchema#double>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Iv1DKVQNA8U> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/8c9360e1082c3a5ee9dadb6a3cfcc29621de9a4efdc5430acee926fb9e79846d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Threshold used to filter out associations."@en;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#qValueFilteringThreshold> .
+
+<https://forvm.semantics.metabohub.fr/asso/267d6619432237cd46753b481cec10336bc0dd6da12b05321f69bc6345cfd591>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<https://forvm.semantics.metabohub.fr/asso/687ed9fbcbd3859897bec71d1732f4cd181cddc1dcd3771e0ef4644398de1272>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/12574405>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2250868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://forvm.semantics.metabohub.fr/stat#chiSquarePValue>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dZOcX9cu4Ak>
+] .
+
+<http://rdfs.org/ns/void#Dataset>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/YegO79_MRpE> .
+
+<http://id.nlm.nih.gov/mesh/D019466>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cpm9GKo6-ig> .
+
+<https://metabolinkai.net/quotient/exampleStatement/d21c627ca102adca28ffcbf225ba733ea1fc30dde323783a3c28ae5dc8da936a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "397.02193353813726"^^<http://www.w3.org/2001/XMLSchema#double>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://forvm.semantics.metabohub.fr/stat#chiSquarePValue>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/asso/8423d101633e1b2846509251fd1096ee646dc58ffe5d34339dfc4b6eb69a0e79> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/11717551>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/20052023>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/a89dV44RabA> .
+
+<https://metabolinkai.net/quotient/exampleStatement/7f61b461c1067313e277f7b28e67d626fcf51b48085380d40936803223f84517>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Forvm team";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/creator>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://forvm.semantics.metabohub.fr/stat#> .

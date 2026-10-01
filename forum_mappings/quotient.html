@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quotient</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    body { display: flex; flex-direction: column; }
+
+    #controls {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      padding: 8px 10px; background: #f7f7f7; border-bottom: 1px solid #ddd;
+    }
+
+    #main { position: relative; flex: 1 1 auto; min-height: 0; }
+    #cy { position: absolute; inset: 0; }
+
+    #legendPane {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 320px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #legendHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+    #legendTitle { font-size: 13px; font-weight: 600; }
+
+    #legendBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    #legendBody .item {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
+    }
+    #legendBody .item:hover { background: #fafafa; }
+
+    .swatch {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.2);
+      margin-top: 2px;
+    }
+    .graphs { font-size: 12px; color: #333; line-height: 1.35; word-break: break-word; }
+    .graphs .g { display: block; margin-bottom: 4px; }
+
+    button, select, input {
+      padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff;
+      font-size: 13px;
+    }
+    input[type="checkbox"] { padding: 0; border: none; width: 14px; height: 14px; }
+    button { cursor: pointer; }
+    button:hover { background: #fafafa; }
+    #search { min-width: 260px; }
+    .spacer { flex: 1 1 auto; }
+    .hint { color: #555; font-size: 12px; }
+
+    #detailsPane {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+      min-width: 260px;
+      min-height: 120px;
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #detailsHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+
+    #detailsTitle { font-size: 13px; font-weight: 600; }
+    #detailsBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+
+    #detailsBody .secTitle { font-size: 12px; font-weight: 600; margin: 10px 0 6px; color: #333; }
+    #detailsBody .kv { font-size: 12px; color: #333; line-height: 1.35; }
+    #detailsBody table { min-width: 100%; border-collapse: collapse; font-size: 12px; }
+    #detailsBody td { padding: 4px 0; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+    #detailsBody .exList { margin-top: 4px; }
+    #detailsBody .exLine {
+      color: #666;
+      font-size: 11px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    #detailsBody {
+      padding: 10px;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: calc(45vh - 52px);
+    }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="controls">
+
+    <label class="hint" for="colorMode">Colors</label>
+    <select id="colorMode">
+      <option value="graph" selected>source graph</option>
+      <option value="class">quotient class</option>
+    </select>
+
+    <button id="toggleLegend" type="button">Show legend</button>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;">
+      <input id="showCloseMatches" type="checkbox" checked />
+      close matches
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show one aggregate node per literal-valued property">
+      <input id="showLiteralNodes" type="checkbox" checked />
+      literal nodes
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show properties whose objects were intentionally not aggregated">
+      <input id="showUbiquitousNodes" type="checkbox" checked />
+      non-aggregated values
+    </label>
+
+    <label class="hint" for="layoutSelect">Layout</label>
+    <select id="layoutSelect">
+      <option value="cose" >cose</option>
+      <option value="breadthfirst">breadthfirst</option>
+      <option value="grid">grid</option>
+      <option value="fcose" selected>fcose</option>
+    </select>
+    <button id="relayout" type="button">Re-layout</button>
+
+    <button id="fit" type="button">Fit</button>
+    <button id="zoomIn" type="button">Zoom +</button>
+    <button id="zoomOut" type="button">Zoom -</button>
+
+    <div class="spacer"></div>
+
+    <input id="search" type="search" placeholder="Search node (id/label)"/>
+    <span class="hint">Enter: focus • Esc: clear</span>
+  </div>
+  <div id="main">
+    <div id="cy"></div>
+
+    <aside id="legendPane" aria-label="Legend">
+      <div id="legendHeader">
+        <span id="legendTitle">Source graphs</span>
+        <span class="spacer"></span>
+        <input id="legendFilter" type="search" placeholder="Filter..." style="min-width: 120px;"/>
+      </div>
+      <div id="legendBody"></div>
+    </aside>
+
+    <aside id="detailsPane" aria-label="Details">
+      <div id="detailsHeader">
+        <span id="detailsTitle">Details</span>
+        <span class="spacer"></span>
+        <button id="closeDetails" type="button">Close</button>
+      </div>
+      <div id="detailsBody"></div>
+    </aside>
+
+
+  </div>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+  <script src="https://unpkg.com/cytoscape-layout-utilities/cytoscape-layout-utilities.js"></script>
+  <script type="application/json" id="cy-data">
+  {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Hn1mhXK4wPA",
+            "shortId": "A",
+            "hashId": "Hn1mhXK4wPA",
+            "label": "A",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(229.82299999985844, 85%, 40%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://forvm.semantics.metabohub.fr/forum_mappings/20260603"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/CHEBI_159859",
+              "http://purl.obolibrary.org/obo/CHEBI_33538",
+              "http://purl.obolibrary.org/obo/CHEBI_50568",
+              "http://purl.obolibrary.org/obo/CHEBI_62853",
+              "https://identifiers.org/hmdb/HMDB0033068",
+              "https://identifiers.org/hmdb/HMDB0058736",
+              "https://identifiers.org/kegg.compound:C11061",
+              "https://identifiers.org/lipidmaps/LMST04030051",
+              "https://identifiers.org/lipidmaps:LMPK12113254",
+              "https://identifiers.org/lipidmaps:LMSP02010083"
+            ],
+            "uriInstanceCount": 1688077,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "shortId": "B",
+            "hashId": "TJhNxzWCIPA",
+            "label": "B",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(230.2390000000596, 61%, 45%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://forvm.semantics.metabohub.fr/forum_mappings/20260603"
+            ],
+            "exampleMembers": [
+              "http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID124148",
+              "https://identifiers.org/bigg.metabolite/aspprolys",
+              "https://identifiers.org/bigg.metabolite:quln",
+              "https://identifiers.org/chebi/CHEBI:45863",
+              "https://identifiers.org/lipidmaps/LMST01010219",
+              "https://identifiers.org/lipidmaps:LMFA03060001",
+              "https://identifiers.org/metanetx.chemical/MNXM63564",
+              "https://identifiers.org/metanetx.chemical/MNXM66912",
+              "https://identifiers.org/pubchem.compound/165491",
+              "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:133752"
+            ],
+            "uriInstanceCount": 21297,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/cAjDFnwAROU",
+            "shortId": "C",
+            "hashId": "cAjDFnwAROU",
+            "label": "C",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(312.8279999997467, 73%, 40%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://forvm.semantics.metabohub.fr/forum_mappings/20260603"
+            ],
+            "exampleMembers": [
+              "http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID139591558",
+              "http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID40469790",
+              "http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID54619736",
+              "https://identifiers.org/metanetx.chemical/MNXM104945",
+              "https://identifiers.org/metanetx.chemical/MNXM31717",
+              "https://identifiers.org/pubchem.compound/129903727",
+              "https://identifiers.org/pubchem.compound/156960911",
+              "https://rdf.metanetx.org/chem/MNXM1471261",
+              "https://rdf.metanetx.org/chem/MNXM1488321",
+              "https://rdf.metanetx.org/chem/MNXM172634"
+            ],
+            "uriInstanceCount": 1222320,
+            "blankNodeInstanceCount": 0
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "e0",
+            "source": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "label": "owl:sameAs",
+            "displayLabel": "owl:sameAs x48351",
+            "predUri": "http://www.w3.org/2002/07/owl#sameAs",
+            "count": 48351,
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(230.2390000000596, 61%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e1",
+            "source": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Hn1mhXK4wPA",
+            "label": "skos:closeMatch",
+            "displayLabel": "skos:closeMatch x41450",
+            "predUri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+            "count": 41450,
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(230.2390000000596, 61%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e2",
+            "source": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "label": "skos:closeMatch",
+            "displayLabel": "skos:closeMatch x13256",
+            "predUri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+            "count": 13256,
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(230.2390000000596, 61%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e3",
+            "source": "https://metabolinkai.net/quotient/quotientClass/cAjDFnwAROU",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Hn1mhXK4wPA",
+            "label": "skos:closeMatch",
+            "displayLabel": "skos:closeMatch x4852600",
+            "predUri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+            "count": 4852600,
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(312.8279999997467, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e4",
+            "source": "https://metabolinkai.net/quotient/quotientClass/cAjDFnwAROU",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TJhNxzWCIPA",
+            "label": "skos:closeMatch",
+            "displayLabel": "skos:closeMatch x19692",
+            "predUri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+            "count": 19692,
+            "graphColor": "hsl(219.22399999992922, 73%, 65%)",
+            "classColor": "hsl(312.8279999997467, 73%, 40%)"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/json" id="legend-data">
+  [
+    {
+      "color": "hsl(219.22399999992922, 73%, 65%)",
+      "graphs": [
+        "https://forvm.semantics.metabohub.fr/forum_mappings/20260603"
+      ]
+    }
+  ]
+  </script>
+  <script>
+    /* app-core.js */
+
+    (function (global) {
+        'use strict';
+
+        function esc(s) {
+            return String(s ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[c]));
+        }
+
+        function formatCount(n) {
+            return Number(n ?? 0).toLocaleString('en-US');
+        }
+
+        function layoutOptions(name) {
+            if (name === 'breadthfirst') {
+                return {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 20,
+                    spacingFactor: 1.2,
+                    animate: 'end',
+                    fit: true
+                };
+            }
+
+            if (name === 'grid') {
+                return { name: 'grid', padding: 20, animate: false, fit: true };
+            }
+
+            if (name === 'cose') {
+                return {
+                    name: 'cose',
+                    padding: 30,
+                    animate: 'end',
+                    fit: true,
+                    randomize: true,
+                    idealEdgeLength: 150,
+                    nodeRepulsion: 50000,
+                    edgeElasticity: 220,
+                    gravity: 1,
+                    numIter: 1000
+                };
+            }
+
+            if (name === 'fcose') {
+                return {
+                    name: 'fcose',
+                    quality: 'proof',
+                    randomize: true,
+                    animate: 'end',
+                    fit: true,
+                    padding: 30,
+
+                    nodeDimensionsIncludeLabels: true,
+                    packComponents: true,
+                    tile: true,
+
+                    nodeSeparation: 200,
+                    nodeRepulsion: n => 8000 + 3000 * n.degree(),
+                    idealEdgeLength: () => 200,
+                    edgeElasticity: edge => edge.hasClass('closeMatch') ? .00000001 : 0.01,
+                    // edgeElasticity: 0.001,
+                    gravity: 0.25,
+                    numIter: 3000
+                };
+            }
+
+            // fallback
+            return { name: 'fcose', fit: true, padding: 30 };
+        }
+
+        function cyStyles() {
+            return [
+                {
+                    selector: 'node',
+                    style: {
+                        label: 'data(label)',
+                        'text-wrap': 'wrap',
+                        'text-max-width': 220,
+                        'background-color': 'data(color)',
+                        'border-width': 2,
+                        'border-color': '#666',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-size': 13,
+                        padding: 6,
+                        'text-outline-width': 2,
+                        'text-outline-color': '#fff'
+                    }
+                },
+                {
+                    selector: 'node.blankOnly',
+                    style: {
+                        'border-style': 'dashed',
+                        'border-width': 2,
+                        'border-color': '#222'
+                    }
+                },
+                {
+                    selector: 'node.literalNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#fff7d6',
+                        'border-style': 'dashed',
+                        'border-color': '#8a6d1d',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 48,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'node.ubiquitousNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#eeeeee',
+                        'border-style': 'dashed',
+                        'border-color': '#666666',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 52,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'curve-style': 'bezier',
+                        'control-point-step-size': 60,
+                        'line-color': 'data(color)',
+                        'target-arrow-color': 'data(color)',
+                        'target-arrow-shape': 'triangle',
+                        'arrow-scale': 0.9,
+                        label: 'data(displayLabel)',
+                        'font-size': 11,
+                        'text-rotation': 'autorotate',
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.85,
+                        'text-background-padding': 2,
+                        width: 'mapData(count, 1, 1000000, 1, 8)'
+                    }
+                },
+                {
+                    selector: 'edge.literalEdge',
+                    style: {
+                        'line-style': 'dotted',
+                        'line-color': '#8a6d1d',
+                        'target-arrow-color': '#8a6d1d',
+                        'width': 1.5
+                    }
+                },
+                {
+                    selector: 'edge.ubiquitousEdge',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#777777',
+                        'target-arrow-color': '#777777',
+                        'width': 1.25
+                    }
+                },
+                {
+                    selector: 'edge.closeMatch',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#888',
+                        'target-arrow-shape': 'none',
+                        'target-arrow-color': '#888',
+                        label: 'data(label)',
+                        'text-rotation': 'none',
+                        'font-size': 10,
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.8,
+                        'text-background-padding': 2,
+                        width: 1.5
+                    }
+                },
+                { selector: '.faded', style: { opacity: 0.15, 'text-opacity': 0.15 } },
+                { selector: '.highlighted', style: { 'border-width': 3, 'border-color': '#222' } },
+                { selector: 'edge.highlighted', style: { width: 5, opacity: 0.9 } }
+            ];
+        }
+
+        /**
+         * Pure HTML builder for details pane.
+         * Returns hidden lists so the caller can wire "Show more" buttons.
+         */
+        function buildDetailsHtml(nodeData, opts = {}) {
+            const {
+                maxGraphs = 8,
+                maxExampleMembers = 8
+            } = opts;
+
+            const displayId = nodeData.shortId ?? '';
+            const hashId = nodeData.hashId ?? '';
+            const fullIri = nodeData.id ?? '';
+            const exampleMembers = nodeData.exampleMembers ?? [];
+            const classes = nodeData.classes ?? [];
+            const closeMatches = nodeData.closeMatches ?? nodeData.equivalences ?? [];
+            const graphs = nodeData.graphs ?? [];
+            const literals = nodeData.literals ?? [];
+            const uriInstanceCount = nodeData.uriInstanceCount;
+            const blankNodeInstanceCount = nodeData.blankNodeInstanceCount;
+
+            const lits = literals.slice().sort((a, b) => (b.count || 0) - (a.count || 0));
+
+            let html = '';
+
+            if (hashId) {
+                html += `<div class="kv">Quotient Class ID: ${esc(hashId)}</div>`;
+            }
+
+            if (classes.length) {
+                html += `<div class="secTitle">Types</div>`;
+                html += `<div class="kv">${esc(classes.join(', '))}</div>`;
+            }
+
+            if (closeMatches.length) {
+                html += `<div class="secTitle">Close matches</div>`;
+                html += `<div class="kv">${esc(closeMatches.join(', '))}</div>`;
+            }
+
+            if (uriInstanceCount != null || blankNodeInstanceCount != null) {
+                const uriN = Number(uriInstanceCount ?? 0);
+                const blankN = Number(blankNodeInstanceCount ?? 0);
+                const totalN = uriN + blankN;
+
+                html += `<div class="secTitle">Instances</div>`;
+                html += `<div class="kv">
+                        URI resources: ${formatCount(uriN)}<br/>
+                        Blank nodes: ${formatCount(blankN)}<br/>
+                        Total: ${formatCount(totalN)}
+        </div>`;
+            }
+
+            let hiddenGraphs = [];
+            let hiddenExampleMembers = [];
+
+            if (exampleMembers.length) {
+                html += `<div class="secTitle">Example resources</div>`;
+
+                const shownMembers = exampleMembers.slice(0, maxExampleMembers);
+                hiddenExampleMembers = exampleMembers.slice(maxExampleMembers);
+
+                html += `<div class="kv">${esc(shownMembers.join(', '))}</div>`;
+
+                if (hiddenExampleMembers.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                            <button id="moreExampleMembers" type="button">Show ${hiddenExampleMembers.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Source graphs</div>`;
+
+            if (!graphs.length) {
+                html += `<div class="kv"><i>Not provided</i></div>`;
+            } else {
+                const shown = graphs.slice(0, maxGraphs);
+                hiddenGraphs = graphs.slice(maxGraphs);
+
+                html += `<div class="kv">${shown.map(esc).join('<br/>')}</div>`;
+
+                if (hiddenGraphs.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                                <button id="moreGraphs" type="button">Show ${hiddenGraphs.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Outgoing literal and ubiquitous properties</div>`;
+            if (!lits.length) {
+                html += `<div class="kv"><i>None</i></div>`;
+            } else {
+                html += `<table>`;
+                for (const l of lits) {
+                    const predShort = esc(l.predLabel || l.predUri || '');
+                    const predFull = l.predUri
+                        ? `<div class="kv" style="margin-top:2px;color:#666;font-size:11px;word-break:break-all;">${esc(l.predUri)}</div>`
+                        : '';
+
+                    const count = esc(l.count ?? 0);
+
+                    let exampleLines = [];
+
+                    if (Array.isArray(l.examples)) {
+                        exampleLines = l.examples;
+                    } else if (l.examples && typeof l.examples === 'object') {
+                        // Tolerate object-shaped arrays / array-like values
+                        exampleLines = Object.keys(l.examples)
+                            .sort((a, b) => Number(a) - Number(b))
+                            .map(k => l.examples[k]);
+                    } else if (l.examples != null && String(l.examples).length) {
+                        exampleLines = [l.examples];
+                    } else if (l.example != null && String(l.example).length) {
+                        exampleLines = [l.example];
+                    }
+
+                    exampleLines = exampleLines.filter(v => v != null && String(v).length);
+
+                    const ex = exampleLines.length
+                        ? `<div class="exList">${exampleLines.map(v => `<div class="exLine">${esc(v)}</div>`).join('')}</div>`
+                        : '';
+
+                    html += `<tr>
+                                <td title="${esc(l.predUri || '')}">${predShort}${predFull}${ex}</td>
+                                <td class="num">x${count}</td>
+                            </tr>`;
+                }
+                html += `</table>`;
+            }
+
+            return {title: "Class " + String(displayId), html, hiddenGraphs, hiddenExampleMembers};
+        }
+
+        /**
+         * Wires "show more" buttons for the details pane.
+         * Supports:
+         *   - old call style: wireDetailsMoreButtons(detailsBody, hiddenGraphsArray)
+         *   - new call style: wireDetailsMoreButtons(detailsBody, { hiddenGraphs, hiddenExampleMembers })
+         */
+        function wireOneMoreButton(detailsBody, buttonSelector, hiddenValues) {
+            if (!hiddenValues || hiddenValues.length === 0) return;
+            const btn = detailsBody.querySelector(buttonSelector);
+            if (!btn) return;
+
+            const row = btn.closest('.kv') || btn;
+            btn.addEventListener('click', () => {
+                row.insertAdjacentHTML(
+                    'afterend',
+                    `<div class="kv">${esc(hiddenValues.join(', '))}</div>`);
+                row.remove();
+            });
+        }
+
+        function wireDetailsMoreButtons(detailsBody, hiddenOrBuilt) {
+            // Backward compatibility (old signature)
+            if (Array.isArray(hiddenOrBuilt)) {
+                wireOneMoreButton(detailsBody, '#moreGraphs', hiddenOrBuilt);
+                return;
+            }
+
+            const built = hiddenOrBuilt || {};
+            wireOneMoreButton(detailsBody, '#moreExampleMembers', built.hiddenExampleMembers || []);
+            wireOneMoreButton(detailsBody, '#moreGraphs', built.hiddenGraphs || []);
+        }
+
+        function buildEdgeDetailsHtml(edgeData) {
+            const kind = edgeData.kind || 'property';
+            const predUri = edgeData.predUri ?? '';
+            const count = edgeData.count;
+
+            // skos:closeMatch alignment edge (not a structural property edge)
+            if (kind === 'closeMatch') {
+                const sourceShort = edgeData.sourceShort ?? '';
+                const targetShort = edgeData.targetShort ?? '';
+                const sourceUri = edgeData.sourceUri ?? '';
+                const targetUri = edgeData.targetUri ?? '';
+
+                let html = '';
+
+                html += `<div class="secTitle">Relation</div>`;
+                if (predUri) {
+                    html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+                } else {
+                    html += `<div class="kv"><i>Not available in current payload</i></div>`;
+                }
+
+                html += `<div class="secTitle">Endpoints</div>`;
+                html += `<div class="kv">${esc(sourceShort)} ↔ ${esc(targetShort)}</div>`;
+
+                if (sourceUri || targetUri) {
+                    html += `<div class="secTitle">Endpoint IRIs</div>`;
+                    if (sourceUri) html += `<div class="kv" style="word-break:break-all;">Source: ${esc(sourceUri)}</div>`;
+                    if (targetUri) html += `<div class="kv" style="word-break:break-all;">Target: ${esc(targetUri)}</div>`;
+                }
+
+                if (count != null && Number(count) > 1) {
+                    html += `<div class="secTitle">Evidence count</div>`;
+                    html += `<div class="kv">${formatCount(count)}</div>`;
+                }
+
+                return {
+                    title: `Alignment closeMatch`,
+                    html
+                };
+            }
+
+            // Default: structural property edge
+            const shortLabel = edgeData.shortLabel ?? '';
+            const displayLabel = edgeData.displayLabel ?? shortLabel;
+
+            let html = '';
+
+            html += `<div class="secTitle">IRI</div>`;
+            if (predUri) {
+                html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+            } else {
+                html += `<div class="kv"><i>Not available in current payload</i></div>`;
+            }
+
+            if (count != null) {
+                html += `<div class="secTitle">Count</div>`;
+                html += `<div class="kv">${formatCount(count)}</div>`;
+            }
+
+            return {
+                title: `Property ${String(shortLabel || '')}`,
+                html
+            };
+        }
+
+        /**
+         * Pure filter + sort for legend items.
+         * Each legend item is expected to have { color, graphs: [] }.
+         */
+        function filterLegendItems(legendData, filterText) {
+            const needle = (filterText || '').trim().toLowerCase();
+
+            return (legendData || [])
+                .slice()
+                .sort((a, b) => (a.color || '').localeCompare(b.color || ''))
+                .map(item => ({
+                    color: item.color || '#ccc',
+                    graphs: (item.graphs || []).slice().sort()
+                }))
+                .filter(item => {
+                    if (!needle) return true;
+                    return item.graphs.some(g => (g || '').toLowerCase().includes(needle));
+                });
+        }
+
+        // expose as a single namespace
+        global.AppCore = {
+            esc,
+            layoutOptions,
+            cyStyles,
+            buildDetailsHtml,
+            wireDetailsMoreButtons,
+            buildEdgeDetailsHtml,
+            filterLegendItems
+        };
+    })(window);
+    /* app.js */
+    /* global AppCore, cytoscape */
+
+    const cyData = JSON.parse(document.getElementById('cy-data').textContent);
+    const legendData = JSON.parse(document.getElementById('legend-data').textContent);
+
+    function truncate(text, maxLength) {
+        const value = String(text ?? '');
+        return value.length <= maxLength ? value : `${value.slice(0, maxLength - 1)}…`;
+    }
+
+    const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+    const RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+    const RDFS_COMMENT = 'http://www.w3.org/2000/01/rdf-schema#comment';
+    const RDF_VALUE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value';
+    const OWL_SAME_AS = 'http://www.w3.org/2002/07/owl#sameAs';
+
+    /*
+     * rdf:type is already represented in each quotient-class node, and
+     * owl:sameAs is already represented through canonicalization/equivalences.
+     * Keep both in the details panel without adding redundant graph leaves.
+     */
+    const UBIQUITOUS_GRAPH_EXCLUSIONS = new Set([
+        // RDF_TYPE,
+        // OWL_SAME_AS
+    ]);
+
+    function frameObjectLabel(prop) {
+        if (prop.objectKind === 'literal') return 'literal';
+
+        switch (prop.predUri) {
+            case RDFS_LABEL:
+            case RDFS_COMMENT:
+                return 'literal';
+            case RDF_VALUE:
+                return 'value';
+            case RDF_TYPE:
+                return 'class';
+            case OWL_SAME_AS:
+                return 'resource';
+            default:
+                return 'object';
+        }
+    }
+
+    /**
+     * Turn literal-valued and non-aggregated properties into optional terminal
+     * graph nodes. Every marker is unique to its source quotient class and
+     * predicate, so it does not imply that classes share one RDF object.
+     */
+    function addFrameObjectElements(elements) {
+        const resourceNodes = Array.isArray(elements?.nodes) ? elements.nodes : [];
+        const originalEdges = Array.isArray(elements?.edges) ? elements.edges : [];
+        const nodes = resourceNodes.slice();
+        const edges = originalEdges.slice();
+
+        // Cytoscape element ids share one namespace. Avoid collisions with RDF ids.
+        const usedIds = new Set(
+            [...resourceNodes, ...originalEdges]
+                .map(element => element?.data?.id)
+                .filter(Boolean)
+        );
+
+        function freshId(base) {
+            let id = base;
+            let suffix = 1;
+            while (usedIds.has(id)) id = `${base}_${suffix++}`;
+            usedIds.add(id);
+            return id;
+        }
+
+        resourceNodes.forEach((sourceNode, nodeIndex) => {
+            const source = sourceNode?.data || {};
+            const properties = Array.isArray(source.frameProperties) ? source.frameProperties : [];
+
+            properties
+                .filter(prop => {
+                    if (prop?.objectKind === 'literal') return true;
+                    if (prop?.objectKind === 'ubiquitous') {
+                        return !UBIQUITOUS_GRAPH_EXCLUSIONS.has(prop.predUri);
+                    }
+                    return false;
+                })
+                .forEach((prop, propIndex) => {
+                    const examples = Array.isArray(prop.examples)
+                        ? prop.examples.filter(value => value != null).map(String)
+                        : [];
+                    const count = Number(prop.count ?? 0);
+                    const isLiteral = prop.objectKind === 'literal';
+                    const markerKind = isLiteral ? 'literal' : 'ubiquitous';
+                    const markerNodeId = freshId(`__${markerKind}_node_${nodeIndex}_${propIndex}`);
+                    const markerEdgeId = freshId(`__${markerKind}_edge_${nodeIndex}_${propIndex}`);
+                    const markerLabel = frameObjectLabel(prop);
+
+                    nodes.push({
+                        data: {
+                            id: markerNodeId,
+                            shortId: markerLabel,
+                            label: markerLabel,
+                            objectKind: prop.objectKind,
+                            sourceId: source.id,
+                            sourceShortId: source.shortId || source.id,
+                            predUri: prop.predUri || '',
+                            predLabel: prop.predLabel || prop.predUri || '',
+                            count,
+                            examples,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalNode' : 'ubiquitousNode'
+                    });
+
+                    edges.push({
+                        data: {
+                            id: markerEdgeId,
+                            source: source.id,
+                            target: markerNodeId,
+                            label: prop.predLabel || prop.predUri || '',
+                            displayLabel: `${prop.predLabel || prop.predUri || ''} x${count}`,
+                            predUri: prop.predUri || '',
+                            count,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalEdge' : 'ubiquitousEdge'
+                    });
+                });
+        });
+
+        return { nodes, edges };
+    }
+
+    cyData.elements = addFrameObjectElements(cyData.elements);
+
+    //  Cytoscape init
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: cyData.elements,
+        layout: { name: 'preset' },
+        minZoom: 0.1,
+        maxZoom: 3.0,
+        wheelSensitivity: 0.8,
+        style: AppCore.cyStyles()
+    });
+
+    function applyInstanceTags() {
+        cy.nodes().forEach(n => {
+            const uriCount = Number(n.data('uriInstanceCount') ?? 0);
+            const blankCount = Number(n.data('blankNodeInstanceCount') ?? 0);
+
+            if (uriCount === 0 && blankCount > 0) {
+                n.addClass('blankOnly');
+            } else {
+                n.removeClass('blankOnly');
+            }
+        });
+    }
+
+    applyInstanceTags();
+
+    // Needed for fCoSE packComponents
+    cy.layoutUtilities({
+        componentSpacing: 80,
+        desiredAspectRatio: cy.width() / cy.height(),
+        polyominoGridSizeFactor: 1
+    });
+
+    let currentLayout = null;
+
+    function runLayout(name) {
+        if (currentLayout) currentLayout.stop();
+
+        const visibleElements = cy.elements().filter(element => element.visible());
+        currentLayout = visibleElements.layout(AppCore.layoutOptions(name));
+
+        const btn = document.getElementById('relayout');
+        if (btn) btn.disabled = true;
+        currentLayout.on('layoutstop', () => { if (btn) btn.disabled = false; });
+
+        currentLayout.run();
+    }
+
+    // controls: layout / view
+    const layoutSelect = document.getElementById('layoutSelect');
+    document.getElementById('relayout')?.addEventListener('click', () => runLayout(layoutSelect.value));
+    layoutSelect?.addEventListener('change', () => runLayout(layoutSelect.value));
+
+    document.getElementById('fit')?.addEventListener('click', () => cy.fit(undefined, 20));
+    document.getElementById('zoomIn')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() * 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+    document.getElementById('zoomOut')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() / 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+
+    // terminal frame-object toggles
+    const showLiteralNodes = document.getElementById('showLiteralNodes');
+    const showUbiquitousNodes = document.getElementById('showUbiquitousNodes');
+
+    function applyFrameObjectVisibility() {
+        const showLiterals = showLiteralNodes == null || !!showLiteralNodes.checked;
+        const showUbiquitous = showUbiquitousNodes == null || !!showUbiquitousNodes.checked;
+
+        cy.nodes('.literalNode').style('display', showLiterals ? 'element' : 'none');
+        cy.edges('.literalEdge').style('display', showLiterals ? 'element' : 'none');
+        cy.nodes('.ubiquitousNode').style('display', showUbiquitous ? 'element' : 'none');
+        cy.edges('.ubiquitousEdge').style('display', showUbiquitous ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    function refreshFrameObjectVisibility() {
+        applyFrameObjectVisibility();
+        runLayout(layoutSelect?.value || 'fcose');
+    }
+
+    showLiteralNodes?.addEventListener('change', refreshFrameObjectVisibility);
+    showUbiquitousNodes?.addEventListener('change', refreshFrameObjectVisibility);
+
+    applyFrameObjectVisibility();
+    cy.ready(() => runLayout(layoutSelect?.value || 'fcose'));
+
+    // details panel
+    const detailsPane = document.getElementById('detailsPane');
+    const detailsBody = document.getElementById('detailsBody');
+    const detailsTitle = document.getElementById('detailsTitle');
+    document.getElementById('closeDetails')?.addEventListener('click', () => setDetailsOpen(false));
+
+    function setDetailsOpen(open) {
+        detailsPane.style.display = open ? 'flex' : 'none';
+        if (!open) {
+            detailsBody.innerHTML = '';
+            detailsTitle.textContent = 'Details';
+        }
+        cy.resize();
+    }
+
+    function appendDetailValue(title, values) {
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'secTitle';
+        sectionTitle.textContent = title;
+        detailsBody.appendChild(sectionTitle);
+
+        const valueList = Array.isArray(values) ? values : [values];
+        const value = document.createElement('div');
+        value.className = 'kv';
+
+        valueList.forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = String(item ?? '');
+            value.appendChild(line);
+        });
+
+        detailsBody.appendChild(value);
+    }
+
+    function renderFrameObjectDetails(node) {
+        const isLiteral = node.data('objectKind') === 'literal';
+        detailsTitle.textContent = isLiteral ? 'Literal values' : 'Non-aggregated objects';
+        detailsBody.replaceChildren();
+
+        appendDetailValue('Property', [
+            node.data('predLabel') || node.data('predUri') || '',
+            node.data('predUri') || ''
+        ].filter(Boolean));
+
+        appendDetailValue(
+            'Occurrences',
+            Number(node.data('count') ?? 0).toLocaleString('en-US')
+        );
+
+        appendDetailValue('Source class', [
+            node.data('sourceShortId') || node.data('sourceId') || '',
+            node.data('sourceId') || ''
+        ].filter(Boolean));
+
+        const examples = node.data('examples') || [];
+        if (isLiteral) {
+            appendDetailValue('Examples', examples.length ? examples : ['Not provided']);
+        } else {
+            appendDetailValue(
+                'Aggregation',
+                'The original object identities were intentionally not retained by the quotient computation.'
+            );
+            appendDetailValue(
+                'Examples',
+                examples.length ? examples : ['Not retained in quotient output']
+            );
+        }
+
+        setDetailsOpen(true);
+    }
+
+    function renderDetails(node) {
+        if (node.hasClass('literalNode') || node.hasClass('ubiquitousNode')) {
+            renderFrameObjectDetails(node);
+            return;
+        }
+
+        const closeMatches = [...new Set(
+            node.connectedEdges('.closeMatch')
+                .connectedNodes()
+                .filter(n => n.id() !== node.id())
+                .map(n => n.data('shortId') || n.id())
+        )].sort();
+
+        const data = {
+            id: node.data('id') || node.id(),
+            hashId: node.data('hashId') || '',
+            shortId: node.data('shortId') || node.data('id') || node.id(),
+            tinyClasses: node.data('tinyClasses') || [],
+            classes: node.data('classes') || [],
+            closeMatches,
+            literals: node.data('frameProperties') || node.data('literals') || [], //literals are kept for backward compat.
+            graphs: node.data('graphs') || [],
+            exampleMembers: node.data('exampleMembers') || [],
+            uriInstanceCount: node.data('uriInstanceCount'),
+            blankNodeInstanceCount: node.data('blankNodeInstanceCount')
+        };
+
+        const built = AppCore.buildDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        AppCore.wireDetailsMoreButtons(detailsBody, built);
+        setDetailsOpen(true);
+    }
+
+    function renderEdgeDetails(edge) {
+        const isCloseMatch = edge.hasClass('closeMatch');
+
+        if (isCloseMatch) {
+            const src = cy.getElementById(edge.data('source'));
+            const tgt = cy.getElementById(edge.data('target'));
+
+            const data = {
+                kind: 'closeMatch',
+                predUri: edge.data('predUri') || null,
+                count: edge.data('count'),
+                sourceShort: (src && src.data('shortId')) ? src.data('shortId') : (edge.data('source') || ''),
+                targetShort: (tgt && tgt.data('shortId')) ? tgt.data('shortId') : (edge.data('target') || ''),
+                sourceUri: (src && (src.data('id') || src.id())) ? (src.data('id') || src.id()) : (edge.data('source') || ''),
+                targetUri: (tgt && (tgt.data('id') || tgt.id())) ? (tgt.data('id') || tgt.id()) : (edge.data('target') || '')
+            };
+
+            const built = AppCore.buildEdgeDetailsHtml(data);
+            detailsTitle.textContent = built.title;
+            detailsBody.innerHTML = built.html;
+            setDetailsOpen(true);
+            return;
+        }
+
+        const data = {
+            kind: 'property',
+            shortLabel: edge.data('label') || edge.data('displayLabel') || '',
+            displayLabel: edge.data('displayLabel') || edge.data('label') || '',
+            predUri: edge.data('predUri') || null,
+            count: edge.data('count')
+        };
+
+        const built = AppCore.buildEdgeDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        setDetailsOpen(true);
+    }
+
+    cy.on('tap', 'node', evt => renderDetails(evt.target));
+    cy.on('tap', 'edge', evt => renderEdgeDetails(evt.target));
+    cy.on('tap', evt => { if (evt.target === cy) setDetailsOpen(false); });
+
+    // legend
+    const legendPane = document.getElementById('legendPane');
+    const legendBody = document.getElementById('legendBody');
+    const legendFilter = document.getElementById('legendFilter');
+    const btnLegend = document.getElementById('toggleLegend');
+    let legendOpen = false;
+
+    function isLegendVisible() {
+        return window.getComputedStyle(legendPane).display !== 'none';
+    }
+
+    function renderLegend() {
+        const items = AppCore.filterLegendItems(legendData, legendFilter?.value);
+
+        legendBody.innerHTML = '';
+        for (const item of items) {
+            const row = document.createElement('div');
+            row.className = 'item';
+
+            const sw = document.createElement('div');
+            sw.className = 'swatch';
+            sw.style.backgroundColor = item.color;
+
+            const txt = document.createElement('div');
+            txt.className = 'graphs';
+
+            const MAX = 6;
+            const shown = item.graphs.slice(0, MAX);
+            const hidden = item.graphs.slice(MAX);
+
+            for (const g of shown) {
+                const line = document.createElement('span');
+                line.className = 'g';
+                line.textContent = g;
+                txt.appendChild(line);
+            }
+
+            if (hidden.length) {
+                const more = document.createElement('button');
+                more.type = 'button';
+                more.textContent = `Show ${hidden.length} more`;
+                more.style.padding = '4px 8px';
+                more.style.fontSize = '12px';
+                more.style.marginTop = '4px';
+                more.addEventListener('click', () => {
+                    more.remove();
+                    for (const g of hidden) {
+                        const line = document.createElement('span');
+                        line.className = 'g';
+                        line.textContent = g;
+                        txt.appendChild(line);
+                    }
+                });
+                txt.appendChild(more);
+            }
+
+            row.appendChild(sw);
+            row.appendChild(txt);
+            legendBody.appendChild(row);
+        }
+    }
+
+    function setLegendOpen(open) {
+        legendOpen = open;
+        legendPane.style.display = open ? 'flex' : 'none';
+        btnLegend.textContent = open ? 'Hide legend' : 'Show legend';
+        if (open) renderLegend();
+        cy.resize();
+    }
+
+    function syncLegendAvailability() {
+        const mode = document.getElementById('colorMode').value;
+        const graphMode = (mode === 'graph');
+        btnLegend.disabled = !graphMode;
+        btnLegend.title = graphMode ? '' : 'Legend is only available in source graph color mode';
+        if (!graphMode && (legendOpen || isLegendVisible())) setLegendOpen(false);
+    }
+
+    btnLegend?.addEventListener('click', () => setLegendOpen(!(legendOpen || isLegendVisible())));
+    legendFilter?.addEventListener('input', () => renderLegend());
+
+    // color mode
+    function applyColorMode(mode) {
+        const useGraph = (mode === 'graph');
+        cy.batch(() => {
+            cy.nodes().forEach(n => {
+                const c = useGraph ? n.data('graphColor') : n.data('classColor');
+                if (c) n.data('color', c);
+            });
+            cy.edges().forEach(e => {
+                const c = useGraph ? e.data('graphColor') : e.data('classColor');
+                if (c) e.data('color', c);
+            });
+        });
+        cy.style().update();
+        syncLegendAvailability();
+    }
+
+    // closeMatch edges toggle
+    const showCloseMatches = document.getElementById('showCloseMatches');
+
+    function applyCloseMatchVisibility() {
+        const show = (showCloseMatches == null) ? true : !!showCloseMatches.checked;
+        cy.edges('.closeMatch').style('display', show ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    showCloseMatches?.addEventListener('change', applyCloseMatchVisibility);
+    applyCloseMatchVisibility();
+
+    const colorMode = document.getElementById('colorMode');
+    colorMode?.addEventListener('change', () => applyColorMode(colorMode.value));
+    applyColorMode(colorMode?.value || 'graph');
+
+    // hover highlight
+    cy.on('mouseover', 'node', evt => {
+        const n = evt.target;
+        cy.elements().addClass('faded');
+        n.removeClass('faded').addClass('highlighted');
+        n.connectedEdges().removeClass('faded').addClass('highlighted');
+        n.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+    });
+
+    cy.on('mouseout', 'node', () => {
+        cy.elements().removeClass('faded highlighted');
+    });
+
+    // search / focus
+    const search = document.getElementById('search');
+
+    function clearFocus() {
+        cy.elements().removeClass('faded highlighted');
+        cy.fit(undefined, 20);
+    }
+
+    function focusQuery(q) {
+        const needle = (q || '').trim().toLowerCase();
+        if (!needle) return;
+
+        const matches = cy.nodes().filter(n => {
+            if (!n.visible()) return false;
+            const id = (n.data('id') || '').toLowerCase();
+            const label = (n.data('label') || '').toLowerCase();
+            return id.includes(needle) || label.includes(needle);
+        });
+
+        if (matches.length) {
+            cy.elements().addClass('faded');
+            matches.removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+            cy.animate({ fit: { eles: matches, padding: 40 }, duration: 250 });
+        }
+    }
+
+    search?.addEventListener('keydown', e => {
+        if (e.key === 'Enter') focusQuery(search.value);
+        else if (e.key === 'Escape') { search.value = ''; clearFocus(); }
+    });
+  </script>
+</body>
+</html>

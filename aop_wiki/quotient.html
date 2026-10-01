@@ -1,0 +1,4685 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quotient</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    body { display: flex; flex-direction: column; }
+
+    #controls {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      padding: 8px 10px; background: #f7f7f7; border-bottom: 1px solid #ddd;
+    }
+
+    #main { position: relative; flex: 1 1 auto; min-height: 0; }
+    #cy { position: absolute; inset: 0; }
+
+    #legendPane {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 320px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #legendHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+    #legendTitle { font-size: 13px; font-weight: 600; }
+
+    #legendBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    #legendBody .item {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
+    }
+    #legendBody .item:hover { background: #fafafa; }
+
+    .swatch {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.2);
+      margin-top: 2px;
+    }
+    .graphs { font-size: 12px; color: #333; line-height: 1.35; word-break: break-word; }
+    .graphs .g { display: block; margin-bottom: 4px; }
+
+    button, select, input {
+      padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff;
+      font-size: 13px;
+    }
+    input[type="checkbox"] { padding: 0; border: none; width: 14px; height: 14px; }
+    button { cursor: pointer; }
+    button:hover { background: #fafafa; }
+    #search { min-width: 260px; }
+    .spacer { flex: 1 1 auto; }
+    .hint { color: #555; font-size: 12px; }
+
+    #detailsPane {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+      min-width: 260px;
+      min-height: 120px;
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #detailsHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+
+    #detailsTitle { font-size: 13px; font-weight: 600; }
+    #detailsBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+
+    #detailsBody .secTitle { font-size: 12px; font-weight: 600; margin: 10px 0 6px; color: #333; }
+    #detailsBody .kv { font-size: 12px; color: #333; line-height: 1.35; }
+    #detailsBody table { min-width: 100%; border-collapse: collapse; font-size: 12px; }
+    #detailsBody td { padding: 4px 0; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+    #detailsBody .exList { margin-top: 4px; }
+    #detailsBody .exLine {
+      color: #666;
+      font-size: 11px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    #detailsBody {
+      padding: 10px;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: calc(45vh - 52px);
+    }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="controls">
+
+    <label class="hint" for="colorMode">Colors</label>
+    <select id="colorMode">
+      <option value="graph" selected>source graph</option>
+      <option value="class">quotient class</option>
+    </select>
+
+    <button id="toggleLegend" type="button">Show legend</button>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;">
+      <input id="showCloseMatches" type="checkbox" checked />
+      close matches
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show one aggregate node per literal-valued property">
+      <input id="showLiteralNodes" type="checkbox" checked />
+      literal nodes
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show properties whose objects were intentionally not aggregated">
+      <input id="showUbiquitousNodes" type="checkbox" checked />
+      non-aggregated values
+    </label>
+
+    <label class="hint" for="layoutSelect">Layout</label>
+    <select id="layoutSelect">
+      <option value="cose" >cose</option>
+      <option value="breadthfirst">breadthfirst</option>
+      <option value="grid">grid</option>
+      <option value="fcose" selected>fcose</option>
+    </select>
+    <button id="relayout" type="button">Re-layout</button>
+
+    <button id="fit" type="button">Fit</button>
+    <button id="zoomIn" type="button">Zoom +</button>
+    <button id="zoomOut" type="button">Zoom -</button>
+
+    <div class="spacer"></div>
+
+    <input id="search" type="search" placeholder="Search node (id/label)"/>
+    <span class="hint">Enter: focus • Esc: clear</span>
+  </div>
+  <div id="main">
+    <div id="cy"></div>
+
+    <aside id="legendPane" aria-label="Legend">
+      <div id="legendHeader">
+        <span id="legendTitle">Source graphs</span>
+        <span class="spacer"></span>
+        <input id="legendFilter" type="search" placeholder="Filter..." style="min-width: 120px;"/>
+      </div>
+      <div id="legendBody"></div>
+    </aside>
+
+    <aside id="detailsPane" aria-label="Details">
+      <div id="detailsHeader">
+        <span id="detailsTitle">Details</span>
+        <span class="spacer"></span>
+        <button id="closeDetails" type="button">Close</button>
+      </div>
+      <div id="detailsBody"></div>
+    </aside>
+
+
+  </div>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+  <script src="https://unpkg.com/cytoscape-layout-utilities/cytoscape-layout-utilities.js"></script>
+  <script type="application/json" id="cy-data">
+  {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/A_0GEvuLwcY",
+            "shortId": "A",
+            "hashId": "A_0GEvuLwcY",
+            "label": "A\nCHEMINF_000567",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000567"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000567"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(108.79200000036508, 79%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 442,
+                "objectKind": "literal",
+                "examples": [
+                  "Q416572 -> \"wikidata:Q416572\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 442,
+                "objectKind": "literal",
+                "examples": [
+                  "Q416572 -> \"Wikidata\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000567",
+                "predLabel": "CHEMINF_000567",
+                "count": 442,
+                "objectKind": "literal",
+                "examples": [
+                  "Q416572 -> \"Q416572\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 442,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 442,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/wikidata/Q171877",
+              "https://identifiers.org/wikidata/Q194974",
+              "https://identifiers.org/wikidata/Q27164669",
+              "https://identifiers.org/wikidata/Q410061",
+              "https://identifiers.org/wikidata/Q410412",
+              "https://identifiers.org/wikidata/Q418607",
+              "https://identifiers.org/wikidata/Q423314",
+              "https://identifiers.org/wikidata/Q423338",
+              "https://identifiers.org/wikidata/Q632856",
+              "https://identifiers.org/wikidata/Q758"
+            ],
+            "uriInstanceCount": 442,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/B7A4s8TnIgc",
+            "shortId": "B",
+            "hashId": "B7A4s8TnIgc",
+            "label": "B",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(31.902999999932945, 67%, 45%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://creativecommons.org/licenses/by-sa/4.0/"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/BugqweWcVLc",
+            "shortId": "C",
+            "hashId": "BugqweWcVLc",
+            "label": "C\ndata_1025, data_2298",
+            "equivalences": [],
+            "tinyClasses": [
+              "data_1025",
+              "data_2298"
+            ],
+            "classes": [
+              "http://edamontology.org/data_1025",
+              "http://edamontology.org/data_2298"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(321.41399999987334, 61%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://edamontology.org/data_2298",
+                "predLabel": "data_2298",
+                "count": 126,
+                "objectKind": "literal",
+                "examples": [
+                  "11359 -> \"11359\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 126,
+                "objectKind": "literal",
+                "examples": [
+                  "11359 -> \"hgnc:11359\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 126,
+                "objectKind": "literal",
+                "examples": [
+                  "11359 -> \"HGNC\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 252,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 126,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/hgnc/10970",
+              "https://identifiers.org/hgnc/12687",
+              "https://identifiers.org/hgnc/2695",
+              "https://identifiers.org/hgnc/281",
+              "https://identifiers.org/hgnc/2883",
+              "https://identifiers.org/hgnc/5006",
+              "https://identifiers.org/hgnc/5024",
+              "https://identifiers.org/hgnc/6193",
+              "https://identifiers.org/hgnc/6547",
+              "https://identifiers.org/hgnc/7961"
+            ],
+            "uriInstanceCount": 126,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/CD7Emu3jYx4",
+            "shortId": "D",
+            "hashId": "CD7Emu3jYx4",
+            "label": "D\nCHEMINF_000140",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000140"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000140"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.50400000065565, 85%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 487,
+                "objectKind": "literal",
+                "examples": [
+                  "3767 -> \"pubchem.compound:3767\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 487,
+                "objectKind": "literal",
+                "examples": [
+                  "3767 -> \"PubChem\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000140",
+                "predLabel": "CHEMINF_000140",
+                "count": 487,
+                "objectKind": "literal",
+                "examples": [
+                  "3767 -> \"3767\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 487,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 487,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/pubchem.compound/1493",
+              "https://identifiers.org/pubchem.compound/2726",
+              "https://identifiers.org/pubchem.compound/27375",
+              "https://identifiers.org/pubchem.compound/2812",
+              "https://identifiers.org/pubchem.compound/3120",
+              "https://identifiers.org/pubchem.compound/31304",
+              "https://identifiers.org/pubchem.compound/5075889",
+              "https://identifiers.org/pubchem.compound/5405",
+              "https://identifiers.org/pubchem.compound/84691",
+              "https://identifiers.org/pubchem.compound/9158"
+            ],
+            "uriInstanceCount": 487,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "shortId": "E",
+            "hashId": "CGqi-oux0XY",
+            "label": "E\nBiologicalEvent",
+            "equivalences": [],
+            "tinyClasses": [
+              "BiologicalEvent"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#BiologicalEvent"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://aopkb.org/aop_ontology#hasAction",
+                "predLabel": "hasAction",
+                "count": 1117,
+                "objectKind": "literal",
+                "examples": [
+                  "2159_bioevent_2 -> \"occurrence\""
+                ]
+              },
+              {
+                "predUri": "http://aopkb.org/aop_ontology#hasObject",
+                "predLabel": "hasObject",
+                "count": 3,
+                "objectKind": "literal",
+                "examples": [
+                  "1438_bioevent_0 -> \"N/A\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1117,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/1688_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/1939_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/2078_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/281_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/376_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/413_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/458_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/527_bioevent_1",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/654_bioevent_0",
+              "file:///data/yarn/nm-local-dir/usercache/airflow/appcache/application_1776240669770_0523/container_1776240669770_0523_01_000002/9_bioevent_0"
+            ],
+            "uriInstanceCount": 1117,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/CHHkJQbwmfw",
+            "shortId": "F",
+            "hashId": "CHHkJQbwmfw",
+            "label": "F\nCellTypeContext",
+            "equivalences": [],
+            "tinyClasses": [
+              "CellTypeContext"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#CellTypeContext"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(119.04700000025332, 85%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 35,
+                "objectKind": "literal",
+                "examples": [
+                  "CL_0000076 -> \"CL\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 35,
+                "objectKind": "literal",
+                "examples": [
+                  "CL_0000076 -> \"squamous epithelial cell\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 35,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 35,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/CL_0000021",
+              "http://purl.obolibrary.org/obo/CL_0000024",
+              "http://purl.obolibrary.org/obo/CL_0000115",
+              "http://purl.obolibrary.org/obo/CL_0000174",
+              "http://purl.obolibrary.org/obo/CL_0000312",
+              "http://purl.obolibrary.org/obo/CL_0000658",
+              "http://purl.obolibrary.org/obo/CL_0000847",
+              "http://purl.obolibrary.org/obo/CL_0002139",
+              "http://purl.obolibrary.org/obo/CL_0002368",
+              "http://purl.obolibrary.org/obo/CL_2000030"
+            ],
+            "uriInstanceCount": 35,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Ceb5p0EmxaY",
+            "shortId": "G",
+            "hashId": "Ceb5p0EmxaY",
+            "label": "G\nOrganContext",
+            "equivalences": [],
+            "tinyClasses": [
+              "OrganContext"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#OrganContext"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(186.27400000000125, 73%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 65,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0000369 -> \"UBERON\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 65,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0000369 -> \"corpus striatum\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 65,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 65,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/UBERON_0000007",
+              "http://purl.obolibrary.org/obo/UBERON_0000119",
+              "http://purl.obolibrary.org/obo/UBERON_0000160",
+              "http://purl.obolibrary.org/obo/UBERON_0001498",
+              "http://purl.obolibrary.org/obo/UBERON_0001958",
+              "http://purl.obolibrary.org/obo/UBERON_0002384",
+              "http://purl.obolibrary.org/obo/UBERON_0002423",
+              "http://purl.obolibrary.org/obo/UBERON_0003134",
+              "http://purl.obolibrary.org/obo/UBERON_0005385",
+              "http://purl.obolibrary.org/obo/UBERON_0007798"
+            ],
+            "uriInstanceCount": 65,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/HMVE0ahqFdk",
+            "shortId": "H",
+            "hashId": "HMVE0ahqFdk",
+            "label": "H\nCHEMINF_000405",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000405"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000405"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(88.87700000032783, 73%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 446,
+                "objectKind": "literal",
+                "examples": [
+                  "192962 -> \"chemspider:192962\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 446,
+                "objectKind": "literal",
+                "examples": [
+                  "192962 -> \"ChemSpider\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000405",
+                "predLabel": "CHEMINF_000405",
+                "count": 446,
+                "objectKind": "literal",
+                "examples": [
+                  "192962 -> \"192962\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 446,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 446,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/chemspider/15790",
+              "https://identifiers.org/chemspider/173",
+              "https://identifiers.org/chemspider/192962",
+              "https://identifiers.org/chemspider/2297499",
+              "https://identifiers.org/chemspider/24751862",
+              "https://identifiers.org/chemspider/3893",
+              "https://identifiers.org/chemspider/392575",
+              "https://identifiers.org/chemspider/4444507",
+              "https://identifiers.org/chemspider/5628",
+              "https://identifiers.org/chemspider/6500"
+            ],
+            "uriInstanceCount": 446,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "shortId": "I",
+            "hashId": "JH_0nUItcIQ",
+            "label": "I\nCHEMINF_000446, CHEMINF_000000",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000446",
+              "CHEMINF_000000"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000446",
+              "http://semanticscience.org/resource/CHEMINF_000000"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(18.52199999988079, 85%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 430,
+                "objectKind": "literal",
+                "examples": [
+                  "22071-15-4 -> \"CAS\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 430,
+                "objectKind": "literal",
+                "examples": [
+                  "22071-15-4 -> \"Ketoprofen\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/alternative",
+                "predLabel": "dcterms:alternative",
+                "count": 13657,
+                "objectKind": "literal",
+                "examples": [
+                  "22071-15-4 -> \"Benzeneacetic acid, 3-benzoyl-α-methyl-\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000446",
+                "predLabel": "CHEMINF_000446",
+                "count": 430,
+                "objectKind": "literal",
+                "examples": [
+                  "22071-15-4 -> \"22071-15-4\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 860,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 430,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/cas/120287-85-6",
+              "https://identifiers.org/cas/209783-80-2",
+              "https://identifiers.org/cas/3380-34-5",
+              "https://identifiers.org/cas/4685-14-7",
+              "https://identifiers.org/cas/50679-08-8",
+              "https://identifiers.org/cas/522-17-8",
+              "https://identifiers.org/cas/541-53-7",
+              "https://identifiers.org/cas/58-89-9",
+              "https://identifiers.org/cas/68291-97-4",
+              "https://identifiers.org/cas/7784-46-5"
+            ],
+            "uriInstanceCount": 430,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/KmHpV8X_b0w",
+            "shortId": "J",
+            "hashId": "KmHpV8X_b0w",
+            "label": "J\nCHEMINF_000408",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000408"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000408"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(170.14300000015646, 73%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 550,
+                "objectKind": "literal",
+                "examples": [
+                  "HMDB15568 -> \"hmdb:HMDB15568\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 550,
+                "objectKind": "literal",
+                "examples": [
+                  "HMDB15568 -> \"HMDB\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000408",
+                "predLabel": "CHEMINF_000408",
+                "count": 550,
+                "objectKind": "literal",
+                "examples": [
+                  "HMDB15568 -> \"HMDB15568\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 550,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 550,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/hmdb/HMDB0001923",
+              "https://identifiers.org/hmdb/HMDB0014473",
+              "https://identifiers.org/hmdb/HMDB0014653",
+              "https://identifiers.org/hmdb/HMDB0015242",
+              "https://identifiers.org/hmdb/HMDB0015604",
+              "https://identifiers.org/hmdb/HMDB01859",
+              "https://identifiers.org/hmdb/HMDB0249477",
+              "https://identifiers.org/hmdb/HMDB0252355",
+              "https://identifiers.org/hmdb/HMDB0256825",
+              "https://identifiers.org/hmdb/HMDB0259144"
+            ],
+            "uriInstanceCount": 550,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/LHSSQ87xrWo",
+            "shortId": "K",
+            "hashId": "LHSSQ87xrWo",
+            "label": "K",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(5.3179999999993015, 73%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.w3.org/ns/shacl#namespace",
+                "predLabel": "namespace",
+                "count": 50,
+                "objectKind": "literal",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/ns/shacl#prefix",
+                "predLabel": "prefix",
+                "count": 50,
+                "objectKind": "literal",
+                "examples": []
+              }
+            ],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 50
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "shortId": "L",
+            "hashId": "MWer1wkNJs4",
+            "label": "L\nKeyEvent",
+            "equivalences": [],
+            "tinyClasses": [
+              "KeyEvent"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#KeyEvent"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://aopkb.org/aop_ontology#CellTypeContext",
+                "predLabel": "CellTypeContext",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "793 -> \"UBERON:0001255\""
+                ]
+              },
+              {
+                "predUri": "http://aopkb.org/aop_ontology#LifeStageContext",
+                "predLabel": "LifeStageContext",
+                "count": 571,
+                "objectKind": "literal",
+                "examples": [
+                  "129 -> \"Not Otherwise Specified\""
+                ]
+              },
+              {
+                "predUri": "http://aopkb.org/aop_ontology#OrganContext",
+                "predLabel": "OrganContext",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "1058 -> \"UBERON:0001283\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17469",
+                "predLabel": "C17469",
+                "count": 523,
+                "objectKind": "literal",
+                "examples": [
+                  "129 -> \"A functional hypothalamic-pituitary-gonadal axis involving GnRH and gonadotropin-mediated regulation of reproductive ...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25664",
+                "predLabel": "C25664",
+                "count": 1595,
+                "objectKind": "literal",
+                "examples": [
+                  "2007 -> \"Molecular\""
+                ]
+              },
+              {
+                "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+                "predLabel": "131567",
+                "count": 741,
+                "objectKind": "literal",
+                "examples": [
+                  "896 -> \"WCS_9606\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/MMO_0000000",
+                "predLabel": "MMO_0000000",
+                "count": 598,
+                "objectKind": "literal",
+                "examples": [
+                  "559 -> \"Text fromTable 2 of LaLone et al. (2017) Weight of evidence evaluation of a network of adverse outcome pathways linki...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/PATO_0000001",
+                "predLabel": "PATO_0000001",
+                "count": 930,
+                "objectKind": "literal",
+                "examples": [
+                  "559 -> \"increased\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/PATO_0000047",
+                "predLabel": "PATO_0000047",
+                "count": 527,
+                "objectKind": "literal",
+                "examples": [
+                  "129 -> \"Unspecific\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+                "predLabel": "PATO_0001241",
+                "count": 3,
+                "objectKind": "literal",
+                "examples": [
+                  "980 -> \"TAIR:AT5G64350\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 635,
+                "objectKind": "literal",
+                "examples": [
+                  "559 -> \"Text from LaLone et al. (2017) Weight of evidence evaluation of a network of adverse outcome pathways linking activai...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 1595,
+                "objectKind": "literal",
+                "examples": [
+                  "2007 -> \"AOPWiki\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 1595,
+                "objectKind": "literal",
+                "examples": [
+                  "2007 -> \"Non-coding RNA expression profile alteration\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/alternative",
+                "predLabel": "dcterms:alternative",
+                "count": 1595,
+                "objectKind": "literal",
+                "examples": [
+                  "2007 -> \"Non-coding RNA expression，alteration\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1595,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 1595,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/aop.events/1446",
+              "https://identifiers.org/aop.events/1466",
+              "https://identifiers.org/aop.events/1557",
+              "https://identifiers.org/aop.events/1888",
+              "https://identifiers.org/aop.events/1902",
+              "https://identifiers.org/aop.events/192",
+              "https://identifiers.org/aop.events/2307",
+              "https://identifiers.org/aop.events/2348",
+              "https://identifiers.org/aop.events/634",
+              "https://identifiers.org/aop.events/825"
+            ],
+            "uriInstanceCount": 1595,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/NG20nGlxn6Q",
+            "shortId": "M",
+            "hashId": "NG20nGlxn6Q",
+            "label": "M",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(186.09800000023097, 79%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 413,
+                "objectKind": "literal",
+                "examples": [
+                  "NWWZPOKUUAIXIW-UHFFFAOYSA-N -> \"InChIKey\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 413,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/inchikey/BFYIZQONLCFLEV-DAELLWKTSA-N",
+              "https://identifiers.org/inchikey/DWAFYCQODLXJNR-BNTLRKBRSA-L",
+              "https://identifiers.org/inchikey/DWFZBUWUXWZWKD-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/FPIPGXGPPPQFEQ-OVSJKPMPSA-N",
+              "https://identifiers.org/inchikey/GYFAGKUZYNFMBN-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/MBABOKRGFJTBAE-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/OWTFKEBRIAXSMO-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/REEQLXCGVXDJSQ-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/UFWIBTONFRDIAS-UHFFFAOYSA-N",
+              "https://identifiers.org/inchikey/XMGQYMWWDOXHJM-JTQLQIEISA-N"
+            ],
+            "uriInstanceCount": 413,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "shortId": "N",
+            "hashId": "NG2oPUjS4BQ",
+            "label": "N\nKeyEventRelationship",
+            "equivalences": [],
+            "tinyClasses": [
+              "KeyEventRelationship"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#KeyEventRelationship"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://aopkb.org/aop_ontology#LifeStageContext",
+                "predLabel": "LifeStageContext",
+                "count": 709,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Adult, reproductively mature\""
+                ]
+              },
+              {
+                "predUri": "http://edamontology.org/data_2042",
+                "predLabel": "data_2042",
+                "count": 701,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"\\n\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\tCompound class\\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t\\tSpecies\\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t\\tStudy type\\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t\\tDose\\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t\\tKER findings\\n\\t\\t\\t\\n\\t\\t\\t\\n...\""
+                ]
+              },
+              {
+                "predUri": "http://edamontology.org/operation_3438",
+                "predLabel": "operation_3438",
+                "count": 257,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Not specified\\n\""
+                ]
+              },
+              {
+                "predUri": "http://edamontology.org/operation_3799",
+                "predLabel": "operation_3799",
+                "count": 434,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Pescador et al., had studied the StAR mRNA levels in the bovine corpus luteum. Result of the study had shown that exp...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103159",
+                "predLabel": "C103159",
+                "count": 284,
+                "objectKind": "literal",
+                "examples": [
+                  "3358 -> \"\\nLiterature reviews were conducted by searching through databases including PubMed and Google Scholar. Search terms i...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17469",
+                "predLabel": "C17469",
+                "count": 574,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Adult\\n\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25207",
+                "predLabel": "C25207",
+                "count": 257,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Observed for hours\\n\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25343",
+                "predLabel": "C25343",
+                "count": 247,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Not specified\\n\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C68821",
+                "predLabel": "C68821",
+                "count": 246,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Arukwe had shown nonylphenol (15 &micro;g/L) can induce the StAR protein in juvenile Atlantic salmon (Salmo salar) fi...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C71478",
+                "predLabel": "C71478",
+                "count": 582,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Chang et al., had investigated the effects of antimullerian hormone (AMH) on estradiol production in primary culture ...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C80263",
+                "predLabel": "C80263",
+                "count": 718,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"StAR protein catalyzes the movement of cholesterol in the outer mitochondrial membrane to the inner membrane. There, ...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+                "predLabel": "131567",
+                "count": 782,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"WCS_9606\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/PATO_0000047",
+                "predLabel": "PATO_0000047",
+                "count": 709,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Female\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 723,
+                "objectKind": "literal",
+                "examples": [
+                  "2582 -> \"Steroidogenic acute regulatory (StAR) protein (37-kDa) is synthesized with a mitochondrial leader sequence in respons...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/created",
+                "predLabel": "dcterms:created",
+                "count": 2357,
+                "objectKind": "literal",
+                "examples": [
+                  "1262 -> \"2016-11-29T18:41:37\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/modified",
+                "predLabel": "dcterms:modified",
+                "count": 2357,
+                "objectKind": "literal",
+                "examples": [
+                  "1262 -> \"2016-12-03T16:38:06\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 2357,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 2357,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/aop.relationships/1544",
+              "https://identifiers.org/aop.relationships/1570",
+              "https://identifiers.org/aop.relationships/2053",
+              "https://identifiers.org/aop.relationships/2095",
+              "https://identifiers.org/aop.relationships/3031",
+              "https://identifiers.org/aop.relationships/31",
+              "https://identifiers.org/aop.relationships/3152",
+              "https://identifiers.org/aop.relationships/3405",
+              "https://identifiers.org/aop.relationships/3672",
+              "https://identifiers.org/aop.relationships/491"
+            ],
+            "uriInstanceCount": 2357,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/NXmUEoaFFyY",
+            "shortId": "O",
+            "hashId": "NXmUEoaFFyY",
+            "label": "O\nCHEMINF_000412",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000412"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000412"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(55.713000000454485, 85%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 368,
+                "objectKind": "literal",
+                "examples": [
+                  "CHEMBL44 -> \"chembl.compound:CHEMBL44\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 368,
+                "objectKind": "literal",
+                "examples": [
+                  "CHEMBL44 -> \"ChEMBL\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000412",
+                "predLabel": "CHEMINF_000412",
+                "count": 368,
+                "objectKind": "literal",
+                "examples": [
+                  "CHEMBL44 -> \"CHEMBL44\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 368,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 368,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/chembl.compound/CHEMBL101",
+              "https://identifiers.org/chembl.compound/CHEMBL15770",
+              "https://identifiers.org/chembl.compound/CHEMBL1874081",
+              "https://identifiers.org/chembl.compound/CHEMBL2137046",
+              "https://identifiers.org/chembl.compound/CHEMBL23",
+              "https://identifiers.org/chembl.compound/CHEMBL261919",
+              "https://identifiers.org/chembl.compound/CHEMBL30327",
+              "https://identifiers.org/chembl.compound/CHEMBL3187204",
+              "https://identifiers.org/chembl.compound/CHEMBL44657",
+              "https://identifiers.org/chembl.compound/CHEMBL94657"
+            ],
+            "uriInstanceCount": 368,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/ODGu5e2P5Yo",
+            "shortId": "P",
+            "hashId": "ODGu5e2P5Yo",
+            "label": "P",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(115.32600000035018, 79%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 430,
+                "objectKind": "literal",
+                "examples": [
+                  "DTXSID1045033 -> \"CompTox\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 430,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/comptox/DTXSID0022808",
+              "https://identifiers.org/comptox/DTXSID2020428",
+              "https://identifiers.org/comptox/DTXSID3023556",
+              "https://identifiers.org/comptox/DTXSID3046619",
+              "https://identifiers.org/comptox/DTXSID4023042",
+              "https://identifiers.org/comptox/DTXSID4024270",
+              "https://identifiers.org/comptox/DTXSID5020601",
+              "https://identifiers.org/comptox/DTXSID5022932",
+              "https://identifiers.org/comptox/DTXSID5046354",
+              "https://identifiers.org/comptox/DTXSID9048277"
+            ],
+            "uriInstanceCount": 430,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "shortId": "Q",
+            "hashId": "PPH5R7HwJk0",
+            "label": "Q\nPATO_0001241, CellTypeContext",
+            "equivalences": [],
+            "tinyClasses": [
+              "PATO_0001241",
+              "CellTypeContext"
+            ],
+            "classes": [
+              "http://purl.obolibrary.org/obo/PATO_0001241",
+              "http://aopkb.org/aop_ontology#CellTypeContext"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(86.19700000062585, 79%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 32,
+                "objectKind": "literal",
+                "examples": [
+                  "CL_0000182 -> \"CL\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 32,
+                "objectKind": "literal",
+                "examples": [
+                  "CL_0000182 -> \"hepatocyte\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 64,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 32,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/CL_0000023",
+              "http://purl.obolibrary.org/obo/CL_0000066",
+              "http://purl.obolibrary.org/obo/CL_0000100",
+              "http://purl.obolibrary.org/obo/CL_0000160",
+              "http://purl.obolibrary.org/obo/CL_0000178",
+              "http://purl.obolibrary.org/obo/CL_0000192",
+              "http://purl.obolibrary.org/obo/CL_0000540",
+              "http://purl.obolibrary.org/obo/CL_0000622",
+              "http://purl.obolibrary.org/obo/CL_0002132",
+              "http://purl.obolibrary.org/obo/CL_0002258"
+            ],
+            "uriInstanceCount": 32,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/QVRwVAcW2lE",
+            "shortId": "R",
+            "hashId": "QVRwVAcW2lE",
+            "label": "R\nPATO_0001241",
+            "equivalences": [],
+            "tinyClasses": [
+              "PATO_0001241"
+            ],
+            "classes": [
+              "http://purl.obolibrary.org/obo/PATO_0001241"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(188.46100000012666, 67%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 422,
+                "objectKind": "literal",
+                "examples": [
+                  "FMA_84050 -> \"FMA\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 422,
+                "objectKind": "literal",
+                "examples": [
+                  "FMA_84050 -> \"Cytokine\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 422,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 422,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/CHEBI_15551",
+              "http://purl.obolibrary.org/obo/CHEBI_47774",
+              "http://purl.obolibrary.org/obo/FMA_58241",
+              "http://purl.obolibrary.org/obo/GO_0072559",
+              "http://purl.obolibrary.org/obo/GO_0090534",
+              "http://purl.obolibrary.org/obo/GO_0098871",
+              "http://purl.obolibrary.org/obo/PR_000001933",
+              "http://purl.obolibrary.org/obo/PR_000003858",
+              "http://purl.obolibrary.org/obo/PR_000011406",
+              "http://purl.org/commons/record/mesh/C061375"
+            ],
+            "uriInstanceCount": 422,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/RW0yHfs0w3g",
+            "shortId": "S",
+            "hashId": "RW0yHfs0w3g",
+            "label": "S",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(129.85500000044703, 61%, 50%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.uniprot.org/uniprot/O15520",
+              "http://purl.uniprot.org/uniprot/P07711-3",
+              "http://purl.uniprot.org/uniprot/P17948",
+              "http://purl.uniprot.org/uniprot/P43140",
+              "http://purl.uniprot.org/uniprot/P59996",
+              "http://purl.uniprot.org/uniprot/P60568",
+              "http://purl.uniprot.org/uniprot/Q63673",
+              "http://purl.uniprot.org/uniprot/Q99MZ3",
+              "http://purl.uniprot.org/uniprot/Q9BPX1",
+              "http://purl.uniprot.org/uniprot/Q9EPQ7"
+            ],
+            "uriInstanceCount": 501,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/SI5ZP1cSnks",
+            "shortId": "T",
+            "hashId": "SI5ZP1cSnks",
+            "label": "T",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(339.62800000049174, 85%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 8,
+                "objectKind": "literal",
+                "examples": [
+                  "DTXSID0030740 -> \"CompTox\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 8,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/comptox/DTXSID0030740",
+              "https://identifiers.org/comptox/DTXSID0040591",
+              "https://identifiers.org/comptox/DTXSID1024043",
+              "https://identifiers.org/comptox/DTXSID2041123",
+              "https://identifiers.org/comptox/DTXSID4036695",
+              "https://identifiers.org/comptox/DTXSID5035038",
+              "https://identifiers.org/comptox/DTXSID7024374",
+              "https://identifiers.org/inchikey/None"
+            ],
+            "uriInstanceCount": 8,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/SJyJv3hYi3w",
+            "shortId": "U",
+            "hashId": "SJyJv3hYi3w",
+            "label": "U\nCHEMINF_000407",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000407"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000407"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(139.51700000092387, 55%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 469,
+                "objectKind": "literal",
+                "examples": [
+                  "35299 -> \"chebi:35299\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 469,
+                "objectKind": "literal",
+                "examples": [
+                  "35299 -> \"ChEBI\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000407",
+                "predLabel": "CHEMINF_000407",
+                "count": 469,
+                "objectKind": "literal",
+                "examples": [
+                  "35299 -> \"35299\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 469,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 469,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/chebi/134126",
+              "https://identifiers.org/chebi/2663",
+              "https://identifiers.org/chebi/27750",
+              "https://identifiers.org/chebi/38449",
+              "https://identifiers.org/chebi/46081",
+              "https://identifiers.org/chebi/82019",
+              "https://identifiers.org/chebi/82261",
+              "https://identifiers.org/chebi/83632",
+              "https://identifiers.org/chebi/83645",
+              "https://identifiers.org/chebi/9141"
+            ],
+            "uriInstanceCount": 469,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "shortId": "V",
+            "hashId": "UYRL5OtilOU",
+            "label": "V\nOrganContext, PATO_0001241",
+            "equivalences": [],
+            "tinyClasses": [
+              "OrganContext",
+              "PATO_0001241"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#OrganContext",
+              "http://purl.obolibrary.org/obo/PATO_0001241"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(194.09400000004098, 55%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 32,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0001969 -> \"UBERON\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 32,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0001969 -> \"blood plasma\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 64,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 32,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/UBERON_0000178",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0000970",
+              "http://purl.obolibrary.org/obo/UBERON_0000991",
+              "http://purl.obolibrary.org/obo/UBERON_0001136",
+              "http://purl.obolibrary.org/obo/UBERON_0001305",
+              "http://purl.obolibrary.org/obo/UBERON_0001344",
+              "http://purl.obolibrary.org/obo/UBERON_0002048",
+              "http://purl.obolibrary.org/obo/UBERON_0002113",
+              "http://purl.obolibrary.org/obo/UBERON_0011374"
+            ],
+            "uriInstanceCount": 32,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "shortId": "W",
+            "hashId": "Vc2bYlPBI9E",
+            "label": "W\n131567",
+            "equivalences": [],
+            "tinyClasses": [
+              "131567"
+            ],
+            "classes": [
+              "http://purl.bioontology.org/ontology/NCBITAXON/131567"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(98.95699999993667, 55%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 182,
+                "objectKind": "literal",
+                "examples": [
+                  "1090580 -> \"NCBI\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 221,
+                "objectKind": "literal",
+                "examples": [
+                  "1090580 -> \"Mus sp. 09ZR5#43\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 182,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 221,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.bioontology.org/ontology/NCBITAXON/3888",
+              "http://purl.bioontology.org/ontology/NCBITAXON/435435",
+              "http://purl.bioontology.org/ontology/NCBITAXON/47528",
+              "http://purl.bioontology.org/ontology/NCBITAXON/52644",
+              "http://purl.bioontology.org/ontology/NCBITAXON/7070",
+              "http://purl.bioontology.org/ontology/NCBITAXON/7904",
+              "http://purl.bioontology.org/ontology/NCBITAXON/8400",
+              "http://purl.bioontology.org/ontology/NCBITAXON/8966",
+              "http://purl.bioontology.org/ontology/NCBITAXON/9595",
+              "http://purl.bioontology.org/ontology/NCBITAXON/9874"
+            ],
+            "uriInstanceCount": 182,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "shortId": "X",
+            "hashId": "Y2Ge5YN-C_o",
+            "label": "X\nC54571",
+            "equivalences": [],
+            "tinyClasses": [
+              "C54571"
+            ],
+            "classes": [
+              "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C54571"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(204.0320000005886, 55%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://aopkb.org/aop_ontology#has_chemical_entity",
+                "predLabel": "has_chemical_entity",
+                "count": 7,
+                "objectKind": "literal",
+                "examples": [
+                  "645 -> \"NOCAS\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 17,
+                "objectKind": "literal",
+                "examples": [
+                  "279 -> \"Bioflavonoids are natural polyphenolic compounds in a large variety of plant-derived food items. TopoII-mediated DNA ...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 754,
+                "objectKind": "literal",
+                "examples": [
+                  "80 -> \"N-methyl Carbamates\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/created",
+                "predLabel": "dcterms:created",
+                "count": 754,
+                "objectKind": "literal",
+                "examples": [
+                  "80 -> \"2016-11-29T18:42:26\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/modified",
+                "predLabel": "dcterms:modified",
+                "count": 754,
+                "objectKind": "literal",
+                "examples": [
+                  "80 -> \"2019-10-07T14:19:19\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 754,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 754,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/aop.stressor/217",
+              "https://identifiers.org/aop.stressor/304",
+              "https://identifiers.org/aop.stressor/345",
+              "https://identifiers.org/aop.stressor/358",
+              "https://identifiers.org/aop.stressor/48",
+              "https://identifiers.org/aop.stressor/522",
+              "https://identifiers.org/aop.stressor/548",
+              "https://identifiers.org/aop.stressor/559",
+              "https://identifiers.org/aop.stressor/689",
+              "https://identifiers.org/aop.stressor/699"
+            ],
+            "uriInstanceCount": 754,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/YBsuKBfyiuY",
+            "shortId": "Y",
+            "hashId": "YBsuKBfyiuY",
+            "label": "Y\nCHEMINF_000406",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000406"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000406"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(33.02000000001863, 73%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 221,
+                "objectKind": "literal",
+                "examples": [
+                  "DB00281 -> \"drugbank:DB00281\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 221,
+                "objectKind": "literal",
+                "examples": [
+                  "DB00281 -> \"DrugBank\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000406",
+                "predLabel": "CHEMINF_000406",
+                "count": 221,
+                "objectKind": "literal",
+                "examples": [
+                  "DB00281 -> \"DB00281\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 221,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 221,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/drugbank/DB00471",
+              "https://identifiers.org/drugbank/DB00526",
+              "https://identifiers.org/drugbank/DB00550",
+              "https://identifiers.org/drugbank/DB00788",
+              "https://identifiers.org/drugbank/DB00947",
+              "https://identifiers.org/drugbank/DB00997",
+              "https://identifiers.org/drugbank/DB01007",
+              "https://identifiers.org/drugbank/DB01104",
+              "https://identifiers.org/drugbank/DB03843",
+              "https://identifiers.org/drugbank/DB13424"
+            ],
+            "uriInstanceCount": 221,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "shortId": "Z",
+            "hashId": "YD4I7gOVpCE",
+            "label": "Z\nPATO_0001241, OrganContext, CellTypeContext",
+            "equivalences": [],
+            "tinyClasses": [
+              "PATO_0001241",
+              "OrganContext",
+              "CellTypeContext"
+            ],
+            "classes": [
+              "http://purl.obolibrary.org/obo/PATO_0001241",
+              "http://aopkb.org/aop_ontology#OrganContext",
+              "http://aopkb.org/aop_ontology#CellTypeContext"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(293.3990000002086, 85%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0004811 -> \"UBERON\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "UBERON_0004811 -> \"endometrium epithelium\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 3,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 2,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/UBERON_0004811"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/YvsW5r0559w",
+            "shortId": "AA",
+            "hashId": "YvsW5r0559w",
+            "label": "AA\nGO_0008150",
+            "equivalences": [],
+            "tinyClasses": [
+              "GO_0008150"
+            ],
+            "classes": [
+              "http://purl.obolibrary.org/obo/GO_0008150"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(348.9760000007227, 55%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 554,
+                "objectKind": "literal",
+                "examples": [
+                  "NBO_0000371 -> \"NBO\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 554,
+                "objectKind": "literal",
+                "examples": [
+                  "NBO_0000371 -> \"aquatic locomotion\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 554,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 554,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/GO_0001974",
+              "http://purl.obolibrary.org/obo/GO_0043043",
+              "http://purl.obolibrary.org/obo/GO_0044414",
+              "http://purl.obolibrary.org/obo/GO_0048599",
+              "http://purl.obolibrary.org/obo/GO_0060997",
+              "http://purl.obolibrary.org/obo/GO_0072358",
+              "http://purl.obolibrary.org/obo/MP_0001914",
+              "http://purl.obolibrary.org/obo/MP_0001921",
+              "http://purl.obolibrary.org/obo/MP_0011625",
+              "http://purl.obolibrary.org/obo/VT_1000152"
+            ],
+            "uriInstanceCount": 554,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "shortId": "AB",
+            "hashId": "ZsJRtrQF5RI",
+            "label": "AB\nAdverseOutcomePathway",
+            "equivalences": [],
+            "tinyClasses": [
+              "AdverseOutcomePathway"
+            ],
+            "classes": [
+              "http://aopkb.org/aop_ontology#AdverseOutcomePathway"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://aopkb.org/aop_ontology#AopContext",
+                "predLabel": "AopContext",
+                "count": 234,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Life Stage Applicability: This AOP is applicable only for specific period of brain development that is the time of sy...\""
+                ]
+              },
+              {
+                "predUri": "http://aopkb.org/aop_ontology#LifeStageContext",
+                "predLabel": "LifeStageContext",
+                "count": 376,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"During brain development\""
+                ]
+              },
+              {
+                "predUri": "http://aopkb.org/aop_ontology#has_evidence",
+                "predLabel": "has_evidence",
+                "count": 213,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"The table provides a summary of the biological plausibility and empirical support for each KER described in this AOP ...\""
+                ]
+              },
+              {
+                "predUri": "http://edamontology.org/operation_3799",
+                "predLabel": "operation_3799",
+                "count": 172,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"A quantitative structure activity relationship (QSAR) model has been developed based on various molecular parameters ...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25217",
+                "predLabel": "C25217",
+                "count": 199,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"The aim of the present AOP is to construct a linear pathway that captures the KEs and KERs that occur after binding o...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25688",
+                "predLabel": "C25688",
+                "count": 146,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"WPHA/WNT Endorsed\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25725",
+                "predLabel": "C25725",
+                "count": 156,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Exposure to xenobiotics can potentially affect the nervous system resulting in neurobehavioral alterations and/or neu...\""
+                ]
+              },
+              {
+                "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48192",
+                "predLabel": "C48192",
+                "count": 218,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"1) Essentiality of the MIE: binding of antagonist to NMDAR in neurons during synaptogenesis in hippocampus and cortex...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+                "predLabel": "131567",
+                "count": 395,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"WCS_9606\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/PATO_0000047",
+                "predLabel": "PATO_0000047",
+                "count": 356,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Male\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/creator",
+                "predLabel": "creator",
+                "count": 445,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Magdalini Sachana, Sharon Munn, Anna Bal-Price\\n\\nJoint Research Centre Institute for Health and Consumer Protection Sy...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 734,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Glu and glycine are endogenous agonists that bind to LBD of specific NMDA receptor subunits. In this binding site num...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 594,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"AOPWiki\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 594,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Chronic binding of antagonist to N-methyl-D-aspartate receptors (NMDARs) during brain development induces impairment ...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/abstract",
+                "predLabel": "dcterms:abstract",
+                "count": 356,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"It is well documented and accepted that learning and memory processes rely on physiological functioning of the glutam...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/alternative",
+                "predLabel": "dcterms:alternative",
+                "count": 594,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"Binding of antagonist to NMDARs impairs cognition\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/created",
+                "predLabel": "dcterms:created",
+                "count": 594,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"2016-11-29T18:41:16\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/terms/modified",
+                "predLabel": "dcterms:modified",
+                "count": 594,
+                "objectKind": "literal",
+                "examples": [
+                  "13 -> \"2023-04-29T16:02:55\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 594,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 594,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/aop/113",
+              "https://identifiers.org/aop/260",
+              "https://identifiers.org/aop/302",
+              "https://identifiers.org/aop/320",
+              "https://identifiers.org/aop/349",
+              "https://identifiers.org/aop/421",
+              "https://identifiers.org/aop/496",
+              "https://identifiers.org/aop/503",
+              "https://identifiers.org/aop/590",
+              "https://identifiers.org/aop/622"
+            ],
+            "uriInstanceCount": 594,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/apv8j_0tzlU",
+            "shortId": "AC",
+            "hashId": "apv8j_0tzlU",
+            "label": "AC\nCHEMINF_000409",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000409"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000409"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(93.50100000016391, 85%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 490,
+                "objectKind": "literal",
+                "examples": [
+                  "C11126 -> \"kegg.compound:C11126\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 490,
+                "objectKind": "literal",
+                "examples": [
+                  "C11126 -> \"KEGG\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000409",
+                "predLabel": "CHEMINF_000409",
+                "count": 490,
+                "objectKind": "literal",
+                "examples": [
+                  "C11126 -> \"C11126\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 490,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 490,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/kegg.compound/C02168",
+              "https://identifiers.org/kegg.compound/C07115",
+              "https://identifiers.org/kegg.compound/C10982",
+              "https://identifiers.org/kegg.compound/C11090",
+              "https://identifiers.org/kegg.compound/C18513",
+              "https://identifiers.org/kegg.compound/D00543",
+              "https://identifiers.org/kegg.compound/D00964",
+              "https://identifiers.org/kegg.compound/D04966",
+              "https://identifiers.org/kegg.compound/D08229",
+              "https://identifiers.org/kegg.compound/D08559"
+            ],
+            "uriInstanceCount": 490,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "shortId": "AD",
+            "hashId": "cLd3mckdi4Y",
+            "label": "AD\nGO_0008150, PATO_0001241",
+            "equivalences": [],
+            "tinyClasses": [
+              "GO_0008150",
+              "PATO_0001241"
+            ],
+            "classes": [
+              "http://purl.obolibrary.org/obo/GO_0008150",
+              "http://purl.obolibrary.org/obo/PATO_0001241"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(253.39300000015646, 73%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "D001145 -> \"MESH\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "D001145 -> \"Arrhythmias, Cardiac\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 10,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 5,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://purl.org/commons/record/mesh/D001145",
+              "http://purl.org/commons/record/mesh/D005298",
+              "http://purl.org/commons/record/mesh/D006528",
+              "http://purl.org/commons/record/mesh/D008679",
+              "http://purl.org/commons/record/mesh/D012130"
+            ],
+            "uriInstanceCount": 5,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/c_lcO5wwv0A",
+            "shortId": "AE",
+            "hashId": "c_lcO5wwv0A",
+            "label": "AE",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(344.94800000009127, 73%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "data_1025 -> \"An identifier of a gene, such as a name/symbol or a unique identifier of a gene in a database.\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 4,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "http://edamontology.org/data_1025",
+              "http://edamontology.org/data_1033",
+              "http://purl.org/obo/owl/GO#0008150",
+              "http://semanticscience.org/resource/CHEMINF_000000"
+            ],
+            "uriInstanceCount": 4,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/coeHtchO-j8",
+            "shortId": "AF",
+            "hashId": "coeHtchO-j8",
+            "label": "AF",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(210.25200000032783, 73%, 40%)",
+            "frameProperties": [],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 50
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/dvpSkETC9d4",
+            "shortId": "AG",
+            "hashId": "dvpSkETC9d4",
+            "label": "AG\ndata_2291, data_1025",
+            "equivalences": [],
+            "tinyClasses": [
+              "data_2291",
+              "data_1025"
+            ],
+            "classes": [
+              "http://edamontology.org/data_2291",
+              "http://edamontology.org/data_1025"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(132.98400000017136, 67%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://edamontology.org/data_2291",
+                "predLabel": "data_2291",
+                "count": 501,
+                "objectKind": "literal",
+                "examples": [
+                  "P60568 -> \"P60568\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 501,
+                "objectKind": "literal",
+                "examples": [
+                  "P60568 -> \"uniprot:P60568\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 501,
+                "objectKind": "literal",
+                "examples": [
+                  "P60568 -> \"UniProt\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1002,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 110,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#sameAs",
+                "predLabel": "owl:sameAs",
+                "count": 501,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/uniprot/D1M7A7",
+              "https://identifiers.org/uniprot/O35433",
+              "https://identifiers.org/uniprot/O35627",
+              "https://identifiers.org/uniprot/P12785",
+              "https://identifiers.org/uniprot/P21803",
+              "https://identifiers.org/uniprot/P35498",
+              "https://identifiers.org/uniprot/P35869",
+              "https://identifiers.org/uniprot/Q14994",
+              "https://identifiers.org/uniprot/Q15466",
+              "https://identifiers.org/uniprot/Q61542"
+            ],
+            "uriInstanceCount": 501,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/e19Eh6k0vNc",
+            "shortId": "AH",
+            "hashId": "e19Eh6k0vNc",
+            "label": "AH\ndata_1027, data_1025",
+            "equivalences": [],
+            "tinyClasses": [
+              "data_1027",
+              "data_1025"
+            ],
+            "classes": [
+              "http://edamontology.org/data_1027",
+              "http://edamontology.org/data_1025"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(147.44599999999627, 85%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://edamontology.org/data_1027",
+                "predLabel": "data_1027",
+                "count": 44,
+                "objectKind": "literal",
+                "examples": [
+                  "396458 -> \"396458\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 44,
+                "objectKind": "literal",
+                "examples": [
+                  "396458 -> \"ncbigene:396458\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 44,
+                "objectKind": "literal",
+                "examples": [
+                  "396458 -> \"Entrez Gene\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 88,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/ncbigene/100135474",
+              "https://identifiers.org/ncbigene/282134",
+              "https://identifiers.org/ncbigene/29595855",
+              "https://identifiers.org/ncbigene/374177",
+              "https://identifiers.org/ncbigene/395421",
+              "https://identifiers.org/ncbigene/395931",
+              "https://identifiers.org/ncbigene/396259",
+              "https://identifiers.org/ncbigene/396277",
+              "https://identifiers.org/ncbigene/396451",
+              "https://identifiers.org/ncbigene/481756"
+            ],
+            "uriInstanceCount": 44,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/fWqaBD7WgTU",
+            "shortId": "AI",
+            "hashId": "fWqaBD7WgTU",
+            "label": "AI\nCHEMINF_000564",
+            "equivalences": [],
+            "tinyClasses": [
+              "CHEMINF_000564"
+            ],
+            "classes": [
+              "http://semanticscience.org/resource/CHEMINF_000564"
+            ],
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(154.11600000038743, 55%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/identifier",
+                "predLabel": "identifier",
+                "count": 36,
+                "objectKind": "literal",
+                "examples": [
+                  "LMPR01090001 -> \"lipidmaps:LMPR01090001\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/source",
+                "predLabel": "source",
+                "count": 36,
+                "objectKind": "literal",
+                "examples": [
+                  "LMPR01090001 -> \"LIPID MAPS\""
+                ]
+              },
+              {
+                "predUri": "http://semanticscience.org/resource/CHEMINF_000564",
+                "predLabel": "CHEMINF_000564",
+                "count": 36,
+                "objectKind": "literal",
+                "examples": [
+                  "LMPR01090001 -> \"LMPR01090001\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 36,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 36,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+            ],
+            "exampleMembers": [
+              "https://identifiers.org/lipidmaps/LMFA01090070",
+              "https://identifiers.org/lipidmaps/LMPK12030005",
+              "https://identifiers.org/lipidmaps/LMPK12060019",
+              "https://identifiers.org/lipidmaps/LMPK12110003",
+              "https://identifiers.org/lipidmaps/LMPR0102090013",
+              "https://identifiers.org/lipidmaps/LMPR0106150013",
+              "https://identifiers.org/lipidmaps/LMST01010209",
+              "https://identifiers.org/lipidmaps/LMST02010001",
+              "https://identifiers.org/lipidmaps/LMST02020042",
+              "https://identifiers.org/lipidmaps/LMST02020120"
+            ],
+            "uriInstanceCount": 36,
+            "blankNodeInstanceCount": 0
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "e0",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "label": "hasObject",
+            "displayLabel": "hasObject x61",
+            "predUri": "http://aopkb.org/aop_ontology#hasObject",
+            "count": 61,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e1",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/QVRwVAcW2lE",
+            "label": "hasObject",
+            "displayLabel": "hasObject x674",
+            "predUri": "http://aopkb.org/aop_ontology#hasObject",
+            "count": 674,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e2",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "label": "hasObject",
+            "displayLabel": "hasObject x49",
+            "predUri": "http://aopkb.org/aop_ontology#hasObject",
+            "count": 49,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e3",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "label": "hasObject",
+            "displayLabel": "hasObject x1",
+            "predUri": "http://aopkb.org/aop_ontology#hasObject",
+            "count": 1,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e4",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "label": "hasObject",
+            "displayLabel": "hasObject x15",
+            "predUri": "http://aopkb.org/aop_ontology#hasObject",
+            "count": 15,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e5",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YvsW5r0559w",
+            "label": "hasProcess",
+            "displayLabel": "hasProcess x944",
+            "predUri": "http://aopkb.org/aop_ontology#hasProcess",
+            "count": 944,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e6",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "label": "hasProcess",
+            "displayLabel": "hasProcess x7",
+            "predUri": "http://aopkb.org/aop_ontology#hasProcess",
+            "count": 7,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(30.101000000024214, 85%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e7",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CHHkJQbwmfw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CHHkJQbwmfw",
+            "label": "identifier",
+            "displayLabel": "identifier x35",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 35,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(119.04700000025332, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e8",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Ceb5p0EmxaY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Ceb5p0EmxaY",
+            "label": "identifier",
+            "displayLabel": "identifier x65",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 65,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(186.27400000000125, 73%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e9",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "label": "identifier",
+            "displayLabel": "identifier x430",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 430,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(18.52199999988079, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e10",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "label": "dcterms:isPartOf",
+            "displayLabel": "dcterms:isPartOf x439",
+            "predUri": "http://purl.org/dc/terms/isPartOf",
+            "count": 439,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(18.52199999988079, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e11",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/NG20nGlxn6Q",
+            "label": "CHEMINF_000059",
+            "displayLabel": "CHEMINF_000059 x413",
+            "predUri": "http://semanticscience.org/resource/CHEMINF_000059",
+            "count": 413,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(18.52199999988079, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e12",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ODGu5e2P5Yo",
+            "label": "CHEMINF_000568",
+            "displayLabel": "CHEMINF_000568 x430",
+            "predUri": "http://semanticscience.org/resource/CHEMINF_000568",
+            "count": 430,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(18.52199999988079, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e13",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CHHkJQbwmfw",
+            "label": "CellTypeContext",
+            "displayLabel": "CellTypeContext x226",
+            "predUri": "http://aopkb.org/aop_ontology#CellTypeContext",
+            "count": 226,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e14",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "label": "CellTypeContext",
+            "displayLabel": "CellTypeContext x200",
+            "predUri": "http://aopkb.org/aop_ontology#CellTypeContext",
+            "count": 200,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e15",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "label": "CellTypeContext",
+            "displayLabel": "CellTypeContext x1",
+            "predUri": "http://aopkb.org/aop_ontology#CellTypeContext",
+            "count": 1,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e16",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Ceb5p0EmxaY",
+            "label": "OrganContext",
+            "displayLabel": "OrganContext x128",
+            "predUri": "http://aopkb.org/aop_ontology#OrganContext",
+            "count": 128,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e17",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "label": "OrganContext",
+            "displayLabel": "OrganContext x216",
+            "predUri": "http://aopkb.org/aop_ontology#OrganContext",
+            "count": 216,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e18",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "label": "OrganContext",
+            "displayLabel": "OrganContext x2",
+            "predUri": "http://aopkb.org/aop_ontology#OrganContext",
+            "count": 2,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e19",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CGqi-oux0XY",
+            "label": "hasBiologicalEvent",
+            "displayLabel": "hasBiologicalEvent x1117",
+            "predUri": "http://aopkb.org/aop_ontology#hasBiologicalEvent",
+            "count": 1117,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e20",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "label": "131567",
+            "displayLabel": "131567 x807",
+            "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+            "count": 807,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e21",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YvsW5r0559w",
+            "label": "GO_0008150",
+            "displayLabel": "GO_0008150 x902",
+            "predUri": "http://purl.obolibrary.org/obo/GO_0008150",
+            "count": 902,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e22",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "label": "GO_0008150",
+            "displayLabel": "GO_0008150 x6",
+            "predUri": "http://purl.obolibrary.org/obo/GO_0008150",
+            "count": 6,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e23",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "label": "PATO_0001241",
+            "displayLabel": "PATO_0001241 x59",
+            "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+            "count": 59,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e24",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/QVRwVAcW2lE",
+            "label": "PATO_0001241",
+            "displayLabel": "PATO_0001241 x634",
+            "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+            "count": 634,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e25",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "label": "PATO_0001241",
+            "displayLabel": "PATO_0001241 x47",
+            "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+            "count": 47,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e26",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "label": "PATO_0001241",
+            "displayLabel": "PATO_0001241 x1",
+            "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+            "count": 1,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e27",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "label": "PATO_0001241",
+            "displayLabel": "PATO_0001241 x14",
+            "predUri": "http://purl.obolibrary.org/obo/PATO_0001241",
+            "count": 14,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e28",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "identifier",
+            "displayLabel": "identifier x1595",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 1595,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e29",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "dcterms:isPartOf",
+            "displayLabel": "dcterms:isPartOf x3719",
+            "predUri": "http://purl.org/dc/terms/isPartOf",
+            "count": 3719,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e30",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "rdfs:seeAlso",
+            "displayLabel": "rdfs:seeAlso x1595",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+            "count": 1595,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e31",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "foaf:page",
+            "displayLabel": "foaf:page x1595",
+            "predUri": "http://xmlns.com/foaf/0.1/page",
+            "count": 1595,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(171.70900000003166, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e32",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "has_downstream_key_event",
+            "displayLabel": "has_downstream_key_event x2357",
+            "predUri": "http://aopkb.org/aop_ontology#has_downstream_key_event",
+            "count": 2357,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e33",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "has_upstream_key_event",
+            "displayLabel": "has_upstream_key_event x2357",
+            "predUri": "http://aopkb.org/aop_ontology#has_upstream_key_event",
+            "count": 2357,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e34",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "label": "131567",
+            "displayLabel": "131567 x797",
+            "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+            "count": 797,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e35",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "label": "identifier",
+            "displayLabel": "identifier x2357",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 2357,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e36",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "dcterms:isPartOf",
+            "displayLabel": "dcterms:isPartOf x3309",
+            "predUri": "http://purl.org/dc/terms/isPartOf",
+            "count": 3309,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e37",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "label": "rdfs:seeAlso",
+            "displayLabel": "rdfs:seeAlso x2357",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+            "count": 2357,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e38",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "label": "foaf:page",
+            "displayLabel": "foaf:page x2357",
+            "predUri": "http://xmlns.com/foaf/0.1/page",
+            "count": 2357,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(237.05600000009872, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e39",
+            "source": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/PPH5R7HwJk0",
+            "label": "identifier",
+            "displayLabel": "identifier x32",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 32,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(86.19700000062585, 79%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e40",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QVRwVAcW2lE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/QVRwVAcW2lE",
+            "label": "identifier",
+            "displayLabel": "identifier x422",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 422,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(188.46100000012666, 67%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e41",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UYRL5OtilOU",
+            "label": "identifier",
+            "displayLabel": "identifier x32",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 32,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(194.09400000004098, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e42",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "label": "identifier",
+            "displayLabel": "identifier x182",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 182,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(98.95699999993667, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e43",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JH_0nUItcIQ",
+            "label": "has_chemical_entity",
+            "displayLabel": "has_chemical_entity x439",
+            "predUri": "http://aopkb.org/aop_ontology#has_chemical_entity",
+            "count": 439,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(204.0320000005886, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e44",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "label": "identifier",
+            "displayLabel": "identifier x754",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 754,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(204.0320000005886, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e45",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "dcterms:isPartOf",
+            "displayLabel": "dcterms:isPartOf x863",
+            "predUri": "http://purl.org/dc/terms/isPartOf",
+            "count": 863,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(204.0320000005886, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e46",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "label": "foaf:page",
+            "displayLabel": "foaf:page x754",
+            "predUri": "http://xmlns.com/foaf/0.1/page",
+            "count": 754,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(204.0320000005886, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e47",
+            "source": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YD4I7gOVpCE",
+            "label": "identifier",
+            "displayLabel": "identifier x1",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 1,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(293.3990000002086, 85%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e48",
+            "source": "https://metabolinkai.net/quotient/quotientClass/YvsW5r0559w",
+            "target": "https://metabolinkai.net/quotient/quotientClass/YvsW5r0559w",
+            "label": "identifier",
+            "displayLabel": "identifier x554",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 554,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(348.9760000007227, 55%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e49",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "has_adverse_outcome",
+            "displayLabel": "has_adverse_outcome x649",
+            "predUri": "http://aopkb.org/aop_ontology#has_adverse_outcome",
+            "count": 649,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e50",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "has_key_event",
+            "displayLabel": "has_key_event x3719",
+            "predUri": "http://aopkb.org/aop_ontology#has_key_event",
+            "count": 3719,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e51",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/NG2oPUjS4BQ",
+            "label": "has_key_event_relationship",
+            "displayLabel": "has_key_event_relationship x3309",
+            "predUri": "http://aopkb.org/aop_ontology#has_key_event_relationship",
+            "count": 3309,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e52",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MWer1wkNJs4",
+            "label": "has_molecular_initiating_event",
+            "displayLabel": "has_molecular_initiating_event x542",
+            "predUri": "http://aopkb.org/aop_ontology#has_molecular_initiating_event",
+            "count": 542,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e53",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Y2Ge5YN-C_o",
+            "label": "C54571",
+            "displayLabel": "C54571 x863",
+            "predUri": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C54571",
+            "count": 863,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e54",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vc2bYlPBI9E",
+            "label": "131567",
+            "displayLabel": "131567 x437",
+            "predUri": "http://purl.bioontology.org/ontology/NCBITAXON/131567",
+            "count": 437,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e55",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "identifier",
+            "displayLabel": "identifier x594",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 594,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e56",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/B7A4s8TnIgc",
+            "label": "dcterms:license",
+            "displayLabel": "dcterms:license x525",
+            "predUri": "http://purl.org/dc/terms/license",
+            "count": 525,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e57",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "rdfs:seeAlso",
+            "displayLabel": "rdfs:seeAlso x594",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+            "count": 594,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e58",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZsJRtrQF5RI",
+            "label": "foaf:page",
+            "displayLabel": "foaf:page x594",
+            "predUri": "http://xmlns.com/foaf/0.1/page",
+            "count": 594,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(231.24700000043958, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e59",
+            "source": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "target": "https://metabolinkai.net/quotient/quotientClass/cLd3mckdi4Y",
+            "label": "identifier",
+            "displayLabel": "identifier x5",
+            "predUri": "http://purl.org/dc/elements/1.1/identifier",
+            "count": 5,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(253.39300000015646, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e60",
+            "source": "https://metabolinkai.net/quotient/quotientClass/coeHtchO-j8",
+            "target": "https://metabolinkai.net/quotient/quotientClass/LHSSQ87xrWo",
+            "label": "declare",
+            "displayLabel": "declare x50",
+            "predUri": "http://www.w3.org/ns/shacl#declare",
+            "count": 50,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(210.25200000032783, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e61",
+            "source": "https://metabolinkai.net/quotient/quotientClass/dvpSkETC9d4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/RW0yHfs0w3g",
+            "label": "rdfs:seeAlso",
+            "displayLabel": "rdfs:seeAlso x501",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+            "count": 501,
+            "graphColor": "hsl(149.0119999999879, 55%, 40%)",
+            "classColor": "hsl(132.98400000017136, 67%, 50%)"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/json" id="legend-data">
+  [
+    {
+      "color": "hsl(149.0119999999879, 55%, 40%)",
+      "graphs": [
+        "https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl"
+      ]
+    }
+  ]
+  </script>
+  <script>
+    /* app-core.js */
+
+    (function (global) {
+        'use strict';
+
+        function esc(s) {
+            return String(s ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[c]));
+        }
+
+        function formatCount(n) {
+            return Number(n ?? 0).toLocaleString('en-US');
+        }
+
+        function layoutOptions(name) {
+            if (name === 'breadthfirst') {
+                return {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 20,
+                    spacingFactor: 1.2,
+                    animate: 'end',
+                    fit: true
+                };
+            }
+
+            if (name === 'grid') {
+                return { name: 'grid', padding: 20, animate: false, fit: true };
+            }
+
+            if (name === 'cose') {
+                return {
+                    name: 'cose',
+                    padding: 30,
+                    animate: 'end',
+                    fit: true,
+                    randomize: true,
+                    idealEdgeLength: 150,
+                    nodeRepulsion: 50000,
+                    edgeElasticity: 220,
+                    gravity: 1,
+                    numIter: 1000
+                };
+            }
+
+            if (name === 'fcose') {
+                return {
+                    name: 'fcose',
+                    quality: 'proof',
+                    randomize: true,
+                    animate: 'end',
+                    fit: true,
+                    padding: 30,
+
+                    nodeDimensionsIncludeLabels: true,
+                    packComponents: true,
+                    tile: true,
+
+                    nodeSeparation: 200,
+                    nodeRepulsion: n => 8000 + 3000 * n.degree(),
+                    idealEdgeLength: () => 200,
+                    edgeElasticity: edge => edge.hasClass('closeMatch') ? .00000001 : 0.01,
+                    // edgeElasticity: 0.001,
+                    gravity: 0.25,
+                    numIter: 3000
+                };
+            }
+
+            // fallback
+            return { name: 'fcose', fit: true, padding: 30 };
+        }
+
+        function cyStyles() {
+            return [
+                {
+                    selector: 'node',
+                    style: {
+                        label: 'data(label)',
+                        'text-wrap': 'wrap',
+                        'text-max-width': 220,
+                        'background-color': 'data(color)',
+                        'border-width': 2,
+                        'border-color': '#666',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-size': 13,
+                        padding: 6,
+                        'text-outline-width': 2,
+                        'text-outline-color': '#fff'
+                    }
+                },
+                {
+                    selector: 'node.blankOnly',
+                    style: {
+                        'border-style': 'dashed',
+                        'border-width': 2,
+                        'border-color': '#222'
+                    }
+                },
+                {
+                    selector: 'node.literalNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#fff7d6',
+                        'border-style': 'dashed',
+                        'border-color': '#8a6d1d',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 48,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'node.ubiquitousNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#eeeeee',
+                        'border-style': 'dashed',
+                        'border-color': '#666666',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 52,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'curve-style': 'bezier',
+                        'control-point-step-size': 60,
+                        'line-color': 'data(color)',
+                        'target-arrow-color': 'data(color)',
+                        'target-arrow-shape': 'triangle',
+                        'arrow-scale': 0.9,
+                        label: 'data(displayLabel)',
+                        'font-size': 11,
+                        'text-rotation': 'autorotate',
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.85,
+                        'text-background-padding': 2,
+                        width: 'mapData(count, 1, 1000000, 1, 8)'
+                    }
+                },
+                {
+                    selector: 'edge.literalEdge',
+                    style: {
+                        'line-style': 'dotted',
+                        'line-color': '#8a6d1d',
+                        'target-arrow-color': '#8a6d1d',
+                        'width': 1.5
+                    }
+                },
+                {
+                    selector: 'edge.ubiquitousEdge',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#777777',
+                        'target-arrow-color': '#777777',
+                        'width': 1.25
+                    }
+                },
+                {
+                    selector: 'edge.closeMatch',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#888',
+                        'target-arrow-shape': 'none',
+                        'target-arrow-color': '#888',
+                        label: 'data(label)',
+                        'text-rotation': 'none',
+                        'font-size': 10,
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.8,
+                        'text-background-padding': 2,
+                        width: 1.5
+                    }
+                },
+                { selector: '.faded', style: { opacity: 0.15, 'text-opacity': 0.15 } },
+                { selector: '.highlighted', style: { 'border-width': 3, 'border-color': '#222' } },
+                { selector: 'edge.highlighted', style: { width: 5, opacity: 0.9 } }
+            ];
+        }
+
+        /**
+         * Pure HTML builder for details pane.
+         * Returns hidden lists so the caller can wire "Show more" buttons.
+         */
+        function buildDetailsHtml(nodeData, opts = {}) {
+            const {
+                maxGraphs = 8,
+                maxExampleMembers = 8
+            } = opts;
+
+            const displayId = nodeData.shortId ?? '';
+            const hashId = nodeData.hashId ?? '';
+            const fullIri = nodeData.id ?? '';
+            const exampleMembers = nodeData.exampleMembers ?? [];
+            const classes = nodeData.classes ?? [];
+            const closeMatches = nodeData.closeMatches ?? nodeData.equivalences ?? [];
+            const graphs = nodeData.graphs ?? [];
+            const literals = nodeData.literals ?? [];
+            const uriInstanceCount = nodeData.uriInstanceCount;
+            const blankNodeInstanceCount = nodeData.blankNodeInstanceCount;
+
+            const lits = literals.slice().sort((a, b) => (b.count || 0) - (a.count || 0));
+
+            let html = '';
+
+            if (hashId) {
+                html += `<div class="kv">Quotient Class ID: ${esc(hashId)}</div>`;
+            }
+
+            if (classes.length) {
+                html += `<div class="secTitle">Types</div>`;
+                html += `<div class="kv">${esc(classes.join(', '))}</div>`;
+            }
+
+            if (closeMatches.length) {
+                html += `<div class="secTitle">Close matches</div>`;
+                html += `<div class="kv">${esc(closeMatches.join(', '))}</div>`;
+            }
+
+            if (uriInstanceCount != null || blankNodeInstanceCount != null) {
+                const uriN = Number(uriInstanceCount ?? 0);
+                const blankN = Number(blankNodeInstanceCount ?? 0);
+                const totalN = uriN + blankN;
+
+                html += `<div class="secTitle">Instances</div>`;
+                html += `<div class="kv">
+                        URI resources: ${formatCount(uriN)}<br/>
+                        Blank nodes: ${formatCount(blankN)}<br/>
+                        Total: ${formatCount(totalN)}
+        </div>`;
+            }
+
+            let hiddenGraphs = [];
+            let hiddenExampleMembers = [];
+
+            if (exampleMembers.length) {
+                html += `<div class="secTitle">Example resources</div>`;
+
+                const shownMembers = exampleMembers.slice(0, maxExampleMembers);
+                hiddenExampleMembers = exampleMembers.slice(maxExampleMembers);
+
+                html += `<div class="kv">${esc(shownMembers.join(', '))}</div>`;
+
+                if (hiddenExampleMembers.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                            <button id="moreExampleMembers" type="button">Show ${hiddenExampleMembers.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Source graphs</div>`;
+
+            if (!graphs.length) {
+                html += `<div class="kv"><i>Not provided</i></div>`;
+            } else {
+                const shown = graphs.slice(0, maxGraphs);
+                hiddenGraphs = graphs.slice(maxGraphs);
+
+                html += `<div class="kv">${shown.map(esc).join('<br/>')}</div>`;
+
+                if (hiddenGraphs.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                                <button id="moreGraphs" type="button">Show ${hiddenGraphs.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Outgoing literal and ubiquitous properties</div>`;
+            if (!lits.length) {
+                html += `<div class="kv"><i>None</i></div>`;
+            } else {
+                html += `<table>`;
+                for (const l of lits) {
+                    const predShort = esc(l.predLabel || l.predUri || '');
+                    const predFull = l.predUri
+                        ? `<div class="kv" style="margin-top:2px;color:#666;font-size:11px;word-break:break-all;">${esc(l.predUri)}</div>`
+                        : '';
+
+                    const count = esc(l.count ?? 0);
+
+                    let exampleLines = [];
+
+                    if (Array.isArray(l.examples)) {
+                        exampleLines = l.examples;
+                    } else if (l.examples && typeof l.examples === 'object') {
+                        // Tolerate object-shaped arrays / array-like values
+                        exampleLines = Object.keys(l.examples)
+                            .sort((a, b) => Number(a) - Number(b))
+                            .map(k => l.examples[k]);
+                    } else if (l.examples != null && String(l.examples).length) {
+                        exampleLines = [l.examples];
+                    } else if (l.example != null && String(l.example).length) {
+                        exampleLines = [l.example];
+                    }
+
+                    exampleLines = exampleLines.filter(v => v != null && String(v).length);
+
+                    const ex = exampleLines.length
+                        ? `<div class="exList">${exampleLines.map(v => `<div class="exLine">${esc(v)}</div>`).join('')}</div>`
+                        : '';
+
+                    html += `<tr>
+                                <td title="${esc(l.predUri || '')}">${predShort}${predFull}${ex}</td>
+                                <td class="num">x${count}</td>
+                            </tr>`;
+                }
+                html += `</table>`;
+            }
+
+            return {title: "Class " + String(displayId), html, hiddenGraphs, hiddenExampleMembers};
+        }
+
+        /**
+         * Wires "show more" buttons for the details pane.
+         * Supports:
+         *   - old call style: wireDetailsMoreButtons(detailsBody, hiddenGraphsArray)
+         *   - new call style: wireDetailsMoreButtons(detailsBody, { hiddenGraphs, hiddenExampleMembers })
+         */
+        function wireOneMoreButton(detailsBody, buttonSelector, hiddenValues) {
+            if (!hiddenValues || hiddenValues.length === 0) return;
+            const btn = detailsBody.querySelector(buttonSelector);
+            if (!btn) return;
+
+            const row = btn.closest('.kv') || btn;
+            btn.addEventListener('click', () => {
+                row.insertAdjacentHTML(
+                    'afterend',
+                    `<div class="kv">${esc(hiddenValues.join(', '))}</div>`);
+                row.remove();
+            });
+        }
+
+        function wireDetailsMoreButtons(detailsBody, hiddenOrBuilt) {
+            // Backward compatibility (old signature)
+            if (Array.isArray(hiddenOrBuilt)) {
+                wireOneMoreButton(detailsBody, '#moreGraphs', hiddenOrBuilt);
+                return;
+            }
+
+            const built = hiddenOrBuilt || {};
+            wireOneMoreButton(detailsBody, '#moreExampleMembers', built.hiddenExampleMembers || []);
+            wireOneMoreButton(detailsBody, '#moreGraphs', built.hiddenGraphs || []);
+        }
+
+        function buildEdgeDetailsHtml(edgeData) {
+            const kind = edgeData.kind || 'property';
+            const predUri = edgeData.predUri ?? '';
+            const count = edgeData.count;
+
+            // skos:closeMatch alignment edge (not a structural property edge)
+            if (kind === 'closeMatch') {
+                const sourceShort = edgeData.sourceShort ?? '';
+                const targetShort = edgeData.targetShort ?? '';
+                const sourceUri = edgeData.sourceUri ?? '';
+                const targetUri = edgeData.targetUri ?? '';
+
+                let html = '';
+
+                html += `<div class="secTitle">Relation</div>`;
+                if (predUri) {
+                    html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+                } else {
+                    html += `<div class="kv"><i>Not available in current payload</i></div>`;
+                }
+
+                html += `<div class="secTitle">Endpoints</div>`;
+                html += `<div class="kv">${esc(sourceShort)} ↔ ${esc(targetShort)}</div>`;
+
+                if (sourceUri || targetUri) {
+                    html += `<div class="secTitle">Endpoint IRIs</div>`;
+                    if (sourceUri) html += `<div class="kv" style="word-break:break-all;">Source: ${esc(sourceUri)}</div>`;
+                    if (targetUri) html += `<div class="kv" style="word-break:break-all;">Target: ${esc(targetUri)}</div>`;
+                }
+
+                if (count != null && Number(count) > 1) {
+                    html += `<div class="secTitle">Evidence count</div>`;
+                    html += `<div class="kv">${formatCount(count)}</div>`;
+                }
+
+                return {
+                    title: `Alignment closeMatch`,
+                    html
+                };
+            }
+
+            // Default: structural property edge
+            const shortLabel = edgeData.shortLabel ?? '';
+            const displayLabel = edgeData.displayLabel ?? shortLabel;
+
+            let html = '';
+
+            html += `<div class="secTitle">IRI</div>`;
+            if (predUri) {
+                html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+            } else {
+                html += `<div class="kv"><i>Not available in current payload</i></div>`;
+            }
+
+            if (count != null) {
+                html += `<div class="secTitle">Count</div>`;
+                html += `<div class="kv">${formatCount(count)}</div>`;
+            }
+
+            return {
+                title: `Property ${String(shortLabel || '')}`,
+                html
+            };
+        }
+
+        /**
+         * Pure filter + sort for legend items.
+         * Each legend item is expected to have { color, graphs: [] }.
+         */
+        function filterLegendItems(legendData, filterText) {
+            const needle = (filterText || '').trim().toLowerCase();
+
+            return (legendData || [])
+                .slice()
+                .sort((a, b) => (a.color || '').localeCompare(b.color || ''))
+                .map(item => ({
+                    color: item.color || '#ccc',
+                    graphs: (item.graphs || []).slice().sort()
+                }))
+                .filter(item => {
+                    if (!needle) return true;
+                    return item.graphs.some(g => (g || '').toLowerCase().includes(needle));
+                });
+        }
+
+        // expose as a single namespace
+        global.AppCore = {
+            esc,
+            layoutOptions,
+            cyStyles,
+            buildDetailsHtml,
+            wireDetailsMoreButtons,
+            buildEdgeDetailsHtml,
+            filterLegendItems
+        };
+    })(window);
+    /* app.js */
+    /* global AppCore, cytoscape */
+
+    const cyData = JSON.parse(document.getElementById('cy-data').textContent);
+    const legendData = JSON.parse(document.getElementById('legend-data').textContent);
+
+    function truncate(text, maxLength) {
+        const value = String(text ?? '');
+        return value.length <= maxLength ? value : `${value.slice(0, maxLength - 1)}…`;
+    }
+
+    const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+    const RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+    const RDFS_COMMENT = 'http://www.w3.org/2000/01/rdf-schema#comment';
+    const RDF_VALUE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value';
+    const OWL_SAME_AS = 'http://www.w3.org/2002/07/owl#sameAs';
+
+    /*
+     * rdf:type is already represented in each quotient-class node, and
+     * owl:sameAs is already represented through canonicalization/equivalences.
+     * Keep both in the details panel without adding redundant graph leaves.
+     */
+    const UBIQUITOUS_GRAPH_EXCLUSIONS = new Set([
+        // RDF_TYPE,
+        // OWL_SAME_AS
+    ]);
+
+    function frameObjectLabel(prop) {
+        if (prop.objectKind === 'literal') return 'literal';
+
+        switch (prop.predUri) {
+            case RDFS_LABEL:
+            case RDFS_COMMENT:
+                return 'literal';
+            case RDF_VALUE:
+                return 'value';
+            case RDF_TYPE:
+                return 'class';
+            case OWL_SAME_AS:
+                return 'resource';
+            default:
+                return 'object';
+        }
+    }
+
+    /**
+     * Turn literal-valued and non-aggregated properties into optional terminal
+     * graph nodes. Every marker is unique to its source quotient class and
+     * predicate, so it does not imply that classes share one RDF object.
+     */
+    function addFrameObjectElements(elements) {
+        const resourceNodes = Array.isArray(elements?.nodes) ? elements.nodes : [];
+        const originalEdges = Array.isArray(elements?.edges) ? elements.edges : [];
+        const nodes = resourceNodes.slice();
+        const edges = originalEdges.slice();
+
+        // Cytoscape element ids share one namespace. Avoid collisions with RDF ids.
+        const usedIds = new Set(
+            [...resourceNodes, ...originalEdges]
+                .map(element => element?.data?.id)
+                .filter(Boolean)
+        );
+
+        function freshId(base) {
+            let id = base;
+            let suffix = 1;
+            while (usedIds.has(id)) id = `${base}_${suffix++}`;
+            usedIds.add(id);
+            return id;
+        }
+
+        resourceNodes.forEach((sourceNode, nodeIndex) => {
+            const source = sourceNode?.data || {};
+            const properties = Array.isArray(source.frameProperties) ? source.frameProperties : [];
+
+            properties
+                .filter(prop => {
+                    if (prop?.objectKind === 'literal') return true;
+                    if (prop?.objectKind === 'ubiquitous') {
+                        return !UBIQUITOUS_GRAPH_EXCLUSIONS.has(prop.predUri);
+                    }
+                    return false;
+                })
+                .forEach((prop, propIndex) => {
+                    const examples = Array.isArray(prop.examples)
+                        ? prop.examples.filter(value => value != null).map(String)
+                        : [];
+                    const count = Number(prop.count ?? 0);
+                    const isLiteral = prop.objectKind === 'literal';
+                    const markerKind = isLiteral ? 'literal' : 'ubiquitous';
+                    const markerNodeId = freshId(`__${markerKind}_node_${nodeIndex}_${propIndex}`);
+                    const markerEdgeId = freshId(`__${markerKind}_edge_${nodeIndex}_${propIndex}`);
+                    const markerLabel = frameObjectLabel(prop);
+
+                    nodes.push({
+                        data: {
+                            id: markerNodeId,
+                            shortId: markerLabel,
+                            label: markerLabel,
+                            objectKind: prop.objectKind,
+                            sourceId: source.id,
+                            sourceShortId: source.shortId || source.id,
+                            predUri: prop.predUri || '',
+                            predLabel: prop.predLabel || prop.predUri || '',
+                            count,
+                            examples,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalNode' : 'ubiquitousNode'
+                    });
+
+                    edges.push({
+                        data: {
+                            id: markerEdgeId,
+                            source: source.id,
+                            target: markerNodeId,
+                            label: prop.predLabel || prop.predUri || '',
+                            displayLabel: `${prop.predLabel || prop.predUri || ''} x${count}`,
+                            predUri: prop.predUri || '',
+                            count,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalEdge' : 'ubiquitousEdge'
+                    });
+                });
+        });
+
+        return { nodes, edges };
+    }
+
+    cyData.elements = addFrameObjectElements(cyData.elements);
+
+    //  Cytoscape init
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: cyData.elements,
+        layout: { name: 'preset' },
+        minZoom: 0.1,
+        maxZoom: 3.0,
+        wheelSensitivity: 0.8,
+        style: AppCore.cyStyles()
+    });
+
+    function applyInstanceTags() {
+        cy.nodes().forEach(n => {
+            const uriCount = Number(n.data('uriInstanceCount') ?? 0);
+            const blankCount = Number(n.data('blankNodeInstanceCount') ?? 0);
+
+            if (uriCount === 0 && blankCount > 0) {
+                n.addClass('blankOnly');
+            } else {
+                n.removeClass('blankOnly');
+            }
+        });
+    }
+
+    applyInstanceTags();
+
+    // Needed for fCoSE packComponents
+    cy.layoutUtilities({
+        componentSpacing: 80,
+        desiredAspectRatio: cy.width() / cy.height(),
+        polyominoGridSizeFactor: 1
+    });
+
+    let currentLayout = null;
+
+    function runLayout(name) {
+        if (currentLayout) currentLayout.stop();
+
+        const visibleElements = cy.elements().filter(element => element.visible());
+        currentLayout = visibleElements.layout(AppCore.layoutOptions(name));
+
+        const btn = document.getElementById('relayout');
+        if (btn) btn.disabled = true;
+        currentLayout.on('layoutstop', () => { if (btn) btn.disabled = false; });
+
+        currentLayout.run();
+    }
+
+    // controls: layout / view
+    const layoutSelect = document.getElementById('layoutSelect');
+    document.getElementById('relayout')?.addEventListener('click', () => runLayout(layoutSelect.value));
+    layoutSelect?.addEventListener('change', () => runLayout(layoutSelect.value));
+
+    document.getElementById('fit')?.addEventListener('click', () => cy.fit(undefined, 20));
+    document.getElementById('zoomIn')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() * 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+    document.getElementById('zoomOut')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() / 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+
+    // terminal frame-object toggles
+    const showLiteralNodes = document.getElementById('showLiteralNodes');
+    const showUbiquitousNodes = document.getElementById('showUbiquitousNodes');
+
+    function applyFrameObjectVisibility() {
+        const showLiterals = showLiteralNodes == null || !!showLiteralNodes.checked;
+        const showUbiquitous = showUbiquitousNodes == null || !!showUbiquitousNodes.checked;
+
+        cy.nodes('.literalNode').style('display', showLiterals ? 'element' : 'none');
+        cy.edges('.literalEdge').style('display', showLiterals ? 'element' : 'none');
+        cy.nodes('.ubiquitousNode').style('display', showUbiquitous ? 'element' : 'none');
+        cy.edges('.ubiquitousEdge').style('display', showUbiquitous ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    function refreshFrameObjectVisibility() {
+        applyFrameObjectVisibility();
+        runLayout(layoutSelect?.value || 'fcose');
+    }
+
+    showLiteralNodes?.addEventListener('change', refreshFrameObjectVisibility);
+    showUbiquitousNodes?.addEventListener('change', refreshFrameObjectVisibility);
+
+    applyFrameObjectVisibility();
+    cy.ready(() => runLayout(layoutSelect?.value || 'fcose'));
+
+    // details panel
+    const detailsPane = document.getElementById('detailsPane');
+    const detailsBody = document.getElementById('detailsBody');
+    const detailsTitle = document.getElementById('detailsTitle');
+    document.getElementById('closeDetails')?.addEventListener('click', () => setDetailsOpen(false));
+
+    function setDetailsOpen(open) {
+        detailsPane.style.display = open ? 'flex' : 'none';
+        if (!open) {
+            detailsBody.innerHTML = '';
+            detailsTitle.textContent = 'Details';
+        }
+        cy.resize();
+    }
+
+    function appendDetailValue(title, values) {
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'secTitle';
+        sectionTitle.textContent = title;
+        detailsBody.appendChild(sectionTitle);
+
+        const valueList = Array.isArray(values) ? values : [values];
+        const value = document.createElement('div');
+        value.className = 'kv';
+
+        valueList.forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = String(item ?? '');
+            value.appendChild(line);
+        });
+
+        detailsBody.appendChild(value);
+    }
+
+    function renderFrameObjectDetails(node) {
+        const isLiteral = node.data('objectKind') === 'literal';
+        detailsTitle.textContent = isLiteral ? 'Literal values' : 'Non-aggregated objects';
+        detailsBody.replaceChildren();
+
+        appendDetailValue('Property', [
+            node.data('predLabel') || node.data('predUri') || '',
+            node.data('predUri') || ''
+        ].filter(Boolean));
+
+        appendDetailValue(
+            'Occurrences',
+            Number(node.data('count') ?? 0).toLocaleString('en-US')
+        );
+
+        appendDetailValue('Source class', [
+            node.data('sourceShortId') || node.data('sourceId') || '',
+            node.data('sourceId') || ''
+        ].filter(Boolean));
+
+        const examples = node.data('examples') || [];
+        if (isLiteral) {
+            appendDetailValue('Examples', examples.length ? examples : ['Not provided']);
+        } else {
+            appendDetailValue(
+                'Aggregation',
+                'The original object identities were intentionally not retained by the quotient computation.'
+            );
+            appendDetailValue(
+                'Examples',
+                examples.length ? examples : ['Not retained in quotient output']
+            );
+        }
+
+        setDetailsOpen(true);
+    }
+
+    function renderDetails(node) {
+        if (node.hasClass('literalNode') || node.hasClass('ubiquitousNode')) {
+            renderFrameObjectDetails(node);
+            return;
+        }
+
+        const closeMatches = [...new Set(
+            node.connectedEdges('.closeMatch')
+                .connectedNodes()
+                .filter(n => n.id() !== node.id())
+                .map(n => n.data('shortId') || n.id())
+        )].sort();
+
+        const data = {
+            id: node.data('id') || node.id(),
+            hashId: node.data('hashId') || '',
+            shortId: node.data('shortId') || node.data('id') || node.id(),
+            tinyClasses: node.data('tinyClasses') || [],
+            classes: node.data('classes') || [],
+            closeMatches,
+            literals: node.data('frameProperties') || node.data('literals') || [], //literals are kept for backward compat.
+            graphs: node.data('graphs') || [],
+            exampleMembers: node.data('exampleMembers') || [],
+            uriInstanceCount: node.data('uriInstanceCount'),
+            blankNodeInstanceCount: node.data('blankNodeInstanceCount')
+        };
+
+        const built = AppCore.buildDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        AppCore.wireDetailsMoreButtons(detailsBody, built);
+        setDetailsOpen(true);
+    }
+
+    function renderEdgeDetails(edge) {
+        const isCloseMatch = edge.hasClass('closeMatch');
+
+        if (isCloseMatch) {
+            const src = cy.getElementById(edge.data('source'));
+            const tgt = cy.getElementById(edge.data('target'));
+
+            const data = {
+                kind: 'closeMatch',
+                predUri: edge.data('predUri') || null,
+                count: edge.data('count'),
+                sourceShort: (src && src.data('shortId')) ? src.data('shortId') : (edge.data('source') || ''),
+                targetShort: (tgt && tgt.data('shortId')) ? tgt.data('shortId') : (edge.data('target') || ''),
+                sourceUri: (src && (src.data('id') || src.id())) ? (src.data('id') || src.id()) : (edge.data('source') || ''),
+                targetUri: (tgt && (tgt.data('id') || tgt.id())) ? (tgt.data('id') || tgt.id()) : (edge.data('target') || '')
+            };
+
+            const built = AppCore.buildEdgeDetailsHtml(data);
+            detailsTitle.textContent = built.title;
+            detailsBody.innerHTML = built.html;
+            setDetailsOpen(true);
+            return;
+        }
+
+        const data = {
+            kind: 'property',
+            shortLabel: edge.data('label') || edge.data('displayLabel') || '',
+            displayLabel: edge.data('displayLabel') || edge.data('label') || '',
+            predUri: edge.data('predUri') || null,
+            count: edge.data('count')
+        };
+
+        const built = AppCore.buildEdgeDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        setDetailsOpen(true);
+    }
+
+    cy.on('tap', 'node', evt => renderDetails(evt.target));
+    cy.on('tap', 'edge', evt => renderEdgeDetails(evt.target));
+    cy.on('tap', evt => { if (evt.target === cy) setDetailsOpen(false); });
+
+    // legend
+    const legendPane = document.getElementById('legendPane');
+    const legendBody = document.getElementById('legendBody');
+    const legendFilter = document.getElementById('legendFilter');
+    const btnLegend = document.getElementById('toggleLegend');
+    let legendOpen = false;
+
+    function isLegendVisible() {
+        return window.getComputedStyle(legendPane).display !== 'none';
+    }
+
+    function renderLegend() {
+        const items = AppCore.filterLegendItems(legendData, legendFilter?.value);
+
+        legendBody.innerHTML = '';
+        for (const item of items) {
+            const row = document.createElement('div');
+            row.className = 'item';
+
+            const sw = document.createElement('div');
+            sw.className = 'swatch';
+            sw.style.backgroundColor = item.color;
+
+            const txt = document.createElement('div');
+            txt.className = 'graphs';
+
+            const MAX = 6;
+            const shown = item.graphs.slice(0, MAX);
+            const hidden = item.graphs.slice(MAX);
+
+            for (const g of shown) {
+                const line = document.createElement('span');
+                line.className = 'g';
+                line.textContent = g;
+                txt.appendChild(line);
+            }
+
+            if (hidden.length) {
+                const more = document.createElement('button');
+                more.type = 'button';
+                more.textContent = `Show ${hidden.length} more`;
+                more.style.padding = '4px 8px';
+                more.style.fontSize = '12px';
+                more.style.marginTop = '4px';
+                more.addEventListener('click', () => {
+                    more.remove();
+                    for (const g of hidden) {
+                        const line = document.createElement('span');
+                        line.className = 'g';
+                        line.textContent = g;
+                        txt.appendChild(line);
+                    }
+                });
+                txt.appendChild(more);
+            }
+
+            row.appendChild(sw);
+            row.appendChild(txt);
+            legendBody.appendChild(row);
+        }
+    }
+
+    function setLegendOpen(open) {
+        legendOpen = open;
+        legendPane.style.display = open ? 'flex' : 'none';
+        btnLegend.textContent = open ? 'Hide legend' : 'Show legend';
+        if (open) renderLegend();
+        cy.resize();
+    }
+
+    function syncLegendAvailability() {
+        const mode = document.getElementById('colorMode').value;
+        const graphMode = (mode === 'graph');
+        btnLegend.disabled = !graphMode;
+        btnLegend.title = graphMode ? '' : 'Legend is only available in source graph color mode';
+        if (!graphMode && (legendOpen || isLegendVisible())) setLegendOpen(false);
+    }
+
+    btnLegend?.addEventListener('click', () => setLegendOpen(!(legendOpen || isLegendVisible())));
+    legendFilter?.addEventListener('input', () => renderLegend());
+
+    // color mode
+    function applyColorMode(mode) {
+        const useGraph = (mode === 'graph');
+        cy.batch(() => {
+            cy.nodes().forEach(n => {
+                const c = useGraph ? n.data('graphColor') : n.data('classColor');
+                if (c) n.data('color', c);
+            });
+            cy.edges().forEach(e => {
+                const c = useGraph ? e.data('graphColor') : e.data('classColor');
+                if (c) e.data('color', c);
+            });
+        });
+        cy.style().update();
+        syncLegendAvailability();
+    }
+
+    // closeMatch edges toggle
+    const showCloseMatches = document.getElementById('showCloseMatches');
+
+    function applyCloseMatchVisibility() {
+        const show = (showCloseMatches == null) ? true : !!showCloseMatches.checked;
+        cy.edges('.closeMatch').style('display', show ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    showCloseMatches?.addEventListener('change', applyCloseMatchVisibility);
+    applyCloseMatchVisibility();
+
+    const colorMode = document.getElementById('colorMode');
+    colorMode?.addEventListener('change', () => applyColorMode(colorMode.value));
+    applyColorMode(colorMode?.value || 'graph');
+
+    // hover highlight
+    cy.on('mouseover', 'node', evt => {
+        const n = evt.target;
+        cy.elements().addClass('faded');
+        n.removeClass('faded').addClass('highlighted');
+        n.connectedEdges().removeClass('faded').addClass('highlighted');
+        n.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+    });
+
+    cy.on('mouseout', 'node', () => {
+        cy.elements().removeClass('faded highlighted');
+    });
+
+    // search / focus
+    const search = document.getElementById('search');
+
+    function clearFocus() {
+        cy.elements().removeClass('faded highlighted');
+        cy.fit(undefined, 20);
+    }
+
+    function focusQuery(q) {
+        const needle = (q || '').trim().toLowerCase();
+        if (!needle) return;
+
+        const matches = cy.nodes().filter(n => {
+            if (!n.visible()) return false;
+            const id = (n.data('id') || '').toLowerCase();
+            const label = (n.data('label') || '').toLowerCase();
+            return id.includes(needle) || label.includes(needle);
+        });
+
+        if (matches.length) {
+            cy.elements().addClass('faded');
+            matches.removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+            cy.animate({ fit: { eles: matches, padding: 40 }, duration: 250 });
+        }
+    }
+
+    search?.addEventListener('keydown', e => {
+        if (e.key === 'Enter') focusQuery(search.value);
+        else if (e.key === 'Escape') { search.value = ''; clearFocus(); }
+    });
+  </script>
+</body>
+</html>

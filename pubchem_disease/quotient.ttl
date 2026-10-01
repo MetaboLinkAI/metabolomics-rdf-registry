@@ -1,0 +1,178 @@
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID2986>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "82482"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#closeMatch>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/disease/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/e3bc3a17cf34d6905b14683aa3a151f612ad8e7a6ebe87dcf13bad5eedba3f68> , <https://metabolinkai.net/quotient/exampleStatement/afb2f3432a851da52a2d916b9909b99d6a946d8c2573c4fa4425b8377ac83900>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://semanticscience.org/resource/SIO_010299> , <http://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#Disease>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "11725"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/disease/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "100801"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID96>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://purl.obolibrary.org/obo/DOID:6713>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID7543>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://identifiers.org/HP:0001085>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11725"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#prefLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+] .
+
+<http://identifiers.org/medgen:C2676466>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://id.nlm.nih.gov/mesh/D012783>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID582>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://identifiers.org/mesh:D000080874>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID8353>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://identifiers.org/medgen:C0032342>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID9792>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID6290>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<http://identifiers.org/medgen:C2316212>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://id.nlm.nih.gov/mesh/C567186>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://identifiers.org/medgen:C1854260>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "23450"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID7763>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<https://metabolinkai.net/quotient/exampleStatement/e3bc3a17cf34d6905b14683aa3a151f612ad8e7a6ebe87dcf13bad5eedba3f68>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Congenital Nongoitrous Hypothyroidism";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#prefLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID7> .
+
+<http://identifiers.org/umls:C2751825>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID10554>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<https://metabolinkai.net/quotient/exampleStatement/afb2f3432a851da52a2d916b9909b99d6a946d8c2573c4fa4425b8377ac83900>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Pituitary cretinism";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#altLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID7> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/disease/DZID2877>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "30720"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#altLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fb7mBBtL2rg>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "21902"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#relatedMatch>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Q-7dSLRNe-o>
+] .

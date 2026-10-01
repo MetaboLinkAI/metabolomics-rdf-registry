@@ -1,0 +1,76 @@
+@prefix mlk: <https://metabolinkai.net/quotient/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+mlk: a owl:Ontology ;
+  dcterms:title "MetaboLinkAI Graph Quotient Vocabulary"@en ;
+  rdfs:comment "Vocabulary for representing quotients (structural summaries) of RDF graphs."@en .
+
+mlk:QuotientTriple a owl:Class ;
+  rdfs:label "Quotient triple"@en ;
+  rdfs:comment "Reified summary edge between two quotient classes via a predicate, aggregating multiple source triples. It is metadata about source triples and must not be interpreted as asserting that the predicate relates the quotient classes themselves."@en .
+
+mlk:QuotientClass a owl:Class ;
+    rdfs:label "Quotient class"@en ;
+    rdfs:comment "Each instance represents a set of nodes in the source graph that share the same RDF types and (transitively) incoming and/or outgoing properties."@en .
+
+mlk:quotientSubject a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "subject quotient class"@en ;
+    rdfs:comment "Subject quotient class of the reified quotient triple."@en ;
+    rdfs:domain mlk:QuotientTriple ;
+    rdfs:range mlk:QuotientClass .
+
+mlk:quotientPredicate a owl:ObjectProperty,  owl:FunctionalProperty ;
+    rdfs:label "predicate"@en ;
+    rdfs:comment "Predicate of the reified quotient triple (property in the source graph). This is metadata about the summarized source triples, not an asserted predicate relating the quotient classes."@en ;
+    rdfs:domain mlk:QuotientTriple ;
+    rdfs:range rdf:Property .
+
+mlk:quotientObject a owl:ObjectProperty,  owl:FunctionalProperty ;
+    rdfs:label "object quotient class"@en ;
+    rdfs:comment "Object quotient class of the reified quotient triple."@en ;
+    rdfs:domain mlk:QuotientTriple ;
+    rdfs:range mlk:QuotientClass .
+
+mlk:quotientOccurrenceCount a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "occurrence count"@en ;
+    rdfs:comment "Number of source triples (in the source graph(s)) summarized by this quotient triple."@en ;
+    rdfs:domain mlk:QuotientTriple ;
+    rdfs:range xsd:unsignedLong .
+
+mlk:hasExampleUsage a owl:ObjectProperty ;
+    rdfs:domain mlk:QuotientClass ;
+    rdfs:range rdf:Statement ;
+    rdfs:label "has example usage"@en ;
+    rdfs:comment "Links a quotient class to an example RDF reified statement (rdf:Statement). The statement encodes an illustrative triple (rdf:subject, rdf:predicate, rdf:object) intended to help interpret the class."@en .
+
+mlk:hasQuotientClass a owl:ObjectProperty ;
+    rdfs:range mlk:QuotientClass ;
+    rdfs:label "has quotient class"@en ;
+    rdfs:comment "Links an RDF resource to its quotient class. Used in the quotient's index."@en .
+
+mlk:typesInclude a owl:ObjectProperty ;
+    rdfs:domain mlk:QuotientClass ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "types include"@en ;
+    rdfs:comment "Indicates RDF types observed or inferred for at least one member of this quotient class in the source graph."@en .
+
+mlk:literalQuotientClass a mlk:QuotientClass ;
+     rdfs:comment "Quotient class reserved for literal nodes of the source graph(s) (objects that are RDF literals)."@en ;
+     rdfs:label "Literal quotient class"@en .
+
+mlk:blankNodeInstanceCount a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain mlk:QuotientClass ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "blank node instance count"@en ;
+    rdfs:comment "Indicates the number of blank node instances represented by this quotient class in the source graph."@en .
+
+mlk:uriInstanceCount a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain mlk:QuotientClass ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "URI instance count"@en ;
+    rdfs:comment "Indicates the number of URI instances represented by this quotient class in the source graph."@en .
+

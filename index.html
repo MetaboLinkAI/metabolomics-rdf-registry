@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaboLinkAI Metabolomics RDF Resource Registry</title>
+    <style>
+        :root {
+            --bg: #0f1414;
+            --panel: #161d1d;
+            --line: #2a3535;
+            --ink: #e8efee;
+            --ink-dim: #93a5a3;
+            --accent: #5fd4c4;
+            --accent-dim: #2c5952;
+            --warn: #e0a83e;
+            --bad: #d9694f;
+            --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+            --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--sans);
+            line-height: 1.5;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+        header {
+            border-bottom: 1px solid var(--line);
+            padding: 2.5rem 2rem 1.75rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 0.6rem;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem;
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .sub {
+            color: var(--ink-dim);
+            max-width: 68ch;
+            margin: 0 0 1.25rem;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 0.55rem 0.9rem;
+            border-radius: 3px;
+        }
+
+        .btn.primary {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn:hover {
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+
+        .btn.primary:hover {
+            background: var(--accent-dim);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.75rem 2rem 4rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        input#search {
+            flex: 1;
+            min-width: 220px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 0.6rem 0.8rem;
+            border-radius: 3px;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+        }
+
+        input#search:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .count {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--ink-dim);
+            margin-bottom: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 1.1rem 1.25rem;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .card h3 a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-dim);
+        }
+
+        .card h3 a:hover {
+            border-color: var(--accent);
+        }
+
+        .compass-icon {
+            margin-right: 0.4rem;
+            cursor: default;
+        }
+
+        .status {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .status.active {
+            color: var(--accent);
+            border: 1px solid var(--accent-dim);
+        }
+
+        .status.unstable {
+            color: var(--warn);
+            border: 1px solid #4a3d20;
+        }
+
+        .status.deprecated {
+            color: var(--bad);
+            border: 1px solid #4a2b20;
+        }
+
+        .status.unknown {
+            color: var(--ink-dim);
+            border: 1px solid var(--line);
+        }
+
+        .size-badge {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--ink-dim);
+            border: 1px solid var(--line);
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+        }
+
+        .desc {
+            color: var(--ink-dim);
+            margin: 0.5rem 0 0.75rem;
+            font-size: 0.92rem;
+            white-space: pre-line;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--ink-dim);
+        }
+
+        .tag {
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 0.1rem 0.5rem;
+            border-radius: 2px;
+            font-size: 0.72rem;
+        }
+
+        .access-links {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .access-links a {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-dim);
+        }
+
+        .access-links a:hover {
+            border-bottom-style: solid;
+        }
+
+        .access-links .unavailable {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--ink-dim);
+            opacity: 0.6;
+        }
+
+        .empty {
+            color: var(--ink-dim);
+            font-family: var(--mono);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+            color: var(--ink-dim);
+            font-size: 0.8rem;
+            font-family: var(--mono);
+        }
+
+        footer a {
+            color: var(--accent);
+        }
+
+        footer p {
+            margin: 0.6rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <p class="eyebrow">MetaboLinkAI Knowledge Hub</p>
+    <h1>Metabolomics RDF Resource Registry</h1>
+    <p class="sub">A curated catalogue of RDF datasets and SPARQL endpoints relevant to metabolomics.</p>
+    <div class="cta-row">
+        <a class="btn primary" href="global_quotient/quotient.html" target="_blank" rel="noopener noreferrer">See Federation
+            Map</a>
+        <a class="btn" href="https://github.com/metabolinkai/metabolomics-rdf-registry" target="_blank"
+           rel="noopener noreferrer">View repository</a>
+        <a class="btn primary"
+           href="https://github.com/metabolinkai/metabolomics-rdf-registry/issues/new?template=new-endpoint.yml"
+           target="_blank" rel="noopener noreferrer">+ Suggest a Resource</a>
+    </div>
+</header>
+
+<main>
+    <div class="controls">
+        <input id="search" type="text" placeholder="Search name, description, keywords...">
+    </div>
+
+    <p class="count" id="count">43 of 43 maps</p>
+
+    <div class="grid" id="grid">
+            <div class="card"
+                 data-search="agora2 agora2 metabolic models converted from sbml/xml to rdf/turtle using sbml2rdf (https://github.com/emetabohub/sbml2rdf).   sbml/xml zip">
+                <div class="card-top">
+                    <h3>
+                        <a href="agora2/quotient.html" target="_blank" rel="noopener noreferrer">AGORA2</a>
+                    </h3>
+                </div>
+
+<p class="desc">AGORA2 metabolic models converted from SBML/XML to RDF/Turtle using SBML2RDF (https://github.com/eMetaboHUB/SBML2RDF). </p>
+                    <div class="meta">
+<span>SBML/XML ZIP</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="agora2/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="agora2/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://www.vmh.life/files/reconstructions/AGORA2/version2.01/sbml_files_fixed/zipped/AGORA2_models/AGORA2_SBML.zip" target="_blank" rel="noopener noreferrer">source data ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="agora2 to taxa derived graph linking agora2 models to ncbi taxon identifiers.  n-triples">
+                <div class="card-top">
+                    <h3>
+                        <a href="agora_to_taxa/quotient.html" target="_blank" rel="noopener noreferrer">AGORA2 to taxa</a>
+                    </h3>
+                </div>
+
+<p class="desc">Derived graph linking AGORA2 models to NCBI taxon identifiers.</p>
+                    <div class="meta">
+<span>N-Triples</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="agora_to_taxa/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="agora_to_taxa/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="aop-wiki adverse outcome pathways: molecular initiating events, key events, chemical stressors, kers pathway  smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="aop_wiki/quotient.html" target="_blank" rel="noopener noreferrer">AOP-Wiki</a>
+                    </h3>
+                </div>
+
+<p class="desc">Adverse outcome pathways: molecular initiating events, key events, chemical stressors, KERs</p>
+                    <div class="meta">
+<span class="tag">Pathway</span>                            <span class="tag">SmallMolecule</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="aop_wiki/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="aop_wiki/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://aopwiki.rdf.bigcat-bioinformatics.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://raw.githubusercontent.com/marvinm2/AOPWikiRDF/master/data/AOPWikiRDF.ttl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="chebi small biologically relevant chemical compounds: curated structures, ontology, roles  rdf/xml (gzip) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="chebi/quotient.html" target="_blank" rel="noopener noreferrer">ChEBI</a>
+                    </h3>
+                </div>
+
+<p class="desc">Small biologically relevant chemical compounds: curated structures, ontology, roles</p>
+                    <div class="meta">
+                            <span class="tag">SmallMolecule</span><span>RDF/XML (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="chebi/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="chebi/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://idsm.elixir-czech.cz/sparql/endpoint/chebi" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="chembl chembl bioactive molecules, targets, and bioassays  turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="chembl/quotient.html" target="_blank" rel="noopener noreferrer">ChEMBL</a>
+                    </h3>
+                </div>
+
+<p class="desc">ChEMBL bioactive molecules, targets, and bioassays</p>
+                    <div class="meta">
+                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="chembl/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="chembl/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://chemblmirror.rdf.bigcat-bioinformatics.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/latest/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="enpkg natural products knowledge graph.  turtle archive smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="enpkg/quotient.html" target="_blank" rel="noopener noreferrer">ENPKG</a>
+                    </h3>
+                </div>
+
+<p class="desc">Natural products knowledge graph.</p>
+                    <div class="meta">
+                            <span class="tag">SmallMolecule</span><span>Turtle archive</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="enpkg/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="enpkg/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://enpkg.commons-lab.org/graphdb/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://zenodo.org/api/records/7824642/files-archive" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm chebi–mesh forvm component graph linking chebi and mesh resources. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_chebi_mesh/quotient.html" target="_blank" rel="noopener noreferrer">FORVM ChEBI–MeSH</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph linking ChEBI and MeSH resources.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_chebi_mesh/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_chebi_mesh/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm cid–mesh forvm component graph linking pubchem cids and mesh resources. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_cid_mesh/quotient.html" target="_blank" rel="noopener noreferrer">FORVM CID–MeSH</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph linking PubChem CIDs and MeSH resources.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_cid_mesh/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_cid_mesh/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm cid–scr disease forvm component graph linking pubchem cids to supplementary-concept disease annotations. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_cid_scr_disease/quotient.html" target="_blank" rel="noopener noreferrer">FORVM CID–SCR disease</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph linking PubChem CIDs to supplementary-concept disease annotations.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_cid_scr_disease/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_cid_scr_disease/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm mappings forvm mapping graph used to connect identifiers across metabolomics knowledge graphs. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_mappings/quotient.html" target="_blank" rel="noopener noreferrer">FORVM mappings</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM mapping graph used to connect identifiers across metabolomics knowledge graphs.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_mappings/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_mappings/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm mesh–mesh forvm component graph containing mesh-to-mesh relationships. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_mesh_mesh/quotient.html" target="_blank" rel="noopener noreferrer">FORVM MeSH–MeSH</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph containing MeSH-to-MeSH relationships.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_mesh_mesh/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_mesh_mesh/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm mesh–scr disease forvm component graph linking mesh terms to supplementary-concept disease annotations. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_mesh_scr_disease/quotient.html" target="_blank" rel="noopener noreferrer">FORVM MeSH–SCR disease</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph linking MeSH terms to supplementary-concept disease annotations.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_mesh_scr_disease/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_mesh_scr_disease/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm pmid–cid forvm component graph linking pubmed identifiers and pubchem compound identifiers. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_pmid_cid/quotient.html" target="_blank" rel="noopener noreferrer">FORVM PMID–CID</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph linking PubMed identifiers and PubChem compound identifiers.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_pmid_cid/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_pmid_cid/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="forvm species–mesh forvm component graph connecting sbml sourced species information with mesh annotations. forvm ">
+                <div class="card-top">
+                    <h3>
+                        <a href="forum_species_mesh/quotient.html" target="_blank" rel="noopener noreferrer">FORVM species–MeSH</a>
+                    </h3>
+                </div>
+
+<p class="desc">FORVM component graph connecting SBML sourced species information with MeSH annotations.</p>
+                    <div class="meta">
+<span class="tag">FORVM</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="forum_species_mesh/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="forum_species_mesh/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://forum.semantic-metabolomics.fr/sparql/" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://github.com/eMetaboHUB/Forum-DiseasesChem" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="gene ontology &#34;the world’s largest source of information on the functions of genes&#34;  rdf/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="gene_ontology/quotient.html" target="_blank" rel="noopener noreferrer">Gene Ontology</a>
+                    </h3>
+                </div>
+
+<p class="desc">&#34;the world’s largest source of information on the functions of genes&#34;</p>
+                    <div class="meta">
+<span>RDF/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="gene_ontology/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="gene_ontology/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="http://purl.obolibrary.org/obo/go.owl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="human-gem human genome-scale metabolic model converted from sbml/xml to rdf/turtle using sbml2rdf (https://github.com/emetabohub/sbml2rdf).  sbml/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="human_gem/quotient.html" target="_blank" rel="noopener noreferrer">Human-GEM</a>
+                    </h3>
+                </div>
+
+<p class="desc">Human genome-scale metabolic model converted from SBML/XML to RDF/Turtle using SBML2RDF (https://github.com/eMetaboHUB/SBML2RDF).</p>
+                    <div class="meta">
+<span>SBML/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="human_gem/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="human_gem/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://raw.githubusercontent.com/SysBioChalmers/Human-GEM/main/model/Human-GEM.xml" target="_blank" rel="noopener noreferrer">source data ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="knapsack rdfized dataset in the knapsack family database.  n-triples (gzip)">
+                <div class="card-top">
+                    <h3>
+                        <a href="knapsack/quotient.html" target="_blank" rel="noopener noreferrer">KNApSAcK</a>
+                    </h3>
+                </div>
+
+<p class="desc">RDFized dataset in the KNApSAcK family database.</p>
+                    <div class="meta">
+<span>N-Triples (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="knapsack/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="knapsack/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://rdfportal.org/ntriples/knapsack/latest/knapsack_core.nt.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="lipid maps lipid structures, classification, and metabolism: lipidomics standard reference  turtle smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="lipidmaps/quotient.html" target="_blank" rel="noopener noreferrer">LIPID MAPS</a>
+                    </h3>
+                </div>
+
+<p class="desc">Lipid structures, classification, and metabolism: lipidomics standard reference</p>
+                    <div class="meta">
+                            <span class="tag">SmallMolecule</span><span>Turtle</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="lipidmaps/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="lipidmaps/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://lipidmaps.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://www.lipidmaps.org/files/?file=sparql_lipids&amp;ext=ttl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="mesh rdf   n-triples (gzip)">
+                <div class="card-top">
+                    <h3>
+                        <a href="mesh/quotient.html" target="_blank" rel="noopener noreferrer">MeSH RDF</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>N-Triples (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="mesh/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="mesh/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="metanetx biochemical compounds and reactions reconciled across metabolic model namespaces  turtle (gzip) molecularactivity smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="metanetx/quotient.html" target="_blank" rel="noopener noreferrer">MetaNetX</a>
+                    </h3>
+                </div>
+
+<p class="desc">Biochemical compounds and reactions reconciled across metabolic model namespaces</p>
+                    <div class="meta">
+                            <span class="tag">MolecularActivity</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="metanetx/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="metanetx/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdf.metanetx.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://www.metanetx.org/ftp/latest/MNXref.ttl.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="ncbi taxonomy   rdf/xml (gzip)">
+                <div class="card-top">
+                    <h3>
+                        <a href="ncbitaxon/quotient.html" target="_blank" rel="noopener noreferrer">NCBI Taxonomy</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>RDF/XML (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="ncbitaxon/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="ncbitaxon/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://api.github.com/repos/obophenotype/ncbitaxon/releases/latest/ncbitaxon.owl.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="plant experimental conditions ontology (peco)   rdf/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="peco_ontology/quotient.html" target="_blank" rel="noopener noreferrer">Plant Experimental Conditions Ontology (PECO)</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>RDF/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="peco_ontology/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="peco_ontology/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="http://purl.obolibrary.org/obo/peco.owl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="plant metabolic pathways wiki plant metabolic pathways: curated enzymes, reactions, and compounds   molecularactivity pathway smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="plantmetwiki/quotient.html" target="_blank" rel="noopener noreferrer">Plant Metabolic Pathways Wiki</a>
+                    </h3>
+                </div>
+
+<p class="desc">Plant metabolic pathways: curated enzymes, reactions, and compounds</p>
+                    <div class="meta">
+                            <span class="tag">MolecularActivity</span>                            <span class="tag">Pathway</span>                            <span class="tag">SmallMolecule</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="plantmetwiki/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="plantmetwiki/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://plantmetwiki.bioinformatics.nl/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <span class="unavailable">no RDF source</span>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="plant ontology   rdf/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="plant_ontology/quotient.html" target="_blank" rel="noopener noreferrer">Plant Ontology</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>RDF/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="plant_ontology/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="plant_ontology/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="http://purl.obolibrary.org/obo/po.owl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="plant stress ontology   rdf/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="plant_stress_ontology/quotient.html" target="_blank" rel="noopener noreferrer">Plant Stress Ontology</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>RDF/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="plant_stress_ontology/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="plant_stress_ontology/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="http://purl.obolibrary.org/obo/pso.owl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="plant trait ontology   rdf/xml">
+                <div class="card-top">
+                    <h3>
+                        <a href="plant_trait_ontology/quotient.html" target="_blank" rel="noopener noreferrer">Plant Trait Ontology</a>
+                    </h3>
+                </div>
+
+
+                    <div class="meta">
+<span>RDF/XML</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="plant_trait_ontology/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="plant_trait_ontology/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="http://purl.obolibrary.org/obo/to.owl" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — compound links between pubchem compounds, chemical descriptors, and related compounds. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_compound_general/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — compound</a>
+                    </h3>
+                </div>
+
+<p class="desc">Links between PubChem compounds, chemical descriptors, and related compounds.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_compound_general/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_compound_general/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/compound/general/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — compound descriptors descriptor entities and values associated with pubchem compounds. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_descriptor_compound/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — compound descriptors</a>
+                    </h3>
+                </div>
+
+<p class="desc">Descriptor entities and values associated with PubChem compounds.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_descriptor_compound/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_descriptor_compound/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/descriptor/compound/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — concept semantic links related to biomedical concepts used to annotate pubchem rdf. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_concept/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — concept</a>
+                    </h3>
+                </div>
+
+<p class="desc">Semantic links related to biomedical concepts used to annotate PubChem RDF.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_concept/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_concept/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/concept/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — cooccurrence co-occurrence relations between named entities derived from biomedical literature and linked to pubchem rdf subdomains. pubchem rdf turtle (gzip, multiple files) gene disease smallmolecule publication">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_cooccurrence/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — cooccurrence</a>
+                    </h3>
+                </div>
+
+<p class="desc">Co-occurrence relations between named entities derived from biomedical literature and linked to PubChem RDF subdomains.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">Gene</span>                            <span class="tag">Disease</span>                            <span class="tag">SmallMolecule</span>                            <span class="tag">Publication</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_cooccurrence/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_cooccurrence/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/cooccurrence/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — disease semantic links for disease entities, including labels and cross-references. pubchem rdf turtle (gzip, multiple files) disease">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_disease/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — disease</a>
+                    </h3>
+                </div>
+
+<p class="desc">Semantic links for disease entities, including labels and cross-references.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">Disease</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_disease/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_disease/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/disease/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — inchikey links standard inchikeys with pubchem compound cids. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_inchikey/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — InChIKey</a>
+                    </h3>
+                </div>
+
+<p class="desc">Links standard InChIKeys with PubChem Compound CIDs.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_inchikey/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_inchikey/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/inchikey/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — pathway semantic links for pathway entities, including titles, sources, and cross-references. pubchem rdf turtle (gzip, multiple files) pathway">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_pathway/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — pathway</a>
+                    </h3>
+                </div>
+
+<p class="desc">Semantic links for pathway entities, including titles, sources, and cross-references.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">Pathway</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_pathway/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_pathway/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/pathway/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — reference literature information and cross-links to other resources. pubchem rdf turtle (gzip, multiple files) publication">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_reference/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — reference</a>
+                    </h3>
+                </div>
+
+<p class="desc">Literature information and cross-links to other resources.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">Publication</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_reference/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_reference/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/reference/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — substance links pubchem substances to descriptors, standardized compounds, measurement groups, and data sources. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_substance/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — substance</a>
+                    </h3>
+                </div>
+
+<p class="desc">Links PubChem substances to descriptors, standardized compounds, measurement groups, and data sources.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_substance/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_substance/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — substance descriptors descriptor entities and values associated with pubchem substances. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_descriptor_substance/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — substance descriptors</a>
+                    </h3>
+                </div>
+
+<p class="desc">Descriptor entities and values associated with PubChem substances.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_descriptor_substance/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_descriptor_substance/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/descriptor/substance/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — synonym links chemical substance names to pubchem compound cids and substance sids. pubchem rdf turtle (gzip, multiple files) smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_synonym/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — synonym</a>
+                    </h3>
+                </div>
+
+<p class="desc">Links chemical substance names to PubChem Compound CIDs and Substance SIDs.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">SmallMolecule</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_synonym/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_synonym/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/synonym/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="pubchem rdf — taxonomy semantic links for taxonomy entities, including labels and cross-references. pubchem rdf turtle (gzip, multiple files) organismtaxon">
+                <div class="card-top">
+                    <h3>
+                        <a href="pubchem_taxonomy/quotient.html" target="_blank" rel="noopener noreferrer">PubChem RDF — taxonomy</a>
+                    </h3>
+                </div>
+
+<p class="desc">Semantic links for taxonomy entities, including labels and cross-references.</p>
+                    <div class="meta">
+<span class="tag">PubChem RDF</span>                            <span class="tag">OrganismTaxon</span><span>Turtle (gzip, multiple files)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="pubchem_taxonomy/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="pubchem_taxonomy/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://rdfportal.org/pubchem/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/taxonomy/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="reactome biopax reactome pathway data distributed as biopax.  biopax / rdf/xml zip">
+                <div class="card-top">
+                    <h3>
+                        <a href="reactome_biopax/quotient.html" target="_blank" rel="noopener noreferrer">Reactome BioPAX</a>
+                    </h3>
+                </div>
+
+<p class="desc">Reactome pathway data distributed as BioPAX.</p>
+                    <div class="meta">
+<span>BioPAX / RDF/XML ZIP</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="reactome_biopax/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="reactome_biopax/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <span class="unavailable">no endpoint</span>
+
+                            <a href="https://reactome.org/download/current/biopax.zip" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="rhea biopax rhea biochemical reaction data distributed as biopax.  biopax / rdf/xml (gzip)">
+                <div class="card-top">
+                    <h3>
+                        <a href="rhea_biopax/quotient.html" target="_blank" rel="noopener noreferrer">Rhea BioPAX</a>
+                    </h3>
+                </div>
+
+<p class="desc">Rhea biochemical reaction data distributed as BioPAX.</p>
+                    <div class="meta">
+<span>BioPAX / RDF/XML (gzip)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="rhea_biopax/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="rhea_biopax/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="swisslipids lipid structures, metabolism, and biological relationships.   smallmolecule">
+                <div class="card-top">
+                    <h3>
+                        <a href="swisslipids/quotient.html" target="_blank" rel="noopener noreferrer">SwissLipids</a>
+                    </h3>
+                </div>
+
+<p class="desc">Lipid structures, metabolism, and biological relationships.</p>
+                    <div class="meta">
+                            <span class="tag">SmallMolecule</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="swisslipids/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="swisslipids/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://sparql.swisslipids.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://sparql.swisslipids.org/" target="_blank" rel="noopener noreferrer">source data ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="wikidata filtered wikidata rdf derived from the wikimedia n-triples entity dump.  n-triples (bzip2)">
+                <div class="card-top">
+                    <h3>
+                        <a href="wikidata/quotient.html" target="_blank" rel="noopener noreferrer">Wikidata</a>
+                    </h3>
+                </div>
+
+<p class="desc">Filtered Wikidata RDF derived from the Wikimedia N-Triples entity dump.</p>
+                    <div class="meta">
+<span>N-Triples (bzip2)</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="wikidata/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="wikidata/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+
+                            <a href="https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+            <div class="card"
+                 data-search="wikipathways biological pathways: community-curated, multi-species pathway turtle release archives">
+                <div class="card-top">
+                    <h3>
+                        <a href="wikipathways/quotient.html" target="_blank" rel="noopener noreferrer">WikiPathways</a>
+                    </h3>
+                </div>
+
+<p class="desc">Biological pathways: community-curated, multi-species</p>
+                    <div class="meta">
+<span class="tag">Pathway</span><span>Turtle release archives</span>                    </div>
+
+
+                <div class="access-links">
+                    <a href="wikipathways/quotient.html" target="_blank" rel="noopener noreferrer">map view ↗</a>
+                    <a href="wikipathways/quotient.ttl" target="_blank" rel="noopener noreferrer">map RDF ↗</a>
+
+                            <a href="https://sparql.wikipathways.org/sparql" target="_blank" rel="noopener noreferrer">SPARQL endpoint ↗</a>
+
+                            <a href="https://data.wikipathways.org/current/rdf/" target="_blank" rel="noopener noreferrer">source RDF ↗</a>
+
+                </div>
+            </div>
+    </div>
+
+    <p class="empty" id="empty" style="display:none;">No maps match your search.</p>
+</main>
+
+<footer>
+    <p>
+        43 computed graph quotients · release 2026-06-11T162537Z ·
+        generated 2026-10-01T12:53:44.580338Z
+    </p>
+    <p>
+        Published quotient RDF is also available through the
+        <a href="https://ts.opendata.inrae.fr/graphs/sparql" target="_blank" rel="noopener noreferrer">INRAE SPARQL interface</a>
+        using graph <code>https://opendata.inrae.fr/metabolinkai/releases/2026-06-11T162537Z</code>.
+    </p>
+    <p>
+        Quotient vocabulary:
+        <a href="quotient-vocabulary.ttl" download>quotient-vocabulary.ttl</a>.
+    </p>
+    <p>
+        This work was carried out as part of the <a href="https://www.metabolinkai.net/">MetabolinkAI project</a> and
+        relies on software components developed by the <a href="https://www.metabohub.fr/">MetaboHub research
+        infrastructure</a>.
+        All software used to generate and publish these summaries is available as open-source software:
+    </p>
+
+    <ul>
+        <li>
+            Distributed quotient computation:
+            <a href="https://forge.inrae.fr/mss/quotient">Quotient summarisation tool</a>.
+            This quotient implementation is derived from the <a href="https://rdfquotient.inria.fr/">RDFQuotient</a>
+            project.
+        </li>
+        <li>
+            OWL/RDFS reasoning:
+            <a href="https://forge.inrae.fr/mss/reasoners">Reasoners</a>
+        </li>
+        <li>
+            Result aggregation and web-view generation:
+            <a href="https://forge.inrae.fr/mss/quotientextractor">Quotient Extractor</a>
+        </li>
+        <li>
+            Automated update workflows:
+            <a href="https://forge.inrae.fr/mss/msdworkflows">MSD Workflows</a>
+        </li>
+    </ul>
+
+    <p>
+        The computations were performed on the Metabolomics Semantic Datalake (MSD), described in
+        <a href="https://hal.science/hal-04655538/document">this publication</a>.
+        The MSD is hosted on the UCA/OSCAR platform; further information is available in the <a
+            href="https://hub.mesocentre.uca.fr/docs/oscar/overview/">OSCAR documentation</a>.
+    </p>
+
+    <p>
+        When reusing a quotient, consult the provenance and licensing
+        information associated with its original source graph. Publication
+        here does not replace the licence or attribution requirements of the
+        source dataset.
+    </p>
+
+    <p>
+        The quotient-generation software is licensed under the GNU
+        General Public License version 3 or later (GPL-3.0-or-later).
+        Except for identified source-derived content, the generated quotient
+        datasets, including their computed structure, statistics and
+        presentation, are licensed under the Creative Commons Attribution
+        4.0 International licence (CC BY 4.0).
+    </p>
+
+    <p>
+        Preferred citation:
+        <cite>
+            MetaboLinkAI Knowledge Hub, MetabolinkAI project, 2026,
+            <a href="https://metabolinkai.github.io/metabolomics-rdf-registry/">
+                https://metabolinkai.github.io/metabolomics-rdf-registry/
+            </a>
+        </cite>
+    </p>
+
+    <p>
+        The quotients are derived from third-party source datasets.
+        Identifiers, labels, statements, examples and other source-derived
+        content remain subject to the licences and terms of their respective
+        source datasets.
+    </p>
+</footer>
+
+
+<script>
+    (function () {
+        const cards = Array.from(document.querySelectorAll('.card'));
+        const countEl = document.getElementById('count');
+        const emptyEl = document.getElementById('empty');
+        const searchEl = document.getElementById('search');
+
+        function render() {
+            const q = searchEl.value.trim().toLowerCase();
+            let visible = 0;
+
+            for (const card of cards) {
+                const show = !q || card.dataset.search.includes(q);
+                card.style.display = show ? '' : 'none';
+                if (show) visible += 1;
+            }
+
+            countEl.textContent = `${visible} of ${cards.length} maps`;
+            emptyEl.style.display = visible ? 'none' : 'block';
+        }
+
+        searchEl.addEventListener('input', render);
+        render();
+    }());
+</script>
+
+</body>
+</html>

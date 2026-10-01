@@ -1,0 +1,181 @@
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_parasanguinis_atcc_903#Streptococcus_parasanguinis_ATCC_903.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_931447>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://inrae.fr/agora2ToTaxa/2025-12-05>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7283"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err2221388#Clostridiales_incertae_sedis_nov_ERR2221388.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_pneumoniae_pcs8106#Streptococcus_pneumoniae_PCS8106.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err1022419#Clostridiales_incertae_sedis_nov_ERR1022419.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_2010k_2599#Salmonella_enterica_subsp_enterica_serovar_Enteritidis_str_2010K_2599.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_61971>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://inrae.fr/agora2ToTaxa/2025-12-05>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "5844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "19"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://inrae.fr/agora2ToTaxa/ontology/hasUnresolvedTaxonMatch>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err2221283#Clostridiales_incertae_sedis_nov_ERR2221283.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/stomatobaculum_longum_acc2#Stomatobaculum_longum_ACC2.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/pseudomonas_putida_f1#Pseudomonas_putida_F1.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_cdc_2010k_1882#Salmonella_enterica_subsp_enterica_serovar_Enteritidis_str_CDC_2010K_1882.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/corynebacterium_matruchotii_nctc10254#Corynebacterium_matruchotii_NCTC10254.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1154789>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_411468>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err2221277#Clostridiales_incertae_sedis_nov_ERR2221277.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1194526>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_487215>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/corynebacterium_matruchotii_atcc_14266#Corynebacterium_matruchotii_ATCC_14266.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/sediminibacterium_salmoneum_nbrc_103935#Sediminibacterium_salmoneum_NBRC_103935.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://metabolinkai.net/quotient/exampleStatement/075a409e19852242c4ad8cc3e0c6561abdf6377a16fb61f8f38a6e1d0fd503fd>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                true;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://inrae.fr/agora2ToTaxa/ontology/hasUnresolvedTaxonMatch>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err1022334#Clostridiales_incertae_sedis_nov_ERR1022334.mat> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_410072>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/melainabacterium_mel_a1#Melainabacterium_MEL_A1.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_pneumoniae_pcs70012#Streptococcus_pneumoniae_PCS70012.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://inrae.fr/agora2ToTaxa/2025-12-05>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/075a409e19852242c4ad8cc3e0c6561abdf6377a16fb61f8f38a6e1d0fd503fd>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "19"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_cvm_56_3991#Salmonella_enterica_subsp_enterica_serovar_Enteritidis_str_CVM_56_3991.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7330"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers/hasTaxon>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1408223>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_b088#Escherichia_coli_B088.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1280>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridiales_incertae_sedis_nov_err2221176#Clostridiales_incertae_sedis_nov_ERR2221176.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_992083>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GZTBKj69az4> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/guyana_massiliensis_lf_3#Guyana_massiliensis_LF_3.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GNLi_TXM7tw> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/bacteroides_vulgatus_err2230134#Bacteroides_vulgatus_ERR2230134.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MSBr1hn5Qss> .

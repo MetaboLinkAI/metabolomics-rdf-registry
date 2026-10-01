@@ -1,0 +1,4937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quotient</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    body { display: flex; flex-direction: column; }
+
+    #controls {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      padding: 8px 10px; background: #f7f7f7; border-bottom: 1px solid #ddd;
+    }
+
+    #main { position: relative; flex: 1 1 auto; min-height: 0; }
+    #cy { position: absolute; inset: 0; }
+
+    #legendPane {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 320px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #legendHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+    #legendTitle { font-size: 13px; font-weight: 600; }
+
+    #legendBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    #legendBody .item {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
+    }
+    #legendBody .item:hover { background: #fafafa; }
+
+    .swatch {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.2);
+      margin-top: 2px;
+    }
+    .graphs { font-size: 12px; color: #333; line-height: 1.35; word-break: break-word; }
+    .graphs .g { display: block; margin-bottom: 4px; }
+
+    button, select, input {
+      padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff;
+      font-size: 13px;
+    }
+    input[type="checkbox"] { padding: 0; border: none; width: 14px; height: 14px; }
+    button { cursor: pointer; }
+    button:hover { background: #fafafa; }
+    #search { min-width: 260px; }
+    .spacer { flex: 1 1 auto; }
+    .hint { color: #555; font-size: 12px; }
+
+    #detailsPane {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+      min-width: 260px;
+      min-height: 120px;
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #detailsHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+
+    #detailsTitle { font-size: 13px; font-weight: 600; }
+    #detailsBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+
+    #detailsBody .secTitle { font-size: 12px; font-weight: 600; margin: 10px 0 6px; color: #333; }
+    #detailsBody .kv { font-size: 12px; color: #333; line-height: 1.35; }
+    #detailsBody table { min-width: 100%; border-collapse: collapse; font-size: 12px; }
+    #detailsBody td { padding: 4px 0; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+    #detailsBody .exList { margin-top: 4px; }
+    #detailsBody .exLine {
+      color: #666;
+      font-size: 11px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    #detailsBody {
+      padding: 10px;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: calc(45vh - 52px);
+    }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="controls">
+
+    <label class="hint" for="colorMode">Colors</label>
+    <select id="colorMode">
+      <option value="graph" selected>source graph</option>
+      <option value="class">quotient class</option>
+    </select>
+
+    <button id="toggleLegend" type="button">Show legend</button>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;">
+      <input id="showCloseMatches" type="checkbox" checked />
+      close matches
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show one aggregate node per literal-valued property">
+      <input id="showLiteralNodes" type="checkbox" checked />
+      literal nodes
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show properties whose objects were intentionally not aggregated">
+      <input id="showUbiquitousNodes" type="checkbox" checked />
+      non-aggregated values
+    </label>
+
+    <label class="hint" for="layoutSelect">Layout</label>
+    <select id="layoutSelect">
+      <option value="cose" >cose</option>
+      <option value="breadthfirst">breadthfirst</option>
+      <option value="grid">grid</option>
+      <option value="fcose" selected>fcose</option>
+    </select>
+    <button id="relayout" type="button">Re-layout</button>
+
+    <button id="fit" type="button">Fit</button>
+    <button id="zoomIn" type="button">Zoom +</button>
+    <button id="zoomOut" type="button">Zoom -</button>
+
+    <div class="spacer"></div>
+
+    <input id="search" type="search" placeholder="Search node (id/label)"/>
+    <span class="hint">Enter: focus • Esc: clear</span>
+  </div>
+  <div id="main">
+    <div id="cy"></div>
+
+    <aside id="legendPane" aria-label="Legend">
+      <div id="legendHeader">
+        <span id="legendTitle">Source graphs</span>
+        <span class="spacer"></span>
+        <input id="legendFilter" type="search" placeholder="Filter..." style="min-width: 120px;"/>
+      </div>
+      <div id="legendBody"></div>
+    </aside>
+
+    <aside id="detailsPane" aria-label="Details">
+      <div id="detailsHeader">
+        <span id="detailsTitle">Details</span>
+        <span class="spacer"></span>
+        <button id="closeDetails" type="button">Close</button>
+      </div>
+      <div id="detailsBody"></div>
+    </aside>
+
+
+  </div>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+  <script src="https://unpkg.com/cytoscape-layout-utilities/cytoscape-layout-utilities.js"></script>
+  <script type="application/json" id="cy-data">
+  {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/A64YYU6iPec",
+            "shortId": "A",
+            "hashId": "A64YYU6iPec",
+            "label": "A",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(21.479000000283122, 61%, 40%)",
+            "frameProperties": [],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D000262Q000819",
+              "http://id.nlm.nih.gov/mesh/D000804Q000037",
+              "http://id.nlm.nih.gov/mesh/D004802Q000037",
+              "http://id.nlm.nih.gov/mesh/D005247Q000037",
+              "http://id.nlm.nih.gov/mesh/D007728Q000037",
+              "http://id.nlm.nih.gov/mesh/D008024Q000037",
+              "http://id.nlm.nih.gov/mesh/D014556Q000032",
+              "http://id.nlm.nih.gov/mesh/D014969Q000031",
+              "http://id.nlm.nih.gov/mesh/D017209Q000037",
+              "http://id.nlm.nih.gov/mesh/D018040Q000031"
+            ],
+            "uriInstanceCount": 28,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "shortId": "B",
+            "hashId": "BEPkheOx1M0",
+            "label": "B\nDescriptorQualifierPair, AllowedDescriptorQualifierPair, owl:Thing",
+            "equivalences": [],
+            "tinyClasses": [
+              "DescriptorQualifierPair",
+              "AllowedDescriptorQualifierPair",
+              "owl:Thing"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#DescriptorQualifierPair",
+              "http://id.nlm.nih.gov/mesh/vocab#AllowedDescriptorQualifierPair",
+              "http://www.w3.org/2002/07/owl#Thing"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(46.71000000089407, 73%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 679888,
+                "objectKind": "literal",
+                "examples": [
+                  "D004881Q000175 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 52627,
+                "objectKind": "literal",
+                "examples": [
+                  "D015685Q000744 -> \"2017\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 2039664,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 670651,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D000075369Q000506",
+              "http://id.nlm.nih.gov/mesh/D002372Q000736",
+              "http://id.nlm.nih.gov/mesh/D003635Q000235",
+              "http://id.nlm.nih.gov/mesh/D007412Q000151",
+              "http://id.nlm.nih.gov/mesh/D007945Q000652",
+              "http://id.nlm.nih.gov/mesh/D014010Q000473",
+              "http://id.nlm.nih.gov/mesh/D014292Q000494",
+              "http://id.nlm.nih.gov/mesh/D014997Q000531",
+              "http://id.nlm.nih.gov/mesh/D050565Q000097",
+              "http://id.nlm.nih.gov/mesh/D051276Q000737"
+            ],
+            "uriInstanceCount": 679888,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "shortId": "C",
+            "hashId": "BdNsTVp_EnY",
+            "label": "C\nowl:Thing, SCR_Disease, SupplementaryConceptRecord",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Thing",
+              "SCR_Disease",
+              "SupplementaryConceptRecord"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Disease",
+              "http://id.nlm.nih.gov/mesh/vocab#SupplementaryConceptRecord"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 6771,
+                "objectKind": "literal",
+                "examples": [
+                  "C564970 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 6771,
+                "objectKind": "literal",
+                "examples": [
+                  "C538165 -> \"2010-06-25\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 3840,
+                "objectKind": "literal",
+                "examples": [
+                  "C538325 -> \"2013-11-06\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#frequency",
+                "predLabel": "frequency",
+                "count": 6748,
+                "objectKind": "literal",
+                "examples": [
+                  "C536444 -> \"0\"^^xsd:int"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 6771,
+                "objectKind": "literal",
+                "examples": [
+                  "C000721350 -> \"C000721350\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 226,
+                "objectKind": "literal",
+                "examples": [
+                  "C566847 -> \"2015\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#note",
+                "predLabel": "note",
+                "count": 2103,
+                "objectKind": "literal",
+                "examples": [
+                  "C535669 -> \"A pre-cancerous condition of the lower lip caused by chronic sun exposure. It presents as diffuse dry patches of vari...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 115,
+                "objectKind": "literal",
+                "examples": [
+                  "C563745 -> \"IMMUNOLOGIC DEFICIENCY SYNDROMES (2013-2019)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#source",
+                "predLabel": "source",
+                "count": 97,
+                "objectKind": "literal",
+                "examples": [
+                  "C535458 -> \"Am J Med Genet. 20(1):145-58\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 20313,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 6771,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C536303",
+              "http://id.nlm.nih.gov/mesh/C536962",
+              "http://id.nlm.nih.gov/mesh/C537579",
+              "http://id.nlm.nih.gov/mesh/C538081",
+              "http://id.nlm.nih.gov/mesh/C564503",
+              "http://id.nlm.nih.gov/mesh/C564685",
+              "http://id.nlm.nih.gov/mesh/C564755",
+              "http://id.nlm.nih.gov/mesh/C565449",
+              "http://id.nlm.nih.gov/mesh/C566873",
+              "http://id.nlm.nih.gov/mesh/C580047"
+            ],
+            "uriInstanceCount": 6771,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "shortId": "D",
+            "hashId": "Df9hB-nDNW0",
+            "label": "D\nowl:Class",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Class"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Class"
+            ],
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(251.61500000022352, 73%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/terms/description",
+                "predLabel": "dcterms:description",
+                "count": 24,
+                "objectKind": "literal",
+                "examples": [
+                  "TopicalDescriptor -> \"Topical Descriptors indicate the subject of an indexed item such as a journal article. See D063926, 'Drug Hypersensit...\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 24,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 24,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt",
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/vocabulary_0.9.3.ttl"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/vocab#DisallowedDescriptorQualifierPair",
+              "http://id.nlm.nih.gov/mesh/vocab#GeographicalDescriptor",
+              "http://id.nlm.nih.gov/mesh/vocab#PublicationType",
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Disease",
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Protocol",
+              "http://id.nlm.nih.gov/mesh/vocab#SupplementaryConceptRecord",
+              "http://id.nlm.nih.gov/mesh/vocab#Term",
+              "http://id.nlm.nih.gov/mesh/vocab#TopicalDescriptor",
+              "http://id.nlm.nih.gov/mesh/vocab#TreeNumber",
+              "http://www.w3.org/2002/07/owl#Thing"
+            ],
+            "uriInstanceCount": 13,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "shortId": "E",
+            "hashId": "EB-ufrKz0Ws",
+            "label": "E\nDescriptor, GeographicalDescriptor, owl:Thing",
+            "equivalences": [],
+            "tinyClasses": [
+              "Descriptor",
+              "GeographicalDescriptor",
+              "owl:Thing"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#Descriptor",
+              "http://id.nlm.nih.gov/mesh/vocab#GeographicalDescriptor",
+              "http://www.w3.org/2002/07/owl#Thing"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 401,
+                "objectKind": "literal",
+                "examples": [
+                  "D007055 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#annotation",
+                "predLabel": "annotation",
+                "count": 169,
+                "objectKind": "literal",
+                "examples": [
+                  "D010177 -> \"do not confuse with PANAMA\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 401,
+                "objectKind": "literal",
+                "examples": [
+                  "D017691 -> \"1993-05-26\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateEstablished",
+                "predLabel": "dateEstablished",
+                "count": 401,
+                "objectKind": "literal",
+                "examples": [
+                  "D010177 -> \"1966-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 391,
+                "objectKind": "literal",
+                "examples": [
+                  "D055787 -> \"2016-12-21\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#historyNote",
+                "predLabel": "historyNote",
+                "count": 169,
+                "objectKind": "literal",
+                "examples": [
+                  "D017691 -> \"94\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 401,
+                "objectKind": "literal",
+                "examples": [
+                  "D007055 -> \"D007055\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#onlineNote",
+                "predLabel": "onlineNote",
+                "count": 41,
+                "objectKind": "literal",
+                "examples": [
+                  "D014300 -> \"use TRINIDAD AND TOBAGO to search TRINIDAD 1966-78\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 58,
+                "objectKind": "literal",
+                "examples": [
+                  "D017516 -> \"specific geographic location (1966-1997)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1203,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 401,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D002163",
+              "http://id.nlm.nih.gov/mesh/D002641",
+              "http://id.nlm.nih.gov/mesh/D003223",
+              "http://id.nlm.nih.gov/mesh/D007597",
+              "http://id.nlm.nih.gov/mesh/D009426",
+              "http://id.nlm.nih.gov/mesh/D009850",
+              "http://id.nlm.nih.gov/mesh/D010154",
+              "http://id.nlm.nih.gov/mesh/D012529",
+              "http://id.nlm.nih.gov/mesh/D014744",
+              "http://id.nlm.nih.gov/mesh/D014905"
+            ],
+            "uriInstanceCount": 401,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "shortId": "F",
+            "hashId": "JCUImBPLmtI",
+            "label": "F\nowl:Thing, Qualifier",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Thing",
+              "Qualifier"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#Qualifier"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000534 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#annotation",
+                "predLabel": "annotation",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000819 -> \"subhead only; for exogenous & endogenous substances; do not confuse with /antagonists & inhibitors; see MeSH scope no...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000032 -> \"1973-12-27\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateEstablished",
+                "predLabel": "dateEstablished",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000032 -> \"1967-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000451 -> \"2003-07-24\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#historyNote",
+                "predLabel": "historyNote",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000473 -> \"66; used with Category A, C & F 1966-74; A, C & F3 1975-86; A, C, F3 & AGING 1987; A, C, F3, AGING, BRONCHOALVEOLAR L...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 84,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000534 -> \"Q000534\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 8,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000364 -> \"2018\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#onlineNote",
+                "predLabel": "onlineNote",
+                "count": 82,
+                "objectKind": "literal",
+                "examples": [
+                  "Q000032 -> \"search policy: Online Manual; use: main heading/AN or AN (SH) or SUBS APPLY AN\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 168,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 84,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/Q000031",
+              "http://id.nlm.nih.gov/mesh/Q000097",
+              "http://id.nlm.nih.gov/mesh/Q000151",
+              "http://id.nlm.nih.gov/mesh/Q000254",
+              "http://id.nlm.nih.gov/mesh/Q000302",
+              "http://id.nlm.nih.gov/mesh/Q000494",
+              "http://id.nlm.nih.gov/mesh/Q000503",
+              "http://id.nlm.nih.gov/mesh/Q000506",
+              "http://id.nlm.nih.gov/mesh/Q000592",
+              "http://id.nlm.nih.gov/mesh/Q000627"
+            ],
+            "uriInstanceCount": 84,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "shortId": "G",
+            "hashId": "MBXJsSeH6a4",
+            "label": "G\nSCR_Population",
+            "equivalences": [],
+            "tinyClasses": [
+              "SCR_Population"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Population"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 1764,
+                "objectKind": "literal",
+                "examples": [
+                  "C000725122 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 1764,
+                "objectKind": "literal",
+                "examples": [
+                  "C000725970 -> \"2022-11-30\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 1764,
+                "objectKind": "literal",
+                "examples": [
+                  "C000724945 -> \"2022-11-29\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#frequency",
+                "predLabel": "frequency",
+                "count": 1762,
+                "objectKind": "literal",
+                "examples": [
+                  "C000725447 -> \"0\"^^xsd:int"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 1764,
+                "objectKind": "literal",
+                "examples": [
+                  "C000724945 -> \"C000724945\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1764,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 1764,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C000724480",
+              "http://id.nlm.nih.gov/mesh/C000724598",
+              "http://id.nlm.nih.gov/mesh/C000725130",
+              "http://id.nlm.nih.gov/mesh/C000725193",
+              "http://id.nlm.nih.gov/mesh/C000725383",
+              "http://id.nlm.nih.gov/mesh/C000725493",
+              "http://id.nlm.nih.gov/mesh/C000725778",
+              "http://id.nlm.nih.gov/mesh/C000725958",
+              "http://id.nlm.nih.gov/mesh/C000725994",
+              "http://id.nlm.nih.gov/mesh/C000725999"
+            ],
+            "uriInstanceCount": 1764,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/OYJ61UE_8iI",
+            "shortId": "H",
+            "hashId": "OYJ61UE_8iI",
+            "label": "H\nowl:Class",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Class"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Class"
+            ],
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(60.26699999999255, 85%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/terms/description",
+                "predLabel": "dcterms:description",
+                "count": 6,
+                "objectKind": "literal",
+                "examples": [
+                  "SCR_Chemical -> \"These are chemicals, drugs, enzymes, vitamins, etc.\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 6,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 6,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt",
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/vocabulary_0.9.3.ttl"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/vocab#AllowedDescriptorQualifierPair",
+              "http://id.nlm.nih.gov/mesh/vocab#CheckTag",
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Chemical"
+            ],
+            "uriInstanceCount": 3,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "shortId": "I",
+            "hashId": "QenWHU_heHQ",
+            "label": "I\nSCR_Chemical, owl:Thing, SupplementaryConceptRecord",
+            "equivalences": [],
+            "tinyClasses": [
+              "SCR_Chemical",
+              "owl:Thing",
+              "SupplementaryConceptRecord"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Chemical",
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#SupplementaryConceptRecord"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 250445,
+                "objectKind": "literal",
+                "examples": [
+                  "C000597826 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 250445,
+                "objectKind": "literal",
+                "examples": [
+                  "C000597826 -> \"2015-05-20\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 181964,
+                "objectKind": "literal",
+                "examples": [
+                  "C000597826 -> \"2015-05-20\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#frequency",
+                "predLabel": "frequency",
+                "count": 249075,
+                "objectKind": "literal",
+                "examples": [
+                  "C470548 -> \"3\"^^xsd:int"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 250445,
+                "objectKind": "literal",
+                "examples": [
+                  "C064934 -> \"C064934\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 2449,
+                "objectKind": "literal",
+                "examples": [
+                  "C121182 -> \"2018\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#note",
+                "predLabel": "note",
+                "count": 215031,
+                "objectKind": "literal",
+                "examples": [
+                  "C532970 -> \"has been sequenced\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 55785,
+                "objectKind": "literal",
+                "examples": [
+                  "C000590533 -> \"*Carrier Proteins (2014-2020)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#source",
+                "predLabel": "source",
+                "count": 253757,
+                "objectKind": "literal",
+                "examples": [
+                  "C045332 -> \"Br J Pharmacol 1985;84(3):595\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 751335,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 250445,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C000626446",
+              "http://id.nlm.nih.gov/mesh/C021927",
+              "http://id.nlm.nih.gov/mesh/C054028",
+              "http://id.nlm.nih.gov/mesh/C079154",
+              "http://id.nlm.nih.gov/mesh/C414177",
+              "http://id.nlm.nih.gov/mesh/C449743",
+              "http://id.nlm.nih.gov/mesh/C499330",
+              "http://id.nlm.nih.gov/mesh/C504343",
+              "http://id.nlm.nih.gov/mesh/C506935",
+              "http://id.nlm.nih.gov/mesh/C527763"
+            ],
+            "uriInstanceCount": 250445,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/QyEI7VDS5yY",
+            "shortId": "J",
+            "hashId": "QyEI7VDS5yY",
+            "label": "J\nowl:Ontology",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Ontology"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Ontology"
+            ],
+            "graphColor": "hsl(325.9330000001937, 85%, 50%)",
+            "classColor": "hsl(332.77900000009686, 55%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#versionInfo",
+                "predLabel": "owl:versionInfo",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "http://id.nlm.nih.gov/mesh/vocab# -> \"0.9.3\""
+                ]
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/vocabulary_0.9.3.ttl"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/vocab#"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "shortId": "K",
+            "hashId": "UFUmfBTNSGg",
+            "label": "K\nTerm, owl:Thing",
+            "equivalences": [],
+            "tinyClasses": [
+              "Term",
+              "owl:Thing"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#Term",
+              "http://www.w3.org/2002/07/owl#Thing"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(207.82100000046194, 67%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#abbreviation",
+                "predLabel": "abbreviation",
+                "count": 81,
+                "objectKind": "literal",
+                "examples": [
+                  "T061190 -> \"SC\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 869536,
+                "objectKind": "literal",
+                "examples": [
+                  "T000988663 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#altLabel",
+                "predLabel": "altLabel",
+                "count": 133000,
+                "objectKind": "literal",
+                "examples": [
+                  "T749422 -> \"Agents, Dentin Desensitizing\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 639130,
+                "objectKind": "literal",
+                "examples": [
+                  "T000983800 -> \"2019-10-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#entryVersion",
+                "predLabel": "entryVersion",
+                "count": 16273,
+                "objectKind": "literal",
+                "examples": [
+                  "T047582 -> \"RECEPT EXTRACELLULAR MATRIX GLYCOPROTEIN\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 869536,
+                "objectKind": "literal",
+                "examples": [
+                  "T275831 -> \"T275831\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 13105,
+                "objectKind": "literal",
+                "examples": [
+                  "T579690 -> \"2017\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lexicalTag",
+                "predLabel": "lexicalTag",
+                "count": 869536,
+                "objectKind": "literal",
+                "examples": [
+                  "T200212 -> \"NON\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#prefLabel",
+                "predLabel": "prefLabel",
+                "count": 869536,
+                "objectKind": "literal",
+                "examples": [
+                  "T109403 -> \"cysteinylhomocysteine mixed disulfide\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#sortVersion",
+                "predLabel": "sortVersion",
+                "count": 3973,
+                "objectKind": "literal",
+                "examples": [
+                  "T031672 -> \"CDPDIACYLGLYCEROL SERINE PHOSPHATIDYLTRANSFERASE O\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#thesaurusID",
+                "predLabel": "thesaurusID",
+                "count": 916022,
+                "objectKind": "literal",
+                "examples": [
+                  "T000988663 -> \"NLM (2020)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1739072,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 1002536,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/T001079002",
+              "http://id.nlm.nih.gov/mesh/T131998",
+              "http://id.nlm.nih.gov/mesh/T236967",
+              "http://id.nlm.nih.gov/mesh/T304680",
+              "http://id.nlm.nih.gov/mesh/T416509",
+              "http://id.nlm.nih.gov/mesh/T419535",
+              "http://id.nlm.nih.gov/mesh/T507957",
+              "http://id.nlm.nih.gov/mesh/T552596",
+              "http://id.nlm.nih.gov/mesh/T641073",
+              "http://id.nlm.nih.gov/mesh/T774240"
+            ],
+            "uriInstanceCount": 869536,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "shortId": "L",
+            "hashId": "UlH7i-h0flw",
+            "label": "L\nDescriptor, owl:Thing, TopicalDescriptor",
+            "equivalences": [],
+            "tinyClasses": [
+              "Descriptor",
+              "owl:Thing",
+              "TopicalDescriptor"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#Descriptor",
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#TopicalDescriptor"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 30248,
+                "objectKind": "literal",
+                "examples": [
+                  "D053634 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#annotation",
+                "predLabel": "annotation",
+                "count": 12233,
+                "objectKind": "literal",
+                "examples": [
+                  "D014139 -> \"do not confuse with TRACHEOTOMY\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#considerAlso",
+                "predLabel": "considerAlso",
+                "count": 67,
+                "objectKind": "literal",
+                "examples": [
+                  "D013016 -> \"consider also terms at PHON-\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 30248,
+                "objectKind": "literal",
+                "examples": [
+                  "D048690 -> \"2004-07-07\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateEstablished",
+                "predLabel": "dateEstablished",
+                "count": 30248,
+                "objectKind": "literal",
+                "examples": [
+                  "D053584 -> \"2007-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 28792,
+                "objectKind": "literal",
+                "examples": [
+                  "D013517 -> \"1997-06-20\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#historyNote",
+                "predLabel": "historyNote",
+                "count": 26473,
+                "objectKind": "literal",
+                "examples": [
+                  "D058534 -> \"2011\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 30248,
+                "objectKind": "literal",
+                "examples": [
+                  "D048690 -> \"D048690\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 76,
+                "objectKind": "literal",
+                "examples": [
+                  "D028525 -> \"2018\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#nlmClassificationNumber",
+                "predLabel": "nlmClassificationNumber",
+                "count": 6255,
+                "objectKind": "literal",
+                "examples": [
+                  "D008533 -> \"WH 380\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#onlineNote",
+                "predLabel": "onlineNote",
+                "count": 2927,
+                "objectKind": "literal",
+                "examples": [
+                  "D003787 -> \"search DENTAL PULP MUMMIFICATION under DENTAL PULP 1966-69\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 27189,
+                "objectKind": "literal",
+                "examples": [
+                  "D056811 -> \"Protein Folding (1995-2009)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#publicMeSHNote",
+                "predLabel": "publicMeSHNote",
+                "count": 26386,
+                "objectKind": "literal",
+                "examples": [
+                  "D005955 -> \"64\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 90744,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 30262,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D000073935",
+              "http://id.nlm.nih.gov/mesh/D002006",
+              "http://id.nlm.nih.gov/mesh/D002194",
+              "http://id.nlm.nih.gov/mesh/D008730",
+              "http://id.nlm.nih.gov/mesh/D014070",
+              "http://id.nlm.nih.gov/mesh/D015799",
+              "http://id.nlm.nih.gov/mesh/D018656",
+              "http://id.nlm.nih.gov/mesh/D026581",
+              "http://id.nlm.nih.gov/mesh/D041161",
+              "http://id.nlm.nih.gov/mesh/D052162"
+            ],
+            "uriInstanceCount": 30248,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "shortId": "M",
+            "hashId": "Vcv7ZWwIILg",
+            "label": "M\nPublicationType, Descriptor, owl:Thing",
+            "equivalences": [],
+            "tinyClasses": [
+              "PublicationType",
+              "Descriptor",
+              "owl:Thing"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#PublicationType",
+              "http://id.nlm.nih.gov/mesh/vocab#Descriptor",
+              "http://www.w3.org/2002/07/owl#Thing"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 189,
+                "objectKind": "literal",
+                "examples": [
+                  "D016449 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#annotation",
+                "predLabel": "annotation",
+                "count": 186,
+                "objectKind": "literal",
+                "examples": [
+                  "D016449 -> \"this heading is used as a Publication Type; for original report of the conduct or results of a specific randomized co...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 189,
+                "objectKind": "literal",
+                "examples": [
+                  "D020465 -> \"1998-06-03\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateEstablished",
+                "predLabel": "dateEstablished",
+                "count": 189,
+                "objectKind": "literal",
+                "examples": [
+                  "D020497 -> \"1999-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 189,
+                "objectKind": "literal",
+                "examples": [
+                  "D016449 -> \"2015-04-15\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#historyNote",
+                "predLabel": "historyNote",
+                "count": 185,
+                "objectKind": "literal",
+                "examples": [
+                  "D016449 -> \"2008(1991)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 189,
+                "objectKind": "literal",
+                "examples": [
+                  "D016449 -> \"D016449\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#nlmClassificationNumber",
+                "predLabel": "nlmClassificationNumber",
+                "count": 12,
+                "objectKind": "literal",
+                "examples": [
+                  "D000078928 -> \"WB 930\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 10,
+                "objectKind": "literal",
+                "examples": [
+                  "D000077522 -> \"Clinical Trial (1996-2018)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 567,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 189,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D000095493",
+              "http://id.nlm.nih.gov/mesh/D013485",
+              "http://id.nlm.nih.gov/mesh/D013486",
+              "http://id.nlm.nih.gov/mesh/D016418",
+              "http://id.nlm.nih.gov/mesh/D016426",
+              "http://id.nlm.nih.gov/mesh/D016456",
+              "http://id.nlm.nih.gov/mesh/D019479",
+              "http://id.nlm.nih.gov/mesh/D020485",
+              "http://id.nlm.nih.gov/mesh/D052180",
+              "http://id.nlm.nih.gov/mesh/D055824"
+            ],
+            "uriInstanceCount": 189,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/WPdyAE3jAac",
+            "shortId": "N",
+            "hashId": "WPdyAE3jAac",
+            "label": "N\nowl:Thing, Descriptor, CheckTag",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Thing",
+              "Descriptor",
+              "CheckTag"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#Descriptor",
+              "http://id.nlm.nih.gov/mesh/vocab#CheckTag"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(280.05099999997765, 73%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#annotation",
+                "predLabel": "annotation",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"check tag only for female organs, diseases, physiologic processes, genetics, etc.; do not confuse with WOMEN as a soc...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"1999-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateEstablished",
+                "predLabel": "dateEstablished",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"1966-01-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"2015-06-10\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#historyNote",
+                "predLabel": "historyNote",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"1966; for FEMALES use WOMEN 1978-2005\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 2,
+                "objectKind": "literal",
+                "examples": [
+                  "D005260 -> \"D005260\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 6,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 2,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D005260",
+              "http://id.nlm.nih.gov/mesh/D008297"
+            ],
+            "uriInstanceCount": 2,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "shortId": "O",
+            "hashId": "X9oy_vbouHE",
+            "label": "O\nDisallowedDescriptorQualifierPair, owl:Thing, DescriptorQualifierPair",
+            "equivalences": [],
+            "tinyClasses": [
+              "DisallowedDescriptorQualifierPair",
+              "owl:Thing",
+              "DescriptorQualifierPair"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#DisallowedDescriptorQualifierPair",
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#DescriptorQualifierPair"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 1041,
+                "objectKind": "literal",
+                "examples": [
+                  "D005170Q000172 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 47,
+                "objectKind": "literal",
+                "examples": [
+                  "D001940Q000736 -> \"2016\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 3123,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 1038,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/D003165Q000037",
+              "http://id.nlm.nih.gov/mesh/D003813Q000266",
+              "http://id.nlm.nih.gov/mesh/D006321Q000601",
+              "http://id.nlm.nih.gov/mesh/D008829Q000379",
+              "http://id.nlm.nih.gov/mesh/D010944Q000166",
+              "http://id.nlm.nih.gov/mesh/D018100Q000819",
+              "http://id.nlm.nih.gov/mesh/D019388Q000037",
+              "http://id.nlm.nih.gov/mesh/D020782Q000037",
+              "http://id.nlm.nih.gov/mesh/D053773Q000172",
+              "http://id.nlm.nih.gov/mesh/D058474Q000819"
+            ],
+            "uriInstanceCount": 1041,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "shortId": "P",
+            "hashId": "XTNaJJK7_js",
+            "label": "P\nSCR_Anatomy",
+            "equivalences": [],
+            "tinyClasses": [
+              "SCR_Anatomy"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Anatomy"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 24,
+                "objectKind": "literal",
+                "examples": [
+                  "C000728973 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 24,
+                "objectKind": "literal",
+                "examples": [
+                  "C000729048 -> \"2023-07-18\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 24,
+                "objectKind": "literal",
+                "examples": [
+                  "C000728887 -> \"2023-07-07\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 24,
+                "objectKind": "literal",
+                "examples": [
+                  "C000729048 -> \"C000729048\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "C000728748 -> \"2023\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#note",
+                "predLabel": "note",
+                "count": 17,
+                "objectKind": "literal",
+                "examples": [
+                  "C000728887 -> \"a transient embryonic structure involved in carapace development.\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 24,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 24,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C000728828",
+              "http://id.nlm.nih.gov/mesh/C000728831",
+              "http://id.nlm.nih.gov/mesh/C000728887",
+              "http://id.nlm.nih.gov/mesh/C000728888",
+              "http://id.nlm.nih.gov/mesh/C000728960",
+              "http://id.nlm.nih.gov/mesh/C000729048",
+              "http://id.nlm.nih.gov/mesh/C000729049",
+              "http://id.nlm.nih.gov/mesh/C000729050",
+              "http://id.nlm.nih.gov/mesh/C000729067",
+              "http://id.nlm.nih.gov/mesh/C000729071"
+            ],
+            "uriInstanceCount": 24,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "shortId": "Q",
+            "hashId": "Y2hjJS-TjHw",
+            "label": "Q\nSCR_Organism",
+            "equivalences": [],
+            "tinyClasses": [
+              "SCR_Organism"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Organism"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 66571,
+                "objectKind": "literal",
+                "examples": [
+                  "C000665420 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 66571,
+                "objectKind": "literal",
+                "examples": [
+                  "C000698299 -> \"2020-10-01\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 66571,
+                "objectKind": "literal",
+                "examples": [
+                  "C000660049 -> \"2020-09-29\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#frequency",
+                "predLabel": "frequency",
+                "count": 66107,
+                "objectKind": "literal",
+                "examples": [
+                  "C000681890 -> \"0\"^^xsd:int"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 66571,
+                "objectKind": "literal",
+                "examples": [
+                  "C000665420 -> \"C000665420\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 848,
+                "objectKind": "literal",
+                "examples": [
+                  "C000663713 -> \"2021\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#note",
+                "predLabel": "note",
+                "count": 43,
+                "objectKind": "literal",
+                "examples": [
+                  "C000726635 -> \"annual killifishes\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 29,
+                "objectKind": "literal",
+                "examples": [
+                  "C000657866 -> \"Peptostreptococcus (1992-2020)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#source",
+                "predLabel": "source",
+                "count": 3,
+                "objectKind": "literal",
+                "examples": [
+                  "C000721667 -> \"Front Immunol. 2021 Jul 14;12:694759.\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 66571,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 66571,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C000630496",
+              "http://id.nlm.nih.gov/mesh/C000643055",
+              "http://id.nlm.nih.gov/mesh/C000648501",
+              "http://id.nlm.nih.gov/mesh/C000650962",
+              "http://id.nlm.nih.gov/mesh/C000668475",
+              "http://id.nlm.nih.gov/mesh/C000671412",
+              "http://id.nlm.nih.gov/mesh/C000680204",
+              "http://id.nlm.nih.gov/mesh/C000681607",
+              "http://id.nlm.nih.gov/mesh/C000693345",
+              "http://id.nlm.nih.gov/mesh/C000694335"
+            ],
+            "uriInstanceCount": 66571,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "shortId": "R",
+            "hashId": "Z4QQiRM3JdI",
+            "label": "R\nowl:Thing, TreeNumber",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Thing",
+              "TreeNumber"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#TreeNumber"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(43.4820000003092, 55%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 81732,
+                "objectKind": "literal",
+                "examples": [
+                  "D12.644.400.837 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 17186,
+                "objectKind": "literal",
+                "examples": [
+                  "D23.101.100.110.608 -> \"2016\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 163464,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 81732,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/A11.284.430.214.190.875.248.300.610",
+              "http://id.nlm.nih.gov/mesh/A11.671.501.145.500",
+              "http://id.nlm.nih.gov/mesh/B03.510.400.800.872.875",
+              "http://id.nlm.nih.gov/mesh/B04.715.150.500",
+              "http://id.nlm.nih.gov/mesh/D06.472.699.631.525.600.480",
+              "http://id.nlm.nih.gov/mesh/D08.811.277.450.207.500",
+              "http://id.nlm.nih.gov/mesh/M01.270.968.500.600.531",
+              "http://id.nlm.nih.gov/mesh/N03.349.330",
+              "http://id.nlm.nih.gov/mesh/N06.850.780.200.600",
+              "http://id.nlm.nih.gov/mesh/V02.250"
+            ],
+            "uriInstanceCount": 81732,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "shortId": "S",
+            "hashId": "bkaDjLttBpk",
+            "label": "S\nSupplementaryConceptRecord, owl:Thing, SCR_Protocol",
+            "equivalences": [],
+            "tinyClasses": [
+              "SupplementaryConceptRecord",
+              "owl:Thing",
+              "SCR_Protocol"
+            ],
+            "classes": [
+              "http://id.nlm.nih.gov/mesh/vocab#SupplementaryConceptRecord",
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#SCR_Protocol"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 1237,
+                "objectKind": "literal",
+                "examples": [
+                  "C056325 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateCreated",
+                "predLabel": "dateCreated",
+                "count": 1237,
+                "objectKind": "literal",
+                "examples": [
+                  "C081728 -> \"1993-07-15\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#dateRevised",
+                "predLabel": "dateRevised",
+                "count": 1169,
+                "objectKind": "literal",
+                "examples": [
+                  "C056325 -> \"2000-11-30\"^^xsd:date"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#frequency",
+                "predLabel": "frequency",
+                "count": 1219,
+                "objectKind": "literal",
+                "examples": [
+                  "C076544 -> \"1\"^^xsd:int"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 1237,
+                "objectKind": "literal",
+                "examples": [
+                  "C076544 -> \"C076544\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "C000705128 -> \"2022\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#note",
+                "predLabel": "note",
+                "count": 1211,
+                "objectKind": "literal",
+                "examples": [
+                  "C096399 -> \"chemotherapy protocol consisting of above compounds; used in the treatment of metastatic breast cancer\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#previousIndexing",
+                "predLabel": "previousIndexing",
+                "count": 221,
+                "objectKind": "literal",
+                "examples": [
+                  "C062042 -> \"BLEOMYCINS (90-95)\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#source",
+                "predLabel": "source",
+                "count": 1215,
+                "objectKind": "literal",
+                "examples": [
+                  "C076544 -> \"Acta Haematol 1991;22(1):6-20\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 3711,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 1237,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/C039505",
+              "http://id.nlm.nih.gov/mesh/C045033",
+              "http://id.nlm.nih.gov/mesh/C049079",
+              "http://id.nlm.nih.gov/mesh/C051760",
+              "http://id.nlm.nih.gov/mesh/C056589",
+              "http://id.nlm.nih.gov/mesh/C072507",
+              "http://id.nlm.nih.gov/mesh/C084309",
+              "http://id.nlm.nih.gov/mesh/C085007",
+              "http://id.nlm.nih.gov/mesh/C096219",
+              "http://id.nlm.nih.gov/mesh/C107288"
+            ],
+            "uriInstanceCount": 1237,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "shortId": "T",
+            "hashId": "csJhEg9Mfio",
+            "label": "T\nowl:Thing, Concept",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Thing",
+              "Concept"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Thing",
+              "http://id.nlm.nih.gov/mesh/vocab#Concept"
+            ],
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)",
+            "frameProperties": [
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#active",
+                "predLabel": "active",
+                "count": 466976,
+                "objectKind": "literal",
+                "examples": [
+                  "M000687152 -> \"true\"^^xsd:boolean"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#casn1_label",
+                "predLabel": "casn1_label",
+                "count": 22632,
+                "objectKind": "literal",
+                "examples": [
+                  "M0128553 -> \"5'-Guanylic acid, 2'-deoxycytidylyl-(5'-3')-, (2S-(1(R*(R*)),2alpha,3abeta,7abeta))-\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#identifier",
+                "predLabel": "identifier",
+                "count": 466976,
+                "objectKind": "literal",
+                "examples": [
+                  "M0452765 -> \"M0452765\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#lastActiveYear",
+                "predLabel": "lastActiveYear",
+                "count": 4454,
+                "objectKind": "literal",
+                "examples": [
+                  "M0398163 -> \"2015\"@en"
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#registryNumber",
+                "predLabel": "registryNumber",
+                "count": 387312,
+                "objectKind": "literal",
+                "examples": [
+                  "M0544554 -> \"0\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#relatedRegistryNumber",
+                "predLabel": "relatedRegistryNumber",
+                "count": 43964,
+                "objectKind": "literal",
+                "examples": [
+                  "M0213989 -> \"03173PR31Y\""
+                ]
+              },
+              {
+                "predUri": "http://id.nlm.nih.gov/mesh/vocab#scopeNote",
+                "predLabel": "scopeNote",
+                "count": 33127,
+                "objectKind": "literal",
+                "examples": [
+                  "M0017970 -> \"The major of two hallucinogenic components of the sacred Teonanacatl mushrooms (see PSILOCYBE), the other component b...\"@en"
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 933952,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 466976,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+            ],
+            "exampleMembers": [
+              "http://id.nlm.nih.gov/mesh/M000649373",
+              "http://id.nlm.nih.gov/mesh/M000651991",
+              "http://id.nlm.nih.gov/mesh/M000673380",
+              "http://id.nlm.nih.gov/mesh/M0053525",
+              "http://id.nlm.nih.gov/mesh/M0267028",
+              "http://id.nlm.nih.gov/mesh/M0267906",
+              "http://id.nlm.nih.gov/mesh/M0493844",
+              "http://id.nlm.nih.gov/mesh/M0506416",
+              "http://id.nlm.nih.gov/mesh/M0519887",
+              "http://id.nlm.nih.gov/mesh/M0523125"
+            ],
+            "uriInstanceCount": 466976,
+            "blankNodeInstanceCount": 0
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "e0",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "label": "hasDescriptor",
+            "displayLabel": "hasDescriptor x800",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#hasDescriptor",
+            "count": 800,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(46.71000000089407, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e1",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "hasDescriptor",
+            "displayLabel": "hasDescriptor x679088",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#hasDescriptor",
+            "count": 679088,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(46.71000000089407, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e2",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "hasQualifier",
+            "displayLabel": "hasQualifier x679888",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#hasQualifier",
+            "count": 679888,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(46.71000000089407, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e3",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x7380",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 7380,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e4",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/A64YYU6iPec",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x10",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 10,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e5",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e6",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x41",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 41,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e7",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x1970",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 1970,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e8",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x12078",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 12078,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e9",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e10",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x6771",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 6771,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e11",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x1967",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 1967,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e12",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x11685",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 11685,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e13",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e14",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x6771",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 6771,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e15",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BdNsTVp_EnY",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x6771",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 6771,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.84400000050664, 79%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e16",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "label": "rdfs:subClassOf",
+            "displayLabel": "rdfs:subClassOf x38",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+            "count": 38,
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(251.61500000022352, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e17",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "label": "owl:disjointWith",
+            "displayLabel": "owl:disjointWith x38",
+            "predUri": "http://www.w3.org/2002/07/owl#disjointWith",
+            "count": 38,
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(251.61500000022352, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e18",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "allowableQualifier",
+            "displayLabel": "allowableQualifier x800",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#allowableQualifier",
+            "count": 800,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e19",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "label": "broader",
+            "displayLabel": "broader x438",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 438,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e20",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "broader",
+            "displayLabel": "broader x40",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 40,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e21",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "label": "broaderDescriptor",
+            "displayLabel": "broaderDescriptor x438",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor",
+            "count": 438,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e22",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "broaderDescriptor",
+            "displayLabel": "broaderDescriptor x40",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor",
+            "count": 40,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e23",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x510",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 510,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e24",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x401",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 401,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e25",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x401",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 401,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e26",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x401",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 401,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e27",
+            "source": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "label": "treeNumber",
+            "displayLabel": "treeNumber x517",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#treeNumber",
+            "count": 517,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(290.8600000003353, 73%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e28",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "broader",
+            "displayLabel": "broader x76",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 76,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e29",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "broaderQualifier",
+            "displayLabel": "broaderQualifier x76",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderQualifier",
+            "count": 76,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e30",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x240",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 240,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e31",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x84",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 84,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e32",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x84",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 84,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e33",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x84",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 84,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e34",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "label": "treeNumber",
+            "displayLabel": "treeNumber x99",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#treeNumber",
+            "count": 99,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(200.41700000036508, 85%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e35",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x1782",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 1782,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e36",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x1792",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 1792,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e37",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x1764",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 1764,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e38",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x1780",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 1780,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e39",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x1764",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 1764,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e40",
+            "source": "https://metabolinkai.net/quotient/quotientClass/MBXJsSeH6a4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x1764",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 1764,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(197.77800000016578, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e41",
+            "source": "https://metabolinkai.net/quotient/quotientClass/OYJ61UE_8iI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "label": "rdfs:subClassOf",
+            "displayLabel": "rdfs:subClassOf x12",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+            "count": 12,
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(60.26699999999255, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e42",
+            "source": "https://metabolinkai.net/quotient/quotientClass/OYJ61UE_8iI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Df9hB-nDNW0",
+            "label": "owl:disjointWith",
+            "displayLabel": "owl:disjointWith x12",
+            "predUri": "http://www.w3.org/2002/07/owl#disjointWith",
+            "count": 12,
+            "graphColor": "hsl(65.90200000000186, 73%, 50%)",
+            "classColor": "hsl(60.26699999999255, 85%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e43",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x329695",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 329695,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e44",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/A64YYU6iPec",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x107",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 107,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e45",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x6595",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 6595,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e46",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x38597",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 38597,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e47",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x80",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 80,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e48",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x33455",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 33455,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e49",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x317935",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 317935,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e50",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "pharmacologicalAction",
+            "displayLabel": "pharmacologicalAction x10630",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#pharmacologicalAction",
+            "count": 10630,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e51",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x250445",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 250445,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e52",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x33426",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 33426,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e53",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x312376",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 312376,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e54",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x250445",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 250445,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e55",
+            "source": "https://metabolinkai.net/quotient/quotientClass/QenWHU_heHQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x250445",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 250445,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(68.9210000000894, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e56",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "allowableQualifier",
+            "displayLabel": "allowableQualifier x627288",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#allowableQualifier",
+            "count": 627288,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e57",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "label": "broader",
+            "displayLabel": "broader x4",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 4,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e58",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "broader",
+            "displayLabel": "broader x41416",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 41416,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e59",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/EB-ufrKz0Ws",
+            "label": "broaderDescriptor",
+            "displayLabel": "broaderDescriptor x4",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor",
+            "count": 4,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e60",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "broaderDescriptor",
+            "displayLabel": "broaderDescriptor x41416",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor",
+            "count": 41416,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e61",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x60404",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 60404,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e62",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "pharmacologicalAction",
+            "displayLabel": "pharmacologicalAction x5076",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#pharmacologicalAction",
+            "count": 5076,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e63",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x30248",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 30248,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e64",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x30248",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 30248,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e65",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "seeAlso",
+            "displayLabel": "seeAlso x9124",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#seeAlso",
+            "count": 9124,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e66",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "label": "seeAlso",
+            "displayLabel": "seeAlso x2",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#seeAlso",
+            "count": 2,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e67",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x30248",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 30248,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e68",
+            "source": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "label": "treeNumber",
+            "displayLabel": "treeNumber x63811",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#treeNumber",
+            "count": 63811,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(279.63500000024214, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e69",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "label": "broader",
+            "displayLabel": "broader x216",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 216,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e70",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "label": "broaderDescriptor",
+            "displayLabel": "broaderDescriptor x216",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor",
+            "count": 216,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e71",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x241",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 241,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e72",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x189",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 189,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e73",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x189",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 189,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e74",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "label": "seeAlso",
+            "displayLabel": "seeAlso x67",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#seeAlso",
+            "count": 67,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e75",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x189",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 189,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e76",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Vcv7ZWwIILg",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "label": "treeNumber",
+            "displayLabel": "treeNumber x233",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#treeNumber",
+            "count": 233,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(158.0789999999106, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e77",
+            "source": "https://metabolinkai.net/quotient/quotientClass/WPdyAE3jAac",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x2",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 2,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(280.05099999997765, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e78",
+            "source": "https://metabolinkai.net/quotient/quotientClass/WPdyAE3jAac",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x2",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 2,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(280.05099999997765, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e79",
+            "source": "https://metabolinkai.net/quotient/quotientClass/WPdyAE3jAac",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x2",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 2,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(280.05099999997765, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e80",
+            "source": "https://metabolinkai.net/quotient/quotientClass/WPdyAE3jAac",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x2",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 2,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(280.05099999997765, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e81",
+            "source": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "hasDescriptor",
+            "displayLabel": "hasDescriptor x1041",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#hasDescriptor",
+            "count": 1041,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e82",
+            "source": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JCUImBPLmtI",
+            "label": "hasQualifier",
+            "displayLabel": "hasQualifier x1041",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#hasQualifier",
+            "count": 1041,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e83",
+            "source": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "useInstead",
+            "displayLabel": "useInstead x50",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#useInstead",
+            "count": 50,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e84",
+            "source": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "useInstead",
+            "displayLabel": "useInstead x990",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#useInstead",
+            "count": 990,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e85",
+            "source": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "useInstead",
+            "displayLabel": "useInstead x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#useInstead",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(232.01400000043213, 73%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e86",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x39",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 39,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e87",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x8",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 8,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e88",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x17",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 17,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e89",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x28",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 28,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e90",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x24",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 24,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e91",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x17",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 17,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e92",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x28",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 28,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e93",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x24",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 24,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e94",
+            "source": "https://metabolinkai.net/quotient/quotientClass/XTNaJJK7_js",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x24",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 24,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(323.08200000040233, 73%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e95",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x67177",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 67177,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e96",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/A64YYU6iPec",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x3",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 3,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e97",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x1741",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 1741,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e98",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x66839",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 66839,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e99",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x66571",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 66571,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e100",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x66269",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 66269,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e101",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x66571",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 66571,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e102",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Y2hjJS-TjHw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x66571",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 66571,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(78.16800000052899, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e103",
+            "source": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Z4QQiRM3JdI",
+            "label": "parentTreeNumber",
+            "displayLabel": "parentTreeNumber x350338",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#parentTreeNumber",
+            "count": 350338,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(43.4820000003092, 55%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e104",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "concept",
+            "displayLabel": "concept x1626",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#concept",
+            "count": 1626,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e105",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/A64YYU6iPec",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e106",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "indexerConsiderAlso",
+            "displayLabel": "indexerConsiderAlso x27",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#indexerConsiderAlso",
+            "count": 27,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e107",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x92",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 92,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e108",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x5984",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 5984,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e109",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "mappedTo",
+            "displayLabel": "mappedTo x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#mappedTo",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e110",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "pharmacologicalAction",
+            "displayLabel": "pharmacologicalAction x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#pharmacologicalAction",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e111",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "preferredConcept",
+            "displayLabel": "preferredConcept x1237",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredConcept",
+            "count": 1237,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e112",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BEPkheOx1M0",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x91",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 91,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e113",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UlH7i-h0flw",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x1265",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 1265,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e114",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/X9oy_vbouHE",
+            "label": "preferredMappedTo",
+            "displayLabel": "preferredMappedTo x1",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredMappedTo",
+            "count": 1,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e115",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x1237",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 1237,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e116",
+            "source": "https://metabolinkai.net/quotient/quotientClass/bkaDjLttBpk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x1237",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 1237,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(203.0230000000447, 79%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e117",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "Concept",
+            "displayLabel": "Concept x9",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#Concept",
+            "count": 9,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e118",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "broader",
+            "displayLabel": "broader x8883",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broader",
+            "count": 8883,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e119",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "broaderConcept",
+            "displayLabel": "broaderConcept x8883",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#broaderConcept",
+            "count": 8883,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e120",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "narrowerConcept",
+            "displayLabel": "narrowerConcept x92171",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#narrowerConcept",
+            "count": 92171,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e121",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "preferredTerm",
+            "displayLabel": "preferredTerm x466976",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#preferredTerm",
+            "count": 466976,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e122",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "label": "relatedConcept",
+            "displayLabel": "relatedConcept x8279",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#relatedConcept",
+            "count": 8279,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e123",
+            "source": "https://metabolinkai.net/quotient/quotientClass/csJhEg9Mfio",
+            "target": "https://metabolinkai.net/quotient/quotientClass/UFUmfBTNSGg",
+            "label": "term",
+            "displayLabel": "term x863697",
+            "predUri": "http://id.nlm.nih.gov/mesh/vocab#term",
+            "count": 863697,
+            "graphColor": "hsl(307.3740000000689, 55%, 50%)",
+            "classColor": "hsl(199.8960000006482, 61%, 40%)"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/json" id="legend-data">
+  [
+    {
+      "color": "hsl(307.3740000000689, 55%, 50%)",
+      "graphs": [
+        "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt"
+      ]
+    },
+    {
+      "color": "hsl(325.9330000001937, 85%, 50%)",
+      "graphs": [
+        "https://nlmpubs.nlm.nih.gov/projects/mesh/vocabulary_0.9.3.ttl"
+      ]
+    },
+    {
+      "color": "hsl(65.90200000000186, 73%, 50%)",
+      "graphs": [
+        "https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt",
+        "https://nlmpubs.nlm.nih.gov/projects/mesh/vocabulary_0.9.3.ttl"
+      ]
+    }
+  ]
+  </script>
+  <script>
+    /* app-core.js */
+
+    (function (global) {
+        'use strict';
+
+        function esc(s) {
+            return String(s ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[c]));
+        }
+
+        function formatCount(n) {
+            return Number(n ?? 0).toLocaleString('en-US');
+        }
+
+        function layoutOptions(name) {
+            if (name === 'breadthfirst') {
+                return {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 20,
+                    spacingFactor: 1.2,
+                    animate: 'end',
+                    fit: true
+                };
+            }
+
+            if (name === 'grid') {
+                return { name: 'grid', padding: 20, animate: false, fit: true };
+            }
+
+            if (name === 'cose') {
+                return {
+                    name: 'cose',
+                    padding: 30,
+                    animate: 'end',
+                    fit: true,
+                    randomize: true,
+                    idealEdgeLength: 150,
+                    nodeRepulsion: 50000,
+                    edgeElasticity: 220,
+                    gravity: 1,
+                    numIter: 1000
+                };
+            }
+
+            if (name === 'fcose') {
+                return {
+                    name: 'fcose',
+                    quality: 'proof',
+                    randomize: true,
+                    animate: 'end',
+                    fit: true,
+                    padding: 30,
+
+                    nodeDimensionsIncludeLabels: true,
+                    packComponents: true,
+                    tile: true,
+
+                    nodeSeparation: 200,
+                    nodeRepulsion: n => 8000 + 3000 * n.degree(),
+                    idealEdgeLength: () => 200,
+                    edgeElasticity: edge => edge.hasClass('closeMatch') ? .00000001 : 0.01,
+                    // edgeElasticity: 0.001,
+                    gravity: 0.25,
+                    numIter: 3000
+                };
+            }
+
+            // fallback
+            return { name: 'fcose', fit: true, padding: 30 };
+        }
+
+        function cyStyles() {
+            return [
+                {
+                    selector: 'node',
+                    style: {
+                        label: 'data(label)',
+                        'text-wrap': 'wrap',
+                        'text-max-width': 220,
+                        'background-color': 'data(color)',
+                        'border-width': 2,
+                        'border-color': '#666',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-size': 13,
+                        padding: 6,
+                        'text-outline-width': 2,
+                        'text-outline-color': '#fff'
+                    }
+                },
+                {
+                    selector: 'node.blankOnly',
+                    style: {
+                        'border-style': 'dashed',
+                        'border-width': 2,
+                        'border-color': '#222'
+                    }
+                },
+                {
+                    selector: 'node.literalNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#fff7d6',
+                        'border-style': 'dashed',
+                        'border-color': '#8a6d1d',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 48,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'node.ubiquitousNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#eeeeee',
+                        'border-style': 'dashed',
+                        'border-color': '#666666',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 52,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'curve-style': 'bezier',
+                        'control-point-step-size': 60,
+                        'line-color': 'data(color)',
+                        'target-arrow-color': 'data(color)',
+                        'target-arrow-shape': 'triangle',
+                        'arrow-scale': 0.9,
+                        label: 'data(displayLabel)',
+                        'font-size': 11,
+                        'text-rotation': 'autorotate',
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.85,
+                        'text-background-padding': 2,
+                        width: 'mapData(count, 1, 1000000, 1, 8)'
+                    }
+                },
+                {
+                    selector: 'edge.literalEdge',
+                    style: {
+                        'line-style': 'dotted',
+                        'line-color': '#8a6d1d',
+                        'target-arrow-color': '#8a6d1d',
+                        'width': 1.5
+                    }
+                },
+                {
+                    selector: 'edge.ubiquitousEdge',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#777777',
+                        'target-arrow-color': '#777777',
+                        'width': 1.25
+                    }
+                },
+                {
+                    selector: 'edge.closeMatch',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#888',
+                        'target-arrow-shape': 'none',
+                        'target-arrow-color': '#888',
+                        label: 'data(label)',
+                        'text-rotation': 'none',
+                        'font-size': 10,
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.8,
+                        'text-background-padding': 2,
+                        width: 1.5
+                    }
+                },
+                { selector: '.faded', style: { opacity: 0.15, 'text-opacity': 0.15 } },
+                { selector: '.highlighted', style: { 'border-width': 3, 'border-color': '#222' } },
+                { selector: 'edge.highlighted', style: { width: 5, opacity: 0.9 } }
+            ];
+        }
+
+        /**
+         * Pure HTML builder for details pane.
+         * Returns hidden lists so the caller can wire "Show more" buttons.
+         */
+        function buildDetailsHtml(nodeData, opts = {}) {
+            const {
+                maxGraphs = 8,
+                maxExampleMembers = 8
+            } = opts;
+
+            const displayId = nodeData.shortId ?? '';
+            const hashId = nodeData.hashId ?? '';
+            const fullIri = nodeData.id ?? '';
+            const exampleMembers = nodeData.exampleMembers ?? [];
+            const classes = nodeData.classes ?? [];
+            const closeMatches = nodeData.closeMatches ?? nodeData.equivalences ?? [];
+            const graphs = nodeData.graphs ?? [];
+            const literals = nodeData.literals ?? [];
+            const uriInstanceCount = nodeData.uriInstanceCount;
+            const blankNodeInstanceCount = nodeData.blankNodeInstanceCount;
+
+            const lits = literals.slice().sort((a, b) => (b.count || 0) - (a.count || 0));
+
+            let html = '';
+
+            if (hashId) {
+                html += `<div class="kv">Quotient Class ID: ${esc(hashId)}</div>`;
+            }
+
+            if (classes.length) {
+                html += `<div class="secTitle">Types</div>`;
+                html += `<div class="kv">${esc(classes.join(', '))}</div>`;
+            }
+
+            if (closeMatches.length) {
+                html += `<div class="secTitle">Close matches</div>`;
+                html += `<div class="kv">${esc(closeMatches.join(', '))}</div>`;
+            }
+
+            if (uriInstanceCount != null || blankNodeInstanceCount != null) {
+                const uriN = Number(uriInstanceCount ?? 0);
+                const blankN = Number(blankNodeInstanceCount ?? 0);
+                const totalN = uriN + blankN;
+
+                html += `<div class="secTitle">Instances</div>`;
+                html += `<div class="kv">
+                        URI resources: ${formatCount(uriN)}<br/>
+                        Blank nodes: ${formatCount(blankN)}<br/>
+                        Total: ${formatCount(totalN)}
+        </div>`;
+            }
+
+            let hiddenGraphs = [];
+            let hiddenExampleMembers = [];
+
+            if (exampleMembers.length) {
+                html += `<div class="secTitle">Example resources</div>`;
+
+                const shownMembers = exampleMembers.slice(0, maxExampleMembers);
+                hiddenExampleMembers = exampleMembers.slice(maxExampleMembers);
+
+                html += `<div class="kv">${esc(shownMembers.join(', '))}</div>`;
+
+                if (hiddenExampleMembers.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                            <button id="moreExampleMembers" type="button">Show ${hiddenExampleMembers.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Source graphs</div>`;
+
+            if (!graphs.length) {
+                html += `<div class="kv"><i>Not provided</i></div>`;
+            } else {
+                const shown = graphs.slice(0, maxGraphs);
+                hiddenGraphs = graphs.slice(maxGraphs);
+
+                html += `<div class="kv">${shown.map(esc).join('<br/>')}</div>`;
+
+                if (hiddenGraphs.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                                <button id="moreGraphs" type="button">Show ${hiddenGraphs.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Outgoing literal and ubiquitous properties</div>`;
+            if (!lits.length) {
+                html += `<div class="kv"><i>None</i></div>`;
+            } else {
+                html += `<table>`;
+                for (const l of lits) {
+                    const predShort = esc(l.predLabel || l.predUri || '');
+                    const predFull = l.predUri
+                        ? `<div class="kv" style="margin-top:2px;color:#666;font-size:11px;word-break:break-all;">${esc(l.predUri)}</div>`
+                        : '';
+
+                    const count = esc(l.count ?? 0);
+
+                    let exampleLines = [];
+
+                    if (Array.isArray(l.examples)) {
+                        exampleLines = l.examples;
+                    } else if (l.examples && typeof l.examples === 'object') {
+                        // Tolerate object-shaped arrays / array-like values
+                        exampleLines = Object.keys(l.examples)
+                            .sort((a, b) => Number(a) - Number(b))
+                            .map(k => l.examples[k]);
+                    } else if (l.examples != null && String(l.examples).length) {
+                        exampleLines = [l.examples];
+                    } else if (l.example != null && String(l.example).length) {
+                        exampleLines = [l.example];
+                    }
+
+                    exampleLines = exampleLines.filter(v => v != null && String(v).length);
+
+                    const ex = exampleLines.length
+                        ? `<div class="exList">${exampleLines.map(v => `<div class="exLine">${esc(v)}</div>`).join('')}</div>`
+                        : '';
+
+                    html += `<tr>
+                                <td title="${esc(l.predUri || '')}">${predShort}${predFull}${ex}</td>
+                                <td class="num">x${count}</td>
+                            </tr>`;
+                }
+                html += `</table>`;
+            }
+
+            return {title: "Class " + String(displayId), html, hiddenGraphs, hiddenExampleMembers};
+        }
+
+        /**
+         * Wires "show more" buttons for the details pane.
+         * Supports:
+         *   - old call style: wireDetailsMoreButtons(detailsBody, hiddenGraphsArray)
+         *   - new call style: wireDetailsMoreButtons(detailsBody, { hiddenGraphs, hiddenExampleMembers })
+         */
+        function wireOneMoreButton(detailsBody, buttonSelector, hiddenValues) {
+            if (!hiddenValues || hiddenValues.length === 0) return;
+            const btn = detailsBody.querySelector(buttonSelector);
+            if (!btn) return;
+
+            const row = btn.closest('.kv') || btn;
+            btn.addEventListener('click', () => {
+                row.insertAdjacentHTML(
+                    'afterend',
+                    `<div class="kv">${esc(hiddenValues.join(', '))}</div>`);
+                row.remove();
+            });
+        }
+
+        function wireDetailsMoreButtons(detailsBody, hiddenOrBuilt) {
+            // Backward compatibility (old signature)
+            if (Array.isArray(hiddenOrBuilt)) {
+                wireOneMoreButton(detailsBody, '#moreGraphs', hiddenOrBuilt);
+                return;
+            }
+
+            const built = hiddenOrBuilt || {};
+            wireOneMoreButton(detailsBody, '#moreExampleMembers', built.hiddenExampleMembers || []);
+            wireOneMoreButton(detailsBody, '#moreGraphs', built.hiddenGraphs || []);
+        }
+
+        function buildEdgeDetailsHtml(edgeData) {
+            const kind = edgeData.kind || 'property';
+            const predUri = edgeData.predUri ?? '';
+            const count = edgeData.count;
+
+            // skos:closeMatch alignment edge (not a structural property edge)
+            if (kind === 'closeMatch') {
+                const sourceShort = edgeData.sourceShort ?? '';
+                const targetShort = edgeData.targetShort ?? '';
+                const sourceUri = edgeData.sourceUri ?? '';
+                const targetUri = edgeData.targetUri ?? '';
+
+                let html = '';
+
+                html += `<div class="secTitle">Relation</div>`;
+                if (predUri) {
+                    html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+                } else {
+                    html += `<div class="kv"><i>Not available in current payload</i></div>`;
+                }
+
+                html += `<div class="secTitle">Endpoints</div>`;
+                html += `<div class="kv">${esc(sourceShort)} ↔ ${esc(targetShort)}</div>`;
+
+                if (sourceUri || targetUri) {
+                    html += `<div class="secTitle">Endpoint IRIs</div>`;
+                    if (sourceUri) html += `<div class="kv" style="word-break:break-all;">Source: ${esc(sourceUri)}</div>`;
+                    if (targetUri) html += `<div class="kv" style="word-break:break-all;">Target: ${esc(targetUri)}</div>`;
+                }
+
+                if (count != null && Number(count) > 1) {
+                    html += `<div class="secTitle">Evidence count</div>`;
+                    html += `<div class="kv">${formatCount(count)}</div>`;
+                }
+
+                return {
+                    title: `Alignment closeMatch`,
+                    html
+                };
+            }
+
+            // Default: structural property edge
+            const shortLabel = edgeData.shortLabel ?? '';
+            const displayLabel = edgeData.displayLabel ?? shortLabel;
+
+            let html = '';
+
+            html += `<div class="secTitle">IRI</div>`;
+            if (predUri) {
+                html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+            } else {
+                html += `<div class="kv"><i>Not available in current payload</i></div>`;
+            }
+
+            if (count != null) {
+                html += `<div class="secTitle">Count</div>`;
+                html += `<div class="kv">${formatCount(count)}</div>`;
+            }
+
+            return {
+                title: `Property ${String(shortLabel || '')}`,
+                html
+            };
+        }
+
+        /**
+         * Pure filter + sort for legend items.
+         * Each legend item is expected to have { color, graphs: [] }.
+         */
+        function filterLegendItems(legendData, filterText) {
+            const needle = (filterText || '').trim().toLowerCase();
+
+            return (legendData || [])
+                .slice()
+                .sort((a, b) => (a.color || '').localeCompare(b.color || ''))
+                .map(item => ({
+                    color: item.color || '#ccc',
+                    graphs: (item.graphs || []).slice().sort()
+                }))
+                .filter(item => {
+                    if (!needle) return true;
+                    return item.graphs.some(g => (g || '').toLowerCase().includes(needle));
+                });
+        }
+
+        // expose as a single namespace
+        global.AppCore = {
+            esc,
+            layoutOptions,
+            cyStyles,
+            buildDetailsHtml,
+            wireDetailsMoreButtons,
+            buildEdgeDetailsHtml,
+            filterLegendItems
+        };
+    })(window);
+    /* app.js */
+    /* global AppCore, cytoscape */
+
+    const cyData = JSON.parse(document.getElementById('cy-data').textContent);
+    const legendData = JSON.parse(document.getElementById('legend-data').textContent);
+
+    function truncate(text, maxLength) {
+        const value = String(text ?? '');
+        return value.length <= maxLength ? value : `${value.slice(0, maxLength - 1)}…`;
+    }
+
+    const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+    const RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+    const RDFS_COMMENT = 'http://www.w3.org/2000/01/rdf-schema#comment';
+    const RDF_VALUE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value';
+    const OWL_SAME_AS = 'http://www.w3.org/2002/07/owl#sameAs';
+
+    /*
+     * rdf:type is already represented in each quotient-class node, and
+     * owl:sameAs is already represented through canonicalization/equivalences.
+     * Keep both in the details panel without adding redundant graph leaves.
+     */
+    const UBIQUITOUS_GRAPH_EXCLUSIONS = new Set([
+        // RDF_TYPE,
+        // OWL_SAME_AS
+    ]);
+
+    function frameObjectLabel(prop) {
+        if (prop.objectKind === 'literal') return 'literal';
+
+        switch (prop.predUri) {
+            case RDFS_LABEL:
+            case RDFS_COMMENT:
+                return 'literal';
+            case RDF_VALUE:
+                return 'value';
+            case RDF_TYPE:
+                return 'class';
+            case OWL_SAME_AS:
+                return 'resource';
+            default:
+                return 'object';
+        }
+    }
+
+    /**
+     * Turn literal-valued and non-aggregated properties into optional terminal
+     * graph nodes. Every marker is unique to its source quotient class and
+     * predicate, so it does not imply that classes share one RDF object.
+     */
+    function addFrameObjectElements(elements) {
+        const resourceNodes = Array.isArray(elements?.nodes) ? elements.nodes : [];
+        const originalEdges = Array.isArray(elements?.edges) ? elements.edges : [];
+        const nodes = resourceNodes.slice();
+        const edges = originalEdges.slice();
+
+        // Cytoscape element ids share one namespace. Avoid collisions with RDF ids.
+        const usedIds = new Set(
+            [...resourceNodes, ...originalEdges]
+                .map(element => element?.data?.id)
+                .filter(Boolean)
+        );
+
+        function freshId(base) {
+            let id = base;
+            let suffix = 1;
+            while (usedIds.has(id)) id = `${base}_${suffix++}`;
+            usedIds.add(id);
+            return id;
+        }
+
+        resourceNodes.forEach((sourceNode, nodeIndex) => {
+            const source = sourceNode?.data || {};
+            const properties = Array.isArray(source.frameProperties) ? source.frameProperties : [];
+
+            properties
+                .filter(prop => {
+                    if (prop?.objectKind === 'literal') return true;
+                    if (prop?.objectKind === 'ubiquitous') {
+                        return !UBIQUITOUS_GRAPH_EXCLUSIONS.has(prop.predUri);
+                    }
+                    return false;
+                })
+                .forEach((prop, propIndex) => {
+                    const examples = Array.isArray(prop.examples)
+                        ? prop.examples.filter(value => value != null).map(String)
+                        : [];
+                    const count = Number(prop.count ?? 0);
+                    const isLiteral = prop.objectKind === 'literal';
+                    const markerKind = isLiteral ? 'literal' : 'ubiquitous';
+                    const markerNodeId = freshId(`__${markerKind}_node_${nodeIndex}_${propIndex}`);
+                    const markerEdgeId = freshId(`__${markerKind}_edge_${nodeIndex}_${propIndex}`);
+                    const markerLabel = frameObjectLabel(prop);
+
+                    nodes.push({
+                        data: {
+                            id: markerNodeId,
+                            shortId: markerLabel,
+                            label: markerLabel,
+                            objectKind: prop.objectKind,
+                            sourceId: source.id,
+                            sourceShortId: source.shortId || source.id,
+                            predUri: prop.predUri || '',
+                            predLabel: prop.predLabel || prop.predUri || '',
+                            count,
+                            examples,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalNode' : 'ubiquitousNode'
+                    });
+
+                    edges.push({
+                        data: {
+                            id: markerEdgeId,
+                            source: source.id,
+                            target: markerNodeId,
+                            label: prop.predLabel || prop.predUri || '',
+                            displayLabel: `${prop.predLabel || prop.predUri || ''} x${count}`,
+                            predUri: prop.predUri || '',
+                            count,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalEdge' : 'ubiquitousEdge'
+                    });
+                });
+        });
+
+        return { nodes, edges };
+    }
+
+    cyData.elements = addFrameObjectElements(cyData.elements);
+
+    //  Cytoscape init
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: cyData.elements,
+        layout: { name: 'preset' },
+        minZoom: 0.1,
+        maxZoom: 3.0,
+        wheelSensitivity: 0.8,
+        style: AppCore.cyStyles()
+    });
+
+    function applyInstanceTags() {
+        cy.nodes().forEach(n => {
+            const uriCount = Number(n.data('uriInstanceCount') ?? 0);
+            const blankCount = Number(n.data('blankNodeInstanceCount') ?? 0);
+
+            if (uriCount === 0 && blankCount > 0) {
+                n.addClass('blankOnly');
+            } else {
+                n.removeClass('blankOnly');
+            }
+        });
+    }
+
+    applyInstanceTags();
+
+    // Needed for fCoSE packComponents
+    cy.layoutUtilities({
+        componentSpacing: 80,
+        desiredAspectRatio: cy.width() / cy.height(),
+        polyominoGridSizeFactor: 1
+    });
+
+    let currentLayout = null;
+
+    function runLayout(name) {
+        if (currentLayout) currentLayout.stop();
+
+        const visibleElements = cy.elements().filter(element => element.visible());
+        currentLayout = visibleElements.layout(AppCore.layoutOptions(name));
+
+        const btn = document.getElementById('relayout');
+        if (btn) btn.disabled = true;
+        currentLayout.on('layoutstop', () => { if (btn) btn.disabled = false; });
+
+        currentLayout.run();
+    }
+
+    // controls: layout / view
+    const layoutSelect = document.getElementById('layoutSelect');
+    document.getElementById('relayout')?.addEventListener('click', () => runLayout(layoutSelect.value));
+    layoutSelect?.addEventListener('change', () => runLayout(layoutSelect.value));
+
+    document.getElementById('fit')?.addEventListener('click', () => cy.fit(undefined, 20));
+    document.getElementById('zoomIn')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() * 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+    document.getElementById('zoomOut')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() / 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+
+    // terminal frame-object toggles
+    const showLiteralNodes = document.getElementById('showLiteralNodes');
+    const showUbiquitousNodes = document.getElementById('showUbiquitousNodes');
+
+    function applyFrameObjectVisibility() {
+        const showLiterals = showLiteralNodes == null || !!showLiteralNodes.checked;
+        const showUbiquitous = showUbiquitousNodes == null || !!showUbiquitousNodes.checked;
+
+        cy.nodes('.literalNode').style('display', showLiterals ? 'element' : 'none');
+        cy.edges('.literalEdge').style('display', showLiterals ? 'element' : 'none');
+        cy.nodes('.ubiquitousNode').style('display', showUbiquitous ? 'element' : 'none');
+        cy.edges('.ubiquitousEdge').style('display', showUbiquitous ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    function refreshFrameObjectVisibility() {
+        applyFrameObjectVisibility();
+        runLayout(layoutSelect?.value || 'fcose');
+    }
+
+    showLiteralNodes?.addEventListener('change', refreshFrameObjectVisibility);
+    showUbiquitousNodes?.addEventListener('change', refreshFrameObjectVisibility);
+
+    applyFrameObjectVisibility();
+    cy.ready(() => runLayout(layoutSelect?.value || 'fcose'));
+
+    // details panel
+    const detailsPane = document.getElementById('detailsPane');
+    const detailsBody = document.getElementById('detailsBody');
+    const detailsTitle = document.getElementById('detailsTitle');
+    document.getElementById('closeDetails')?.addEventListener('click', () => setDetailsOpen(false));
+
+    function setDetailsOpen(open) {
+        detailsPane.style.display = open ? 'flex' : 'none';
+        if (!open) {
+            detailsBody.innerHTML = '';
+            detailsTitle.textContent = 'Details';
+        }
+        cy.resize();
+    }
+
+    function appendDetailValue(title, values) {
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'secTitle';
+        sectionTitle.textContent = title;
+        detailsBody.appendChild(sectionTitle);
+
+        const valueList = Array.isArray(values) ? values : [values];
+        const value = document.createElement('div');
+        value.className = 'kv';
+
+        valueList.forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = String(item ?? '');
+            value.appendChild(line);
+        });
+
+        detailsBody.appendChild(value);
+    }
+
+    function renderFrameObjectDetails(node) {
+        const isLiteral = node.data('objectKind') === 'literal';
+        detailsTitle.textContent = isLiteral ? 'Literal values' : 'Non-aggregated objects';
+        detailsBody.replaceChildren();
+
+        appendDetailValue('Property', [
+            node.data('predLabel') || node.data('predUri') || '',
+            node.data('predUri') || ''
+        ].filter(Boolean));
+
+        appendDetailValue(
+            'Occurrences',
+            Number(node.data('count') ?? 0).toLocaleString('en-US')
+        );
+
+        appendDetailValue('Source class', [
+            node.data('sourceShortId') || node.data('sourceId') || '',
+            node.data('sourceId') || ''
+        ].filter(Boolean));
+
+        const examples = node.data('examples') || [];
+        if (isLiteral) {
+            appendDetailValue('Examples', examples.length ? examples : ['Not provided']);
+        } else {
+            appendDetailValue(
+                'Aggregation',
+                'The original object identities were intentionally not retained by the quotient computation.'
+            );
+            appendDetailValue(
+                'Examples',
+                examples.length ? examples : ['Not retained in quotient output']
+            );
+        }
+
+        setDetailsOpen(true);
+    }
+
+    function renderDetails(node) {
+        if (node.hasClass('literalNode') || node.hasClass('ubiquitousNode')) {
+            renderFrameObjectDetails(node);
+            return;
+        }
+
+        const closeMatches = [...new Set(
+            node.connectedEdges('.closeMatch')
+                .connectedNodes()
+                .filter(n => n.id() !== node.id())
+                .map(n => n.data('shortId') || n.id())
+        )].sort();
+
+        const data = {
+            id: node.data('id') || node.id(),
+            hashId: node.data('hashId') || '',
+            shortId: node.data('shortId') || node.data('id') || node.id(),
+            tinyClasses: node.data('tinyClasses') || [],
+            classes: node.data('classes') || [],
+            closeMatches,
+            literals: node.data('frameProperties') || node.data('literals') || [], //literals are kept for backward compat.
+            graphs: node.data('graphs') || [],
+            exampleMembers: node.data('exampleMembers') || [],
+            uriInstanceCount: node.data('uriInstanceCount'),
+            blankNodeInstanceCount: node.data('blankNodeInstanceCount')
+        };
+
+        const built = AppCore.buildDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        AppCore.wireDetailsMoreButtons(detailsBody, built);
+        setDetailsOpen(true);
+    }
+
+    function renderEdgeDetails(edge) {
+        const isCloseMatch = edge.hasClass('closeMatch');
+
+        if (isCloseMatch) {
+            const src = cy.getElementById(edge.data('source'));
+            const tgt = cy.getElementById(edge.data('target'));
+
+            const data = {
+                kind: 'closeMatch',
+                predUri: edge.data('predUri') || null,
+                count: edge.data('count'),
+                sourceShort: (src && src.data('shortId')) ? src.data('shortId') : (edge.data('source') || ''),
+                targetShort: (tgt && tgt.data('shortId')) ? tgt.data('shortId') : (edge.data('target') || ''),
+                sourceUri: (src && (src.data('id') || src.id())) ? (src.data('id') || src.id()) : (edge.data('source') || ''),
+                targetUri: (tgt && (tgt.data('id') || tgt.id())) ? (tgt.data('id') || tgt.id()) : (edge.data('target') || '')
+            };
+
+            const built = AppCore.buildEdgeDetailsHtml(data);
+            detailsTitle.textContent = built.title;
+            detailsBody.innerHTML = built.html;
+            setDetailsOpen(true);
+            return;
+        }
+
+        const data = {
+            kind: 'property',
+            shortLabel: edge.data('label') || edge.data('displayLabel') || '',
+            displayLabel: edge.data('displayLabel') || edge.data('label') || '',
+            predUri: edge.data('predUri') || null,
+            count: edge.data('count')
+        };
+
+        const built = AppCore.buildEdgeDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        setDetailsOpen(true);
+    }
+
+    cy.on('tap', 'node', evt => renderDetails(evt.target));
+    cy.on('tap', 'edge', evt => renderEdgeDetails(evt.target));
+    cy.on('tap', evt => { if (evt.target === cy) setDetailsOpen(false); });
+
+    // legend
+    const legendPane = document.getElementById('legendPane');
+    const legendBody = document.getElementById('legendBody');
+    const legendFilter = document.getElementById('legendFilter');
+    const btnLegend = document.getElementById('toggleLegend');
+    let legendOpen = false;
+
+    function isLegendVisible() {
+        return window.getComputedStyle(legendPane).display !== 'none';
+    }
+
+    function renderLegend() {
+        const items = AppCore.filterLegendItems(legendData, legendFilter?.value);
+
+        legendBody.innerHTML = '';
+        for (const item of items) {
+            const row = document.createElement('div');
+            row.className = 'item';
+
+            const sw = document.createElement('div');
+            sw.className = 'swatch';
+            sw.style.backgroundColor = item.color;
+
+            const txt = document.createElement('div');
+            txt.className = 'graphs';
+
+            const MAX = 6;
+            const shown = item.graphs.slice(0, MAX);
+            const hidden = item.graphs.slice(MAX);
+
+            for (const g of shown) {
+                const line = document.createElement('span');
+                line.className = 'g';
+                line.textContent = g;
+                txt.appendChild(line);
+            }
+
+            if (hidden.length) {
+                const more = document.createElement('button');
+                more.type = 'button';
+                more.textContent = `Show ${hidden.length} more`;
+                more.style.padding = '4px 8px';
+                more.style.fontSize = '12px';
+                more.style.marginTop = '4px';
+                more.addEventListener('click', () => {
+                    more.remove();
+                    for (const g of hidden) {
+                        const line = document.createElement('span');
+                        line.className = 'g';
+                        line.textContent = g;
+                        txt.appendChild(line);
+                    }
+                });
+                txt.appendChild(more);
+            }
+
+            row.appendChild(sw);
+            row.appendChild(txt);
+            legendBody.appendChild(row);
+        }
+    }
+
+    function setLegendOpen(open) {
+        legendOpen = open;
+        legendPane.style.display = open ? 'flex' : 'none';
+        btnLegend.textContent = open ? 'Hide legend' : 'Show legend';
+        if (open) renderLegend();
+        cy.resize();
+    }
+
+    function syncLegendAvailability() {
+        const mode = document.getElementById('colorMode').value;
+        const graphMode = (mode === 'graph');
+        btnLegend.disabled = !graphMode;
+        btnLegend.title = graphMode ? '' : 'Legend is only available in source graph color mode';
+        if (!graphMode && (legendOpen || isLegendVisible())) setLegendOpen(false);
+    }
+
+    btnLegend?.addEventListener('click', () => setLegendOpen(!(legendOpen || isLegendVisible())));
+    legendFilter?.addEventListener('input', () => renderLegend());
+
+    // color mode
+    function applyColorMode(mode) {
+        const useGraph = (mode === 'graph');
+        cy.batch(() => {
+            cy.nodes().forEach(n => {
+                const c = useGraph ? n.data('graphColor') : n.data('classColor');
+                if (c) n.data('color', c);
+            });
+            cy.edges().forEach(e => {
+                const c = useGraph ? e.data('graphColor') : e.data('classColor');
+                if (c) e.data('color', c);
+            });
+        });
+        cy.style().update();
+        syncLegendAvailability();
+    }
+
+    // closeMatch edges toggle
+    const showCloseMatches = document.getElementById('showCloseMatches');
+
+    function applyCloseMatchVisibility() {
+        const show = (showCloseMatches == null) ? true : !!showCloseMatches.checked;
+        cy.edges('.closeMatch').style('display', show ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    showCloseMatches?.addEventListener('change', applyCloseMatchVisibility);
+    applyCloseMatchVisibility();
+
+    const colorMode = document.getElementById('colorMode');
+    colorMode?.addEventListener('change', () => applyColorMode(colorMode.value));
+    applyColorMode(colorMode?.value || 'graph');
+
+    // hover highlight
+    cy.on('mouseover', 'node', evt => {
+        const n = evt.target;
+        cy.elements().addClass('faded');
+        n.removeClass('faded').addClass('highlighted');
+        n.connectedEdges().removeClass('faded').addClass('highlighted');
+        n.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+    });
+
+    cy.on('mouseout', 'node', () => {
+        cy.elements().removeClass('faded highlighted');
+    });
+
+    // search / focus
+    const search = document.getElementById('search');
+
+    function clearFocus() {
+        cy.elements().removeClass('faded highlighted');
+        cy.fit(undefined, 20);
+    }
+
+    function focusQuery(q) {
+        const needle = (q || '').trim().toLowerCase();
+        if (!needle) return;
+
+        const matches = cy.nodes().filter(n => {
+            if (!n.visible()) return false;
+            const id = (n.data('id') || '').toLowerCase();
+            const label = (n.data('label') || '').toLowerCase();
+            return id.includes(needle) || label.includes(needle);
+        });
+
+        if (matches.length) {
+            cy.elements().addClass('faded');
+            matches.removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+            cy.animate({ fit: { eles: matches, padding: 40 }, duration: 250 });
+        }
+    }
+
+    search?.addEventListener('keydown', e => {
+        if (e.key === 'Enter') focusQuery(search.value);
+        else if (e.key === 'Escape') { search.value = ''; clearFocus(); }
+    });
+  </script>
+</body>
+</html>

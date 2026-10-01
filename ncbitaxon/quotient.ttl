@@ -1,0 +1,1047 @@
+<https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/48de572f10f839bc3a3a61f2f2ae1e0735b1b2b7e678683494f577d0aa2e7264> , <https://metabolinkai.net/quotient/exampleStatement/5fc53d273626aa379c2809aed55c96a2a600fe97f3ae2f062c73aa8ff84b87fc> , <https://metabolinkai.net/quotient/exampleStatement/4e8ee5a94dfd6321b2e2276dfa3e3fc225560d31c2f444c352b164db0f4efc9a>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4ae93256275d292ca872a74b9fd28817e5954cdf8e7126b80e5c835aa378095a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "synonym_type_property";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_section>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/4ae93256275d292ca872a74b9fd28817e5954cdf8e7126b80e5c835aa378095a>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/6ddfe2217c4efad6d73b0c8a2159e3b34ae8de54eb4aab1fd037e87a7ab8ccd2> , <https://metabolinkai.net/quotient/exampleStatement/4e6846ec8e25768eb14a6d4dccdf2a28358cca1dc3ce6353f772a5b4a313933c>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_73334>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_parvorder>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4e8ee5a94dfd6321b2e2276dfa3e3fc225560d31c2f444c352b164db0f4efc9a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "obsolete subspecies";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_subspecies> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/IAO_0100001>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/4d9967c4f0ccd42b441b3f6d56804ad533ef7380719a8bb0a889083b97bc8180>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                true;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2002/07/owl#deprecated>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_superkingdom> .
+
+<https://metabolinkai.net/quotient/exampleStatement/61445c947898e1aa428a01e7705c22ff11b396f8d9f34ff9653f9f12327ce8c4>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "ncbi_taxonomy";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_40026> .
+
+<http://purl.obolibrary.org/obo/OMO_0003007>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/IAO_0100001>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+] .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#teleomorph>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "569675"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2627030>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_cellular_root>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/description>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/ae7be520d4719e1033f143ae894b66df695dd05ffd862909172d32c72902ebe5>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "oio:hasRelatedSynonym";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasScope>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon#genbank_synonym> .
+
+<http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "367166"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_isolate>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/exampleStatement/cf405497fce57a1d039dab797f4f0c7b7ebbd853cb314d7f6404522941f76e34>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "NCBITaxon:1037545";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasAlternativeId>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_140006> .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_355781>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+<https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/ad9f20eaf347c3a6b745976090930d3f44f7a3245d04d89c8526391cd59ffeb9> , <https://metabolinkai.net/quotient/exampleStatement/4a2604573fc257903a4a0b5517cfbff991289f866905e8c0092f41f5959d829a> , <https://metabolinkai.net/quotient/exampleStatement/75749bb4d3dcb1838cb5480d286cefc845a6ece4ab042902f1ebb48cd3b1a218> , <https://metabolinkai.net/quotient/exampleStatement/3f35809941a92d41de35dea6b170b04a5970fa07e4b91a25273b92685a5d9885>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Ontology>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/75749bb4d3dcb1838cb5480d286cefc845a6ece4ab042902f1ebb48cd3b1a218>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "NCBI organismal taxonomy version 2026-05-01";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon.owl> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2169899"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "114933"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2194"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1809673>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#genbank_synonym>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484293"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasSynonymType>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Suym2M84ydk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "73439"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasAlternativeId>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/9c389844d6129d023460500756ba6d5fce753e1086a6b3ed78eedbad68ecf80e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "misspelling";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/OMO_0003006> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2169897"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "602865"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/46cfe500319686debe1aab331d15a42c7b399a46b01a70ea54a97cf1cb6e9f2d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "GC_ID:1";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_140006> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "569678"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/d87620758e33181597f2cca473d2dd71dc22521695fac463a365cee89c3e4caf>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "lesser stick-nest rat";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_2836924> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484293"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#annotatedSource>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Suym2M84ydk>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_3032637>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#genbank_anamorph>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+<http://purl.obolibrary.org/obo/OMO_0003003>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/1dd3db54c5ece69965acd402c4470a0a30f13ed11fddac4b00da31aade96606a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Psiloxylon";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_40026> .
+
+<https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/34fc18dad888fe46383fd32033e451be490a4685ebcd276b6be196ac1ccd7f55> , <https://metabolinkai.net/quotient/exampleStatement/1dd3db54c5ece69965acd402c4470a0a30f13ed11fddac4b00da31aade96606a> , <https://metabolinkai.net/quotient/exampleStatement/46cfe500319686debe1aab331d15a42c7b399a46b01a70ea54a97cf1cb6e9f2d> , <https://metabolinkai.net/quotient/exampleStatement/61445c947898e1aa428a01e7705c22ff11b396f8d9f34ff9653f9f12327ce8c4> , <https://metabolinkai.net/quotient/exampleStatement/cf405497fce57a1d039dab797f4f0c7b7ebbd853cb314d7f6404522941f76e34> , <https://metabolinkai.net/quotient/exampleStatement/eff3f4f79711d80742d6dc53b742ed5af9e0640a2f8b361419c55bc44e2a169b> , <https://metabolinkai.net/quotient/exampleStatement/d87620758e33181597f2cca473d2dd71dc22521695fac463a365cee89c3e4caf>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "569678"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/8125a28f733666d965ffdf03d57df70dde3378f2ed69ed47a99e1d1b75e05633>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "This is an abstract class for use with the NCBI taxonomy to name the depth of the node within the tree. The link between the node term and the rank is only visible if you are using an obo 1.3 aware browser/editor; otherwise this can be ignored.";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_4892>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "569678"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<https://creativecommons.org/publicdomain/zero/1.0/>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OQ5rug9CcJQ> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#genbank_acronym>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+<https://metabolinkai.net/quotient/exampleStatement/6894fbac9b65447466df72a0824fe0ffe3d3e556dadf1d01c6c60c13271ec398>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Pseudoepedanus dolensis";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_863970> .
+
+<https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/097cda17ea3a689f954cfa60cc35e784a6ac510e6e45f7bcff9b8be9407c32c2> , <https://metabolinkai.net/quotient/exampleStatement/025ed4b8430558ed05ac4784bcd21a8f962e8c5e3642f2adf3a37d2d535980ea> , <https://metabolinkai.net/quotient/exampleStatement/8125a28f733666d965ffdf03d57df70dde3378f2ed69ed47a99e1d1b75e05633> , <https://metabolinkai.net/quotient/exampleStatement/2a0b4e1aff2e8a7ec054b6c9257ff1dfbb7b1450150506f57cda80f7e754cf77> , <https://metabolinkai.net/quotient/exampleStatement/4d9967c4f0ccd42b441b3f6d56804ad533ef7380719a8bb0a889083b97bc8180> , <https://metabolinkai.net/quotient/exampleStatement/6894fbac9b65447466df72a0824fe0ffe3d3e556dadf1d01c6c60c13271ec398>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2169899"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "5"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasScope>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/title>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/OQ5rug9CcJQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Cq8zfoJBqdQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#versionIRI>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/6ddfe2217c4efad6d73b0c8a2159e3b34ae8de54eb4aab1fd037e87a7ab8ccd2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "blast name";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon#blast_name> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5fc53d273626aa379c2809aed55c96a2a600fe97f3ae2f062c73aa8ff84b87fc>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                true;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2002/07/owl#deprecated>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_subgenus> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_3380469>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/OQ5rug9CcJQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/license>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2187331"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_3030782>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2547964>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2169899"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#versionInfo>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_subspecies>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#blast_name>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/2a0b4e1aff2e8a7ec054b6c9257ff1dfbb7b1450150506f57cda80f7e754cf77>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "NCBITaxon:1712486";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasAlternativeId>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_2051764> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ad9f20eaf347c3a6b745976090930d3f44f7a3245d04d89c8526391cd59ffeb9>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "An ontology representation of the NCBI organismal taxonomy";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/description>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon.owl> .
+
+<https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/ae7be520d4719e1033f143ae894b66df695dd05ffd862909172d32c72902ebe5> , <https://metabolinkai.net/quotient/exampleStatement/9c389844d6129d023460500756ba6d5fce753e1086a6b3ed78eedbad68ecf80e>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#genbank_common_name>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2359035>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/48de572f10f839bc3a3a61f2f2ae1e0735b1b2b7e678683494f577d0aa2e7264>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "ncbi_taxonomy";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_forma_specialis> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/eff3f4f79711d80742d6dc53b742ed5af9e0640a2f8b361419c55bc44e2a169b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "HyOV-2";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_3052544> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1998555"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/TAXRANK_1000000>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg>
+] .
+
+<http://purl.obolibrary.org/obo/OMO_0003012>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4e6846ec8e25768eb14a6d4dccdf2a28358cca1dc3ce6353f772a5b4a313933c>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "oio:hasRelatedSynonym";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasScope>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon#synonym> .
+
+<https://metabolinkai.net/quotient/exampleStatement/097cda17ea3a689f954cfa60cc35e784a6ac510e6e45f7bcff9b8be9407c32c2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "GC_ID:11";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_1327679> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1998555"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_825593>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#equivalent_name>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_morph>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1986480>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1706798>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_tribe>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/quotientClass/Cq8zfoJBqdQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com//obophenotype/ncbitaxon/releases/download/v2026-05-13/ncbitaxon.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_subclass>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4a2604573fc257903a4a0b5517cfbff991289f866905e8c0092f41f5959d829a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "2026-05-13";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2002/07/owl#versionInfo>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon.owl> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "24630"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasAlternativeId>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#synonym>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasScope>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q>
+] .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#scientific_name>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2750851>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ALZuqsogu0w>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_subkingdom>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+<https://metabolinkai.net/quotient/quotientClass/Suym2M84ydk>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "484293"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Axiom>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/025ed4b8430558ed05ac4784bcd21a8f962e8c5e3642f2adf3a37d2d535980ea>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "ncbi_taxonomy";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_1327679> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon/2026-05-13/ncbitaxon.owl>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Cq8zfoJBqdQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#deprecated>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_8252>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2169899"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_species>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "47"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#deprecated>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/34fc18dad888fe46383fd32033e451be490a4685ebcd276b6be196ac1ccd7f55>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Neottopteris";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/NCBITaxon_32071> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484742"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/TAXRANK_1000000>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1060140>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1060765>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon.owl>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/KRCUTf0Yv60> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#in_part>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OWYxxoXku7Q> .
+
+<http://purl.obolibrary.org/obo/ncbitaxon#anamorph>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BbEkQwXSAow>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484742"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484293"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#annotatedTarget>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Suym2M84ydk>
+] .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_927832>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+<https://metabolinkai.net/quotient/exampleStatement/3f35809941a92d41de35dea6b170b04a5970fa07e4b91a25273b92685a5d9885>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "NCBI organismal classification";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/title>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://purl.obolibrary.org/obo/ncbitaxon.owl> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2758704>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "484293"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Suym2M84ydk>
+] .
+
+<http://purl.obolibrary.org/obo/OMO_0003006>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/D-k0J-tdjmg> .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_2989986>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/d_WS_lo0VIc> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "569678"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasOBONamespace>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/f_j7zdkDzVk>
+] .

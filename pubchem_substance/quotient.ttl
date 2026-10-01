@@ -1,0 +1,565 @@
+<http://rdf.wwpdb.org/pdb/9MVK>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "347391179"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#substance_version>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID1194174_PMID25791451>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6222180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#seeAlso>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/MY-145518-A>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.wwpdb.org/pdb/1DB6>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://identifiers.org/chembl.compound:CHEMBL1320781>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "347391179"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/source>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID8555>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID68797071>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.wwpdb.org/pdb/3GOF>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<https://metabolinkai.net/quotient/exampleStatement/a04b0ddddd1b835c0e039ad6996d11795f815a8c0e71d718ea1c197f8cac4db2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "2019-12-06"^^<http://www.w3.org/2001/XMLSchema#date>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/modified>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID390893393> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID516898367_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID1360846_PMID29908437>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID18368231>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<https://metabolinkai.net/quotient/exampleStatement/0eb7e628e5ea120f2fc2958468c637d6c8456d5075fa839f3e22d2ceb14410e9>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "2013-12-02"^^<http://www.w3.org/2001/XMLSchema#date>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/available>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID170143293> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID525281598_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://identifiers.org/chembl.compound:CHEMBL3326064>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID169864588>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/synonym/MD5_3f68a46e884254fa9a6b9698f26fb92e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "353837416"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://rdf.ebi.ac.uk/resource/chembl/molecule/CHEMBL5441786>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID1195>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID23470>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/CN-108925940-A>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID1228766_PMID25950914>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.wwpdb.org/pdb/5Q1G>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID1425431>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID91745798_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID70156771>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID227043880>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID2125188_PMID38991300>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID29283129>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/GB-2087217-A>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID321917032_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/synonym/MD5_c55d757a4435a5fb748d0a5858d5306e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/reference/17359824>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID156919454>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://identifiers.org/glytoucan:G58230TV>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID755481_PMID23693069>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/synonym/MD5_05ce6d20bd4b6aef35343b5c93a9b28d>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID1763295_PMID33895280>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID108595173>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID24643515>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID14203>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.wwpdb.org/pdb/1ENR>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID248033399>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID363574112_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/JP-S61127513-U>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "919"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "264951545"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/RO_0000056>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/2942d5836f5bb92de6c67c9487a925cbb7fa6fdf0d687b065ea86a3bb0259da5>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "315673552";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.org/dc/terms/identifier>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID315673552> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID19980636>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/InFarmatik>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID465034750_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://rdf.ebi.ac.uk/resource/chembl/molecule/CHEMBL4744274>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/WO-2016050566-A1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "197722"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID23265>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/US-2025177084-A1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1531309218"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/spar/cito/isDiscussedBy>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/521250d91538f8c0686febb8c4837bac4211584275c8771a5415318f7b5d144b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                2;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#substance_version>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID233529048> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ID26011>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://identifiers.org/chembl.compound:CHEMBL522796>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.wwpdb.org/pdb/3QO6>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID150943647>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.wwpdb.org/pdb/2NXY>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "681105253"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://semanticscience.org/resource/SIO_000008>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "347391179"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/available>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/ChEMBL>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID239005_PMID15828829>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/521250d91538f8c0686febb8c4837bac4211584275c8771a5415318f7b5d144b> , <https://metabolinkai.net/quotient/exampleStatement/0eb7e628e5ea120f2fc2958468c637d6c8456d5075fa839f3e22d2ceb14410e9> , <https://metabolinkai.net/quotient/exampleStatement/a04b0ddddd1b835c0e039ad6996d11795f815a8c0e71d718ea1c197f8cac4db2> , <https://metabolinkai.net/quotient/exampleStatement/2942d5836f5bb92de6c67c9487a925cbb7fa6fdf0d687b065ea86a3bb0259da5>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://purl.obolibrary.org/obo/HEAVY_TYPE> , <http://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#Substance>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "347391513"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.wwpdb.org/pdb/1QRA>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://identifiers.org/chembl.compound:CHEMBL5961057>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID117580642>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "587879681"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "119454883"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/SID513083740_Substance_Version>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/O6xu5vZoyuI> .
+
+<http://identifiers.org/chembl.compound:CHEMBL4916286>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "347391179"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/identifier>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "347391179"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.org/dc/terms/modified>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "52544338"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/CN-108986665-B>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.ebi.ac.uk/resource/chembl/molecule/CHEMBL2163433>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID136225_PMID10479297>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID413743401>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID104219651>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2002202"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.wwpdb.org/pdb/5N7G>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/DE-7626840-U1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/Creasyn_Finechem>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID444445659>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID27060147>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "569186"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://rdf.wwpdb.org/schema/pdbx-v50.owl#link_to_pdb>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID213594374>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.ncbi.nlm.nih.gov/pubchem/RDF/substance/>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "6222180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID83158289>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/source/Amatye>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aNgBN-CSk08> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Nd2RqhahCPs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "330521223"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://semanticscience.org/resource/CHEMINF_000477>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58>
+] .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/patent/CN-101817693-B>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Vw58lS8ETU4> .
+
+<http://rdf.wwpdb.org/pdb/8DZ2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PGgklEupcLM> .
+
+<http://rdf.ebi.ac.uk/resource/chembl/molecule/CHEMBL4797911>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Xgkrxh5CcQo> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/substance/SID89307435>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/aM6uhh7gz58> .
+
+<http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/AID379808_PMID10346965>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wr2wXBqyfuk> .

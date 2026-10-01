@@ -1,0 +1,695 @@
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+<https://models.metabohub.fr/human_gem#MAM02780c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://models.metabohub.fr/human_gem#HumanGEM>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc> .
+
+<https://models.metabohub.fr/human_gem#MAM03586e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "36749"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#is>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+] .
+
+<https://models.metabohub.fr/human_gem#n>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/aef7e54acad9dff0050756367de64c4a5a98bd13449b078fbb4355967ba9ff13>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "i";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#i> .
+
+<https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/296706cc4d22fe5923fb5deb5a34f2cb7ebe3472186b88031887a17efd024e3f> , <https://metabolinkai.net/quotient/exampleStatement/30a1e5b3a8afb9a963f4c156a3ff7c22bf1c44a8b7e16b3563f39ffe783b5604>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#SBMLModel>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000181789>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://models.metabohub.fr/human_gem#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000081800>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://models.metabohub.fr/human_gem#MAR20160>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+<https://identifiers.org/ensembl/ENSP00000356433>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#i>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "58049"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#is>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>
+] .
+
+<https://identifiers.org/ensembl/ENST00000524164>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#MAR08612>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "55198"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#stoichiometry>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>
+] .
+
+<https://models.metabohub.fr/human_gem#MAM02470l>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<https://metabolinkai.net/quotient/exampleStatement/7b1f5a694a67d7694561b2e56f93470fa4bac88645006003a1da46049b3bef9d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                false;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#isReversible>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#MAR02229> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#reaction>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+<https://models.metabohub.fr/human_gem#ENSG00000137731>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "55198"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#SpeciesReference>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR03928>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000004961>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/7b1f5a694a67d7694561b2e56f93470fa4bac88645006003a1da46049b3bef9d> , <https://metabolinkai.net/quotient/exampleStatement/70e484b5c69e5d5b13bf27591bb6dace95f9c21eb8a4e54c798c74234cde9835> , <https://metabolinkai.net/quotient/exampleStatement/7339a34feea21f6358e2141faec80bb6f06719c47ba3c5957f49d0e753cda871>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Reaction>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "55198"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#species>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/30a1e5b3a8afb9a963f4c156a3ff7c22bf1c44a8b7e16b3563f39ffe783b5604>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "HumanGEM";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#HumanGEM> .
+
+<https://metabolinkai.net/quotient/exampleStatement/296706cc4d22fe5923fb5deb5a34f2cb7ebe3472186b88031887a17efd024e3f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Generic genome-scale metabolic model of Homo sapiens";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#HumanGEM> .
+
+<https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/aef7e54acad9dff0050756367de64c4a5a98bd13449b078fbb4355967ba9ff13> , <https://metabolinkai.net/quotient/exampleStatement/6a484567329a50f6998191fea4029b857195c21d5047c4dab11537c03db1d0d2>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Compartment>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "9"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/0ad25331c04ad2428102eabba7589e7dfee3e8f1690e48b86782488da22bafe9>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "ENSG00000090971";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#ENSG00000090971> .
+
+<https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/0ad25331c04ad2428102eabba7589e7dfee3e8f1690e48b86782488da22bafe9> , <https://metabolinkai.net/quotient/exampleStatement/4a8befbcc56a88ece840192aac7a26ff0cb627daa5356a1eac5aef08b3d90b12>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.sbml.org/sbml/level3/version1/fbc/version2#geneProduct>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2848"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://models.metabohub.fr/human_gem#MAR04930>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+<https://identifiers.org/uniprot/O15270>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://identifiers.org/ensembl/ENSP00000156626>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2848"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR04936>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#compartment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2848"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>
+] .
+
+<https://models.metabohub.fr/human_gem#MAM01771c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5241198c0655ed2df5b7a1ab606247bef2ae50cb9dbd78ad45fa430c3eb86a64>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "MAM02322e";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#MAM02322e> .
+
+<https://identifiers.org/ensembl/ENSG00000102309>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "55198"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR02612>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+<https://models.metabohub.fr/human_gem#MAM03077c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://identifiers.org/metanetx.reaction/MNXR97050>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "23929"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.sbml.org/sbml/level3/version1/fbc/version2#geneProductAssociation>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>
+] .
+
+<https://models.metabohub.fr/human_gem#MAM03410c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://models.metabohub.fr/human_gem#MAR03013>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000187097>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+<https://models.metabohub.fr/human_gem#MAM00261r>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4a8befbcc56a88ece840192aac7a26ff0cb627daa5356a1eac5aef08b3d90b12>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "NAT14";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#ENSG00000090971> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "40951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#is>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+<https://models.metabohub.fr/human_gem#ENSG00000007314>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://identifiers.org/bigg.reaction/MICITDr>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/70e484b5c69e5d5b13bf27591bb6dace95f9c21eb8a4e54c798c74234cde9835>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "MAR02229";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#MAR02229> .
+
+<https://models.metabohub.fr/human_gem#l>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4451874859425cd525258591110793ab54f07308fd5f9ac5c62513b5ebd3056d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "gamma-butyrobetaine";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#MAM01922e> .
+
+<https://models.metabohub.fr/human_gem#r>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#isReversible>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "27582"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#reactant>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/4451874859425cd525258591110793ab54f07308fd5f9ac5c62513b5ebd3056d> , <https://metabolinkai.net/quotient/exampleStatement/5241198c0655ed2df5b7a1ab606247bef2ae50cb9dbd78ad45fa430c3eb86a64>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Species>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8461"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#species>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR06803>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+<https://identifiers.org/vmhreaction/RE3120C>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#x>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+<https://models.metabohub.fr/human_gem#g>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12931"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR01064>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+<https://models.metabohub.fr/human_gem#m>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE> .
+
+<https://identifiers.org/ensembl/ENST00000544561>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#MAM02845r>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://metabolinkai.net/quotient/exampleStatement/7339a34feea21f6358e2141faec80bb6f06719c47ba3c5957f49d0e753cda871>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#MAR02229> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000140455>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/LhfpgHNc4gE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#compartment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/EY0Hj-UguXc>
+] .
+
+<https://models.metabohub.fr/human_gem#MAR00551>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2848"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZGIx7TNoiW8>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "27616"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#product>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/V2Uv6hffbRQ>
+] .
+
+<https://models.metabohub.fr/human_gem#ENSG00000143418>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000159202>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://models.metabohub.fr/human_gem#ENSG00000213760>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/bzr4IZ91a-8> .
+
+<https://metabolinkai.net/quotient/exampleStatement/6a484567329a50f6998191fea4029b857195c21d5047c4dab11537c03db1d0d2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Endoplasmic reticulum";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://models.metabohub.fr/human_gem#r> .
+
+<https://identifiers.org/vmhreaction/LSTNM7thc>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE> .
+
+<https://models.metabohub.fr/human_gem#MAM02449e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://models.metabohub.fr/human_gem#MAM01828e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZEK9-vOXdso> .
+
+<https://metabolinkai.net/quotient/quotientClass/W2ks-_wYmjE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://github.com/SysBioChalmers/Human-GEM/blob/main/model/Human-GEM.xml>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "104445"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
