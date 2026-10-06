@@ -1,6 +1,6 @@
 # Metabolomics RDF Endpoint Registry
 
-A community-maintained catalogue of RDF/SPARQL endpoints relevant to metabolomics research. This catalog powers the automatic generation of the **KGHub map**: an high-level, schema-like representation of metabolomics RDF resources, to simplify resource discovery and federated querying.
+A community-maintained catalogue of RDF/SPARQL endpoints relevant to metabolomics research. This catalog powers the automatic generation of the **KGHub map**: an high-level, schema-like representation of metabolomics RDF resources, to simplify resource discovery and federated querying. The catalogue is accessible from [here](https://metabolinkai.github.io/metabolomics-rdf-registry/).
 
 ## How it works
 
