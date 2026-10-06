@@ -1,0 +1,2572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quotient</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    body { display: flex; flex-direction: column; }
+
+    #controls {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      padding: 8px 10px; background: #f7f7f7; border-bottom: 1px solid #ddd;
+    }
+
+    #main { position: relative; flex: 1 1 auto; min-height: 0; }
+    #cy { position: absolute; inset: 0; }
+
+    #legendPane {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 320px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #legendHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+    #legendTitle { font-size: 13px; font-weight: 600; }
+
+    #legendBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    #legendBody .item {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
+    }
+    #legendBody .item:hover { background: #fafafa; }
+
+    .swatch {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.2);
+      margin-top: 2px;
+    }
+    .graphs { font-size: 12px; color: #333; line-height: 1.35; word-break: break-word; }
+    .graphs .g { display: block; margin-bottom: 4px; }
+
+    button, select, input {
+      padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff;
+      font-size: 13px;
+    }
+    input[type="checkbox"] { padding: 0; border: none; width: 14px; height: 14px; }
+    button { cursor: pointer; }
+    button:hover { background: #fafafa; }
+    #search { min-width: 260px; }
+    .spacer { flex: 1 1 auto; }
+    .hint { color: #555; font-size: 12px; }
+
+    #detailsPane {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      height: min(45vh, calc(100% - 24px));
+      max-height: calc(100% - 24px);
+      min-width: 260px;
+      min-height: 120px;
+
+      display: none;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.98);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 10;
+      resize: both;
+    }
+
+    #detailsHeader {
+      display: flex; gap: 8px; align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.98);
+      flex: 0 0 auto;
+    }
+
+    #detailsTitle { font-size: 13px; font-weight: 600; }
+    #detailsBody {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+
+    #detailsBody .secTitle { font-size: 12px; font-weight: 600; margin: 10px 0 6px; color: #333; }
+    #detailsBody .kv { font-size: 12px; color: #333; line-height: 1.35; }
+    #detailsBody table { min-width: 100%; border-collapse: collapse; font-size: 12px; }
+    #detailsBody td { padding: 4px 0; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+    #detailsBody .exList { margin-top: 4px; }
+    #detailsBody .exLine {
+      color: #666;
+      font-size: 11px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    #detailsBody {
+      padding: 10px;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: calc(45vh - 52px);
+    }
+    #detailsBody td.num { text-align: right; color: #555; padding-left: 10px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="controls">
+
+    <label class="hint" for="colorMode">Colors</label>
+    <select id="colorMode">
+      <option value="graph" selected>source graph</option>
+      <option value="class">quotient class</option>
+    </select>
+
+    <button id="toggleLegend" type="button">Show legend</button>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;">
+      <input id="showCloseMatches" type="checkbox" checked />
+      close matches
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show one aggregate node per literal-valued property">
+      <input id="showLiteralNodes" type="checkbox" checked />
+      literal nodes
+    </label>
+
+    <label class="hint" style="display:flex;align-items:center;gap:6px;"
+           title="Show properties whose objects were intentionally not aggregated">
+      <input id="showUbiquitousNodes" type="checkbox" checked />
+      non-aggregated values
+    </label>
+
+    <label class="hint" for="layoutSelect">Layout</label>
+    <select id="layoutSelect">
+      <option value="cose" >cose</option>
+      <option value="breadthfirst">breadthfirst</option>
+      <option value="grid">grid</option>
+      <option value="fcose" selected>fcose</option>
+    </select>
+    <button id="relayout" type="button">Re-layout</button>
+
+    <button id="fit" type="button">Fit</button>
+    <button id="zoomIn" type="button">Zoom +</button>
+    <button id="zoomOut" type="button">Zoom -</button>
+
+    <div class="spacer"></div>
+
+    <input id="search" type="search" placeholder="Search node (id/label)"/>
+    <span class="hint">Enter: focus • Esc: clear</span>
+  </div>
+  <div id="main">
+    <div id="cy"></div>
+
+    <aside id="legendPane" aria-label="Legend">
+      <div id="legendHeader">
+        <span id="legendTitle">Source graphs</span>
+        <span class="spacer"></span>
+        <input id="legendFilter" type="search" placeholder="Filter..." style="min-width: 120px;"/>
+      </div>
+      <div id="legendBody"></div>
+    </aside>
+
+    <aside id="detailsPane" aria-label="Details">
+      <div id="detailsHeader">
+        <span id="detailsTitle">Details</span>
+        <span class="spacer"></span>
+        <button id="closeDetails" type="button">Close</button>
+      </div>
+      <div id="detailsBody"></div>
+    </aside>
+
+
+  </div>
+
+  <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+  <script src="https://unpkg.com/cytoscape-layout-utilities/cytoscape-layout-utilities.js"></script>
+  <script type="application/json" id="cy-data">
+  {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "shortId": "A",
+            "hashId": "BD0fQUFpk1M",
+            "label": "A",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)",
+            "frameProperties": [],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 9398
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/BbrcCjMX6nI",
+            "shortId": "B",
+            "hashId": "BbrcCjMX6nI",
+            "label": "B",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(286.1699999999255, 85%, 60%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/NCBITaxon_687454",
+              "http://purl.obolibrary.org/obo/NCBITaxon_7227",
+              "http://purl.obolibrary.org/obo/NCBITaxon_9397",
+              "http://purl.obolibrary.org/obo/NCBITaxon_9722"
+            ],
+            "uriInstanceCount": 4,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "shortId": "C",
+            "hashId": "CWVKLazjCr8",
+            "label": "C\nowl:ObjectProperty, owl:TransitiveProperty",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:ObjectProperty",
+              "owl:TransitiveProperty"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#ObjectProperty",
+              "http://www.w3.org/2002/07/owl#TransitiveProperty"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(59.122000000439584, 67%, 45%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "predLabel": "hasDbXref",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "BFO_0000051 -> \"BFO:0000051\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+                "predLabel": "hasOBONamespace",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "BFO_0000051 -> \"external\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#id",
+                "predLabel": "id",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "BFO_0000051 -> \"has_part\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
+                "predLabel": "shorthand",
+                "count": 4,
+                "objectKind": "literal",
+                "examples": [
+                  "BFO_0000051 -> \"has_part\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 8,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 4,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://purl.obolibrary.org/obo/BFO_0000051",
+              "http://purl.obolibrary.org/obo/RO_0002092",
+              "http://purl.obolibrary.org/obo/RO_0002211"
+            ],
+            "uriInstanceCount": 4,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "shortId": "D",
+            "hashId": "DiujoT6C2Xc",
+            "label": "D\nowl:ObjectProperty",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:ObjectProperty"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#ObjectProperty"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(294.9620000002906, 85%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "predLabel": "hasDbXref",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "RO_0002213 -> \"RO:0002213\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+                "predLabel": "hasOBONamespace",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "RO_0002213 -> \"external\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#id",
+                "predLabel": "id",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "RO_0002213 -> \"positively_regulates\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
+                "predLabel": "shorthand",
+                "count": 5,
+                "objectKind": "literal",
+                "examples": [
+                  "RO_0002213 -> \"positively_regulates\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 5,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 5,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/BFO_0000066",
+              "http://purl.obolibrary.org/obo/RO_0002091",
+              "http://purl.obolibrary.org/obo/RO_0002093",
+              "http://purl.obolibrary.org/obo/RO_0002212",
+              "http://purl.obolibrary.org/obo/RO_0002213"
+            ],
+            "uriInstanceCount": 5,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/F09bYJtWUyQ",
+            "shortId": "E",
+            "hashId": "F09bYJtWUyQ",
+            "label": "E",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(123.3230000003241, 79%, 45%)",
+            "frameProperties": [],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 9307
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/HABsncw4xpE",
+            "shortId": "F",
+            "hashId": "HABsncw4xpE",
+            "label": "F",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(162.87700000032783, 67%, 45%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/GO_000666"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/HV3fYGr7T6Q",
+            "shortId": "G",
+            "hashId": "HV3fYGr7T6Q",
+            "label": "G",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(168.0550000006333, 55%, 55%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://creativecommons.org/licenses/by/4.0/"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "shortId": "H",
+            "hashId": "JLfq6gt4Yuw",
+            "label": "H\nowl:Restriction",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Restriction"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Restriction"
+            ],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(283.70000000018626, 85%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 25601,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 25601
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/KSikjpYhlew",
+            "shortId": "I",
+            "hashId": "KSikjpYhlew",
+            "label": "I",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(109.59400000004098, 67%, 55%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/IAO_0000227"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/Kdo79zDoGPg",
+            "shortId": "J",
+            "hashId": "Kdo79zDoGPg",
+            "label": "J",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(217.52100000018254, 55%, 45%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/go/releases/2026-05-19/go.owl"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/MpshXB8-wUc",
+            "shortId": "K",
+            "hashId": "MpshXB8-wUc",
+            "label": "K",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(77.6820000000298, 79%, 40%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/NgsPzwPrQkk",
+            "shortId": "L",
+            "hashId": "NgsPzwPrQkk",
+            "label": "L\nowl:Ontology",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Ontology"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Ontology"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(97.59800000023097, 61%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/description",
+                "predLabel": "description",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "go.owl -> \"The Gene Ontology (GO) provides a framework and set of concepts for describing the functions of gene products from al...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.org/dc/elements/1.1/title",
+                "predLabel": "title",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "go.owl -> \"Gene Ontology\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#default-namespace",
+                "predLabel": "default-namespace",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "go.owl -> \"gene_ontology\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasOBOFormatVersion",
+                "predLabel": "hasOBOFormatVersion",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "go.owl -> \"1.2\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 1,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#versionInfo",
+                "predLabel": "owl:versionInfo",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "go.owl -> \"2026-05-19\""
+                ]
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "uriInstanceCount": 1,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/TNnwr_LwgM4",
+            "shortId": "M",
+            "hashId": "TNnwr_LwgM4",
+            "label": "M\nowl:AnnotationProperty",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:AnnotationProperty"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#AnnotationProperty"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(272.2310000001453, 73%, 55%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 29,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#comment",
+                "predLabel": "rdfs:comment",
+                "count": 22,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 4,
+                "objectKind": "ubiquitous",
+                "examples": []
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/go#chebi_ph7_3",
+              "http://purl.obolibrary.org/obo/go#gocheck_do_not_annotate",
+              "http://purl.obolibrary.org/obo/go#goslim_agr",
+              "http://purl.obolibrary.org/obo/go#goslim_flybase_ribbon",
+              "http://purl.obolibrary.org/obo/go#goslim_generic",
+              "http://purl.obolibrary.org/obo/go#goslim_pir",
+              "http://purl.obolibrary.org/obo/go#goslim_plant",
+              "http://purl.obolibrary.org/obo/go#goslim_synapse",
+              "http://purl.obolibrary.org/obo/go#goslim_virus",
+              "http://purl.obolibrary.org/obo/go#systematic_synonym"
+            ],
+            "uriInstanceCount": 29,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/U9SBo0a2GLk",
+            "shortId": "N",
+            "hashId": "U9SBo0a2GLk",
+            "label": "N",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(185.2269999999553, 79%, 45%)",
+            "frameProperties": [],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.uniprot.org/enzyme/1.3.99.19",
+              "http://purl.uniprot.org/enzyme/1.8.5.3",
+              "http://rdf.rhea-db.org/11724",
+              "http://rdf.rhea-db.org/25395",
+              "http://rdf.rhea-db.org/35447",
+              "http://rdf.rhea-db.org/35615",
+              "http://rdf.rhea-db.org/37195",
+              "http://rdf.rhea-db.org/48760",
+              "http://rdf.rhea-db.org/58157",
+              "http://rdf.rhea-db.org/59412"
+            ],
+            "uriInstanceCount": 14278,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/VXnGIpCPRNE",
+            "shortId": "O",
+            "hashId": "VXnGIpCPRNE",
+            "label": "O",
+            "equivalences": [],
+            "tinyClasses": [],
+            "classes": [],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(312.9660000000149, 55%, 55%)",
+            "frameProperties": [],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 2
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "shortId": "P",
+            "hashId": "ZJMUDu37WbA",
+            "label": "P\nowl:Class",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Class"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Class"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)",
+            "frameProperties": [
+              {
+                "predUri": "http://purl.obolibrary.org/obo/IAO_0000115",
+                "predLabel": "IAO_0000115",
+                "count": 48329,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0060222 -> \"Any process that modulates the process in which a cell becomes committed to a retinal cone cell fate. Retinal cone ce...\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/IAO_0000233",
+                "predLabel": "IAO_0000233",
+                "count": 20300,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0019586 -> \"https://github.com/geneontology/go-ontology/issues/30524\"^^xsd:anyURI"
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/IAO_0000589",
+                "predLabel": "IAO_0000589",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0005623 -> \"cell and encapsulating structures\""
+                ]
+              },
+              {
+                "predUri": "http://purl.obolibrary.org/obo/terms_contributor",
+                "predLabel": "terms_contributor",
+                "count": 1,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0106162 -> \"https://github.com/geneontology/go-ontology/issues/16755\"^^xsd:anyURI"
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#created_by",
+                "predLabel": "created_by",
+                "count": 19361,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_1904768 -> \"kmv\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#creation_date",
+                "predLabel": "creation_date",
+                "count": 19366,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0097052 -> \"2011-05-24T03:28:44Z\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+                "predLabel": "hasAlternativeId",
+                "count": 3646,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0048564 -> \"GO:0010251\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+                "predLabel": "hasBroadSynonym",
+                "count": 4469,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0044070 -> \"regulation of anion transport\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "predLabel": "hasDbXref",
+                "count": 29754,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0046797 -> \"UniProtKB-KW:KW-1273\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+                "predLabel": "hasExactSynonym",
+                "count": 76962,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0045738 -> \"down regulation of DNA repair\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+                "predLabel": "hasNarrowSynonym",
+                "count": 19667,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0000243 -> \"mammalian spliceosomal E complex\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+                "predLabel": "hasOBONamespace",
+                "count": 48329,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0060222 -> \"biological_process\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+                "predLabel": "hasRelatedSynonym",
+                "count": 28363,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0071497 -> \"antifreeze activity\""
+                ]
+              },
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#id",
+                "predLabel": "id",
+                "count": 48329,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0045738 -> \"GO:0045738\""
+                ]
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 57636,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#comment",
+                "predLabel": "rdfs:comment",
+                "count": 12375,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 48329,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#deprecated",
+                "predLabel": "owl:deprecated",
+                "count": 10084,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0019586 -> \"true\"^^xsd:boolean"
+                ]
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/GO_0004194",
+              "http://purl.obolibrary.org/obo/GO_0016550",
+              "http://purl.obolibrary.org/obo/GO_0046270",
+              "http://purl.obolibrary.org/obo/GO_0046578",
+              "http://purl.obolibrary.org/obo/GO_0047676",
+              "http://purl.obolibrary.org/obo/GO_0047983",
+              "http://purl.obolibrary.org/obo/GO_0048282",
+              "http://purl.obolibrary.org/obo/GO_0070185",
+              "http://purl.obolibrary.org/obo/GO_0071858",
+              "http://purl.obolibrary.org/obo/GO_0090165"
+            ],
+            "uriInstanceCount": 48329,
+            "blankNodeInstanceCount": 9307
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/a1im35c-_dk",
+            "shortId": "Q",
+            "hashId": "a1im35c-_dk",
+            "label": "Q\nowl:Class",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Class"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Class"
+            ],
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(170.49099999992177, 61%, 60%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 3646,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#deprecated",
+                "predLabel": "owl:deprecated",
+                "count": 3646,
+                "objectKind": "literal",
+                "examples": [
+                  "GO_0018536 -> \"true\"^^xsd:boolean"
+                ]
+              }
+            ],
+            "graphs": [
+              "http://purl.obolibrary.org/obo/go.owl"
+            ],
+            "exampleMembers": [
+              "http://purl.obolibrary.org/obo/GO_0000046",
+              "http://purl.obolibrary.org/obo/GO_0001592",
+              "http://purl.obolibrary.org/obo/GO_0002163",
+              "http://purl.obolibrary.org/obo/GO_0005336",
+              "http://purl.obolibrary.org/obo/GO_0022415",
+              "http://purl.obolibrary.org/obo/GO_0031199",
+              "http://purl.obolibrary.org/obo/GO_0043869",
+              "http://purl.obolibrary.org/obo/GO_0044763",
+              "http://purl.obolibrary.org/obo/GO_0050705",
+              "http://purl.obolibrary.org/obo/GO_0072358"
+            ],
+            "uriInstanceCount": 3646,
+            "blankNodeInstanceCount": 0
+          }
+        },
+        {
+          "data": {
+            "id": "https://metabolinkai.net/quotient/quotientClass/euu3vjo3D4A",
+            "shortId": "R",
+            "hashId": "euu3vjo3D4A",
+            "label": "R\nowl:Axiom",
+            "equivalences": [],
+            "tinyClasses": [
+              "owl:Axiom"
+            ],
+            "classes": [
+              "http://www.w3.org/2002/07/owl#Axiom"
+            ],
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(185.3300000000745, 55%, 65%)",
+            "frameProperties": [
+              {
+                "predUri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "predLabel": "hasDbXref",
+                "count": 168998,
+                "objectKind": "literal",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "predLabel": "rdf:type",
+                "count": 131772,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#comment",
+                "predLabel": "rdfs:comment",
+                "count": 3,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2000/01/rdf-schema#label",
+                "predLabel": "rdfs:label",
+                "count": 7858,
+                "objectKind": "ubiquitous",
+                "examples": []
+              },
+              {
+                "predUri": "http://www.w3.org/2002/07/owl#annotatedTarget",
+                "predLabel": "owl:annotatedTarget",
+                "count": 131772,
+                "objectKind": "literal",
+                "examples": []
+              }
+            ],
+            "graphs": [],
+            "exampleMembers": [],
+            "uriInstanceCount": 0,
+            "blankNodeInstanceCount": 131772
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "e0",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x1",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 1,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e1",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x1",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 1,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e2",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x9392",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 9392,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e3",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x4",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 4,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e4",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "label": "rdf:rest",
+            "displayLabel": "rdf:rest x89",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+            "count": 89,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e5",
+            "source": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "target": "https://metabolinkai.net/quotient/quotientClass/MpshXB8-wUc",
+            "label": "rdf:rest",
+            "displayLabel": "rdf:rest x9309",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+            "count": 9309,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(277.12800000049174, 67%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e6",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "target": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "label": "rdfs:subPropertyOf",
+            "displayLabel": "rdfs:subPropertyOf x1",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+            "count": 1,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(59.122000000439584, 67%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e7",
+            "source": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "label": "owl:inverseOf",
+            "displayLabel": "owl:inverseOf x1",
+            "predUri": "http://www.w3.org/2002/07/owl#inverseOf",
+            "count": 1,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(59.122000000439584, 67%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e8",
+            "source": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "label": "rdfs:subPropertyOf",
+            "displayLabel": "rdfs:subPropertyOf x2",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+            "count": 2,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(294.9620000002906, 85%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e9",
+            "source": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "target": "https://metabolinkai.net/quotient/quotientClass/VXnGIpCPRNE",
+            "label": "owl:propertyChainAxiom",
+            "displayLabel": "owl:propertyChainAxiom x2",
+            "predUri": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+            "count": 2,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(294.9620000002906, 85%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e10",
+            "source": "https://metabolinkai.net/quotient/quotientClass/F09bYJtWUyQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x9307",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 9307,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(123.3230000003241, 79%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e11",
+            "source": "https://metabolinkai.net/quotient/quotientClass/F09bYJtWUyQ",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "label": "rdf:rest",
+            "displayLabel": "rdf:rest x9307",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+            "count": 9307,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(123.3230000003241, 79%, 45%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e12",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/CWVKLazjCr8",
+            "label": "owl:onProperty",
+            "displayLabel": "owl:onProperty x14830",
+            "predUri": "http://www.w3.org/2002/07/owl#onProperty",
+            "count": 14830,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(283.70000000018626, 85%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e13",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "label": "owl:onProperty",
+            "displayLabel": "owl:onProperty x10771",
+            "predUri": "http://www.w3.org/2002/07/owl#onProperty",
+            "count": 10771,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(283.70000000018626, 85%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e14",
+            "source": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "owl:someValuesFrom",
+            "displayLabel": "owl:someValuesFrom x25601",
+            "predUri": "http://www.w3.org/2002/07/owl#someValuesFrom",
+            "count": 25601,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(283.70000000018626, 85%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e15",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NgsPzwPrQkk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "IAO_0000700",
+            "displayLabel": "IAO_0000700 x3",
+            "predUri": "http://purl.obolibrary.org/obo/IAO_0000700",
+            "count": 3,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(97.59800000023097, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e16",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NgsPzwPrQkk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/HV3fYGr7T6Q",
+            "label": "dcterms:license",
+            "displayLabel": "dcterms:license x1",
+            "predUri": "http://purl.org/dc/terms/license",
+            "count": 1,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(97.59800000023097, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e17",
+            "source": "https://metabolinkai.net/quotient/quotientClass/NgsPzwPrQkk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/Kdo79zDoGPg",
+            "label": "owl:versionIRI",
+            "displayLabel": "owl:versionIRI x1",
+            "predUri": "http://www.w3.org/2002/07/owl#versionIRI",
+            "count": 1,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(97.59800000023097, 61%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e18",
+            "source": "https://metabolinkai.net/quotient/quotientClass/TNnwr_LwgM4",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TNnwr_LwgM4",
+            "label": "rdfs:subPropertyOf",
+            "displayLabel": "rdfs:subPropertyOf x24",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+            "count": 24,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(272.2310000001453, 73%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e19",
+            "source": "https://metabolinkai.net/quotient/quotientClass/VXnGIpCPRNE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/DiujoT6C2Xc",
+            "label": "rdf:first",
+            "displayLabel": "rdf:first x2",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+            "count": 2,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(312.9660000000149, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e20",
+            "source": "https://metabolinkai.net/quotient/quotientClass/VXnGIpCPRNE",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BD0fQUFpk1M",
+            "label": "rdf:rest",
+            "displayLabel": "rdf:rest x2",
+            "predUri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+            "count": 2,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(312.9660000000149, 55%, 55%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e21",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "IAO_0100001",
+            "displayLabel": "IAO_0100001 x2222",
+            "predUri": "http://purl.obolibrary.org/obo/IAO_0100001",
+            "count": 2222,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e22",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/BbrcCjMX6nI",
+            "label": "RO_0002175",
+            "displayLabel": "RO_0002175 x5",
+            "predUri": "http://purl.obolibrary.org/obo/RO_0002175",
+            "count": 5,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e23",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/HABsncw4xpE",
+            "label": "consider",
+            "displayLabel": "consider x1",
+            "predUri": "http://www.geneontology.org/formats/oboInOwl#consider",
+            "count": 1,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e24",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "consider",
+            "displayLabel": "consider x3637",
+            "predUri": "http://www.geneontology.org/formats/oboInOwl#consider",
+            "count": 3637,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e25",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TNnwr_LwgM4",
+            "label": "inSubset",
+            "displayLabel": "inSubset x3314",
+            "predUri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+            "count": 3314,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e26",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/JLfq6gt4Yuw",
+            "label": "rdfs:subClassOf",
+            "displayLabel": "rdfs:subClassOf x270866",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+            "count": 270866,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e27",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "rdfs:subClassOf",
+            "displayLabel": "rdfs:subClassOf x729949",
+            "predUri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+            "count": 729949,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e28",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "owl:disjointWith",
+            "displayLabel": "owl:disjointWith x29",
+            "predUri": "http://www.w3.org/2002/07/owl#disjointWith",
+            "count": 29,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e29",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "owl:equivalentClass",
+            "displayLabel": "owl:equivalentClass x18614",
+            "predUri": "http://www.w3.org/2002/07/owl#equivalentClass",
+            "count": 18614,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e30",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/F09bYJtWUyQ",
+            "label": "owl:intersectionOf",
+            "displayLabel": "owl:intersectionOf x9307",
+            "predUri": "http://www.w3.org/2002/07/owl#intersectionOf",
+            "count": 9307,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e31",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/U9SBo0a2GLk",
+            "label": "skos:broadMatch",
+            "displayLabel": "skos:broadMatch x548",
+            "predUri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+            "count": 548,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e32",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/U9SBo0a2GLk",
+            "label": "skos:exactMatch",
+            "displayLabel": "skos:exactMatch x9459",
+            "predUri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+            "count": 9459,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e33",
+            "source": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "target": "https://metabolinkai.net/quotient/quotientClass/U9SBo0a2GLk",
+            "label": "skos:narrowMatch",
+            "displayLabel": "skos:narrowMatch x4656",
+            "predUri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+            "count": 4656,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(98.50700000004144, 61%, 50%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e34",
+            "source": "https://metabolinkai.net/quotient/quotientClass/a1im35c-_dk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/KSikjpYhlew",
+            "label": "IAO_0000231",
+            "displayLabel": "IAO_0000231 x3646",
+            "predUri": "http://purl.obolibrary.org/obo/IAO_0000231",
+            "count": 3646,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(170.49099999992177, 61%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e35",
+            "source": "https://metabolinkai.net/quotient/quotientClass/a1im35c-_dk",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "IAO_0100001",
+            "displayLabel": "IAO_0100001 x3646",
+            "predUri": "http://purl.obolibrary.org/obo/IAO_0100001",
+            "count": 3646,
+            "graphColor": "hsl(21.203000000008615, 67%, 60%)",
+            "classColor": "hsl(170.49099999992177, 61%, 60%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e36",
+            "source": "https://metabolinkai.net/quotient/quotientClass/euu3vjo3D4A",
+            "target": "https://metabolinkai.net/quotient/quotientClass/TNnwr_LwgM4",
+            "label": "hasSynonymType",
+            "displayLabel": "hasSynonymType x102",
+            "predUri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+            "count": 102,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(185.3300000000745, 55%, 65%)"
+          }
+        },
+        {
+          "data": {
+            "id": "e37",
+            "source": "https://metabolinkai.net/quotient/quotientClass/euu3vjo3D4A",
+            "target": "https://metabolinkai.net/quotient/quotientClass/ZJMUDu37WbA",
+            "label": "owl:annotatedSource",
+            "displayLabel": "owl:annotatedSource x131772",
+            "predUri": "http://www.w3.org/2002/07/owl#annotatedSource",
+            "count": 131772,
+            "graphColor": "hsl(0, 0%, 70%)",
+            "classColor": "hsl(185.3300000000745, 55%, 65%)"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/json" id="legend-data">
+  [
+    {
+      "color": "hsl(21.203000000008615, 67%, 60%)",
+      "graphs": [
+        "http://purl.obolibrary.org/obo/go.owl"
+      ]
+    }
+  ]
+  </script>
+  <script>
+    /* app-core.js */
+
+    (function (global) {
+        'use strict';
+
+        function esc(s) {
+            return String(s ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[c]));
+        }
+
+        function formatCount(n) {
+            return Number(n ?? 0).toLocaleString('en-US');
+        }
+
+        function layoutOptions(name) {
+            if (name === 'breadthfirst') {
+                return {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 20,
+                    spacingFactor: 1.2,
+                    animate: 'end',
+                    fit: true
+                };
+            }
+
+            if (name === 'grid') {
+                return { name: 'grid', padding: 20, animate: false, fit: true };
+            }
+
+            if (name === 'cose') {
+                return {
+                    name: 'cose',
+                    padding: 30,
+                    animate: 'end',
+                    fit: true,
+                    randomize: true,
+                    idealEdgeLength: 150,
+                    nodeRepulsion: 50000,
+                    edgeElasticity: 220,
+                    gravity: 1,
+                    numIter: 1000
+                };
+            }
+
+            if (name === 'fcose') {
+                return {
+                    name: 'fcose',
+                    quality: 'proof',
+                    randomize: true,
+                    animate: 'end',
+                    fit: true,
+                    padding: 30,
+
+                    nodeDimensionsIncludeLabels: true,
+                    packComponents: true,
+                    tile: true,
+
+                    nodeSeparation: 200,
+                    nodeRepulsion: n => 8000 + 3000 * n.degree(),
+                    idealEdgeLength: () => 200,
+                    edgeElasticity: edge => edge.hasClass('closeMatch') ? .00000001 : 0.01,
+                    // edgeElasticity: 0.001,
+                    gravity: 0.25,
+                    numIter: 3000
+                };
+            }
+
+            // fallback
+            return { name: 'fcose', fit: true, padding: 30 };
+        }
+
+        function cyStyles() {
+            return [
+                {
+                    selector: 'node',
+                    style: {
+                        label: 'data(label)',
+                        'text-wrap': 'wrap',
+                        'text-max-width': 220,
+                        'background-color': 'data(color)',
+                        'border-width': 2,
+                        'border-color': '#666',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-size': 13,
+                        padding: 6,
+                        'text-outline-width': 2,
+                        'text-outline-color': '#fff'
+                    }
+                },
+                {
+                    selector: 'node.blankOnly',
+                    style: {
+                        'border-style': 'dashed',
+                        'border-width': 2,
+                        'border-color': '#222'
+                    }
+                },
+                {
+                    selector: 'node.literalNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#fff7d6',
+                        'border-style': 'dashed',
+                        'border-color': '#8a6d1d',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 48,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'node.ubiquitousNode',
+                    style: {
+                        'shape': 'round-rectangle',
+                        'background-color': '#eeeeee',
+                        'border-style': 'dashed',
+                        'border-color': '#666666',
+                        'width': 48,
+                        'height': 22,
+                        'font-size': 10,
+                        'padding': 3,
+                        'text-max-width': 52,
+                        'text-outline-width': 0
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'curve-style': 'bezier',
+                        'control-point-step-size': 60,
+                        'line-color': 'data(color)',
+                        'target-arrow-color': 'data(color)',
+                        'target-arrow-shape': 'triangle',
+                        'arrow-scale': 0.9,
+                        label: 'data(displayLabel)',
+                        'font-size': 11,
+                        'text-rotation': 'autorotate',
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.85,
+                        'text-background-padding': 2,
+                        width: 'mapData(count, 1, 1000000, 1, 8)'
+                    }
+                },
+                {
+                    selector: 'edge.literalEdge',
+                    style: {
+                        'line-style': 'dotted',
+                        'line-color': '#8a6d1d',
+                        'target-arrow-color': '#8a6d1d',
+                        'width': 1.5
+                    }
+                },
+                {
+                    selector: 'edge.ubiquitousEdge',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#777777',
+                        'target-arrow-color': '#777777',
+                        'width': 1.25
+                    }
+                },
+                {
+                    selector: 'edge.closeMatch',
+                    style: {
+                        'line-style': 'dashed',
+                        'line-color': '#888',
+                        'target-arrow-shape': 'none',
+                        'target-arrow-color': '#888',
+                        label: 'data(label)',
+                        'text-rotation': 'none',
+                        'font-size': 10,
+                        'text-background-color': '#fff',
+                        'text-background-opacity': 0.8,
+                        'text-background-padding': 2,
+                        width: 1.5
+                    }
+                },
+                { selector: '.faded', style: { opacity: 0.15, 'text-opacity': 0.15 } },
+                { selector: '.highlighted', style: { 'border-width': 3, 'border-color': '#222' } },
+                { selector: 'edge.highlighted', style: { width: 5, opacity: 0.9 } }
+            ];
+        }
+
+        /**
+         * Pure HTML builder for details pane.
+         * Returns hidden lists so the caller can wire "Show more" buttons.
+         */
+        function buildDetailsHtml(nodeData, opts = {}) {
+            const {
+                maxGraphs = 8,
+                maxExampleMembers = 8
+            } = opts;
+
+            const displayId = nodeData.shortId ?? '';
+            const hashId = nodeData.hashId ?? '';
+            const fullIri = nodeData.id ?? '';
+            const exampleMembers = nodeData.exampleMembers ?? [];
+            const classes = nodeData.classes ?? [];
+            const closeMatches = nodeData.closeMatches ?? nodeData.equivalences ?? [];
+            const graphs = nodeData.graphs ?? [];
+            const literals = nodeData.literals ?? [];
+            const uriInstanceCount = nodeData.uriInstanceCount;
+            const blankNodeInstanceCount = nodeData.blankNodeInstanceCount;
+
+            const lits = literals.slice().sort((a, b) => (b.count || 0) - (a.count || 0));
+
+            let html = '';
+
+            if (hashId) {
+                html += `<div class="kv">Quotient Class ID: ${esc(hashId)}</div>`;
+            }
+
+            if (classes.length) {
+                html += `<div class="secTitle">Types</div>`;
+                html += `<div class="kv">${esc(classes.join(', '))}</div>`;
+            }
+
+            if (closeMatches.length) {
+                html += `<div class="secTitle">Close matches</div>`;
+                html += `<div class="kv">${esc(closeMatches.join(', '))}</div>`;
+            }
+
+            if (uriInstanceCount != null || blankNodeInstanceCount != null) {
+                const uriN = Number(uriInstanceCount ?? 0);
+                const blankN = Number(blankNodeInstanceCount ?? 0);
+                const totalN = uriN + blankN;
+
+                html += `<div class="secTitle">Instances</div>`;
+                html += `<div class="kv">
+                        URI resources: ${formatCount(uriN)}<br/>
+                        Blank nodes: ${formatCount(blankN)}<br/>
+                        Total: ${formatCount(totalN)}
+        </div>`;
+            }
+
+            let hiddenGraphs = [];
+            let hiddenExampleMembers = [];
+
+            if (exampleMembers.length) {
+                html += `<div class="secTitle">Example resources</div>`;
+
+                const shownMembers = exampleMembers.slice(0, maxExampleMembers);
+                hiddenExampleMembers = exampleMembers.slice(maxExampleMembers);
+
+                html += `<div class="kv">${esc(shownMembers.join(', '))}</div>`;
+
+                if (hiddenExampleMembers.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                            <button id="moreExampleMembers" type="button">Show ${hiddenExampleMembers.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Source graphs</div>`;
+
+            if (!graphs.length) {
+                html += `<div class="kv"><i>Not provided</i></div>`;
+            } else {
+                const shown = graphs.slice(0, maxGraphs);
+                hiddenGraphs = graphs.slice(maxGraphs);
+
+                html += `<div class="kv">${shown.map(esc).join('<br/>')}</div>`;
+
+                if (hiddenGraphs.length) {
+                    html += `<div class="kv" style="margin-top:6px;">
+                                <button id="moreGraphs" type="button">Show ${hiddenGraphs.length} more</button>
+                            </div>`;
+                }
+            }
+
+            html += `<div class="secTitle">Outgoing literal and ubiquitous properties</div>`;
+            if (!lits.length) {
+                html += `<div class="kv"><i>None</i></div>`;
+            } else {
+                html += `<table>`;
+                for (const l of lits) {
+                    const predShort = esc(l.predLabel || l.predUri || '');
+                    const predFull = l.predUri
+                        ? `<div class="kv" style="margin-top:2px;color:#666;font-size:11px;word-break:break-all;">${esc(l.predUri)}</div>`
+                        : '';
+
+                    const count = esc(l.count ?? 0);
+
+                    let exampleLines = [];
+
+                    if (Array.isArray(l.examples)) {
+                        exampleLines = l.examples;
+                    } else if (l.examples && typeof l.examples === 'object') {
+                        // Tolerate object-shaped arrays / array-like values
+                        exampleLines = Object.keys(l.examples)
+                            .sort((a, b) => Number(a) - Number(b))
+                            .map(k => l.examples[k]);
+                    } else if (l.examples != null && String(l.examples).length) {
+                        exampleLines = [l.examples];
+                    } else if (l.example != null && String(l.example).length) {
+                        exampleLines = [l.example];
+                    }
+
+                    exampleLines = exampleLines.filter(v => v != null && String(v).length);
+
+                    const ex = exampleLines.length
+                        ? `<div class="exList">${exampleLines.map(v => `<div class="exLine">${esc(v)}</div>`).join('')}</div>`
+                        : '';
+
+                    html += `<tr>
+                                <td title="${esc(l.predUri || '')}">${predShort}${predFull}${ex}</td>
+                                <td class="num">x${count}</td>
+                            </tr>`;
+                }
+                html += `</table>`;
+            }
+
+            return {title: "Class " + String(displayId), html, hiddenGraphs, hiddenExampleMembers};
+        }
+
+        /**
+         * Wires "show more" buttons for the details pane.
+         * Supports:
+         *   - old call style: wireDetailsMoreButtons(detailsBody, hiddenGraphsArray)
+         *   - new call style: wireDetailsMoreButtons(detailsBody, { hiddenGraphs, hiddenExampleMembers })
+         */
+        function wireOneMoreButton(detailsBody, buttonSelector, hiddenValues) {
+            if (!hiddenValues || hiddenValues.length === 0) return;
+            const btn = detailsBody.querySelector(buttonSelector);
+            if (!btn) return;
+
+            const row = btn.closest('.kv') || btn;
+            btn.addEventListener('click', () => {
+                row.insertAdjacentHTML(
+                    'afterend',
+                    `<div class="kv">${esc(hiddenValues.join(', '))}</div>`);
+                row.remove();
+            });
+        }
+
+        function wireDetailsMoreButtons(detailsBody, hiddenOrBuilt) {
+            // Backward compatibility (old signature)
+            if (Array.isArray(hiddenOrBuilt)) {
+                wireOneMoreButton(detailsBody, '#moreGraphs', hiddenOrBuilt);
+                return;
+            }
+
+            const built = hiddenOrBuilt || {};
+            wireOneMoreButton(detailsBody, '#moreExampleMembers', built.hiddenExampleMembers || []);
+            wireOneMoreButton(detailsBody, '#moreGraphs', built.hiddenGraphs || []);
+        }
+
+        function buildEdgeDetailsHtml(edgeData) {
+            const kind = edgeData.kind || 'property';
+            const predUri = edgeData.predUri ?? '';
+            const count = edgeData.count;
+
+            // skos:closeMatch alignment edge (not a structural property edge)
+            if (kind === 'closeMatch') {
+                const sourceShort = edgeData.sourceShort ?? '';
+                const targetShort = edgeData.targetShort ?? '';
+                const sourceUri = edgeData.sourceUri ?? '';
+                const targetUri = edgeData.targetUri ?? '';
+
+                let html = '';
+
+                html += `<div class="secTitle">Relation</div>`;
+                if (predUri) {
+                    html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+                } else {
+                    html += `<div class="kv"><i>Not available in current payload</i></div>`;
+                }
+
+                html += `<div class="secTitle">Endpoints</div>`;
+                html += `<div class="kv">${esc(sourceShort)} ↔ ${esc(targetShort)}</div>`;
+
+                if (sourceUri || targetUri) {
+                    html += `<div class="secTitle">Endpoint IRIs</div>`;
+                    if (sourceUri) html += `<div class="kv" style="word-break:break-all;">Source: ${esc(sourceUri)}</div>`;
+                    if (targetUri) html += `<div class="kv" style="word-break:break-all;">Target: ${esc(targetUri)}</div>`;
+                }
+
+                if (count != null && Number(count) > 1) {
+                    html += `<div class="secTitle">Evidence count</div>`;
+                    html += `<div class="kv">${formatCount(count)}</div>`;
+                }
+
+                return {
+                    title: `Alignment closeMatch`,
+                    html
+                };
+            }
+
+            // Default: structural property edge
+            const shortLabel = edgeData.shortLabel ?? '';
+            const displayLabel = edgeData.displayLabel ?? shortLabel;
+
+            let html = '';
+
+            html += `<div class="secTitle">IRI</div>`;
+            if (predUri) {
+                html += `<div class="kv" style="word-break:break-all;">${esc(predUri)}</div>`;
+            } else {
+                html += `<div class="kv"><i>Not available in current payload</i></div>`;
+            }
+
+            if (count != null) {
+                html += `<div class="secTitle">Count</div>`;
+                html += `<div class="kv">${formatCount(count)}</div>`;
+            }
+
+            return {
+                title: `Property ${String(shortLabel || '')}`,
+                html
+            };
+        }
+
+        /**
+         * Pure filter + sort for legend items.
+         * Each legend item is expected to have { color, graphs: [] }.
+         */
+        function filterLegendItems(legendData, filterText) {
+            const needle = (filterText || '').trim().toLowerCase();
+
+            return (legendData || [])
+                .slice()
+                .sort((a, b) => (a.color || '').localeCompare(b.color || ''))
+                .map(item => ({
+                    color: item.color || '#ccc',
+                    graphs: (item.graphs || []).slice().sort()
+                }))
+                .filter(item => {
+                    if (!needle) return true;
+                    return item.graphs.some(g => (g || '').toLowerCase().includes(needle));
+                });
+        }
+
+        // expose as a single namespace
+        global.AppCore = {
+            esc,
+            layoutOptions,
+            cyStyles,
+            buildDetailsHtml,
+            wireDetailsMoreButtons,
+            buildEdgeDetailsHtml,
+            filterLegendItems
+        };
+    })(window);
+    /* app.js */
+    /* global AppCore, cytoscape */
+
+    const cyData = JSON.parse(document.getElementById('cy-data').textContent);
+    const legendData = JSON.parse(document.getElementById('legend-data').textContent);
+
+    function truncate(text, maxLength) {
+        const value = String(text ?? '');
+        return value.length <= maxLength ? value : `${value.slice(0, maxLength - 1)}…`;
+    }
+
+    const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+    const RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+    const RDFS_COMMENT = 'http://www.w3.org/2000/01/rdf-schema#comment';
+    const RDF_VALUE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value';
+    const OWL_SAME_AS = 'http://www.w3.org/2002/07/owl#sameAs';
+
+    /*
+     * rdf:type is already represented in each quotient-class node, and
+     * owl:sameAs is already represented through canonicalization/equivalences.
+     * Keep both in the details panel without adding redundant graph leaves.
+     */
+    const UBIQUITOUS_GRAPH_EXCLUSIONS = new Set([
+        // RDF_TYPE,
+        // OWL_SAME_AS
+    ]);
+
+    function frameObjectLabel(prop) {
+        if (prop.objectKind === 'literal') return 'literal';
+
+        switch (prop.predUri) {
+            case RDFS_LABEL:
+            case RDFS_COMMENT:
+                return 'literal';
+            case RDF_VALUE:
+                return 'value';
+            case RDF_TYPE:
+                return 'class';
+            case OWL_SAME_AS:
+                return 'resource';
+            default:
+                return 'object';
+        }
+    }
+
+    /**
+     * Turn literal-valued and non-aggregated properties into optional terminal
+     * graph nodes. Every marker is unique to its source quotient class and
+     * predicate, so it does not imply that classes share one RDF object.
+     */
+    function addFrameObjectElements(elements) {
+        const resourceNodes = Array.isArray(elements?.nodes) ? elements.nodes : [];
+        const originalEdges = Array.isArray(elements?.edges) ? elements.edges : [];
+        const nodes = resourceNodes.slice();
+        const edges = originalEdges.slice();
+
+        // Cytoscape element ids share one namespace. Avoid collisions with RDF ids.
+        const usedIds = new Set(
+            [...resourceNodes, ...originalEdges]
+                .map(element => element?.data?.id)
+                .filter(Boolean)
+        );
+
+        function freshId(base) {
+            let id = base;
+            let suffix = 1;
+            while (usedIds.has(id)) id = `${base}_${suffix++}`;
+            usedIds.add(id);
+            return id;
+        }
+
+        resourceNodes.forEach((sourceNode, nodeIndex) => {
+            const source = sourceNode?.data || {};
+            const properties = Array.isArray(source.frameProperties) ? source.frameProperties : [];
+
+            properties
+                .filter(prop => {
+                    if (prop?.objectKind === 'literal') return true;
+                    if (prop?.objectKind === 'ubiquitous') {
+                        return !UBIQUITOUS_GRAPH_EXCLUSIONS.has(prop.predUri);
+                    }
+                    return false;
+                })
+                .forEach((prop, propIndex) => {
+                    const examples = Array.isArray(prop.examples)
+                        ? prop.examples.filter(value => value != null).map(String)
+                        : [];
+                    const count = Number(prop.count ?? 0);
+                    const isLiteral = prop.objectKind === 'literal';
+                    const markerKind = isLiteral ? 'literal' : 'ubiquitous';
+                    const markerNodeId = freshId(`__${markerKind}_node_${nodeIndex}_${propIndex}`);
+                    const markerEdgeId = freshId(`__${markerKind}_edge_${nodeIndex}_${propIndex}`);
+                    const markerLabel = frameObjectLabel(prop);
+
+                    nodes.push({
+                        data: {
+                            id: markerNodeId,
+                            shortId: markerLabel,
+                            label: markerLabel,
+                            objectKind: prop.objectKind,
+                            sourceId: source.id,
+                            sourceShortId: source.shortId || source.id,
+                            predUri: prop.predUri || '',
+                            predLabel: prop.predLabel || prop.predUri || '',
+                            count,
+                            examples,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalNode' : 'ubiquitousNode'
+                    });
+
+                    edges.push({
+                        data: {
+                            id: markerEdgeId,
+                            source: source.id,
+                            target: markerNodeId,
+                            label: prop.predLabel || prop.predUri || '',
+                            displayLabel: `${prop.predLabel || prop.predUri || ''} x${count}`,
+                            predUri: prop.predUri || '',
+                            count,
+                            graphColor: source.graphColor,
+                            classColor: source.classColor
+                        },
+                        classes: isLiteral ? 'literalEdge' : 'ubiquitousEdge'
+                    });
+                });
+        });
+
+        return { nodes, edges };
+    }
+
+    cyData.elements = addFrameObjectElements(cyData.elements);
+
+    //  Cytoscape init
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: cyData.elements,
+        layout: { name: 'preset' },
+        minZoom: 0.1,
+        maxZoom: 3.0,
+        wheelSensitivity: 0.8,
+        style: AppCore.cyStyles()
+    });
+
+    function applyInstanceTags() {
+        cy.nodes().forEach(n => {
+            const uriCount = Number(n.data('uriInstanceCount') ?? 0);
+            const blankCount = Number(n.data('blankNodeInstanceCount') ?? 0);
+
+            if (uriCount === 0 && blankCount > 0) {
+                n.addClass('blankOnly');
+            } else {
+                n.removeClass('blankOnly');
+            }
+        });
+    }
+
+    applyInstanceTags();
+
+    // Needed for fCoSE packComponents
+    cy.layoutUtilities({
+        componentSpacing: 80,
+        desiredAspectRatio: cy.width() / cy.height(),
+        polyominoGridSizeFactor: 1
+    });
+
+    let currentLayout = null;
+
+    function runLayout(name) {
+        if (currentLayout) currentLayout.stop();
+
+        const visibleElements = cy.elements().filter(element => element.visible());
+        currentLayout = visibleElements.layout(AppCore.layoutOptions(name));
+
+        const btn = document.getElementById('relayout');
+        if (btn) btn.disabled = true;
+        currentLayout.on('layoutstop', () => { if (btn) btn.disabled = false; });
+
+        currentLayout.run();
+    }
+
+    // controls: layout / view
+    const layoutSelect = document.getElementById('layoutSelect');
+    document.getElementById('relayout')?.addEventListener('click', () => runLayout(layoutSelect.value));
+    layoutSelect?.addEventListener('change', () => runLayout(layoutSelect.value));
+
+    document.getElementById('fit')?.addEventListener('click', () => cy.fit(undefined, 20));
+    document.getElementById('zoomIn')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() * 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+    document.getElementById('zoomOut')?.addEventListener('click', () =>
+        cy.zoom({ level: cy.zoom() / 1.2, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } })
+    );
+
+    // terminal frame-object toggles
+    const showLiteralNodes = document.getElementById('showLiteralNodes');
+    const showUbiquitousNodes = document.getElementById('showUbiquitousNodes');
+
+    function applyFrameObjectVisibility() {
+        const showLiterals = showLiteralNodes == null || !!showLiteralNodes.checked;
+        const showUbiquitous = showUbiquitousNodes == null || !!showUbiquitousNodes.checked;
+
+        cy.nodes('.literalNode').style('display', showLiterals ? 'element' : 'none');
+        cy.edges('.literalEdge').style('display', showLiterals ? 'element' : 'none');
+        cy.nodes('.ubiquitousNode').style('display', showUbiquitous ? 'element' : 'none');
+        cy.edges('.ubiquitousEdge').style('display', showUbiquitous ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    function refreshFrameObjectVisibility() {
+        applyFrameObjectVisibility();
+        runLayout(layoutSelect?.value || 'fcose');
+    }
+
+    showLiteralNodes?.addEventListener('change', refreshFrameObjectVisibility);
+    showUbiquitousNodes?.addEventListener('change', refreshFrameObjectVisibility);
+
+    applyFrameObjectVisibility();
+    cy.ready(() => runLayout(layoutSelect?.value || 'fcose'));
+
+    // details panel
+    const detailsPane = document.getElementById('detailsPane');
+    const detailsBody = document.getElementById('detailsBody');
+    const detailsTitle = document.getElementById('detailsTitle');
+    document.getElementById('closeDetails')?.addEventListener('click', () => setDetailsOpen(false));
+
+    function setDetailsOpen(open) {
+        detailsPane.style.display = open ? 'flex' : 'none';
+        if (!open) {
+            detailsBody.innerHTML = '';
+            detailsTitle.textContent = 'Details';
+        }
+        cy.resize();
+    }
+
+    function appendDetailValue(title, values) {
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'secTitle';
+        sectionTitle.textContent = title;
+        detailsBody.appendChild(sectionTitle);
+
+        const valueList = Array.isArray(values) ? values : [values];
+        const value = document.createElement('div');
+        value.className = 'kv';
+
+        valueList.forEach(item => {
+            const line = document.createElement('div');
+            line.textContent = String(item ?? '');
+            value.appendChild(line);
+        });
+
+        detailsBody.appendChild(value);
+    }
+
+    function renderFrameObjectDetails(node) {
+        const isLiteral = node.data('objectKind') === 'literal';
+        detailsTitle.textContent = isLiteral ? 'Literal values' : 'Non-aggregated objects';
+        detailsBody.replaceChildren();
+
+        appendDetailValue('Property', [
+            node.data('predLabel') || node.data('predUri') || '',
+            node.data('predUri') || ''
+        ].filter(Boolean));
+
+        appendDetailValue(
+            'Occurrences',
+            Number(node.data('count') ?? 0).toLocaleString('en-US')
+        );
+
+        appendDetailValue('Source class', [
+            node.data('sourceShortId') || node.data('sourceId') || '',
+            node.data('sourceId') || ''
+        ].filter(Boolean));
+
+        const examples = node.data('examples') || [];
+        if (isLiteral) {
+            appendDetailValue('Examples', examples.length ? examples : ['Not provided']);
+        } else {
+            appendDetailValue(
+                'Aggregation',
+                'The original object identities were intentionally not retained by the quotient computation.'
+            );
+            appendDetailValue(
+                'Examples',
+                examples.length ? examples : ['Not retained in quotient output']
+            );
+        }
+
+        setDetailsOpen(true);
+    }
+
+    function renderDetails(node) {
+        if (node.hasClass('literalNode') || node.hasClass('ubiquitousNode')) {
+            renderFrameObjectDetails(node);
+            return;
+        }
+
+        const closeMatches = [...new Set(
+            node.connectedEdges('.closeMatch')
+                .connectedNodes()
+                .filter(n => n.id() !== node.id())
+                .map(n => n.data('shortId') || n.id())
+        )].sort();
+
+        const data = {
+            id: node.data('id') || node.id(),
+            hashId: node.data('hashId') || '',
+            shortId: node.data('shortId') || node.data('id') || node.id(),
+            tinyClasses: node.data('tinyClasses') || [],
+            classes: node.data('classes') || [],
+            closeMatches,
+            literals: node.data('frameProperties') || node.data('literals') || [], //literals are kept for backward compat.
+            graphs: node.data('graphs') || [],
+            exampleMembers: node.data('exampleMembers') || [],
+            uriInstanceCount: node.data('uriInstanceCount'),
+            blankNodeInstanceCount: node.data('blankNodeInstanceCount')
+        };
+
+        const built = AppCore.buildDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        AppCore.wireDetailsMoreButtons(detailsBody, built);
+        setDetailsOpen(true);
+    }
+
+    function renderEdgeDetails(edge) {
+        const isCloseMatch = edge.hasClass('closeMatch');
+
+        if (isCloseMatch) {
+            const src = cy.getElementById(edge.data('source'));
+            const tgt = cy.getElementById(edge.data('target'));
+
+            const data = {
+                kind: 'closeMatch',
+                predUri: edge.data('predUri') || null,
+                count: edge.data('count'),
+                sourceShort: (src && src.data('shortId')) ? src.data('shortId') : (edge.data('source') || ''),
+                targetShort: (tgt && tgt.data('shortId')) ? tgt.data('shortId') : (edge.data('target') || ''),
+                sourceUri: (src && (src.data('id') || src.id())) ? (src.data('id') || src.id()) : (edge.data('source') || ''),
+                targetUri: (tgt && (tgt.data('id') || tgt.id())) ? (tgt.data('id') || tgt.id()) : (edge.data('target') || '')
+            };
+
+            const built = AppCore.buildEdgeDetailsHtml(data);
+            detailsTitle.textContent = built.title;
+            detailsBody.innerHTML = built.html;
+            setDetailsOpen(true);
+            return;
+        }
+
+        const data = {
+            kind: 'property',
+            shortLabel: edge.data('label') || edge.data('displayLabel') || '',
+            displayLabel: edge.data('displayLabel') || edge.data('label') || '',
+            predUri: edge.data('predUri') || null,
+            count: edge.data('count')
+        };
+
+        const built = AppCore.buildEdgeDetailsHtml(data);
+        detailsTitle.textContent = built.title;
+        detailsBody.innerHTML = built.html;
+        setDetailsOpen(true);
+    }
+
+    cy.on('tap', 'node', evt => renderDetails(evt.target));
+    cy.on('tap', 'edge', evt => renderEdgeDetails(evt.target));
+    cy.on('tap', evt => { if (evt.target === cy) setDetailsOpen(false); });
+
+    // legend
+    const legendPane = document.getElementById('legendPane');
+    const legendBody = document.getElementById('legendBody');
+    const legendFilter = document.getElementById('legendFilter');
+    const btnLegend = document.getElementById('toggleLegend');
+    let legendOpen = false;
+
+    function isLegendVisible() {
+        return window.getComputedStyle(legendPane).display !== 'none';
+    }
+
+    function renderLegend() {
+        const items = AppCore.filterLegendItems(legendData, legendFilter?.value);
+
+        legendBody.innerHTML = '';
+        for (const item of items) {
+            const row = document.createElement('div');
+            row.className = 'item';
+
+            const sw = document.createElement('div');
+            sw.className = 'swatch';
+            sw.style.backgroundColor = item.color;
+
+            const txt = document.createElement('div');
+            txt.className = 'graphs';
+
+            const MAX = 6;
+            const shown = item.graphs.slice(0, MAX);
+            const hidden = item.graphs.slice(MAX);
+
+            for (const g of shown) {
+                const line = document.createElement('span');
+                line.className = 'g';
+                line.textContent = g;
+                txt.appendChild(line);
+            }
+
+            if (hidden.length) {
+                const more = document.createElement('button');
+                more.type = 'button';
+                more.textContent = `Show ${hidden.length} more`;
+                more.style.padding = '4px 8px';
+                more.style.fontSize = '12px';
+                more.style.marginTop = '4px';
+                more.addEventListener('click', () => {
+                    more.remove();
+                    for (const g of hidden) {
+                        const line = document.createElement('span');
+                        line.className = 'g';
+                        line.textContent = g;
+                        txt.appendChild(line);
+                    }
+                });
+                txt.appendChild(more);
+            }
+
+            row.appendChild(sw);
+            row.appendChild(txt);
+            legendBody.appendChild(row);
+        }
+    }
+
+    function setLegendOpen(open) {
+        legendOpen = open;
+        legendPane.style.display = open ? 'flex' : 'none';
+        btnLegend.textContent = open ? 'Hide legend' : 'Show legend';
+        if (open) renderLegend();
+        cy.resize();
+    }
+
+    function syncLegendAvailability() {
+        const mode = document.getElementById('colorMode').value;
+        const graphMode = (mode === 'graph');
+        btnLegend.disabled = !graphMode;
+        btnLegend.title = graphMode ? '' : 'Legend is only available in source graph color mode';
+        if (!graphMode && (legendOpen || isLegendVisible())) setLegendOpen(false);
+    }
+
+    btnLegend?.addEventListener('click', () => setLegendOpen(!(legendOpen || isLegendVisible())));
+    legendFilter?.addEventListener('input', () => renderLegend());
+
+    // color mode
+    function applyColorMode(mode) {
+        const useGraph = (mode === 'graph');
+        cy.batch(() => {
+            cy.nodes().forEach(n => {
+                const c = useGraph ? n.data('graphColor') : n.data('classColor');
+                if (c) n.data('color', c);
+            });
+            cy.edges().forEach(e => {
+                const c = useGraph ? e.data('graphColor') : e.data('classColor');
+                if (c) e.data('color', c);
+            });
+        });
+        cy.style().update();
+        syncLegendAvailability();
+    }
+
+    // closeMatch edges toggle
+    const showCloseMatches = document.getElementById('showCloseMatches');
+
+    function applyCloseMatchVisibility() {
+        const show = (showCloseMatches == null) ? true : !!showCloseMatches.checked;
+        cy.edges('.closeMatch').style('display', show ? 'element' : 'none');
+        cy.style().update();
+    }
+
+    showCloseMatches?.addEventListener('change', applyCloseMatchVisibility);
+    applyCloseMatchVisibility();
+
+    const colorMode = document.getElementById('colorMode');
+    colorMode?.addEventListener('change', () => applyColorMode(colorMode.value));
+    applyColorMode(colorMode?.value || 'graph');
+
+    // hover highlight
+    cy.on('mouseover', 'node', evt => {
+        const n = evt.target;
+        cy.elements().addClass('faded');
+        n.removeClass('faded').addClass('highlighted');
+        n.connectedEdges().removeClass('faded').addClass('highlighted');
+        n.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+    });
+
+    cy.on('mouseout', 'node', () => {
+        cy.elements().removeClass('faded highlighted');
+    });
+
+    // search / focus
+    const search = document.getElementById('search');
+
+    function clearFocus() {
+        cy.elements().removeClass('faded highlighted');
+        cy.fit(undefined, 20);
+    }
+
+    function focusQuery(q) {
+        const needle = (q || '').trim().toLowerCase();
+        if (!needle) return;
+
+        const matches = cy.nodes().filter(n => {
+            if (!n.visible()) return false;
+            const id = (n.data('id') || '').toLowerCase();
+            const label = (n.data('label') || '').toLowerCase();
+            return id.includes(needle) || label.includes(needle);
+        });
+
+        if (matches.length) {
+            cy.elements().addClass('faded');
+            matches.removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().removeClass('faded').addClass('highlighted');
+            matches.connectedEdges().connectedNodes().removeClass('faded').addClass('highlighted');
+            cy.animate({ fit: { eles: matches, padding: 40 }, duration: 250 });
+        }
+    }
+
+    search?.addEventListener('keydown', e => {
+        if (e.key === 'Enter') focusQuery(search.value);
+        else if (e.key === 'Escape') { search.value = ''; clearFocus(); }
+    });
+  </script>
+</body>
+</html>

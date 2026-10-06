@@ -1,0 +1,1557 @@
+<https://swisslipids.org/rdf/SLM_000189655>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+<https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/0c0def2079ea461b238da976b995c0cca7de9a0634746fc1474724d03a8071f8> , <https://metabolinkai.net/quotient/exampleStatement/8aa72a61d1bdc0da9c4f76489280b79b01be84a02183aebb3f69a19af158f976>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://swisslipids.org/rdf/SLM_000507062>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_000174784#1199_at_sn3>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "807229"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_hasPart>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7033845"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/ZcSGcVPdA_c>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Ontology>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/b6020a580dbec42d290561a558756568114db856a67398d1d27b7b4dd44b9ba6>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Phosphatidylcholine (2:0_6:0)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000065135> .
+
+<http://rdf.metanetx.org/MNXM232950>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<https://swisslipids.org/rdf/SLM_000436562#1210_at_sn1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590768"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/inchi>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/844d05fbf64445707f2eb6f1afe6129dcb59e795f61e11599c7882f3d6e798c7>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "0";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/charge>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590871"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#prefLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188689"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/charge>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://pubmed.ncbi.nlm.nih.gov/17948906>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/695f03c1616105b2690b32c8116e0b0b7b4b6fb5388241bb2e926bb4e430b4cf>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "InChI=1S/C46H86O6/c1-4-7-10-13-16-19-22-23-25-28-30-33-36-39-45(48)51-42-43(52-46(49)40-37-34-31-26-21-18-15-12-9-6-3)41-50-44(47)38-35-32-29-27-24-20-17-14-11-8-5-2/h19,22,43H,4-18,20-21,23-42H2,1-3H3/b22-19-/t43-/m0/s1";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/inchi_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000127043> .
+
+<http://www.wikidata.org/entity/Q76955914>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://pubmed.ncbi.nlm.nih.gov/19075029>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "189518"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_000352768>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_Part>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+<http://www.w3.org/2002/07/owl#Class>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+<https://metabolinkai.net/quotient/exampleStatement/85e33973431717215636d28cb407aebd861a11b7749f7c3ced452bba91bcdd06>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "[O-]P(=O)(OCC(COC([*])=O)OC([*])=O)OC1C(O[*])C(O[*])C(O[*])C(O[*])C1O[*]";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/smiles_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000417915> .
+
+<https://swisslipids.org/rdf/SLM_sn1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9868"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_citation>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<http://www.wikidata.org/entity/Q76396666>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://metabolinkai.net/quotient/exampleStatement/88e967a0abd37d4b6219810a858cc8d180050da5759f0fb6546093c828665e4d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "C69H116O6";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/formula>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000277872> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_rank>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "534224"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/a56f2e9b3514ec5d2b8b134a903bda5283e35bcb45f520ba308c36dbd5de2b41> , <https://metabolinkai.net/quotient/exampleStatement/4bf9a7b0c51ea56c8c127eecd18d6026cfa59a4de77d0a2b01afb7600dc558f8> , <https://metabolinkai.net/quotient/exampleStatement/e893b53e6a5ebe257ad77c60086bc09cb6f50c64436f003b33b6b81e8bfc26b5> , <https://metabolinkai.net/quotient/exampleStatement/b0ab5dfdcbef81705ac4ad85d14fbf0c525fb07223da4c95439682d94f3acd4c> , <https://metabolinkai.net/quotient/exampleStatement/b6020a580dbec42d290561a558756568114db856a67398d1d27b7b4dd44b9ba6> , <https://metabolinkai.net/quotient/exampleStatement/55d683b729474e184853c8c8a3a5b1348219aeb1ce4a33cee7338c0c68550516> , <https://metabolinkai.net/quotient/exampleStatement/9c08aa5b2bd91a7180ca6784f3051857072a33e1629bc8a5801cc0600d6b4226> , <https://metabolinkai.net/quotient/exampleStatement/63a67512ab93fb9653226d6bbcdef1551537f4213022f3c37c3d2020ee5d9b8e> , <https://metabolinkai.net/quotient/exampleStatement/8c14a0e782ec45bab74a906c0ae8bce148dd4dc225b8af7e68f37bb14af3991c> , <https://metabolinkai.net/quotient/exampleStatement/c97bda0aa46a5c0cdc809a91bd1a16595eb9c186478f43a9b4624263164146ae> , <https://metabolinkai.net/quotient/exampleStatement/5e3777276d3061d471c39c4ced11d121e9fb1569af58185104de392bc328c65e> , <https://metabolinkai.net/quotient/exampleStatement/96926eebe45555ac89cc86958fc675ffd22bf39c7308f1fa130969d8d21bda56> , <https://metabolinkai.net/quotient/exampleStatement/85e33973431717215636d28cb407aebd861a11b7749f7c3ced452bba91bcdd06> , <https://metabolinkai.net/quotient/exampleStatement/624db77a3daee342531f99499e74806fa31dfb03d1e414f0b7446e04e670030f> , <https://metabolinkai.net/quotient/exampleStatement/3802bab3805f07b6185e599b35833cb626ea98d9858164a248c20947fb14df0d> , <https://metabolinkai.net/quotient/exampleStatement/456f2b9c02e398dc53a9f341c708538eaa02ecb4ddd84a3100dcdb9face8ea5e>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "194253"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/e55ec7c58f4ed7de83eb7a77e6d1d9cb96ad72ebab5347cf58820fb751964bf6>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "1-(9Z,12Z-octadecadienoyl)-2-nonadecanoyl-3-(9Z,12Z,15Z,18Z-tetracosatetraenoyl)-sn-glycerol";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+<http://www.w3.org/2001/XMLSchema#int>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/M69sKBDj7po> .
+
+<https://swisslipids.org/rdf/SLM_000270306#1207_at_sn1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4231960c47b666d445625bb063e9b7732deea1145554019907fc047ac0d62cc9>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Triacylglycerol (18:2(9Z,12Z)/19:0/24:4(9Z,12Z,15Z,18Z))";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+<https://swisslipids.org/rdf/SLM_Molecular_Subspecies>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+<https://metabolinkai.net/quotient/exampleStatement/3802bab3805f07b6185e599b35833cb626ea98d9858164a248c20947fb14df0d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "C[N+](C)(C)CCOP([O-])(=O)OCC(COC([*])=O)OC([*])=O";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/smiles>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000065135> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590768"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/inchi_key_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_sn2prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/8c14a0e782ec45bab74a906c0ae8bce148dd4dc225b8af7e68f37bb14af3991c>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Phosphatidylcholine (2:0_6:0)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#prefLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000065135> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2292658"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_position>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>
+] .
+
+<https://swisslipids.org/rdf/SLM_000323887>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_000744464#1208_at_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/formula>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_sn1prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188729"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#prefLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/695f03c1616105b2690b32c8116e0b0b7b4b6fb5388241bb2e926bb4e430b4cf> , <https://metabolinkai.net/quotient/exampleStatement/215e1663ad5e3b976933b65dbb612dc1e1891b34be7e84c96b33e5a687b0d271> , <https://metabolinkai.net/quotient/exampleStatement/3c69ec01d97a6941eef100918e0b36a336564e3913be624ff0ab52743163b934> , <https://metabolinkai.net/quotient/exampleStatement/5b69d353c1349620cf1472961cc5ad76928bfccf89167bd3012313c6e002ba02> , <https://metabolinkai.net/quotient/exampleStatement/e55ec7c58f4ed7de83eb7a77e6d1d9cb96ad72ebab5347cf58820fb751964bf6> , <https://metabolinkai.net/quotient/exampleStatement/6212db47e1fa5e7898ba54618718b08299dafc5c0a2f4cea3a9cc362c391a9d7> , <https://metabolinkai.net/quotient/exampleStatement/844d05fbf64445707f2eb6f1afe6129dcb59e795f61e11599c7882f3d6e798c7> , <https://metabolinkai.net/quotient/exampleStatement/88e967a0abd37d4b6219810a858cc8d180050da5759f0fb6546093c828665e4d> , <https://metabolinkai.net/quotient/exampleStatement/ece8bd28b030de56a87de4d0bdca304b5593c38c2ec8a8ea71b6d3a8779a770f> , <https://metabolinkai.net/quotient/exampleStatement/f2825ffdbc86459b865f626d51482effe8e7e8488df294453f8fa87fbc7a3d4a> , <https://metabolinkai.net/quotient/exampleStatement/6e555d0be044d62fae12798aa913e2fd4b29b896a62e93f5d205c101fabfc803> , <https://metabolinkai.net/quotient/exampleStatement/4231960c47b666d445625bb063e9b7732deea1145554019907fc047ac0d62cc9> , <https://metabolinkai.net/quotient/exampleStatement/37d10dcc786d8f0109561ed7005e9250151d6881da301820a0be96c19062f026> , <https://metabolinkai.net/quotient/exampleStatement/ccc83e577c0b953d10e0a3b3da34d3d18726be6482d201f6c515e9f9a9c7de93> , <https://metabolinkai.net/quotient/exampleStatement/2a08a6d3bb2ef34cf808edda57f1643d37fcd5440fb6026602fc40fbac37c0e2>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "590882"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4>
+] .
+
+<https://swisslipids.org/rdf/SLM_>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZcSGcVPdA_c> .
+
+<http://www.wikidata.org/entity/Q113947806>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://pubmed.ncbi.nlm.nih.gov/12679481>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2674"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/inchikey>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_could_be_at_sn1_sn1prime_sn2_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/charge>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_000097643>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188729"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://semanticscience.org/resource/CHEMINF_000570>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "187667"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "186481"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#altLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/M69sKBDj7po>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#onDatatype>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/acyp2oN8dlE>
+] .
+
+<https://pubmed.ncbi.nlm.nih.gov/23042293>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/456f2b9c02e398dc53a9f341c708538eaa02ecb4ddd84a3100dcdb9face8ea5e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "C69H121O22P4";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/formula>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000423744> .
+
+<http://rdf.metanetx.org/MNXM662881>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590882"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_nAcyPosition>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ccc83e577c0b953d10e0a3b3da34d3d18726be6482d201f6c515e9f9a9c7de93>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "InChI=1S/C62H112NO9P/c1-4-7-10-13-16-19-22-24-26-28-29-30-31-32-34-36-39-42-45-48-51-54-62(66)72-59(57-69-61(65)53-50-47-44-41-38-35-33-27-25-23-20-17-14-11-8-5-2)58-71-73(67,68)70-56-55-63-60(64)52-49-46-43-40-37-21-18-15-12-9-6-3/h7,10,16,19,24,26,29-30,32,34,59H,4-6,8-9,11-15,17-18,20-23,25,27-28,31,33,35-58H2,1-3H3,(H,63,64)(H,67,68)/p-1/b10-7-,19-16-,26-24-,30-29-,34-32-/t59-/m1/s1";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/inchi>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000689062> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188689"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/charge>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/generalized_empirical_formula>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://pubmed.ncbi.nlm.nih.gov/11412116>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/acyp2oN8dlE>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/6e555d0be044d62fae12798aa913e2fd4b29b896a62e93f5d205c101fabfc803>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "JVUNNNXPOYWUKW-UACRTTBLSA-N";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/inchikey>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000127043> .
+
+<https://swisslipids.org/rdf/SLM_000209901>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+<https://metabolinkai.net/quotient/exampleStatement/a56f2e9b3514ec5d2b8b134a903bda5283e35bcb45f520ba308c36dbd5de2b41>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "InChI=1S/C22H43NO3/c1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-21(24)23-20-22(25)26/h2-20H2,1H3,(H,23,24)(H,25,26)/p-1";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/inchi>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000485696> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<http://rdf.metanetx.org/MNXM665781>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://xmlns.com/foaf/0.1/depiction>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<http://www.wikidata.org/entity/Q76931136>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://swisslipids.org/rdf/SLM_sn3>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/8aa72a61d1bdc0da9c4f76489280b79b01be84a02183aebb3f69a19af158f976>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Any steric position is posible";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_could_be_at_any> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "541810"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/M69sKBDj7po>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/c97bda0aa46a5c0cdc809a91bd1a16595eb9c186478f43a9b4624263164146ae>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Lysobisphosphatidate (34:6/0:0/16:2/0:0)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000481695> .
+
+<https://swisslipids.org/rdf/SLM_could_be_at_sn1_sn1prime_sn2_sn2prime_sn3_sn3prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2390"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#seeAlso>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18866"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#seeAlso>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<https://metabolinkai.net/quotient/exampleStatement/9c08aa5b2bd91a7180ca6784f3051857072a33e1629bc8a5801cc0600d6b4226>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "MUNNIYAZGQGMQR-UHFFFAOYSA-M";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/inchikey>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000485696> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9294"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#equivalentClass>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_Category>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590768"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/inchi_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/63a67512ab93fb9653226d6bbcdef1551537f4213022f3c37c3d2020ee5d9b8e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "MUNNIYAZGQGMQR-UHFFFAOYSA-M";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/inchi_key_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000485696> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590768"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/inchikey>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_Rank>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+<https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <https://swisslipids.org/rdf/SLM_Part> , <https://swisslipids.org/rdf/SLM_could_be_at_any>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2292658"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188396"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://xmlns.com/foaf/0.1/depiction>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/2a08a6d3bb2ef34cf808edda57f1643d37fcd5440fb6026602fc40fbac37c0e2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "TG(26:1(17Z)/22:4(7Z,10Z,13Z,16Z)/18:4(6Z,9Z,12Z,15Z))";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#altLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000277872> .
+
+<https://metabolinkai.net/quotient/quotientClass/acyp2oN8dlE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2000/01/rdf-schema#Datatype>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/eb33117fe91013fff22380f889b4e66679839ff50f26f1a4e8c4bbdf42c36b75>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Structural subspecies";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_Structural_Subspecies> .
+
+<http://www.wikidata.org/entity/Q76394708>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://swisslipids.org/rdf/SLM_000383505>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://metabolinkai.net/quotient/exampleStatement/37d10dcc786d8f0109561ed7005e9250151d6881da301820a0be96c19062f026>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "SLM:000240935";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://semanticscience.org/resource/CHEMINF_000570>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+<http://rdf.metanetx.org/MNXM720537>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4>
+] .
+
+<https://swisslipids.org/rdf/SLM_000282390#1112_at_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2674"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/inchi_key_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<http://rdf.metanetx.org/MNXM567025>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "189507"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590770"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2004/02/skos/core#altLabel>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590871"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://semanticscience.org/resource/CHEMINF_000570>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_Isomeric_Subspecies>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+<https://metabolinkai.net/quotient/exampleStatement/3c69ec01d97a6941eef100918e0b36a336564e3913be624ff0ab52743163b934>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "0";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/charge>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000127043> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188505"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/generalized_empirical_formula>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_000604146>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2144755"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Class>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "8"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/624db77a3daee342531f99499e74806fa31dfb03d1e414f0b7446e04e670030f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "SLM:000423744";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://semanticscience.org/resource/CHEMINF_000570>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000423744> .
+
+<https://swisslipids.org/rdf/SLM_000528208>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+<https://swisslipids.org/rdf/SLM_acylPosition>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8027"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_Structural_Subspecies>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+<https://swisslipids.org/rdf/SLM_000555309#407_at_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/smiles>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_000508573>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZcSGcVPdA_c>
+] .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEcAAAJZCAAAAABuQQSDAAAf6klEQVR42u3dj1tTd57o8fnjDtSKhhQcQgroMLgOcnUorTtce9vSso/SZaabKV0pLrXLlC10qrdPGce2TKniU1fLtBbG60hXy9Dq0AZmYalBYJKY731O+KFIEk44P/L9fs/79TxDCHwJJx/pe5KTk+RHAgDs+REjAGATHQFgFx0BYBcdAWCX/B2JdRV3xawuXuzOYzEAZ8jekeRAWctoS9lA0tLqocqjVy0vBuAQyTsyUls/JoQYq68d2XrxRFPNZcuLAThG6o5MNocGU+nPUoOh5snci2Mdgd641cUAHCRxR+YjgZ6l9XNLPYHIfPbFqXPlrdNWFwNwlLQdifeXts2Yn9ztDK98ZaattD+eZfWNhrrRlc/CHbNbLQbgLFk7MlzdOG6eJk4HW6fWvjjeWD2cafFce/DM2r7V71/efSqWazEAp8nZkfUGXKg5fP3hb6zl5WHJM8H2uYfOT7YE+5ayLQbgPBk7sn6f5PrhmguPfG/97s660bqGG48sGj/y44FExsUAXCBfR9b3kU61Bk8nNn9/4+7X6dbyc6nNi64eqhq8v2kxAFfI1pH1x2zvdu7qvJt5zYOHg+O9gY4sh69+Wlf36cbFAFwiWUfWjiHbsHt1s9XD0y7XNE1kXXN/sOrQ1YcWA3CLVB2ZWjum/dHdq5uYh8tfPVo5lHNRYuDHR8ZXF0/xTw24RqaOJIo703dSMuxe3SzWVdy9uNWipb5gi3kvKdZZnODfGnCLTB1ZNpaz717dptip3S9/v3bRAFwhX0fC2XavbtNsR5iOAK6SryOqXTQAOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALjoCwC46AsAuOgLALhnfT8+Viz65KNE1BfQi5/v7Ou/OVm8GDGDbpOqIEGP1tSMuXfTlmqYJ/r0BN0jWEZEaDDVPunPR8d5AR0yyqwtoQbaOCLHUE4jMu3PR063l51L8mwNOk68jQsy0lfbH3bno0bqGG/yjAw6TsSNCjDdWD7tzyckzwfY5/tkBR8nZESGGqxvH3bnkufbgmaSk1xpQk6wdEfH+0rYZdy76RkPdKP/ygHOk7YgQ85FAz5Irl5w6V946zb894BSJOyLEZHNo0J3HV2Idgd64zFcdUInUHRFipLZ+zJ1Lnmiqucw/P+AIyTsikgNlLVPuXPRQ5dE7/AEADpC9I0LEOosT7lzy4km3LhnwF/k74uJz/nk1AcARknckUZGgI4DsJO+I+V86HQEkR0cA2EVHANhFRwDYRUcA2EVHANhFRwDYRUcA2EVHANhFRwDYRUcA2EVHANhFRwDYRUcA2EVHANhFRwDYRUcA2EVHANhFRwDYRUcA2EVHANjF68UDsIv3rwFgl5/fT08kijtj/AkAtvn4/X2FEFMtZQNJ/ggAmyTvyEht/Zirv2CsvnaEvwLAHqk7MtkcGky5/DtSg6HmSf4OADsk7sh8JNCz5MHvWeoJROb5SwC2T9qOxPtL22Y8+l0zbaX9cf4WgO2StSPD1Y3jHv668cbqYf4YgG2SsyMF+M/a43ABOpGxI4W5m+HlHSlAL/J1pHC7Pb3asQvoRraOFPZhWC8eaAb0I1lHCn5YmOsHvgEakqojMhym7u6B+ICWZOqIJE+bc/GJgYCeZOqILE/j5+UEgPzQEXm3A1AFHZF3OwBV0BF5twNQBR2RdzsAVdARebcDUAUdkXc7AFXQEXm3A1AFHZF3OwBV0BF5twNQBR2RdzsAVdARebcDUAUdkXc7AFXQEXm3A1AFHZF3OwBV0BF5twNQBR2RdzsAVdARebcDUAUdkXc7AFXQEXm3A1AFHZF3OwBV0BF5twNQBR2RdzsAVUjSkbudYToCqEqKjiROB1un6AigqpWOhLsXrf5ArKu4y/K73i12W1l8oebwdXPxSUnex06S9/UDlLHSkTtHK4csLTff/XbU8rvwDlUevbrl4uuHay6sLr4jyVBkeJ9hQCFr92su1zRNbL16pLZ+TAgxVl87svXiiaaay1sunmoNnk48WCwLa9cQQNr6/pF4b6Bji1vzk82hwVT6s9RgqHky9+JYR6A3vtXiu527Ou9uWCwLC9cQwKqH9rNOt5afS2VfOR8J9Cytn1vqCUTmc/xneK68dXqrxau7Vx9ZLIstriGAdRserxmta7iRZV28v7RtZsNXZtpK+7PdhrjRUDe65eLV3aubF8si1zUE8MDGx32TZ4Ltc5mWDVc3jm/64nhj9XCmxXPtwTPJrRav7V7NuFgW2a4hgIf9aDsNWJcpL5ZatLZ7NetiWWQMKIANNh+HZuk+yZrNd3es3TcKp3ev5losi83XEMAjMhzPamkf6bqNu1/z2le7xWJZbNxoAJtkPC7e0mO26x48HJzXY8cWFsviwUYDyCDL82ssHUO2bvXwtLyOZbO2WBarGw0gk6zP07N0TPsa83D5q/kcW295sSzMjZ7izwXIKPvzfa09x25NrKs4r+f6WV8si1inJE8jBKQj0+sYSY6XEwCyoCOW0REgCzpiGR0BsqAjltERIAs6YhkdAbKgI5bRESALOmIZHQGyoCOW0REgCzpiGR0BsqAjltERIAs6YhkdAbKgI5bRESALOmIZHQGyoCOW0REgCzpiGR0BsqAjltERIAs6YhkdAbKgI5bRESALOmIZHQGyoCOW0REgCzpiGR0BsqAjltERIAs6YhkdAbKgI5bRESALOmIZHQGyoCOWJYpPKvcmgIAn6Ih1d1R7U2LAI3QkH5drmiaYAvAoOpKXeG+gI8YYgI3oSJ6mW8vPpRgD8DA6krfRuoYbTAF4CB3JX/JMsH2OMQDr6Mh2zLUHzyQZA7CKjmzPjYa6UaYArKAj25Q6V946zRgAQUfsiHUEeuOMAaAjtkw01VxmCgAdsWeo8ugdpgDfoyP2LJ4sTjAF+B0dsYlXEwDoiF10BKAjdtERgI7YRUcAOmIXHQHoiF10BKAjdtERgI7YRUcAOmIXHQHoiF10BKAjdtERgI7YRUcAOmIXHQHoiF10BKAjdtERgI7YRUcAOmIXHQHoiF10BKAjdtERgI7YRUcAOmIXHQHoiF10BKAjdtERgI7YRUcAOmIXHQHoiF2J4m5CAr+jI3bdPlJ1hSnA3+iIfecrno8yBfgZHXHAvROBPt4tHD5GRxzx9c9rR5kCfIuOOCP1QdmxWcYAn6IjTvnhleB79xkDfImOOOfPP/vZn5kC/IiOOOj+e8FXfmAM8B864qjZY2UfpBgD/IaOOGy09udfMwX4DB1xWqIvcOIeY4Cv0BHnRZ+vOM8U4Cd0xA1Xqo7cZgrwDzriiuXuYg6Uh3/QEXfwsiTwEzriDjoCP6Ej7qAj8BM64g46Aj+hI+6gI/ATOuIOOgI/oSPuoCPwEzriDjoCP6Ej7qAj8BM64g46Aj+hI+6gI/ATOuIOOgI/oSPuoCPwEzriDjoCP6Ej7qAj8BM64g46Aj+hI+6gI/ATOuIOOgI/oSPuoCPwEzriDjoCP6Ej7qAj8BM64g46Aj+hI+6gI/ATOuIOOgI/oSPuoCPwEzrijkTxyUWmAL+gIy65c7RyiCnAJ+iIay7XNE0wBfgCHXFPvDfQEWMM8AE64qbp1vJzKcYA7dERd43WNdxgCtAdHXFZ8kywfY4xQG90xHVz7cEzScYAndERD9xoqBtlCtAYHfFC6lx56zRjgLboiDdiHYHeOGOApuiIVyaaai4zBeiJjnhnqPLoHaYAHdERDy2eLE4wBWiIjniJVxOAnuiIl+gI9ERHvERHoCc64iU6Aj3RES/REeiJjniJjkBPdMRLdAR6oiNeoiPQEx3xEh2BnuiIl+gI9ERHvERHoCc64iU6Aj3RES/REeiJjniJjkBPdMRLdAR6oiNeoiPQEx3xEh2BnuiIl+gI9ERHvERHoCc64iU6Aj3RES/REeiJjniJjkBPdMRLdAR6oiNeoiPQEx3xEh2BnuiIlxLFnTGmAP3QEU9NtZQNJBkDdENHPDZWXzvCFKAZOuK11GCoeZIxQCt0xHtLPYHIPGOARuhIIcy0lfbHGQO0QUcKY7yxepgpQBd0pFCGqxvHmQL0QEcKJt5f2jbDGKADOlJA85FAzxJjgProSEFNNocGU4wBqqMjBTZSWz/GFKA4OlJoyYGylinGAKXRkcKLdRYnmAJURkckwMsJQHF0RAJ0BIqjIxKgI1AcHZEAHYHi6IgE6AgUR0ckQEegODoiAToCxdERCdARKI6OSICOQHF0RAJ0BIqjIxKgI1AcHZEAHYHi6IgE6AgUR0ckQEegODoiAToCxdERCdARKI6OSICOQHF0RAJ0BIqjIxKgI1AcHZEAHYHi6IgE6AgUR0ckQEegODoiAToCxdERCdARKI6OSICOQHF0RAKJ4s4YU4DC6IgMplrKBpKMAcqiI3IYq68dYQpQFR2RRGow1DzJGKAmOiKNpZ5AZJ4xQEV0RCIzbaX9ccYA9dARqYw3Vg8zBSiHjkhmuLpxnClAMXRENvH+0rYZxgCl0BH5zEcCPUuMAQqhIzKabA4NphgDlEFH5DRSWz/GFKAKOiKp5EBZyxRjgBroiLRincUJpgAl0BF58XICUAUdkRcdgSroiLzoCFRBR+RFR6AKOiIvOgJV0BF50RGogo7Ii45AFXREXnQEqqAj8qIjUAUdkRcdgSroiLzoCFRBR+RFR6AKOiIvOgJV0BF50RGogo7Ii45AFXREXnQEqqAj8qIjUAUdkRcdgSroiLzoCFRBR+RFR6AKOiKvPDoy3nbw6d/EGBkKhI7Iy3pHzj/ePfqfT9XOMzMUBh2Rl+WO3A28Z74x8IFfMTMUBh2Rl+WOfLg7nj4p4f1uUBh0RF6WO9J9MH1y0+AN+FAYdEReieKTi5YWdh1Kn0wYtxkaCoKOSOzO0cohK+veL0uZJxd3LDEzFAQdkdrlmqaJ3CvudoZF9LFPzU+b/w8DQ2HQEbnFewMdOY4LSZwOtk4J8ZvgJ3dvvxLkbg0KhI7Ibrq1/Fwqy/cu1By+nv7ko3oj0EJGUCh0RH6jdQ03Mn39+uGaC+bDOm+GmREKi44oIHkm2D736BenWoOnzeNFrlQf4YYICoyOKGGuPXgm+fAX7nbu6rxr3utpqfiE8aDQ6IgibjTUja6fWd29KhLvBF5bcOo3XD3+zHN/uM+ksQ10RBWpc+Wt0yufru1evVZ36KZjl//27re+HAi3pJg08kdH1BHrCPTG13evivn24Fnn/qu/VfRHIUQ08HvmjPzREZVMNNX8fnX3aupssN3J1wnorE+fvHqYKSN/dEQtQ8VVX5mnNw/VXXP0gptXXnTggwAzRv7oiGIWTxYnxMJrgXccfo2AI79OnwyWMGLkj46oZtlY/qSiZdrpi21vTp/01DJh5I+OqGbZeLr6ivMX++mOqPl0nppuJoz80RHVLBvdbryMfKp5/w3x/XNVvFg0toGOqMatd6NYPllulBz7GwPGNtAR1fCuNpAPHVENHYF86IhqXOtIoiKR/h+QNzqiGtc6Yl4wN3awLXRENXQE8qEjqqEjkA8dUQ0dgXzoiGroCORDR1RDRyAfOqIaOgL50BHV0BHIh46oho5APnRENXQE8qEjqqEjkA8dUY1rT4GhI9g2OoJVdATbRkfUcv+TV9p7/9uVi6Yj2DY6opTlpr3vftAS+H+uXDYdwXbREaWcrDbfHPz1kBv/tdMRbBsdUUkq+L55svD4BRcunI5g2+iISr43xtOnB065cOF0BNtGR1TyrfGX9Onh162tX+wu7r5n9cKXja7iLssdiXUVdy8K64u7LL+hxWK3W4vz3miuodVrSEdUEiv6LH0aOm1p+VDl0S+eDQ1ZvPDB4qNf/O/iQUtrkwNlLVePVg5ZXjzaUjaQtLrRV91ZnPdGcw0tX0M6opTGNvPjWNGkEDfDqdxrJ5pqLgshruxtvGXhkm817jXfpe9yTdPE1otHauvH8l08Vl87svXi1Y12YfG2NppraPEa0hGlXNvxbkL8V9UrQizUDORcGesI9MbTnyX6Ar/+YYvL/eHXgb6Vw2TjvYGOLW5GTzaHBlP5L04NhponhcWNdnrxdjeaa2jtGtIRtXxRV/LjwBtJIV5qFSIazrYsda689cFbic8ce2Lgfo4LvT/wxLGZ9XPTreXnctzUmY8Eepa2t3ipJxCZz75440Y7udjORnMNrVxDOqKa2ah5w+H9vQtCRCJZ1txoqBvd8IVrBw5cy3qJm745WtdwI8vaeH9p28z2F8+0lfbHrW60Y4ttbjTXcOvtoCNKSoVvChHdFRWTGW6SzLUHzzy6P2zjTY4NfxYZbqwkzwTb5zItHq5uHBd2FovxxurhTIszbbQzi+1vNNdwy+2gI+qKRESy4W2rfxIPdoE8LNvOE/6z5hrmcw3piLrCUfF2Q1LMhx7+Yo6bqKsPyYjER5F/+XDllmmOB3O4m8E1tH4N6YjaKZkU4ve/eHB+i11mQ6Fn/ypm6/6hr+9A3X8L8decB5ew25NraPka0hHl/eL3a59t/RDeve6wePapuBCJpqNChLc42JWHYbmGlraDjmggNC9GqoTlQ4qiReYRReKa8Z2Fy+awMK7h1ttBRzRRNSLEHYuHOF8qSv8/TqLooqWL5jB1rmHu7ZiiIxpZMl639pSrTx5bOd35B2sXzNPmuIY5tyNMRzSyYCxYWzhqzJon88YXDA1OoSOasPzKIUul6ddCGggsaj4ReIiOaML6KxCdLv1CiC9L32VmcAwd0UQer2R2OlhRETyt9zjgLTqiiXxeETF5+3ZC62HAa3REE7yyKgqIjmiCjqCA6Igm6AgKiI5ogo6ggOiIJugICoiOaIKOoIDoiCboCAqIjmiCjqCA6Igm6AgKiI5ogo6ggOiIJugICoiOaIKOoIDoiCboCAqIjmiCjqCA6Igm6AgKiI5ogo6ggOiIJugICoiOaIKOoIDoiCboCAqIjmiCjqCA6IgmEsVvxpkCCoSO6OJ2075RpoDCoCP6+PCJl+eZAgqBjmhk/uUnPmQKKAA6opXRfU23mQI8R0f0Eu/Z3cP+VniNjuiG/a3wHh3RD/tb4TU6oqH1/a2zf+i9eI95wHV0REsr+1s/KDn6y0Pl1xgH3EZH9BTvCYvrxZ8KId4MzjEOuIyO6OvF58yP95/8D0YBl9ERfYXOpE9efpZRwGV0RF8lH6VPTjQyCriMjujryXfSJ8deYBRwGR3RV9vT5se/7znNKOAyOqKvicffEyLxq8oFRgGX0RGNfban9plw7SSDgNvoiM7+fu3j/0oxBriOjgCwi44AsIuOaC1RkWAIcB8d0RrvRgFP0BGt0RF4go5ojY7AE3REa3QEnqAjWqMj8AQd0RodgSfoiNboCDxBR9T17djY2FjuJ+HREXiCjqjr2uDg4OD/CHH+6aqfdsUyLqEj8AQdUV5P8OzUn5p+mvGGCR2BJ+iI6iaL/mgGY9/rmb5JR+AJOqK63+xNn/y2ItM3eX4NPEFHVHf8+fTJiLG46Vvfjo3d4u304AE6orrjKy/jnKkjx3dXVew4yYjgOjqiup596ZN3K4TYs7/9d7fuP/jW8X8W4lNjlBnBbXREdX8p+sJ8H87aE0Lcu9r3wp6SxtcvRle+ZXZEPPF/mRHcRkeU98YTH3x//ci+tQNIohdfbyzZ80Lf1XvpjnxffIERwW10RH0fP1VV2/nDw1+5f+t37fv3iON729vL/9ffmRDcRkc0dvzAW+9c4YFfuI+OaCy9fwRwHx3R2GpHwq/NMwu4io5obLUj3x0PvLXINOAiOqKxb2+vfnKrec8A+0ngHjriD18e3HueKcAtdERbs5Ubzp7fe/BLhgJ30BFt9b0oxFzowfnEwJ7mW+nP5j7/4yzzgYPoiK5S1Z8L8d6zD39p8a3A8e/E/RM7D/9854n7jAiOoSO6+rw6JcTBR3aKzL8WFm9UfCPEtxXdjAiOoSO6erFPiG8Cm18ObaHkD+bJ0M4YM4JT6IimZktmhTj1y83f+MK4a54sGCMMCU6hI5oy97Kmnszw2iNDj62clgwyJDiFjugpvZd19MnU5u9cMZbMk+WiS0wJTqEjekrvZf3lqQzfmS3+zDz5Y9HfmBKcQkf0ZO5lXQ58k+lbbf8QEyJ24BhDgmPoiJ4qZ4U4fzDjtxaOVLwSqTjCwzVwDh3R17PvZfnGaF8fh8jDSXREX6E5ZgBv0BH93D/bXHX0wxSDgGfoiHZSLz358Z8+qmjPvqLCMIwKBgXn0BHtDJV8Z759+I7LjAJeoSPaeXblEd3nWhkFvEJHtLO3L33y5gFGAa/QEe1UvZM+6dmfdQX7R+AwOqKdI79Kn/zT84wCXqEj2nk/aL5dzd928XxeeIaOaCdx+OC16Oj+f+QAEniGjuhnsfsnRu2/L2dfwP4ROIyOALCLjgCwi474UQV3a+AoOgLALjqisJlF8+O0uUd14c+TLj0+k5q8vmC+nmvUPLM0w9SRAR1RWOgj82PJJbH8qx17yytdeeHmy+HyvTval8WVHea5j/cwdWRARxS23pGW/d8LcfaxUas/aH3/yNhjZ4WI7n+BjiAXOqKwtY6MGzfNT9oPO/8rGl82P35t/JmOIAc6orDQb6PRaLTk0ts16bOfFS04/RsWi/8zfbqv98oO83edpiPIhI4oLFReVVVVVXTptafSZ7827jj9G74zvkqfPvPrK0Xm7yqnI8iEjihs7X5N98/SZ68ZFt/aKrbL2GXtbSfmjLH0aUMX92uQAx1R2FpHhh9PV6G/QohvWua3+qnkQFnLaEvZQHLLy6+cFZXpF0Va2HmejiAHOqKwtY78PdxhHk2y5z+EaDZCW7w1zUhtvXkbY6y+dmSry3+xT/TtMY8Y6Qgv0xHkQEcUtv6473j502+dLH8xIa4YhlHUneOWxmRzaHDlgLXUYKh5MseFh6PmmwQnXyrveutI+TiP+4KOaGp4yvw4NC1E7Hcd3VeFSOwzTIe+y/ID85FAz9L6uaWeQCT7vaBIRKSqPxdi9I1XB+4KMfOx+cWpC0wddERz3z2V7ogRGMr03Xh/advG49pn2kr741kuK7orKvpeZKawgo7o5at/eixdkpfvbfrWcHXj+KYvjjdWD2++lPDkyg2S2UomCivoiG6irwfMkOz9auOXMwcjS17ebkgKEQ0zTFhER/Rz7/SThmHseOehJwDnugPz6N2dqhGRbHibMSIPdERHyQsNhmH8Ynb1bO4dqo/ufh0pHRGT3BZBPuiIpq61FBnlnwkLD/CKhx8ODkeFGKlifMgPHdHWVEeJcSJu6YCzB4enRSIMDvmjIxq721fxhqUD4MXK4fIlH7JzFdtCR7S2VNwZs7w49oKRYGTYDjqitWVj2bXVwDo6ojU6Ak/QEa3REXiCjmiNjsATdERrdASeoCNaoyPwBB3RGh2BJ+iI1ugIPEFHtEZH4Ak6ojU6Ak/QEa3REXiCjmiNjsATdERrdASeoCNaoyPwBB3RGh2BJ+iI1ugIPEFHtEZH4Ak6ojU6Ak/QEa3REXiCjmiNjsATdERrdASeoCNaoyPwBB3RGh2BJ+iI1ugIPEFHtLZsXMpj9SU6gu2hI1pLFAXyeD+93UW8nx62hY5oLBwVU/m8v2/LFO/vi22hI5oKTwoRiQghxuprRyysH6mtHxMrPzJJS5AnOqKptxuSqzcuUoOh5sktVk82hwZTYuUmTLLhbcaH/NARHYUnN9RgqScQmc+xfD4S6FlaP2cWiJskyAsd0UwqfDNDCmbaSvvjWX4i3l/aNvPQ+bUIsasEltER3by/dyHTXZPxxurhjOuHqxvHH/2a2aGVvSuAFXREK+GoEC+1Zt5VmikYWfJi7qSN7opykwQW0RGFHbpofvzp50Kc/Ynx+HO3V25DLNQMZF7+6B2Y3Hd3zIuKRMTt53ca+waEuLrP/OKnB5k66IheQh+ZH0suiVNlF5en/yV4J30jQtwMp7L8wMYdqrl3v4aj5qX9NfhKdPnTslPiyg7zix/vYeqgI3p2ZKroivnJPz639U6N9Qd4rTwcHImIliPmJ58V/ZWOIAc6orC1jpz5cToNF3YsW9ijsXrAmZXD08LR+OND5iep0Lt0BDnQEYWFjLRLJxrTZ28aU1Z+KjlQ9txli4fLR42VXbNPd1xZ+V10BJnQEYWFfhuNRqMll7oOpc+OG1FrPxc7UNRl7el7M8b19GnjiSs7zN91mo4gEzqisLX7NR8E0s/TPRtIWvzB5561uDBVmn7sJxE8y/0a5EBHFLbWkR92v2e+1sh+yweOHTxgdeWrdeZLkry/a56OIAc6orD1x30/efzk6MVDdZZfaqSi3OrK2P5DF0e7Hx/icV/kQkcU1nnN/Bi5KcRX7c/8ou+e1Z9LFhfFra6919f8zD+PC/H1K+a56yeYOjKgIz40Y1jdIwtYQkd8aNxYfRgGcAYd8aFLhnGRKcBBdMSHBgzjPaYAB9ERHzplGP/GFOAgOuJD7YbRxhTgIDriQ82GcYQpwEF0xIf2G8ZPmAIcREd8KGgYu5kCHERH/GfZfAGAe8wBzqEj/jNlduQ2c4Bz6Ij//MnsyJfMAc6hI/5z3uzIx8wBzqEj/vNBVVVV1VnmAOfQEQB20REAdtER/7n1UlVVy00hzqVflOjMm0wEdtER3xnb2fXNt/+2c1Sceto8++oLjAR20RG/Se3rME/+de99OgKn0BG/uWl8a57cMcbpCJxCR/zmQtHK+/vuGDq103wAOEBHYBsd8ZvhlY6kdnxy6sDY2NjYC3QEttERv7lpTJont42vuF8Dp9ARv0n95FXzpGNvio7AKXTEd66V/OvXEydK/sTjvnAMHfGfvxyrrjo2wXFocA4dAWAXHQFgFx0BYBcdAWDX/wdwU6YTXG09mAAAAABJRU5ErkJggg==>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<http://rdf.metanetx.org/MNXM673302>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<https://swisslipids.org/rdf/SLM_000567405#418_at_sn2prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590871"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/smiles_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<http://rdf.metanetx.org/MNXM74611>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<https://swisslipids.org/rdf/SLM_000025664>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188396"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/smiles_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_000416430>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_000649800#928_at_sn1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ece8bd28b030de56a87de4d0bdca304b5593c38c2ec8a8ea71b6d3a8779a770f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "CCCCCCCCCCCCCC(=O)OC[C@@H](COC(=O)CCCCCCC\\C=C/CCCCCC)OC(=O)CCCCCCCCCCCC";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/smiles_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000127043> .
+
+<https://swisslipids.org/rdf/SLM_sn3prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/b0ab5dfdcbef81705ac4ad85d14fbf0c525fb07223da4c95439682d94f3acd4c>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                true;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2002/07/owl#obsolete>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000389703> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4bf9a7b0c51ea56c8c127eecd18d6026cfa59a4de77d0a2b01afb7600dc558f8>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "C27H48O19P3";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/generalized_empirical_formula>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000417915> .
+
+<http://www.wikidata.org/entity/Q76948788>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/6be39a56d53f35972d60e32b52f55bab10810de697efcdb5eb784f4d6c04afe6> , <https://metabolinkai.net/quotient/exampleStatement/eb33117fe91013fff22380f889b4e66679839ff50f26f1a4e8c4bbdf42c36b75>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <https://swisslipids.org/rdf/SLM_Rank>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2668"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://w3id.org/chemrof/inchi_string>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_000374219>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<http://www.wikidata.org/entity/Q27162004>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<https://pubmed.ncbi.nlm.nih.gov/10611388>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188505"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/formula>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_000340331>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_000111733>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs> .
+
+<https://swisslipids.org/rdf/SLM_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "96"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#obsolete>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BbuF4J5hYO4>
+] .
+
+<http://purl.obolibrary.org/obo/chebi.owl>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/FXhoJiQEvYQ> .
+
+<https://pubmed.ncbi.nlm.nih.gov/22825852>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/0c0def2079ea461b238da976b995c0cca7de9a0634746fc1474724d03a8071f8>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "The concept of Rank in lipid classification hierarchy";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_Rank> .
+
+<https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "594494"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_rankPreference>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2668"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/inchi>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/f2825ffdbc86459b865f626d51482effe8e7e8488df294453f8fa87fbc7a3d4a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "CCCCCCCCCCCCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCC\\C=C/C\\C=C/CCCCC)COC(=O)CCCCCCC\\C=C/C\\C=C/C\\C=C/C\\C=C/CCCCC";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/smiles>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+<https://swisslipids.org/rdf/SLM_could_be_at_sn2_sn2prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .
+
+<https://swisslipids.org/rdf/SLM_000157680>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+<https://swisslipids.org/rdf/SLM_000552769#407_at_sn1prime>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>
+] .
+
+<http://www.wikidata.org/entity/Q76729804>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5e3777276d3061d471c39c4ced11d121e9fb1569af58185104de392bc328c65e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "InChI=1S/C30H52O7P2/c1-25(2)13-8-14-26(3)15-9-16-27(4)17-10-18-28(5)19-11-20-29(6)21-12-22-30(7)23-24-36-39(34,35)37-38(31,32)33/h13,15,17,19,21,23H,8-12,14,16,18,20,22,24H2,1-7H3,(H,34,35)(H2,31,32,33)/p-3/b26-15+,27-17+,28-19+,29-21+,30-23+";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/inchi_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000598031> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2292658"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_derivedFrom>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2146098"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/e893b53e6a5ebe257ad77c60086bc09cb6f50c64436f003b33b6b81e8bfc26b5>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "PIP2(2:0/16:0)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#altLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000417915> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "355479"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.geneontology.org/formats/oboInOwl#hasDbXref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4585316"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "21252"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "21"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_citation>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://swisslipids.org/rdf/SLM_000601295>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+<https://swisslipids.org/rdf/SLM_000557877>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1485429"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_hasPart>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/55d683b729474e184853c8c8a3a5b1348219aeb1ce4a33cee7338c0c68550516>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "0";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://purl.obolibrary.org/obo/chebi/charge>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000065135> .
+
+<http://rdf.metanetx.org/MNXM252196>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<https://pubmed.ncbi.nlm.nih.gov/23949095>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5b69d353c1349620cf1472961cc5ad76928bfccf89167bd3012313c6e002ba02>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "1-(9Z,12Z-octadecadienoyl)-2-nonadecanoyl-3-(9Z,12Z,15Z,18Z-tetracosatetraenoyl)-sn-glycerol";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2004/02/skos/core#prefLabel>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000240935> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/FXhoJiQEvYQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#imports>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZcSGcVPdA_c>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>
+] .
+
+<http://rdf.metanetx.org/MNXM237784>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<https://pubmed.ncbi.nlm.nih.gov/9582346>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://swisslipids.org/rdf/SLM_000632025>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>
+] .
+
+<http://rdf.metanetx.org/MNXM647481>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HT91bhgcXXQ> .
+
+<https://metabolinkai.net/quotient/exampleStatement/96926eebe45555ac89cc86958fc675ffd22bf39c7308f1fa130969d8d21bda56>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "0";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/charge>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000392807> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "3"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/215e1663ad5e3b976933b65dbb612dc1e1891b34be7e84c96b33e5a687b0d271>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "QTCMFHHBRLUASA-KNKWZOKLSA-N";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/inchi_key_string>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000277872> .
+
+<https://swisslipids.org/rdf/SLM_000560245#1108_at_sn2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IkL1NsC-Ytk> .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<http://www.wikidata.org/entity/Q76948819>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://metabolinkai.net/quotient/exampleStatement/6212db47e1fa5e7898ba54618718b08299dafc5c0a2f4cea3a9cc362c391a9d7>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "C69H116O6";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://w3id.org/chemrof/generalized_empirical_formula>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_000277872> .
+
+<https://swisslipids.org/rdf/SLM_000757239>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<data:image/png;base64,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>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/SlYbhNG4Nsg> .
+
+<https://metabolinkai.net/quotient/quotientClass/FXhoJiQEvYQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "188396"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/smiles>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+<https://swisslipids.org/rdf/SLM_Class>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+<https://swisslipids.org/rdf/SLM_Species>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o> .
+
+<https://pubmed.ncbi.nlm.nih.gov/25472445>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4> .
+
+<https://metabolinkai.net/quotient/quotientClass/IYHQYUXc8B4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://sparql.swisslipids.org/swisslipids>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1519"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "187178"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <https://swisslipids.org/rdf/SLM_rank>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/PEVyTMj_Yrs>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "590787"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://purl.obolibrary.org/obo/chebi/charge>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/F_MEMzbuyOA>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/6be39a56d53f35972d60e32b52f55bab10810de697efcdb5eb784f4d6c04afe6>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                2;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <https://swisslipids.org/rdf/SLM_rankPreference>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://swisslipids.org/rdf/SLM_Class> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#subClassOf>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/dXCfCbCP77o>
+] .
+
+<http://www.wikidata.org/entity/Q76882254>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ax8EAVDXofs> .
+
+<https://swisslipids.org/rdf/SLM_could_be_at_any>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/XDWP9SeMX6Q> .

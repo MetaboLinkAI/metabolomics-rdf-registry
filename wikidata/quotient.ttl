@@ -1,0 +1,646 @@
+<https://metabolinkai.net/quotient/exampleStatement/b36ef3be821b20ec4aad448255a35c1059061ed45be8f73ebeabcd782a798c0b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "10.11646/PHYTOTAXA.16.1.1";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P356>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q22738874> .
+
+<http://www.wikidata.org/entity/Q46787003>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "285"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P683>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/entity/statement/Q112145171-CE2A26BA-B473-491C-AE6C-3B761CDCA737>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/Q56557664>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/reference/364800cbc53825cfc7e36d4efe6410eddb015e13>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/entity/Q75692668>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "30593"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/ns/prov#wasDerivedFrom>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/8c2d4519bb465b88bf93eadcc6b5bd4bb118b0995767fc5eb75ede26323d3a6e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "82892";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P683>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q410534> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "54"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P662>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/entity/Q130369587>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/entity/Q116036777>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/reference/d5350c45080d096c536d1cc392f59f28689630b6>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/entity/statement/Q62212897-58FB05A2-814B-442F-A6CA-5C477358B411>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/reference/382600a0b767b7da984591ad029dcacfc005994c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2890658"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/statement/P703>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>
+] .
+
+<http://www.wikidata.org/entity/Q124056256>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/reference/fb59003d1a4923160377a983d3cefbc135e742b1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "130563554"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/reference/P248>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8>
+] .
+
+<http://www.wikidata.org/reference/3d5a08fadd8c1444d8dd07dd327419fc1f70e2ba>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1161772626"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/ns/prov#wasDerivedFrom>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/statement/P703>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "543067"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P31>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/entity/Q80194776>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/reference/db20418c7689912864b78de91521a6ebb441b63d>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<http://www.wikidata.org/entity/statement/Q56140427-5DA9FFD4-55B2-4FEB-A1CF-440F7453A7EA>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/entity/statement/Q38635290-A44B9C26-BDF9-40A9-83D2-A63233F67C3C>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/statement/Q29818075-BA569FFF-E7F0-418D-9F9C-31F286E34A75>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/statement/Q22315953-B8C97E44-9F29-4BC0-93B7-1D8E4667D5F4>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "321241"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P356>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/reference/2c6365e76ac816f7abda5464b4ac7863ce00411d>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/entity/statement/Q23243519-41F427E3-8AF7-4CFA-B506-6BB5E81691AE>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/entity/Q60041341>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/entity/statement/Q29713386-71BADDE4-D3E2-4B33-860B-647104C8B124>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/reference/02812e93d1e97c975d2bef0f5d7a345b42c36bfd>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<http://www.wikidata.org/entity/Q11828514>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/entity/statement/Q59521201-D61934EB-C849-49CB-B1D3-0D8394BEBF45>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/entity/Q3424468>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<https://metabolinkai.net/quotient/exampleStatement/015017db85b4f2853aa0be0a93d1d734c80ab63d0314b2f9527dd854049be06b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "10.1002/ADIC.200490027";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P356>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q43311856> .
+
+<https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "352"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "57083"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://www.wikidata.org/reference/5bc207e8ce957f3654c8f42dbb08045dd11b9655>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1376763"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P662>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "123660729"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://www.wikidata.org/reference/81f92eb58789e3a57db1e8ddc995f1c734e6792d>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<http://www.wikidata.org/reference/0fb8fd2a05ac50c70ee81f785a33a7a88b0c1c90>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/015017db85b4f2853aa0be0a93d1d734c80ab63d0314b2f9527dd854049be06b> , <https://metabolinkai.net/quotient/exampleStatement/154d6d62d3924ed791a6b7376faf3a40e16cd89ee81df956bd365242475d00ec> , <https://metabolinkai.net/quotient/exampleStatement/8c2d4519bb465b88bf93eadcc6b5bd4bb118b0995767fc5eb75ede26323d3a6e>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "118390538"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://www.wikidata.org/entity/Q2273119>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1073"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/P703>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/154d6d62d3924ed791a6b7376faf3a40e16cd89ee81df956bd365242475d00ec>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "46863892";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P662>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q72461127> .
+
+<http://www.wikidata.org/entity/statement/Q23254994-92D13D34-AD5E-4D8E-9F95-EDE8F643AAFE>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "45988"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/reference/P248>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1301724900"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/b36ef3be821b20ec4aad448255a35c1059061ed45be8f73ebeabcd782a798c0b> , <https://metabolinkai.net/quotient/exampleStatement/241695e74f00e78ef444abf5f1ce8c65689d022a57a91043c92a84e79b4aae30> , <https://metabolinkai.net/quotient/exampleStatement/7bc1f9a01c625758e61c3b2eafbdf014bdcb08929ed02f9083287817c49eb041>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "587653"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://www.wikidata.org/entity/statement/Q68265422-C70882ED-C317-42F3-9EBF-54E11ABC1EDF>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/statement/Q91358715-DD299B7C-47F1-4B87-86E2-A4E8124A7916>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/Q61285123>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<https://metabolinkai.net/quotient/exampleStatement/241695e74f00e78ef444abf5f1ce8c65689d022a57a91043c92a84e79b4aae30>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "135403648";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P662>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q45435667> .
+
+<https://metabolinkai.net/quotient/exampleStatement/7bc1f9a01c625758e61c3b2eafbdf014bdcb08929ed02f9083287817c49eb041>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "46727";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.wikidata.org/prop/direct/P683>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://www.wikidata.org/entity/Q43010> .
+
+<http://www.wikidata.org/entity/statement/Q42860954-40B20382-6BB7-4789-86A2-056BAB9D6A3F>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/statement/Q23222309-C0751C48-42E9-49DC-BB94-11AFA8DEE981>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "158332"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P683>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "34094997"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P356>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<http://www.wikidata.org/reference/95798e0d3d567e2cb3f16fc2bfe80973a782a6a4>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<http://www.wikidata.org/entity/statement/Q70511632-1426488D-89B9-42FE-BD4A-BB2B422CD8B1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/Q77767588>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/entity/Q104973101>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/entity/Q206285>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "164231540"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/ns/prov#wasDerivedFrom>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0>
+] .
+
+<http://www.wikidata.org/entity/statement/Q43233991-24A652F0-3A1D-437F-B30A-E645EECBBA89>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/entity/Q28581033>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/entity/Q117748587>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/entity/Q28579488>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/reference/95551ffbf1098da692d4efcf620d3a6bfa4ea56c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2889596"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/P703>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<http://www.wikidata.org/entity/statement/Q23296224-DCDF8FF1-F844-43D9-B2B6-B5E16609FC8E>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<http://www.wikidata.org/entity/Q159547>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "17335224"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P31>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<http://www.wikidata.org/entity/statement/Q23353247-76B75406-6011-4A78-906D-C5F60468E4B7>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA> .
+
+<https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2890669"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/M7iy8ScVNik>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P356>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/entity/Q22764131>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/entity/Q104388614>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .
+
+<http://www.wikidata.org/reference/4ee7e25a9262befe9dfb5ccda2a680472d0d6df2>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/reference/04ab5aa761fff32f3169f0c0f855336962c55ba4>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "89604"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P31>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>
+] .
+
+<http://www.wikidata.org/entity/Q2345820>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/reference/967dfab6fff9fccd51357525462d5c086ac4674c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "106492017"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P31>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<http://www.wikidata.org/entity/Q127862594>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2972337"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/ns/prov#wasDerivedFrom>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ewUj6Np4JsA>
+] .
+
+<http://www.wikidata.org/entity/Q126812299>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/entity/Q88265704>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/entity/statement/Q27818847-536edd84-14f6-4902-925f-df6fb1a8157d>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<https://metabolinkai.net/quotient/quotientClass/M7iy8ScVNik>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "25"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/M7iy8ScVNik>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "23"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.wikidata.org/prop/direct/P356>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk>
+] .
+
+<http://www.wikidata.org/entity/statement/Q64832062-1EED84CE-80C1-4A5F-A761-E00350DC8C5D>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Wl07UILqyN0> .
+
+<http://www.wikidata.org/reference/ede6b2494a7ed1ecc18eb664986e896044d68400>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/reference/923b1be21a6dcf4083ae086f05d910ddca116050>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.nt.bz2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "26557769"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://www.wikidata.org/entity/Q20222361>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/entity/Q83534451>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/entity/Q131806916>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/P_ptQYeW-vk> .
+
+<http://www.wikidata.org/reference/cd17e9f5eed919993225f7a8998932693382ce3f>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/I0CzY0lSwx8> .
+
+<http://www.wikidata.org/reference/6c7dfee30e6fc1fb1a9f7b753c18daf496b8101e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OyG1BrOsr1w> .
+
+<http://www.wikidata.org/entity/Q1344695>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Zzjs6XVIhjo> .
+
+<http://www.wikidata.org/entity/Q124804494>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BfPTOdDV00s> .

@@ -1,0 +1,1499 @@
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "142368"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://rdf.rhea-db.org/68546>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/relxref_type_rhea_bidirectional>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "67844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://rdf.rhea-db.org/14430>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+<http://biopax.rhea-db.org/level3/generic_14920>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+<http://biopax.rhea-db.org/level3/33772_right_3543>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9000"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#right>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "19173"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "8768"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<http://rdf.rhea-db.org/15557>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+<http://biopax.rhea-db.org/level3/23781_right_1264>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/ff296330a39ba97ec652e96a73c4c6dc96c76919f5c335bcc5d1b0161856c5f3>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#SmallMolecule>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://biopax.rhea-db.org/level3/unixref_chebi_72763>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18792"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#db>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/0bd178362f7655dca2f659d7ce3acf84716b8ba9f095d4f2bb01d7c71228df2f> , <https://metabolinkai.net/quotient/exampleStatement/4fede292864dcf617a90229b95dd8e17d2175d1caaabd7f228d8e8de0d50c320>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#UnificationXref>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "32625"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/e8d6c74807d16b9c266a2a8e736bd95387d264b12e310a61cb0a57ee37d476f8>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Rhea";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/data_source_rhea> .
+
+<http://biopax.rhea-db.org/level3/relxref_type_rhea_right_to_left>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/c03cdee07f855caf1a8063befdba86b531264fd0ce3f190938c04d27be44380d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "1.0"^^<http://www.w3.org/2001/XMLSchema#float>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#stoichiometricCoefficient>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/12627_stoichiometry_right_5529> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_38518117>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#term>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11324"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/32271_stoichiometry_left_5200>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<http://www.biopax.org/release/biopax-level3.owl#>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/OZEc2em80XA> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "332656"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#participantStoichiometry>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://rdf.rhea-db.org/62990>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "153664"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#left>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_type_rhea_left_to_right>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+<http://biopax.rhea-db.org/level3/small_molecule_20043>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1412"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_20231281>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12950"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+] .
+
+<http://biopax.rhea-db.org/level3/44484_stoichiometry_right_3249>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/c03cdee07f855caf1a8063befdba86b531264fd0ce3f190938c04d27be44380d>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#Stoichiometry>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.rhea-db.org/67045>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_59029>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://rdf.rhea-db.org/35414>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "74232"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#dbVersion>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+] .
+
+<http://biopax.rhea-db.org/level3/56395_stoichiometry_right_4719>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "67844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://rdf.rhea-db.org/71582>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "178992"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#right>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "80286"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+] .
+
+<http://rdf.rhea-db.org/75503>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/56573_stoichiometry_right_2692>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<https://metabolinkai.net/quotient/exampleStatement/6c9864c6fa9ae5507df513f0e743a76d372b0d5d7b72443af2229a405b87def3>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Rhea";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#db>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/relxref_rhea_28311> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4976"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<http://biopax.rhea-db.org/level3/unixref_chebi_140303>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<http://rdf.rhea-db.org/73405>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/29688_right_6585>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_45875>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://biopax.rhea-db.org/level3/>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZjrPkBr65as> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "21404"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#cellularLocation>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/b13ad708fda62551e223e860969889e8bec81e46392bd50ea4430840298f6ebd>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "tRNA<smallsup>His</smallsup>";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/generic_9665> .
+
+<http://rdf.rhea-db.org/66654>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/35099_right_3249>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#physicalEntity>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>
+] .
+
+<http://rdf.rhea-db.org/86486>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_44306>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_8543034>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+<https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/e8d6c74807d16b9c266a2a8e736bd95387d264b12e310a61cb0a57ee37d476f8>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#Provenance>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://biopax.rhea-db.org/level3/relxref_type_part_of_rhea_generic_compound>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_32286>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://biopax.rhea-db.org/level3/85171_stoichiometry_left_10341>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<http://biopax.rhea-db.org/level3/small_molecule_10945>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+<http://biopax.rhea-db.org/level3/relxref_chebi_139319>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4330"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE>
+] .
+
+<http://biopax.rhea-db.org/level3/small_molecule_9104>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1412"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "5288"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#right>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_type_go_molecular_function>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+<http://biopax.rhea-db.org/level3/data_source_rhea>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc> .
+
+<https://metabolinkai.net/quotient/exampleStatement/77fcc5a0c97f89f9db8b3d9732039a544398d2133a99533454072c93e5424458>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "COMPOUND_TYPE: small_molecule";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/small_molecule_10558> .
+
+<https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/12d552f031b1e3f311bd75f9926c3c3a8db42929cb5588a2633fc75c8db0b80b>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#RelationshipTypeVocabulary>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_53829>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<https://metabolinkai.net/quotient/exampleStatement/fa32d243bddc28dcb8e131601b23cc38c1543438c80bcf3bc682c60d2dec06f7>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "RHEA:Status=approved";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/71832> .
+
+<http://rdf.rhea-db.org/29833>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://rdf.rhea-db.org/72393>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/unixref_kegg_reaction_r05907>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<http://rdf.rhea-db.org/33309>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_12591618>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18792"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#id>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>
+] .
+
+<http://rdf.rhea-db.org/75384>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "80286"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#db>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#entityReference>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+] .
+
+<http://biopax.rhea-db.org/level3/small_molecule_17437>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+<http://biopax.rhea-db.org/level3/47063_right_1283>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/004b6b6bc04aa564163844c0544e1266dcbe0ac604a37a999c22a0456520dd2b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "PubMed";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#db>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/pubxref_pubmed_21810411> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_10818442>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+<http://biopax.rhea-db.org/level3/50695_right_6985>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<http://rdf.rhea-db.org/32918>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/unixref_kegg_reaction_r01811>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/004b6b6bc04aa564163844c0544e1266dcbe0ac604a37a999c22a0456520dd2b> , <https://metabolinkai.net/quotient/exampleStatement/b2768cf4768e50cbbc4291a29c6d00c115ba00204de09318463be2676316789b>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#PublicationXref>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "18792"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "554504"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<http://biopax.rhea-db.org/level3/unixref_chebi_233617>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<http://rdf.rhea-db.org/73867>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4236"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#left>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://rdf.rhea-db.org/62376>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/46140_right_11965>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ef94704e84fb987c2e74b43b81d9484a7d981e6fd85ac8329392d182f306752d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "(R)-adrenaline + S-adenosyl-L-homocysteine + H(+) => (R)-noradrenaline + S-adenosyl-L-methionine";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/25271> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_25320079>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "32625"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/12d552f031b1e3f311bd75f9926c3c3a8db42929cb5588a2633fc75c8db0b80b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "part of a Rhea generic compound";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#term>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/relxref_type_part_of_rhea_generic_compound> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9000"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#left>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/59baa9cd78c5850a072485ddf025e7097de70296c714a45a994e3eaf179d744b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "RIGHT_TO_LEFT";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/25271> .
+
+<http://rdf.rhea-db.org/35184>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/generic_17190>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4976"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<http://biopax.rhea-db.org/level3/32180_stoichiometry_left_3484>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/0bd178362f7655dca2f659d7ce3acf84716b8ba9f095d4f2bb01d7c71228df2f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "MetaCyc";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#db>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/unixref_metacyc_rxn-8222> .
+
+<https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/b13ad708fda62551e223e860969889e8bec81e46392bd50ea4430840298f6ebd> , <https://metabolinkai.net/quotient/exampleStatement/77fcc5a0c97f89f9db8b3d9732039a544398d2133a99533454072c93e5424458>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#SmallMoleculeReference>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "15193"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "9524"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#participantStoichiometry>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_64842>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://biopax.rhea-db.org/level3/unixref_chebi_87095>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<http://biopax.rhea-db.org/level3/unixref_reactome_r-hsa-71200.4>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<https://metabolinkai.net/quotient/exampleStatement/2fded7b9e243f6e18f83d7eb89e44f04713d087954e18712cd02869b3b394381>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "141";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#dbVersion>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/relxref_rhea_39813> .
+
+<https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/ecc9c9abcebb3de081c54788b1de2cebb03a8231cac196dfa3b1777c25239ed3> , <https://metabolinkai.net/quotient/exampleStatement/fa32d243bddc28dcb8e131601b23cc38c1543438c80bcf3bc682c60d2dec06f7> , <https://metabolinkai.net/quotient/exampleStatement/048877d090a7e321d6bb29e496116a6d3eaac5a13c039a7e3a14e2f4b21e3a76>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#Transport>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "4976"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ecc9c9abcebb3de081c54788b1de2cebb03a8231cac196dfa3b1777c25239ed3>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "creatine(out) + chloride(out) + 2 Na(+)(out) => creatine(in) + chloride(in) + 2 Na(+)(in)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/71832> .
+
+<https://metabolinkai.net/quotient/quotientClass/ZjrPkBr65as>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.w3.org/2002/07/owl#Ontology>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.rhea-db.org/40430>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "15193"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+] .
+
+<http://biopax.rhea-db.org/level3/small_molecule_15979>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#term>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "15008"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "210315"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/ff296330a39ba97ec652e96a73c4c6dc96c76919f5c335bcc5d1b0161856c5f3>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "reduced [NADPH--hemoprotein reductase]";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/34809_left_11964> .
+
+<http://biopax.rhea-db.org/level3/48660_stoichiometry_right_1283>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "67844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1979"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>
+] .
+
+<http://biopax.rhea-db.org/level3/location_type_rhea_in>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k> .
+
+<http://biopax.rhea-db.org/level3/44536_left_8656>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<http://biopax.rhea-db.org/level3/84803_stoichiometry_left_15703>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<http://biopax.rhea-db.org/level3/86622_right_7724>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/12d237da3e86f037bee02037b377c28f84c1645d6349b84ef6b0f75905d950db>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine(in) + ATP + H2O => a 1,2-diacyl-sn-glycero-3-phosphoethanolamine(out) + ADP + phosphate + H(+)";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/36440> .
+
+<http://rdf.rhea-db.org/66403>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1412"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#displayName>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/58833_stoichiometry_left_15272>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<https://metabolinkai.net/quotient/exampleStatement/b2768cf4768e50cbbc4291a29c6d00c115ba00204de09318463be2676316789b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "11327815";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#id>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/pubxref_pubmed_11327815> .
+
+<https://metabolinkai.net/quotient/exampleStatement/18bc34ec1cf91a5f4920246dbea2e3b6bc09d94d6fb10116a802aed3d8ca175e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "RHEA:Polymerization=false";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/25271> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "32458"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/59baa9cd78c5850a072485ddf025e7097de70296c714a45a994e3eaf179d744b> , <https://metabolinkai.net/quotient/exampleStatement/18bc34ec1cf91a5f4920246dbea2e3b6bc09d94d6fb10116a802aed3d8ca175e> , <https://metabolinkai.net/quotient/exampleStatement/ef94704e84fb987c2e74b43b81d9484a7d981e6fd85ac8329392d182f306752d>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#BiochemicalReaction>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "67844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4fede292864dcf617a90229b95dd8e17d2175d1caaabd7f228d8e8de0d50c320>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "CHEBI:234383";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#id>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/unixref_chebi_234383> .
+
+<http://rdf.rhea-db.org/86853>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/OZEc2em80XA>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2002/07/owl#imports>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZjrPkBr65as>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZjrPkBr65as>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2284"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/ea4ce9e88bfe8fd1ff045c57fb35cd3b1582dc2355e66c9ebab99f5b326515ad>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "28311";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#id>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/relxref_rhea_28311> .
+
+<http://rdf.rhea-db.org/57888>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_6628393>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+<http://biopax.rhea-db.org/level3/79768_left_19307>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#dataSource>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "80286"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#id>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "32625"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#db>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "982"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/N72U9RFx4M4>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "39956"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#comment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "360180"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#stoichiometricCoefficient>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/OZEc2em80XA>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.rhea-db.org/66742>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18792"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>
+] .
+
+<http://biopax.rhea-db.org/level3/small_molecule_2713>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "67844"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#dataSource>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/78ff3c5005f8821e4e2d7a0bef62d5fb956aa40d6e69234a1d7ffce418f30a01>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "RHEA:Transport=true";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#comment>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/62585> .
+
+<http://biopax.rhea-db.org/level3/unixref_chebi_132727>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+<https://metabolinkai.net/quotient/exampleStatement/c87175c29a6ad9bda360bb83eb9afbea77b8868c01bca3cd05ec75c3d73afcff>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Rhea reaction participant location: out";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#term>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://biopax.rhea-db.org/level3/location_type_rhea_out> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_17986282>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+<https://metabolinkai.net/quotient/exampleStatement/048877d090a7e321d6bb29e496116a6d3eaac5a13c039a7e3a14e2f4b21e3a76>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "RIGHT_TO_LEFT";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/73865> .
+
+<http://biopax.rhea-db.org/level3/location_type_rhea_out>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "18000"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#participantStoichiometry>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4976"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#dataSource>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/FzEcfcM3A8k>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/c87175c29a6ad9bda360bb83eb9afbea77b8868c01bca3cd05ec75c3d73afcff>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#CellularLocationVocabulary>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "2"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://rdf.rhea-db.org/66734>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "287"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/12d237da3e86f037bee02037b377c28f84c1645d6349b84ef6b0f75905d950db> , <https://metabolinkai.net/quotient/exampleStatement/9047948e4f03ad4524f939e0c75ff1e03b60992a57b631904fae5bd8078dc8ff> , <https://metabolinkai.net/quotient/exampleStatement/78ff3c5005f8821e4e2d7a0bef62d5fb956aa40d6e69234a1d7ffce418f30a01>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#TransportWithBiochemicalReaction>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "1412"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://biopax.rhea-db.org/level3/relxref_type_part_of_rhea_polymer>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "4976"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_31394>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_17010378>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "80286"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#relationshipType>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+] .
+
+<http://rdf.rhea-db.org/72205>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fJXIHO-X8Eo> .
+
+<http://biopax.rhea-db.org/level3/pubxref_pubmed_12702816>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4> .
+
+<http://biopax.rhea-db.org/level3/relxref_go_0030757>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "32625"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#id>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ>
+] .
+
+<http://biopax.rhea-db.org/level3/relxref_rhea_48421>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o> .
+
+<http://rdf.rhea-db.org/34106>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<http://biopax.rhea-db.org/level3/unixref_ecocyc_rxn0-5298>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>
+] .
+
+<http://biopax.rhea-db.org/level3/unixref_metacyc_rxn-15952>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ZitwdkFwKBQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DbHnXIFo5Vc>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "1412"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#dataSource>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://rdf.rhea-db.org/29166>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .
+
+<https://metabolinkai.net/quotient/exampleStatement/9047948e4f03ad4524f939e0c75ff1e03b60992a57b631904fae5bd8078dc8ff>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "LEFT_TO_RIGHT";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.biopax.org/release/biopax-level3.owl#conversionDirection>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <http://rdf.rhea-db.org/36440> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/U2J850CoUH4>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "2540"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.biopax.org/release/biopax-level3.owl#xref>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s>
+] .
+
+<http://biopax.rhea-db.org/level3/small_molecule_8922>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+<http://rdf.rhea-db.org/81719>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/AruXEbnkF34> .
+
+<https://metabolinkai.net/quotient/quotientClass/fuxqiBImE8o>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://ftp.expasy.org/databases/rhea/biopax/rhea-biopax.owl.gz>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/6c9864c6fa9ae5507df513f0e743a76d372b0d5d7b72443af2229a405b87def3> , <https://metabolinkai.net/quotient/exampleStatement/ea4ce9e88bfe8fd1ff045c57fb35cd3b1582dc2355e66c9ebab99f5b326515ad> , <https://metabolinkai.net/quotient/exampleStatement/2fded7b9e243f6e18f83d7eb89e44f04713d087954e18712cd02869b3b394381>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.biopax.org/release/biopax-level3.owl#RelationshipXref>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "80286"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://biopax.rhea-db.org/level3/small_molecule_19269>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/MPubdn0Y1C0> .
+
+<http://biopax.rhea-db.org/level3/71124_stoichiometry_left_3249>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HSJLjtfH6cI> .
+
+<http://biopax.rhea-db.org/level3/relxref_type_rhea_undefined>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/Ls27jDhZqrE> .
+
+<http://rdf.rhea-db.org/29137>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/RNuiXiyqM7s> .

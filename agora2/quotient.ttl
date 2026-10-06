@@ -1,0 +1,783 @@
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "49678623"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#species>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_2731150#M_mops__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "76565143"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#is>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_pneumoniae_670_6b#e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/mycobacterium_avium_subsp_paratuberculosis_s5#R_NNAM>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/pseudomonas_aeruginosa_ucbpp_pa14#R_AMID5>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_kte176#G_WP_000855406__46__1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ac174d86a1476872f4263320c29abaa6505db9e8b18c586109b047037ee469bc>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "M_i14tcaala_D__91__c__93__";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_lutetiensis_err2230054#M_i14tcaala_D__91__c__93__> .
+
+<http://identifiers.org/sbo/SBO:0000629>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "17951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#compartment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/proteus_mirabilis_atcc_29906#Proteus_mirabilis_ATCC_29906.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_2534_86#G_EC253486_RS15015>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_p0305293_14#R_TLF_A_M4tex>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "24536681"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#reactant>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_kte93#Escherichia_coli_KTE93.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+<http://identifiers.org/metanetx.chemical/MNXM138>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#isReversible>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#compartment>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/stenotrophomonas_rhizophila_pca13#R_EAR121x>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://metabolinkai.net/quotient/literalQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+<http://identifiers.org/metanetx.reaction/MNXR95841>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_err1203920#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7302"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "17951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6620806"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ>
+] .
+
+<https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>
+        a       <https://metabolinkai.net/quotient/QuotientClass> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "24761602"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#is>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/alistipes_onderdonkii_err1203947#e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/4c891aaaf1e995a53080b0b9cd7c07f690a19e7afc87ca22c573fbe39bfc19d0>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "e";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_543463_42_20#e> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/lactobacillus_plantarum_jdm1#G_644042__46__3__46__1905__46__peg>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/blautia_nov_err2221260#R_EX_ribflv__40__e__41__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<http://identifiers.org/sbo/SBO:0000632>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_o157_h7_str_ec4191#p>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/staphylococcus_aureus_subsp_aureus_21345#M_ncam__91__e__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "26580"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://identifiers.org/pubchem.compound/1983>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/shigella_dysenteriae_1617#R_MET_Ltex>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://metabolinkai.net/quotient/exampleStatement/aa94dc5551d4998ccf601dfa5a88eb13380b8ca0598af0ac2afe63ffcbf8244e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Cytoplasm";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_mutans_m230#c> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_pneumoniae_2070035#M_oxalc__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/faa6b2ed3ec82c0f0e38889d9ae5985a92ac999cec28ba8d7990f31ad2a839ff>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                false;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#isReversible>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/brachyspira_aalborgi_pc3517ii#R_G3PAT141> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_tennessee_str_cdc07_0191#G_573395__46__3__46__3590_6__46__peg>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/staphylococcus_aureus_subsp_aureus_btn1260#R_GUAPRT>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/aa94dc5551d4998ccf601dfa5a88eb13380b8ca0598af0ac2afe63ffcbf8244e> , <https://metabolinkai.net/quotient/exampleStatement/4c891aaaf1e995a53080b0b9cd7c07f690a19e7afc87ca22c573fbe39bfc19d0>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Compartment>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "17951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptomyces_massiliensis_ap10#Streptomyces_massiliensis_AP10.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/gracilibacter_sp_brh_c7a#G_Gracilibacter_sp_BRH_c7a__46__RAST__46__CDS__46__1512>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://metabolinkai.net/quotient/exampleStatement/25696c6f16ceff5320814a8a7f541b4a25fe21f0d89262e0e37ed4cfed5800bb>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Bacillus subtilis subsp subtilis 516 BAMY 102 633920 16710904";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/bacillus_subtilis_subsp_subtilis_516_bamy_102_633920_16710904#Bacillus_subtilis_subsp_subtilis_516_BAMY_102_633920_16710904.mat> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "25141942"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#product>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<http://identifiers.org/hmdb/HMDB0000684>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#species>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+<http://identifiers.org/sbo/SBO:0000247>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "16825792"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.sbml.org/sbml/level3/version1/fbc/version2#geneProductAssociation>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://metabolinkai.net/quotient/exampleStatement/2d950c038a1dec5e2e9d6c883ff03926c5a9bcc134b2262caa0f1e274fad4f9a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "R_RIBabcpp";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_ec1856#R_RIBabcpp> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_agalactiae_bsu247#R_EX_sb_y__40__e__41__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/capnocytophaga_sp_oral_taxon_326_str_f0382#Capnocytophaga_sp_oral_taxon_326_str_F0382.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_pneumoniae_pcs8106#M_pgi14__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12560167"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#hasProperty>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_agona_str_65_h_72#G_SA65_RS21100>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "49678623"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#SpeciesReference>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6620806"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/staphylococcus_aureus_m1044#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_agalactiae_ccug_91#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/f563c628c799848cbaf7855a13c0669f2d180b3d038a8fca8ca2bc338db41e06>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "M_Bacteroides_sp_3_2_5";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/bacteroides_sp_3_2_5#Bacteroides_sp_3_2_5.mat> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/oribacterium_sinus_f0268#M_fuc_L__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/aed4f81502a09c29d218784554deceaec38bdd63d73be427e7b7e518dee8a747>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "G_Paenibacillus_graminis_RSA19__46__RAST__46__CDS__46__5525";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://www.w3.org/2000/01/rdf-schema#label>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/paenibacillus_graminis_rsa19#G_Paenibacillus_graminis_RSA19__46__RAST__46__CDS__46__5525> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/acinetobacter_baumannii_niph_190#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/bacillus_cereus_bag2o_2#Bacillus_cereus_BAG2O_2.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7302"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "49678623"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#stoichiometry>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_lutetiensis_err2230054#e>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://metabolinkai.net/quotient/exampleStatement/ca9d03b51577c5dcd370d98774b21f624ee9fb8eaaf8c555d6d982b4b3082c2b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "BC27_RS15675";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_09bkt078844#G_BC27_RS15675> .
+
+<http://identifiers.org/sbo/SBO:0000176>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_p0304816_13#R_5OHFVStex>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/mycobacterium_tuberculosis_variant_pinnipedii_mp2#Mycobacterium_tuberculosis_variant_pinnipedii_MP2.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "6620806"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#reaction>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/brachyspira_aalborgi_pc5538iii_lc#M_pheme__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "17951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>
+] .
+
+<http://identifiers.org/sbo/SBO:0000627>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "17951"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE>
+] .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "7302"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/2000/01/rdf-schema#label>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+] .
+
+<http://identifiers.org/biocyc/CPD-101>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_648905_5_18#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<http://identifiers.org/seed.reactions/rxn08557>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/turicibacter_sanguinis_pc909#c>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/BrDguQhIcXE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridium_clostridioforme_90a6#G_HMPREF1083_RS04720>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "49678623"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/BERH2X-V2HM>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/acidaminococcus_massiliensis_marseille_p2828#M_sheme__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<http://identifiers.org/metanetx.chemical/MNXM1496>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/pseudomonas_monteilii_nbrc_103158#M_sttca1__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_pa15#Escherichia_coli_PA15.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+<https://metabolinkai.net/quotient/exampleStatement/daebd7326e465263bb3f9eeff957dda22cb51ea75d9a6fb320ffa658fb102559>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Mn2+ exchange";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/bacillus_subtilis_subsp_subtilis_6051_hgw#R_EX_mn2__40__e__41__> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_frik1997#R_EX_succ__40__e__41__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo> .
+
+<https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/2d950c038a1dec5e2e9d6c883ff03926c5a9bcc134b2262caa0f1e274fad4f9a> , <https://metabolinkai.net/quotient/exampleStatement/faa6b2ed3ec82c0f0e38889d9ae5985a92ac999cec28ba8d7990f31ad2a839ff> , <https://metabolinkai.net/quotient/exampleStatement/daebd7326e465263bb3f9eeff957dda22cb51ea75d9a6fb320ffa658fb102559>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Reaction>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/escherichia_coli_97_0246#G_EC970246_RS13705>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/streptococcus_agalactiae_gb00202#M_tptnds__91__c__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+<https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/f563c628c799848cbaf7855a13c0669f2d180b3d038a8fca8ca2bc338db41e06> , <https://metabolinkai.net/quotient/exampleStatement/25696c6f16ceff5320814a8a7f541b4a25fe21f0d89262e0e37ed4cfed5800bb>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#SBMLModel>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "7302"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<http://identifiers.org/bigg.metabolite/5cm2hmu>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<http://identifiers.org/sbo/SBO:0000628>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+<http://identifiers.org/sbo/SBO:0000185>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/agrobacterium_tumefaciens_ccnwgs0286#M_dfdcytd__91__e__93__>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/quotientClass/DB3oFEqtnrI>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235371"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://biomodels.net/biology-qualifiers#hasProperty>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+<http://identifiers.org/metanetx.chemical/MNXM6599>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://metabolinkai.net/quotient/exampleStatement/5dd650826c2b649fec112343120dfb37a96f6bfb2fd1ae78420bcd5e1f02e609>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#object>
+                "Oxidized thioredoxin";
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate>
+                <http://identifiers.org/biomodels.vocabulary#name>;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject>
+                <https://vmh.life/files/reconstructions/AGORA2/version2.01/clostridium_senegalense_jc122#M_trdox__91__c__93__> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/ubiquitousPropertyObjectQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "12582264"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/JB5zoyCNIfo>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/aed4f81502a09c29d218784554deceaec38bdd63d73be427e7b7e518dee8a747> , <https://metabolinkai.net/quotient/exampleStatement/ca9d03b51577c5dcd370d98774b21f624ee9fb8eaaf8c555d6d982b4b3082c2b>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://www.sbml.org/sbml/level3/version1/fbc/version2#geneProduct>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "6620806"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/salmonella_enterica_subsp_enterica_serovar_hadar_str_2011k_0112#G_WP_001186673__46__1>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<http://identifiers.org/hmdb/HMDB0000725>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/PcDNirmtUqI> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/parabacteroides_merdae_atcc_43184#Parabacteroides_merdae_ATCC_43184.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/bacillus_thuringiensis_serovar_pakistani_str_t13001#G_527027__46__3__46__1892__46__peg>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/ccTbPqrgnsQ> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/acinetobacter_baumannii_6014059#Acinetobacter_baumannii_6014059.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
+
+[ a       <https://metabolinkai.net/quotient/QuotientTriple>;
+  <https://metabolinkai.net/quotient/quotientObject>
+          <https://metabolinkai.net/quotient/literalQuotientClass>;
+  <https://metabolinkai.net/quotient/quotientOccurrenceCount>
+          "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+  <https://metabolinkai.net/quotient/quotientPredicate>
+          <http://identifiers.org/biomodels.vocabulary#name>;
+  <https://metabolinkai.net/quotient/quotientSubject>
+          <https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+] .
+
+<https://metabolinkai.net/quotient/quotientClass/HjOQGxoPGWE>
+        a       <https://metabolinkai.net/quotient/QuotientClass>;
+        <http://rdfs.org/ns/void#inDataset>
+                <https://models.metabohub.fr/agora2>;
+        <https://metabolinkai.net/quotient/blankNodeInstanceCount>
+                "0"^^<http://www.w3.org/2001/XMLSchema#unsignedLong>;
+        <https://metabolinkai.net/quotient/hasExampleUsage>
+                <https://metabolinkai.net/quotient/exampleStatement/5dd650826c2b649fec112343120dfb37a96f6bfb2fd1ae78420bcd5e1f02e609> , <https://metabolinkai.net/quotient/exampleStatement/ac174d86a1476872f4263320c29abaa6505db9e8b18c586109b047037ee469bc>;
+        <https://metabolinkai.net/quotient/typesInclude>
+                <http://identifiers.org/biomodels.vocabulary#Species>;
+        <https://metabolinkai.net/quotient/uriInstanceCount>
+                "11235383"^^<http://www.w3.org/2001/XMLSchema#unsignedLong> .
+
+<https://vmh.life/files/reconstructions/AGORA2/version2.01/helicobacter_pylori_gam201ai#Helicobacter_pylori_GAM201Ai.mat>
+        <https://metabolinkai.net/quotient/hasQuotientClass>
+                <https://metabolinkai.net/quotient/quotientClass/GyOm69BCTRg> .
